@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cno32ttl1kyv6"]
+
+[ext_resource type="PackedScene" uid="uid://c250jyb5pv22s" path="res://Entities/Olimar/Olimar_Scenes/olimar.tscn" id="1_wmo6t"]
+
+[node name="Game" type="Node2D" unique_id=248607455]
+
+[node name="Olimar" parent="." unique_id=956143428 instance=ExtResource("1_wmo6t")]
