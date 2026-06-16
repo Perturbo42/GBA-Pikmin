@@ -8,10 +8,12 @@
 [ext_resource type="Script" uid="uid://bhl7kqxt5sldd" path="res://Entities/Olimar/Olimar_Scripts/Olimar_States/olimar_locked.gd" id="5_yxlvn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t5bln"]
-size = Vector2(20, 30)
+size = Vector2(20, 15)
 
 [node name="Olimar" type="CharacterBody2D" unique_id=956143428]
+collision_mask = 8
 script = ExtResource("1_22lxx")
+speed = 200.0
 
 [node name="OlimarStateMachine" type="Node2D" parent="." unique_id=932388051]
 script = ExtResource("2_vv2yc")
@@ -32,5 +34,5 @@ position = Vector2(0, -26)
 texture = ExtResource("3_k5hd0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1624343033]
-position = Vector2(0, -15)
+position = Vector2(0, -7.5)
 shape = SubResource("RectangleShape2D_t5bln")
