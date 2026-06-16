@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://kbjiailqfskx"]
+
+[ext_resource type="Script" uid="uid://d3f8j8255l4kh" path="res://Entities/Pikmin/Red Pikmin/red_pikmin.gd" id="1_egeb0"]
+[ext_resource type="Texture2D" uid="uid://dfwhwv4puk6jl" path="res://Entities/Pikmin/Red Pikmin/Red Pikmin.png" id="2_x0lm3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vnup6"]
+size = Vector2(8, 10)
+
+[node name="Red Pikmin" type="CharacterBody2D" unique_id=1562282753]
+script = ExtResource("1_egeb0")
+
+[node name="Pikmin State Machine" type="Node2D" parent="." unique_id=1496414826]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=461560849]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(0, -19)
+texture = ExtResource("2_x0lm3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1638084405]
+position = Vector2(0, -5)
+shape = SubResource("RectangleShape2D_vnup6")
