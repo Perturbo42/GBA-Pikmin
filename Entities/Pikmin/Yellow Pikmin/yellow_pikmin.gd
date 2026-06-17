@@ -1,0 +1,1 @@
+class_name YellowPikmin extends Pikmin
