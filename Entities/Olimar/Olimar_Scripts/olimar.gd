@@ -1,7 +1,7 @@
 class_name Olimar extends CharacterBody2D
 @onready var marker: Marker2D = $"Pikmin Gather"
 
-@export var speed := 500.0
+@export var speed: float
 var dir: Vector2
 
 func _ready() -> void:

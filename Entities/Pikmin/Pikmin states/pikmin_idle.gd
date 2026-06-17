@@ -1,9 +1,7 @@
 class_name PikminIdle extends PikminState
 
 func enter():
-	pass
-
-func handle_input(_event: InputEvent):
+	pikmin.velocity = Vector2.ZERO
 	pass
 
 func update(_delta: float):

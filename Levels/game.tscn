@@ -3,6 +3,7 @@
 [ext_resource type="TileSet" uid="uid://bkia37igcjeku" path="res://Tileset/plains_tile_set.tres" id="1_6isyr"]
 [ext_resource type="PackedScene" uid="uid://c250jyb5pv22s" path="res://Entities/Olimar/Olimar_Scenes/olimar.tscn" id="1_wmo6t"]
 [ext_resource type="PackedScene" uid="uid://uq3rte6fug5v" path="res://Misc/Camera/Camera.tscn" id="2_uxjsv"]
+[ext_resource type="PackedScene" uid="uid://kbjiailqfskx" path="res://Entities/Pikmin/Red Pikmin/red_pikmin.tscn" id="4_5ubxa"]
 
 [node name="Game" type="Node2D" unique_id=248607455]
 
@@ -24,3 +25,7 @@ tile_set = ExtResource("1_6isyr")
 scale = Vector2(2, 2)
 
 [node name="Camera2D" parent="Olimar" unique_id=436421858 instance=ExtResource("2_uxjsv")]
+
+[node name="Red Pikmin" parent="." unique_id=1562282753 instance=ExtResource("4_5ubxa")]
+position = Vector2(38, 0)
+scale = Vector2(1.5, 1.5)

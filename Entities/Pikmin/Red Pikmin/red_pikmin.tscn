@@ -12,6 +12,7 @@ size = Vector2(8, 10)
 
 [node name="Red Pikmin" type="CharacterBody2D" unique_id=1562282753]
 script = ExtResource("1_egeb0")
+speed = 150.0
 
 [node name="Pikmin State Machine" type="Node2D" parent="." unique_id=1496414826]
 script = ExtResource("2_vnup6")
