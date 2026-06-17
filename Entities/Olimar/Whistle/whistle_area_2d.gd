@@ -4,12 +4,10 @@ var is_active: bool = false
 func _process(_delta: float) -> void:
 	if is_active:
 		for body in get_overlapping_bodies():
-			if body is Pikmin:
-				match body.pikmin_type:
-					body.PikminType.RED:
-						if body not in Global.olimar.following_pikmin_red:
-							Global.olimar.following_pikmin_red.append(body)
-							body.state_machine.change_state("Follow")
+			if body is RedPikmin:
+				if body not in Global.olimar.following_pikmin[RedPikmin]:
+					Global.olimar.following_pikmin[RedPikmin].append(body)
+					body.state_machine.change_state("Follow")
 
 func activate():
 	is_active = true
