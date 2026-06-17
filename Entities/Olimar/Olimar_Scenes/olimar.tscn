@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c250jyb5pv22s"]
 
 [ext_resource type="Script" uid="uid://x7iuyqiyfpno" path="res://Entities/Olimar/Olimar_Scripts/olimar.gd" id="1_22lxx"]
-[ext_resource type="Script" uid="uid://d1m0tlhx3jent" path="res://Entities/Olimar/Olimar_Scripts/olimar_state_machine.gd" id="2_vv2yc"]
+[ext_resource type="Script" uid="uid://d1m0tlhx3jent" path="res://Entities/state_machine.gd" id="2_vv2yc"]
 [ext_resource type="Script" uid="uid://43k5ob8223kc" path="res://Entities/Olimar/Olimar_Scripts/Olimar_States/olimar_idle.gd" id="3_fs3ir"]
 [ext_resource type="Texture2D" uid="uid://dmlkh1b788882" path="res://Entities/Olimar/Olimar_Sprites/Olimar.png" id="3_k5hd0"]
 [ext_resource type="Script" uid="uid://dd2orhidufu8s" path="res://Entities/Olimar/Olimar_Scripts/Olimar_States/olimar_moving.gd" id="4_tuth2"]
@@ -30,9 +30,12 @@ script = ExtResource("5_yxlvn")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1753083047]
 texture_filter = 1
 texture_repeat = 1
-position = Vector2(0, -26)
+position = Vector2(0, -25.5)
 texture = ExtResource("3_k5hd0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1624343033]
-position = Vector2(0, -7.5)
+position = Vector2(-0.5, -7.5)
 shape = SubResource("RectangleShape2D_t5bln")
+
+[node name="Pikmin Gather" type="Marker2D" parent="." unique_id=994117771]
+position = Vector2(0, -25)

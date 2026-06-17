@@ -1,5 +1,5 @@
-class_name OlimarStateMachine extends Node2D
-var curr_state: OlimarState
+class_name StateMachine extends Node2D
+var curr_state: State
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -25,4 +25,3 @@ func change_state(next_state: String):
 	curr_state.exit()
 	curr_state = get_node(next_state)
 	curr_state.enter()
-	print(curr_state.name)
