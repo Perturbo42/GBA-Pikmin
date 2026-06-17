@@ -11,9 +11,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t5bln"]
 size = Vector2(20, 15)
 
-[node name="Olimar" type="CharacterBody2D" unique_id=956143428]
+[node name="Olimar" type="CharacterBody2D" unique_id=956143428 node_paths=PackedStringArray("state_machine")]
 collision_mask = 8
 script = ExtResource("1_22lxx")
+state_machine = NodePath("OlimarStateMachine")
 speed = 200.0
 
 [node name="OlimarStateMachine" type="Node2D" parent="." unique_id=932388051]

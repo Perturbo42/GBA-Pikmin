@@ -1,14 +1,30 @@
 [gd_scene format=3 uid="uid://drdcqgomm7jk4"]
 
 [ext_resource type="Script" uid="uid://br5klg5lk7yfv" path="res://Entities/Olimar/Whistle/whistle.gd" id="1_326yv"]
+[ext_resource type="Script" uid="uid://cmuxxt8iuk572" path="res://Entities/Olimar/Whistle/whistle_area_2d.gd" id="2_a8buc"]
 [ext_resource type="Texture2D" uid="uid://b6lwg8blaavyo" path="res://Entities/Olimar/Whistle/Cursor.png" id="2_miwke"]
 [ext_resource type="Texture2D" uid="uid://bbh7mfpldvrle" path="res://Entities/Olimar/Whistle/Whistle_Area.png" id="2_ntc0d"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_miwke"]
+radius = 48.0
+height = 152.0
 
 [node name="Whistle" type="Node2D" unique_id=1529475116]
 z_index = -1
 script = ExtResource("1_326yv")
 
-[node name="Whistle Area" type="Sprite2D" parent="." unique_id=966189707]
+[node name="Whistle Area" type="Node2D" parent="." unique_id=1957998554]
+
+[node name="Whistle Area2D" type="Area2D" parent="Whistle Area" unique_id=690116694]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("2_a8buc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Whistle Area/Whistle Area2D" unique_id=702269391]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_miwke")
+
+[node name="Whistle Area Sprite" type="Sprite2D" parent="Whistle Area" unique_id=966189707]
 visible = false
 self_modulate = Color(1, 1, 1, 0.49019608)
 texture_filter = 1
