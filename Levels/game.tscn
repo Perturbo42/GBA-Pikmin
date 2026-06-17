@@ -6,8 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://kbjiailqfskx" path="res://Entities/Pikmin/Red Pikmin/red_pikmin.tscn" id="4_5ubxa"]
 
 [node name="Game" type="Node2D" unique_id=248607455]
+y_sort_enabled = true
 
 [node name="TileMapLayer1" type="TileMapLayer" parent="." unique_id=842877322]
+z_index = -2
 texture_filter = 1
 texture_repeat = 1
 scale = Vector2(2, 2)
@@ -15,6 +17,7 @@ tile_map_data = PackedByteArray("AAD5//v/AgAAAAAAAAD6//v/AgAAAAAAAAD7//v/AgAAAAA
 tile_set = ExtResource("1_6isyr")
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=76597400]
+z_index = -2
 texture_filter = 1
 texture_repeat = 1
 scale = Vector2(2, 2)
@@ -27,5 +30,5 @@ scale = Vector2(2, 2)
 [node name="Camera2D" parent="Olimar" unique_id=436421858 instance=ExtResource("2_uxjsv")]
 
 [node name="Red Pikmin" parent="." unique_id=1562282753 instance=ExtResource("4_5ubxa")]
-position = Vector2(38, 0)
+position = Vector2(57, -24)
 scale = Vector2(1.5, 1.5)

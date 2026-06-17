@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dmlkh1b788882" path="res://Entities/Olimar/Olimar_Sprites/Olimar.png" id="3_k5hd0"]
 [ext_resource type="Script" uid="uid://dd2orhidufu8s" path="res://Entities/Olimar/Olimar_Scripts/Olimar_States/olimar_moving.gd" id="4_tuth2"]
 [ext_resource type="Script" uid="uid://bhl7kqxt5sldd" path="res://Entities/Olimar/Olimar_Scripts/Olimar_States/olimar_locked.gd" id="5_yxlvn"]
+[ext_resource type="PackedScene" uid="uid://drdcqgomm7jk4" path="res://Entities/Olimar/Whistle/whistle.tscn" id="7_mkr65"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t5bln"]
 size = Vector2(20, 15)
@@ -39,3 +40,5 @@ shape = SubResource("RectangleShape2D_t5bln")
 
 [node name="Pikmin Gather" type="Marker2D" parent="." unique_id=994117771]
 position = Vector2(0, -25)
+
+[node name="Whistle" parent="." unique_id=1529475116 instance=ExtResource("7_mkr65")]
