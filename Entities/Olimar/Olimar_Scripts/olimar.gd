@@ -4,7 +4,7 @@ class_name Olimar extends CharacterBody2D
 @export var state_machine: StateMachine
 @export var speed: float
 var dir: Vector2
-var following_pikmin: Array[Pikmin] = []
+var following_pikmin_red: Array[RedPikmin] = []
 
 func _ready() -> void:
 	Global.olimar = self
