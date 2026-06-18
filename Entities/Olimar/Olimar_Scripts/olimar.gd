@@ -1,5 +1,7 @@
 class_name Olimar extends CharacterBody2D
-@onready var marker: Marker2D = $"Pikmin Gather"
+@onready var marker_gather: Marker2D = $"Pikmin Gather"
+@onready var marker_throw: Marker2D = $"Pikmin Throw"
+
 @onready var whistle: Whistle = $Whistle
 
 @export var state_machine: StateMachine
@@ -45,10 +47,17 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 
 func _process(_delta: float) -> void:
-	marker.position = Vector2.ZERO - dir * 25
+	marker_gather.position = Vector2.ZERO - dir * 25
 
 func throw():
-	pass
+	if following_pikmin[curr_type].is_empty():
+		#error noise plays
+		return
+	
+	var pikmin_to_throw = following_pikmin[curr_type].pop_front()
+	pikmin_to_throw.global_position = marker_throw.global_position
+	pikmin_to_throw.target_throw = whistle.global_position
+	pikmin_to_throw.state_machine.change_state("Thrown")
 
 
 func next_type():

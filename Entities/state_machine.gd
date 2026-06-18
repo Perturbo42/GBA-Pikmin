@@ -22,6 +22,7 @@ func _physics_process(delta: float) -> void:
 	curr_state.physics_update(delta)
 
 func change_state(next_state: String):
+	print(next_state)
 	curr_state.exit()
 	curr_state = get_node(next_state)
 	curr_state.enter()

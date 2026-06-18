@@ -7,7 +7,7 @@ func update(_delta: float):
 	pass
 
 func physics_update(_delta: float):
-	var target = Global.olimar.marker.global_position
+	var target = Global.olimar.marker_gather.global_position
 	
 	if pikmin.global_position.distance_to(target) > 5:
 		var dir = pikmin.global_position.direction_to(target)

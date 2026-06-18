@@ -42,4 +42,7 @@ shape = SubResource("RectangleShape2D_t5bln")
 [node name="Pikmin Gather" type="Marker2D" parent="." unique_id=994117771]
 position = Vector2(0, -25)
 
+[node name="Pikmin Throw" type="Marker2D" parent="." unique_id=499923478]
+position = Vector2(0, -8)
+
 [node name="Whistle" parent="." unique_id=1529475116 instance=ExtResource("7_mkr65")]
