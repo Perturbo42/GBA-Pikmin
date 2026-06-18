@@ -10,11 +10,11 @@ func _process(_delta: float) -> void:
 	
 	var dir = Global.olimar.global_position.direction_to(self.global_position)
 	cursor.rotation = dir.angle() - Vector2.DOWN.angle()
-	
-	if Input.is_action_pressed("MouseR"):
-		whistle_area_sprite.visible = true
-		whistle_area_2d.activate()
-	elif Input.is_action_just_released("MouseR"):
-		whistle_area_sprite.visible = false
-		whistle_area_2d.deactivate()
-	pass
+
+func activate():
+	whistle_area_sprite.visible = true
+	whistle_area_2d.is_active = true
+
+func deactivate():
+	whistle_area_sprite.visible = false
+	whistle_area_2d.is_active = false

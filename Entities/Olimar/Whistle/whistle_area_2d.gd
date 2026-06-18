@@ -9,9 +9,3 @@ func _process(_delta: float) -> void:
 					if body not in Global.olimar.following_pikmin[RedPikmin]:
 						Global.olimar.following_pikmin[RedPikmin].append(body)
 						body.state_machine.change_state("Follow")
-
-func activate():
-	is_active = true
-
-func deactivate():
-	is_active = false

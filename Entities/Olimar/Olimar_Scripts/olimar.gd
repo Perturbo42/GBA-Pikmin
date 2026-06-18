@@ -1,5 +1,6 @@
 class_name Olimar extends CharacterBody2D
 @onready var marker: Marker2D = $"Pikmin Gather"
+@onready var whistle: Whistle = $Whistle
 
 @export var state_machine: StateMachine
 @export var speed: float
@@ -21,18 +22,34 @@ func _ready() -> void:
 	Global.olimar = self
 	dir = Vector2.DOWN
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouse:
+		if !following_pikmin[curr_type].is_empty():
+			if Input.is_action_just_pressed("MouseUp"):
+				next_type()
+				while following_pikmin[curr_type].is_empty():
+					next_type()
+			
+			elif Input.is_action_just_pressed("MouseDown"):
+				prev_type()
+				while following_pikmin[curr_type].is_empty():
+					prev_type()
+			
+		if Input.is_action_just_pressed("MouseR"):
+			whistle.activate()
+		elif Input.is_action_just_released("MouseR"):
+			whistle.deactivate()
+			
+		elif Input.is_action_just_pressed("MouseL"):
+			throw()
+	
+
 func _process(_delta: float) -> void:
 	marker.position = Vector2.ZERO - dir * 25
-	
-	if !following_pikmin[curr_type].is_empty():
-		if Input.is_action_just_pressed("MouseUp"):
-			next_type()
-			while following_pikmin[curr_type].is_empty():
-				next_type()
-		elif Input.is_action_just_pressed("MouseDown"):
-			prev_type()
-			while following_pikmin[curr_type].is_empty():
-				prev_type()
+
+func throw():
+	pass
+
 
 func next_type():
 	curr_type_index = (curr_type_index + 1) % pikmin_types.size()
