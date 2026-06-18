@@ -54,7 +54,15 @@ func throw():
 		#error noise plays
 		return
 	
-	var pikmin_to_throw = following_pikmin[curr_type].pop_front()
+	var pikmin_to_throw = null
+	for pikmin in following_pikmin[curr_type]:
+		if global_position.distance_to(pikmin.global_position) < 75:
+			pikmin_to_throw = pikmin 
+			following_pikmin[curr_type].erase(pikmin)
+			break
+	if pikmin_to_throw == null:
+		return
+	
 	pikmin_to_throw.global_position = marker_throw.global_position
 	pikmin_to_throw.target_throw = whistle.global_position
 	pikmin_to_throw.state_machine.change_state("Thrown")
