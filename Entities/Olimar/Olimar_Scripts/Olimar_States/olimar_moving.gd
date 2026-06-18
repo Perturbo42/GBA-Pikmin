@@ -16,7 +16,7 @@ func physics_update(_delta: float):
 	olimar.velocity = direction * olimar.speed
 	olimar.move_and_slide()
 	
-	if olimar.velocity.is_zero_approx():
+	if olimar.velocity.is_zero_approx() and direction == Vector2.ZERO:
 		finished.emit(IDLE)
 	else:
 		olimar.dir = direction
