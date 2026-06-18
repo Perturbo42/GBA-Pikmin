@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://c5kfv85glrjqg"]
+
+[ext_resource type="Script" uid="uid://b4so6kphbsr4y" path="res://Entities/Onion/onion.gd" id="1_nf1eb"]
+[ext_resource type="Texture2D" uid="uid://2s3kgj51raa3" path="res://Entities/Onion/Onion.png" id="2_lrb5s"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wfiyx"]
+radius = 9.0
+height = 38.0
+
+[node name="Onion" type="Node2D" unique_id=869433092]
+script = ExtResource("1_nf1eb")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1823527386]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(0, -29)
+texture = ExtResource("2_lrb5s")
+hframes = 3
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1508021146]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1484210934]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_wfiyx")
