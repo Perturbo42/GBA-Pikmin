@@ -10,7 +10,7 @@ var pikmin_types = [
 	BluePikmin
 ]
 var curr_type_index: int = 0
-var curr_type: Pikmin = pikmin_types[curr_type_index]
+var curr_type = pikmin_types[curr_type_index]
 var following_pikmin := {
 	RedPikmin: [],
 	YellowPikmin: [],
@@ -24,14 +24,20 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	marker.position = Vector2.ZERO - dir * 25
 	
-	if Input.is_action_pressed("MouseUp"):
-		next_type()
-	elif Input.is_action_just_pressed("MouseDown"):
-		prev_type()
+	if !following_pikmin[curr_type].is_empty():
+		if Input.is_action_just_pressed("MouseUp"):
+			next_type()
+			while following_pikmin[curr_type].is_empty():
+				next_type()
+		elif Input.is_action_just_pressed("MouseDown"):
+			prev_type()
+			while following_pikmin[curr_type].is_empty():
+				prev_type()
 
 func next_type():
 	curr_type_index = (curr_type_index + 1) % pikmin_types.size()
 	curr_type = pikmin_types[curr_type_index]
+	print(curr_type)
 
 func prev_type():
 	curr_type_index = (curr_type_index - 1 + pikmin_types.size()) % pikmin_types.size()
