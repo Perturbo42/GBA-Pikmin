@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://2jtu23wakbsg"]
+
+[ext_resource type="Script" uid="uid://d1m0tlhx3jent" path="res://Entities/state_machine.gd" id="1_afahy"]
+[ext_resource type="Texture2D" uid="uid://cyb25thbvxqku" path="res://Entities/Enemies/Bulborb/Bulborb.png" id="1_j5bbe"]
+[ext_resource type="Script" uid="uid://hlo1x7shl42h" path="res://Entities/Enemies/Bulborb/bulborb.gd" id="1_nao5k"]
+[ext_resource type="Script" uid="uid://cnhqygvptb3ek" path="res://Entities/Enemies/Bulborb/Bulborb States/bulborb_idle.gd" id="3_stw2y"]
+[ext_resource type="Script" uid="uid://eh3u688enty8" path="res://Entities/Enemies/Bulborb/Bulborb States/bulborb_chase.gd" id="4_nxqmj"]
+[ext_resource type="Script" uid="uid://bj2r1uewdndye" path="res://Entities/Enemies/Bulborb/Bulborb States/bulborb_bite.gd" id="5_s047f"]
+[ext_resource type="Script" uid="uid://crjkre2quyoin" path="res://Entities/Enemies/Bulborb/Bulborb States/bulborb_shake.gd" id="6_u3n4v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qgddc"]
+size = Vector2(25, 15)
+
+[node name="Bulborb" type="CharacterBody2D" unique_id=403101695 groups=["Enemy"]]
+script = ExtResource("1_nao5k")
+
+[node name="Bulborb State Machine" type="Node2D" parent="." unique_id=1217231951]
+script = ExtResource("1_afahy")
+
+[node name="Idle" type="Node2D" parent="Bulborb State Machine" unique_id=111422197]
+script = ExtResource("3_stw2y")
+
+[node name="Chase" type="Node2D" parent="Bulborb State Machine" unique_id=2056272617]
+script = ExtResource("4_nxqmj")
+
+[node name="Bite" type="Node2D" parent="Bulborb State Machine" unique_id=754692007]
+script = ExtResource("5_s047f")
+
+[node name="Shake" type="Node2D" parent="Bulborb State Machine" unique_id=1106116221]
+script = ExtResource("6_u3n4v")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=90615088]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(11, -25)
+texture = ExtResource("1_j5bbe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2090667962]
+position = Vector2(0.5, -1.5)
+shape = SubResource("RectangleShape2D_qgddc")

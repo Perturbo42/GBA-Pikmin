@@ -13,11 +13,12 @@ script = ExtResource("1_nf1eb")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1823527386]
 texture_filter = 1
 texture_repeat = 1
-position = Vector2(0, -29)
+position = Vector2(0, -38)
 texture = ExtResource("2_lrb5s")
 hframes = 3
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1508021146]
+position = Vector2(0, -11)
 collision_layer = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1484210934]

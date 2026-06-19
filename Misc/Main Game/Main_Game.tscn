@@ -12,8 +12,10 @@ y_sort_enabled = true
 scale = Vector2(2, 2)
 
 [node name="LevelRoot" type="Node2D" parent="World" unique_id=1290169770]
+y_sort_enabled = true
 
 [node name="EntityRoot" type="Node2D" parent="World" unique_id=695543806]
+y_sort_enabled = true
 
 [node name="HudLayer" type="CanvasLayer" parent="." unique_id=1495053792]
 process_mode = 1

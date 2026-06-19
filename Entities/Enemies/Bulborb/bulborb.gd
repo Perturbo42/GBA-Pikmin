@@ -1,0 +1,1 @@
+class_name Bulborb extends CharacterBody2D

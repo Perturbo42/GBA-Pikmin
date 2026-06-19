@@ -3,8 +3,11 @@
 [ext_resource type="Script" uid="uid://k3qfnvv3sb2f" path="res://Levels/level_1/level_1.gd" id="1_c5jsv"]
 [ext_resource type="TileSet" uid="uid://bkia37igcjeku" path="res://Tileset/plains_tile_set.tres" id="2_714wa"]
 [ext_resource type="PackedScene" uid="uid://c5kfv85glrjqg" path="res://Entities/Onion/onion.tscn" id="3_714wa"]
+[ext_resource type="PackedScene" uid="uid://kbjiailqfskx" path="res://Entities/Pikmin/Red Pikmin/red_pikmin.tscn" id="4_gp5v8"]
+[ext_resource type="PackedScene" uid="uid://2jtu23wakbsg" path="res://Entities/Enemies/Bulborb/bulborb.tscn" id="5_iaitt"]
 
 [node name="Level_1" type="Node2D" unique_id=685333651]
+y_sort_enabled = true
 script = ExtResource("1_c5jsv")
 
 [node name="TileMapLayers" type="Node2D" parent="." unique_id=185592660]
@@ -28,6 +31,12 @@ tile_set = ExtResource("2_714wa")
 [node name="Default Spawn" type="Marker2D" parent="Spawns" unique_id=2102252769]
 
 [node name="Level Objects" type="Node2D" parent="." unique_id=1122958423]
+y_sort_enabled = true
 
 [node name="Onion" parent="Level Objects" unique_id=869433092 instance=ExtResource("3_714wa")]
-position = Vector2(113, 69)
+position = Vector2(113, 75)
+
+[node name="Red Pikmin" parent="Level Objects" unique_id=1562282753 instance=ExtResource("4_gp5v8")]
+
+[node name="Bulborb" parent="Level Objects" unique_id=403101695 instance=ExtResource("5_iaitt")]
+position = Vector2(-97, 100)
