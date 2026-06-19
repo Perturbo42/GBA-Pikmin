@@ -7,4 +7,4 @@ var target_ship: Vector2
 var target_onion: Vector2
 var target_throw: Vector2
 
-const sprite_default_position: Vector2 = Vector2(0, -19)
+const sprite_default_position: Vector2 = Vector2(0, -14)

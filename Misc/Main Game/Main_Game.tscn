@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://cno32ttl1kyv6"]
+
+[ext_resource type="Script" uid="uid://bnwwma1hjay54" path="res://Misc/Main Game/maingame.gd" id="1_45lx7"]
+
+[node name="Main Game" type="Node" unique_id=1620632428]
+process_mode = 3
+script = ExtResource("1_45lx7")
+
+[node name="World" type="Node2D" parent="." unique_id=1138627816]
+process_mode = 1
+y_sort_enabled = true
+scale = Vector2(2, 2)
+
+[node name="LevelRoot" type="Node2D" parent="World" unique_id=1290169770]
+
+[node name="EntityRoot" type="Node2D" parent="World" unique_id=695543806]
+
+[node name="HudLayer" type="CanvasLayer" parent="." unique_id=1495053792]
+process_mode = 1
+layer = 10
+
+[node name="HudRoot" type="Control" parent="HudLayer" unique_id=897177287]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PauseLayer" type="CanvasLayer" parent="." unique_id=1018038217]
+process_mode = 2
+layer = 20
+
+[node name="PauseRoot" type="Control" parent="PauseLayer" unique_id=765300498]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TransitionLayer" type="CanvasLayer" parent="." unique_id=533424417]
+process_mode = 3
+
+[node name="TransitionRoot" type="Control" parent="TransitionLayer" unique_id=403846511]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

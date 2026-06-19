@@ -1,7 +1,6 @@
 class_name OlimarState extends State
 const IDLE = "Idle"
 const MOVING = "Moving"
-const LOCKED = "Locked"
 
 var olimar: Olimar
 
