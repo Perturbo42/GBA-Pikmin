@@ -1,7 +1,7 @@
-class_name MainGame extends Node
+class_name MainGame extends Node2D
 
-const OLIMAR: String = "uid://c250jyb5pv22s"
-const LEVEL_1: String = "uid://dgstc0a5b01to"
+const OLIMAR_SCENE_UID: String = "uid://c250jyb5pv22s"
+@export var LEVEL_1: PackedScene
 
 var player: Olimar = null
 var current_level : BaseLevel = null
@@ -18,36 +18,30 @@ func _ready() -> void:
 	load_level(LEVEL_1)
 
 func init_player():
-	var player_scene: PackedScene = ResourceLoader.load(OLIMAR) as PackedScene
+	var player_scene: PackedScene = ResourceLoader.load(OLIMAR_SCENE_UID) as PackedScene
 	
 	if player_scene == null:
-		push_error("Could not load player scene" + OLIMAR)
+		push_error("Could not load player scene" + OLIMAR_SCENE_UID)
 		return
 	
 	player = player_scene.instantiate() as Olimar
 	
 	if player == null:
-		push_error("Loaded player scene does not extend player or DNE: " + OLIMAR)
+		push_error("Loaded player scene does not extend player or DNE: " + OLIMAR_SCENE_UID)
 		return
 	
 	entity_root.add_child(player)
 
-func load_level(level_scene: String):
-	deferred_load_level.call_deferred(level_scene)
+func load_level(level: PackedScene):
+	deferred_load_level.call_deferred(level)
 
-func deferred_load_level(level_scene_uid: String):
+func deferred_load_level(level: PackedScene):
 	if current_level != null:
 		current_level.queue_free()
 		current_level = null
 	await get_tree().process_frame
 	
-	var new_level_packed : PackedScene =\
-		ResourceLoader.load(level_scene_uid, "PackedScene") as PackedScene
-	if new_level_packed == null:
-		push_error("Could not load level as a packed scene: " + level_scene_uid)
-		return
-
-	current_level = new_level_packed.instantiate() as BaseLevel
+	current_level = level.instantiate() as BaseLevel
 	if current_level == null:
 		push_error("Loaded level is not of type Level or does not exist")
 		return
