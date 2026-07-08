@@ -1,0 +1,6 @@
+[gd_resource type="Theme" format=3 uid="uid://dhky05vkrg8c3"]
+
+[ext_resource type="StyleBox" uid="uid://bpxq82ea4wur2" path="res://UI/Onion UI/Onion UI Container.tres" id="1_gxnv2"]
+
+[resource]
+PanelContainer/styles/panel = ExtResource("1_gxnv2")
