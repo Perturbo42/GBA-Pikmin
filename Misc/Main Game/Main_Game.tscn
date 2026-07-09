@@ -2,11 +2,21 @@
 
 [ext_resource type="Script" uid="uid://bnwwma1hjay54" path="res://Misc/Main Game/maingame.gd" id="1_45lx7"]
 [ext_resource type="PackedScene" uid="uid://dgstc0a5b01to" path="res://Levels/level_1/level_1.tscn" id="2_w0nxt"]
+[ext_resource type="Script" uid="uid://b5holtoe3nkvc" path="res://Misc/Handlers/onion_handler.gd" id="3_ydpkk"]
+[ext_resource type="Script" uid="uid://522gecn0ovx" path="res://UI/PauseLayer/pause_layer.gd" id="4_45lx7"]
+[ext_resource type="PackedScene" uid="uid://uq3rte6fug5v" path="res://Misc/Camera/Camera.tscn" id="4_qa0c3"]
+[ext_resource type="Script" uid="uid://cih3b4huh2if4" path="res://UI/PauseLayer/Pause Handlers/onion_pause_handler.gd" id="5_gdp1h"]
+[ext_resource type="PackedScene" uid="uid://dqqgwu88i7d8d" path="res://UI/Onion UI/onion_panel_red.tscn" id="6_gdp1h"]
 
 [node name="Main Game" type="Node2D" unique_id=767795759]
 process_mode = 3
 script = ExtResource("1_45lx7")
 LEVEL_1 = ExtResource("2_w0nxt")
+
+[node name="Handlers" type="Node2D" parent="." unique_id=1541674123]
+
+[node name="OnionHandler" type="Node2D" parent="Handlers" unique_id=206847161]
+script = ExtResource("3_ydpkk")
 
 [node name="World" type="Node2D" parent="." unique_id=1138627816]
 process_mode = 1
@@ -19,6 +29,11 @@ y_sort_enabled = true
 [node name="EntityRoot" type="Node2D" parent="World" unique_id=695543806]
 y_sort_enabled = true
 
+[node name="CameraRig" type="Node2D" parent="World" unique_id=230741534]
+
+[node name="Camera2D" parent="World/CameraRig" unique_id=436421858 instance=ExtResource("4_qa0c3")]
+scale = Vector2(0.5, 0.5)
+
 [node name="HudLayer" type="CanvasLayer" parent="." unique_id=1495053792]
 process_mode = 1
 layer = 10
@@ -30,14 +45,30 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="PauseLayer" type="CanvasLayer" parent="." unique_id=1018038217]
-process_mode = 2
+process_mode = 3
 layer = 20
+script = ExtResource("4_45lx7")
 
-[node name="PauseRoot" type="Control" parent="PauseLayer" unique_id=765300498]
+[node name="PauseHandlers" type="Control" parent="PauseLayer" unique_id=1652832606]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="OnionPauseHandler" type="Control" parent="PauseLayer/PauseHandlers" unique_id=1550337039]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("5_gdp1h")
+red_onion_menu = ExtResource("6_gdp1h")
+
+[node name="PauseRoot" type="Control" parent="PauseLayer" unique_id=765300498]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="TransitionLayer" type="CanvasLayer" parent="." unique_id=533424417]
 process_mode = 3

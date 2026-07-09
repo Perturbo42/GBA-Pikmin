@@ -14,16 +14,28 @@ grow_vertical = 2
 theme = ExtResource("1_nmlvo")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=664920078]
+custom_minimum_size = Vector2(300, 200)
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=2135851486]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="PanelContainer/VBoxContainer" unique_id=299251868]
+[node name="Title" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=390054358]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
+alignment = 1
+
+[node name="Title" type="Label" parent="PanelContainer/VBoxContainer/Title" unique_id=299251868]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 21
 text = "Take out or return Pikmin?"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Pikmin in Onion" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1745190191]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 alignment = 1
 
@@ -39,6 +51,7 @@ layout_mode = 2
 theme = ExtResource("1_nmlvo")
 
 [node name="Pikmin Being Moved" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1379194620]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 alignment = 1
 
@@ -52,6 +65,7 @@ stretch_mode = 6
 layout_mode = 2
 
 [node name="Pikmin with Olimar" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=288440436]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 alignment = 1
 
@@ -67,6 +81,7 @@ stretch_mode = 6
 layout_mode = 2
 
 [node name="OK" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=229127389]
+custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 alignment = 1
 

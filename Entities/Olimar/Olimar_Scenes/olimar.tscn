@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://dmlkh1b788882" path="res://Entities/Olimar/Olimar_Sprites/Olimar.png" id="3_k5hd0"]
 [ext_resource type="Script" uid="uid://dd2orhidufu8s" path="res://Entities/Olimar/Olimar_Scripts/Olimar_States/olimar_moving.gd" id="4_tuth2"]
 [ext_resource type="PackedScene" uid="uid://drdcqgomm7jk4" path="res://Entities/Olimar/Whistle/whistle.tscn" id="7_mkr65"]
-[ext_resource type="PackedScene" uid="uid://uq3rte6fug5v" path="res://Misc/Camera/Camera.tscn" id="7_qe3i7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t5bln"]
 size = Vector2(20, 15)
@@ -46,8 +45,6 @@ position = Vector2(0, -25)
 position = Vector2(0, -8)
 
 [node name="Whistle" parent="." unique_id=1529475116 instance=ExtResource("7_mkr65")]
-
-[node name="Camera2D" parent="." unique_id=436421858 instance=ExtResource("7_qe3i7")]
 
 [node name="Interaction Area" type="Area2D" parent="." unique_id=538585176]
 visible = false

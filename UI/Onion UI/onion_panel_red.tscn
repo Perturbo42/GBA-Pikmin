@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dqqgwu88i7d8d"]
+
+[ext_resource type="PackedScene" uid="uid://hjapf77hui4u" path="res://UI/Onion UI/onion_panel.tscn" id="1_re7ni"]
+[ext_resource type="Texture2D" uid="uid://cql2i8cs5b8qv" path="res://UI/Onion UI/Onion Red.png" id="2_76i02"]
+[ext_resource type="Script" uid="uid://b5048qifl58s7" path="res://UI/Onion UI/onion_panel_red.gd" id="2_x1qcs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_76i02"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.6, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 10
+
+[node name="Onion Panel" unique_id=206384716 instance=ExtResource("1_re7ni")]
+script = ExtResource("2_x1qcs")
+
+[node name="PanelContainer" parent="." index="0" unique_id=664920078]
+theme_override_styles/panel = SubResource("StyleBoxFlat_76i02")
+
+[node name="Onion" parent="PanelContainer/VBoxContainer/Pikmin in Onion" parent_id_path=PackedInt32Array(1745190191) index="0" unique_id=1266483034]
+texture = ExtResource("2_76i02")

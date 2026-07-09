@@ -6,16 +6,25 @@ const OLIMAR_SCENE_UID: String = "uid://c250jyb5pv22s"
 var player: Olimar = null
 var current_level : BaseLevel = null
 
+## Handlers
+@onready var onion_handler: Node2D = $Handlers/OnionHandler
+
+## World Roots
 @onready var level_root: Node2D = $World/LevelRoot
 @onready var entity_root: Node2D = $World/EntityRoot
 
+## UI Roots
 @onready var hud_layer: CanvasLayer = $HudLayer
 @onready var pause_layer: CanvasLayer = $PauseLayer
 @onready var transition_layer: CanvasLayer = $TransitionLayer
 
 func _ready() -> void:
+	handlers_init()
 	init_player()
 	load_level(LEVEL_1)
+
+func handlers_init():
+	onion_handler.initialize(pause_layer)
 
 func init_player():
 	var player_scene: PackedScene = ResourceLoader.load(OLIMAR_SCENE_UID) as PackedScene
@@ -51,4 +60,7 @@ func deferred_load_level(level: PackedScene):
 
 	# Allow level to fully process before accessing it
 	await get_tree().process_frame
+	# Handlers handle the level being updated
+	onion_handler.register_level(current_level)
+	
 	player.global_position = current_level.get_default_player_spawn()
