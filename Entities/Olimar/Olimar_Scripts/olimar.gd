@@ -24,27 +24,22 @@ func _ready() -> void:
 	Global.olimar = self
 	dir = Vector2.DOWN
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouse:
-		if !following_pikmin[curr_type].is_empty():
-			if Input.is_action_just_pressed("MouseUp"):
+func _input(event: InputEvent) -> void:
+	if not following_pikmin[curr_type].is_empty():
+		if event.is_action_pressed("MouseUp"):
+			next_type()
+			while following_pikmin[curr_type].is_empty():
 				next_type()
-				while following_pikmin[curr_type].is_empty():
-					next_type()
-			
-			elif Input.is_action_just_pressed("MouseDown"):
+		elif event.is_action_pressed("MouseDown"):
+			prev_type()
+			while following_pikmin[curr_type].is_empty():
 				prev_type()
-				while following_pikmin[curr_type].is_empty():
-					prev_type()
-			
-		if Input.is_action_just_pressed("MouseR"):
-			whistle.activate()
-		elif Input.is_action_just_released("MouseR"):
-			whistle.deactivate()
-			
-		elif Input.is_action_just_pressed("MouseL"):
-			throw()
-	
+	if event.is_action_pressed("MouseR"):
+		whistle.activate()
+	elif event.is_action_released("MouseR"):
+		whistle.deactivate()
+	elif event.is_action_pressed("MouseL"):
+		throw()
 
 func _process(_delta: float) -> void:
 	marker_gather.position = Vector2.ZERO - dir * 25
