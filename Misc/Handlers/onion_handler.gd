@@ -1,10 +1,9 @@
 class_name OnionHandler extends Node2D
-var pause_layer: CanvasLayer
+@onready var onion_pause_handler: OnionPauseHandler = %OnionPauseHandler
+
 var current_level : BaseLevel = null
 var connected_onions: Array[Onion] = []
 
-func initialize(p_pause_layer: CanvasLayer):
-	pause_layer = p_pause_layer
 
 func register_level(level: BaseLevel):
 	disconnect_current_level()
@@ -28,5 +27,15 @@ func disconnect_current_level() -> void:
 	current_level = null
 
 func on_onion_menu_requested(onion: Onion) -> void:
-	if pause_layer:
-		pause_layer.open_onion_menu(onion)
+	if onion_pause_handler:
+		onion_pause_handler.open_menu(onion)
+
+func onion_update(num: int, curr_onion: Onion):
+	for onion in connected_onions:
+		if is_instance_valid(onion) and onion == curr_onion:
+			onion.change_pikmin_count(num)
+	
+	if num > 0:
+		Global.olimar.remove_pikmin_from_following(num, curr_onion.onion_color)
+	
+	pass

@@ -1,5 +1,5 @@
 class_name OnionPanelRed extends CenterContainer
-signal panel_close
+signal panel_close(int, Onion)
 @onready var pikmin_in_onion: Label = $"PanelContainer/VBoxContainer/Pikmin in Onion/Pikmin in Onion"
 @onready var pikmin_being_moved: Label = $"PanelContainer/VBoxContainer/Pikmin Being Moved/Pikmin Being Moved"
 @onready var pikmin_with_olimar: Label = $"PanelContainer/VBoxContainer/Pikmin with Olimar/Pikmin with Olimar"
@@ -38,4 +38,4 @@ func _unhandled_input(_event: InputEvent) -> void:
 			moved_num -= 1
 			olimar_num += 1
 	elif Input.is_action_just_pressed("Space"):
-		panel_close.emit()
+		panel_close.emit(moved_num, onion)

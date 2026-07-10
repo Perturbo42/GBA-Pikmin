@@ -19,12 +19,10 @@ var current_level : BaseLevel = null
 @onready var transition_layer: CanvasLayer = $TransitionLayer
 
 func _ready() -> void:
-	handlers_init()
 	init_player()
 	load_level(LEVEL_1)
 
-func handlers_init():
-	onion_handler.initialize(pause_layer)
+
 
 func init_player():
 	var player_scene: PackedScene = ResourceLoader.load(OLIMAR_SCENE_UID) as PackedScene

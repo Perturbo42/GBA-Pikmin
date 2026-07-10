@@ -71,3 +71,17 @@ func next_type():
 func prev_type():
 	curr_type_index = (curr_type_index - 1 + pikmin_types.size()) % pikmin_types.size()
 	curr_type = pikmin_types[curr_type_index]
+
+func remove_pikmin_from_following(num: int, color: int):
+	if num <= 0:
+		return 0
+
+	var type = pikmin_types[color - 1]
+	var pikmin_list: Array = following_pikmin[type]
+
+	var remove_count: int = min(num, pikmin_list.size())
+
+	for i in remove_count:
+		var pikmin = pikmin_list.pop_front()
+		if is_instance_valid(pikmin):
+			pikmin.queue_free()

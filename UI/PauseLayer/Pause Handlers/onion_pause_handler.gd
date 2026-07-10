@@ -1,5 +1,6 @@
 class_name OnionPauseHandler extends Control
-@onready var pause_root: Control = $"../../PauseRoot"
+@onready var onion_handler: OnionHandler = %OnionHandler
+@onready var pause_root: Control = %PauseRoot
 @export var red_onion_menu: PackedScene
 @export var yellow_onion_menu: PackedScene
 @export var blue_onion_menu: PackedScene
@@ -18,11 +19,12 @@ func open_menu(onion: Onion):
 	
 	get_tree().paused = true
 
-func close_menu():
+func close_menu(num: int, onion: Onion):
 	if current_menu:
 		current_menu.queue_free()
 		current_menu = null
 	get_tree().paused = false
+	onion_handler.onion_update(num, onion)
 
 
 func identify_onion(num: int)-> PackedScene:

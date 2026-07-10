@@ -22,3 +22,9 @@ func onion_panel():
 		onion_panel_open = false
 		pass
 	
+
+func change_pikmin_count(num: int):
+	pikmin_count += num
+	if num < 0:
+		##instantiate and add pikmin
+		pass
