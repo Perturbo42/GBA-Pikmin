@@ -33,9 +33,10 @@ tile_set = ExtResource("2_714wa")
 [node name="Level Objects" type="Node2D" parent="." unique_id=1122958423]
 y_sort_enabled = true
 
-[node name="Onion" parent="Level Objects" unique_id=869433092 instance=ExtResource("3_714wa")]
+[node name="Red Onion" parent="Level Objects" unique_id=869433092 instance=ExtResource("3_714wa")]
 position = Vector2(113, 75)
 onion_color = 1
+pikmin_to_handle = ExtResource("4_gp5v8")
 
 [node name="Red Pikmin" parent="Level Objects" unique_id=1562282753 instance=ExtResource("4_gp5v8")]
 

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bnwwma1hjay54" path="res://Misc/Main Game/maingame.gd" id="1_45lx7"]
 [ext_resource type="PackedScene" uid="uid://dgstc0a5b01to" path="res://Levels/level_1/level_1.tscn" id="2_w0nxt"]
 [ext_resource type="Script" uid="uid://b5holtoe3nkvc" path="res://Misc/Handlers/onion_handler.gd" id="3_ydpkk"]
+[ext_resource type="Script" uid="uid://btbxe0lxmjjyh" path="res://Misc/Handlers/spawn_handler.gd" id="4_omg40"]
 [ext_resource type="PackedScene" uid="uid://uq3rte6fug5v" path="res://Misc/Camera/Camera.tscn" id="4_qa0c3"]
 [ext_resource type="Script" uid="uid://cih3b4huh2if4" path="res://UI/PauseLayer/Pause Handlers/onion_pause_handler.gd" id="5_gdp1h"]
 [ext_resource type="PackedScene" uid="uid://dqqgwu88i7d8d" path="res://UI/Onion UI/onion_panel_red.tscn" id="6_gdp1h"]
@@ -18,6 +19,10 @@ process_mode = 3
 [node name="OnionHandler" type="Node2D" parent="Handlers" unique_id=206847161]
 unique_name_in_owner = true
 script = ExtResource("3_ydpkk")
+
+[node name="SpawnHandler" type="Node2D" parent="Handlers" unique_id=176943773]
+unique_name_in_owner = true
+script = ExtResource("4_omg40")
 
 [node name="World" type="Node2D" parent="." unique_id=1138627816]
 process_mode = 1

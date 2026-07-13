@@ -28,5 +28,15 @@ script = ExtResource("3_lrb5s")
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_wfiyx")
 
+[node name="Pikmin Spawn Points" type="Node2D" parent="." unique_id=1556961420]
+
+[node name="Spawn1" type="Marker2D" parent="Pikmin Spawn Points" unique_id=1763783911]
+position = Vector2(-43, -11)
+
+[node name="Spawn2" type="Marker2D" parent="Pikmin Spawn Points" unique_id=572924695]
+
+[node name="Spawn3" type="Marker2D" parent="Pikmin Spawn Points" unique_id=1324116182]
+position = Vector2(43, -11)
+
 [connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]
 [connection signal="area_exited" from="Area2D" to="Area2D" method="_on_area_exited"]
