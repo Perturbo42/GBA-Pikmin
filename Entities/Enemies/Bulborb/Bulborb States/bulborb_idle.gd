@@ -1,6 +1,7 @@
 class_name BulborbIdle extends BulborbState
 
 func enter():
+	bulborb.velocity = Vector2.ZERO
 	pass
 
 func update(_delta: float):

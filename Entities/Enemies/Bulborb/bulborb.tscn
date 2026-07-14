@@ -11,8 +11,13 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qgddc"]
 size = Vector2(25, 15)
 
-[node name="Bulborb" type="CharacterBody2D" unique_id=403101695 groups=["Enemy"]]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qgddc"]
+radius = 80.0
+height = 240.0
+
+[node name="Bulborb" type="CharacterBody2D" unique_id=403101695 node_paths=PackedStringArray("state_machine") groups=["Enemy"]]
 script = ExtResource("1_nao5k")
+state_machine = NodePath("Bulborb State Machine")
 
 [node name="Bulborb State Machine" type="Node2D" parent="." unique_id=1217231951]
 script = ExtResource("1_afahy")
@@ -38,3 +43,13 @@ texture = ExtResource("1_j5bbe")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2090667962]
 position = Vector2(0.5, -1.5)
 shape = SubResource("RectangleShape2D_qgddc")
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=992036750]
+collision_layer = 64
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=343140335]
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_qgddc")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
