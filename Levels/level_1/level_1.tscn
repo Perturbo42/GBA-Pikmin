@@ -38,7 +38,5 @@ position = Vector2(113, 75)
 onion_color = 1
 pikmin_to_handle = ExtResource("4_gp5v8")
 
-[node name="Red Pikmin" parent="Level Objects" unique_id=1562282753 instance=ExtResource("4_gp5v8")]
-
 [node name="Bulborb" parent="Level Objects" unique_id=403101695 instance=ExtResource("5_iaitt")]
 position = Vector2(-97, 100)

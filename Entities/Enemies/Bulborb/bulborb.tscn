@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://eh3u688enty8" path="res://Entities/Enemies/Bulborb/Bulborb States/bulborb_chase.gd" id="4_nxqmj"]
 [ext_resource type="Script" uid="uid://bj2r1uewdndye" path="res://Entities/Enemies/Bulborb/Bulborb States/bulborb_bite.gd" id="5_s047f"]
 [ext_resource type="Script" uid="uid://crjkre2quyoin" path="res://Entities/Enemies/Bulborb/Bulborb States/bulborb_shake.gd" id="6_u3n4v"]
+[ext_resource type="Script" uid="uid://bkmn5k246koln" path="res://Entities/Enemies/Bulborb/Bulborb States/bulborb_return.gd" id="7_nxqmj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qgddc"]
 size = Vector2(25, 15)
@@ -16,7 +17,10 @@ radius = 80.0
 height = 240.0
 
 [node name="Bulborb" type="CharacterBody2D" unique_id=403101695 node_paths=PackedStringArray("state_machine") groups=["Enemy"]]
+collision_layer = 4
+collision_mask = 8
 script = ExtResource("1_nao5k")
+speed = 100.0
 state_machine = NodePath("Bulborb State Machine")
 
 [node name="Bulborb State Machine" type="Node2D" parent="." unique_id=1217231951]
@@ -33,6 +37,9 @@ script = ExtResource("5_s047f")
 
 [node name="Shake" type="Node2D" parent="Bulborb State Machine" unique_id=1106116221]
 script = ExtResource("6_u3n4v")
+
+[node name="Return" type="Node2D" parent="Bulborb State Machine" unique_id=634291977]
+script = ExtResource("7_nxqmj")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=90615088]
 texture_filter = 1
@@ -53,3 +60,4 @@ rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_qgddc")
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

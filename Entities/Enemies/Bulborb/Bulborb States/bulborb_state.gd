@@ -3,8 +3,9 @@ const IDLE = "Idle"
 const CHASE = "Chase"
 const BITE = "Bite"
 const SHAKE = "Shake"
+const RETURN = "Return"
 
-var bulborb
+var bulborb: Bulborb
 
 func _ready() -> void:
 	await owner.ready
