@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bqw2x2s62kaoe"]
+
+[ext_resource type="Script" uid="uid://b1fqk7vy0glwd" path="res://Entities/Enemies/Enemy Spawner/enemy_spawner.gd" id="1_yan51"]
+[ext_resource type="Script" uid="uid://bjs3tefdq1cef" path="res://Entities/Enemies/Enemy Spawner/enemy_display.gd" id="2_8cv3x"]
+
+[node name="Enemy Spawner" type="Marker2D" unique_id=1175820141]
+script = ExtResource("1_yan51")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=782713577]
+texture_filter = 1
+texture_repeat = 1
+script = ExtResource("2_8cv3x")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=638038816]

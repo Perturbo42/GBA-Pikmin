@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" uid="uid://k3qfnvv3sb2f" path="res://Levels/level_1/level_1.gd" id="1_c5jsv"]
 [ext_resource type="TileSet" uid="uid://bkia37igcjeku" path="res://Tileset/plains_tile_set.tres" id="2_714wa"]
+[ext_resource type="PackedScene" uid="uid://bqw2x2s62kaoe" path="res://Entities/Enemies/Enemy Spawner/enemy_spawner.tscn" id="3_4rsnp"]
 [ext_resource type="PackedScene" uid="uid://c5kfv85glrjqg" path="res://Entities/Onion/onion.tscn" id="3_714wa"]
 [ext_resource type="PackedScene" uid="uid://kbjiailqfskx" path="res://Entities/Pikmin/Red Pikmin/red_pikmin.tscn" id="4_gp5v8"]
-[ext_resource type="PackedScene" uid="uid://2jtu23wakbsg" path="res://Entities/Enemies/Bulborb/bulborb.tscn" id="5_iaitt"]
+[ext_resource type="Resource" uid="uid://bmvrb761g2nm2" path="res://Entities/Enemies/Enemy Spawner/Enemy Definition/Bulborb.tres" id="4_vxhsm"]
 
 [node name="Level_1" type="Node2D" unique_id=685333651]
 y_sort_enabled = true
@@ -28,6 +29,10 @@ tile_set = ExtResource("2_714wa")
 
 [node name="Spawns" type="Node2D" parent="." unique_id=133273459]
 
+[node name="Enemy Spawner" parent="Spawns" unique_id=1175820141 instance=ExtResource("3_4rsnp")]
+position = Vector2(-93, 87)
+enemy_definition = ExtResource("4_vxhsm")
+
 [node name="Default Spawn" type="Marker2D" parent="Spawns" unique_id=2102252769]
 
 [node name="Level Objects" type="Node2D" parent="." unique_id=1122958423]
@@ -37,6 +42,3 @@ y_sort_enabled = true
 position = Vector2(113, 75)
 onion_color = 1
 pikmin_to_handle = ExtResource("4_gp5v8")
-
-[node name="Bulborb" parent="Level Objects" unique_id=403101695 instance=ExtResource("5_iaitt")]
-position = Vector2(-97, 100)

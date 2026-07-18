@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EnemyDefinition" format=3 uid="uid://bmvrb761g2nm2"]
+
+[ext_resource type="Texture2D" uid="uid://cyb25thbvxqku" path="res://Entities/Enemies/Bulborb/Bulborb.png" id="1_nlsi5"]
+[ext_resource type="PackedScene" uid="uid://2jtu23wakbsg" path="res://Entities/Enemies/Bulborb/bulborb.tscn" id="2_gvwjg"]
+[ext_resource type="Script" uid="uid://c72eikkc47qvy" path="res://Entities/Enemies/Enemy Spawner/enemy_definition.gd" id="3_i5pr3"]
+
+[resource]
+script = ExtResource("3_i5pr3")
+scene = ExtResource("2_gvwjg")
+preview_texture = ExtResource("1_nlsi5")
+metadata/_custom_type_script = "uid://c72eikkc47qvy"
