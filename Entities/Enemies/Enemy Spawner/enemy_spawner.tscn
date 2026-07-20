@@ -11,4 +11,7 @@ texture_filter = 1
 texture_repeat = 1
 script = ExtResource("2_8cv3x")
 
+[node name="Timer" type="Timer" parent="Sprite2D" unique_id=805759311]
+wait_time = 0.25
+
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=638038816]

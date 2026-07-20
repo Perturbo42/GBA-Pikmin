@@ -29,11 +29,11 @@ tile_set = ExtResource("2_714wa")
 
 [node name="Spawns" type="Node2D" parent="." unique_id=133273459]
 
-[node name="Enemy Spawner" parent="Spawns" unique_id=1175820141 instance=ExtResource("3_4rsnp")]
-position = Vector2(-93, 87)
-enemy_definition = ExtResource("4_vxhsm")
-
 [node name="Default Spawn" type="Marker2D" parent="Spawns" unique_id=2102252769]
+
+[node name="Enemy Spawner" parent="Spawns" unique_id=1175820141 instance=ExtResource("3_4rsnp")]
+position = Vector2(-120, 120)
+enemy_definition = ExtResource("4_vxhsm")
 
 [node name="Level Objects" type="Node2D" parent="." unique_id=1122958423]
 y_sort_enabled = true

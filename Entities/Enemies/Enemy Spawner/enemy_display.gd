@@ -1,12 +1,17 @@
 @tool extends Sprite2D
 
 var previous_texture: Texture2D = null
+@onready var timer: Timer = $Timer
 
 func _ready() -> void:
 	if not Engine.is_editor_hint():
 		queue_free()
 		return
-	
+	timer.timeout.connect(on_refresh_timeout)
+	timer.start(0.25)
+	on_refresh_timeout()
+
+func on_refresh_timeout():
 	var spawner: EnemySpawner = get_parent() as EnemySpawner
 	if spawner == null:
 		return
