@@ -90,6 +90,7 @@ Space={
 2d_physics/layer_5="Whistle"
 2d_physics/layer_6="Interactable"
 2d_physics/layer_7="Enemy's Player Detection"
+2d_physics/layer_8="Damage"
 
 [physics]
 

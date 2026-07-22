@@ -16,6 +16,9 @@ size = Vector2(25, 15)
 radius = 80.0
 height = 240.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_hvycc"]
+radius = 16.0
+
 [node name="Bulborb" type="CharacterBody2D" unique_id=403101695 node_paths=PackedStringArray("state_machine") groups=["Enemy"]]
 collision_layer = 4
 collision_mask = 8
@@ -34,6 +37,9 @@ script = ExtResource("4_nxqmj")
 
 [node name="Bite" type="Node2D" parent="Bulborb State Machine" unique_id=754692007]
 script = ExtResource("5_s047f")
+
+[node name="Timer" type="Timer" parent="Bulborb State Machine/Bite" unique_id=2092248836]
+one_shot = true
 
 [node name="Shake" type="Node2D" parent="Bulborb State Machine" unique_id=1106116221]
 script = ExtResource("6_u3n4v")
@@ -58,6 +64,15 @@ collision_mask = 3
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=343140335]
 rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_qgddc")
+
+[node name="BiteArea" type="Area2D" parent="." unique_id=1200062366]
+collision_layer = 128
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BiteArea" unique_id=223293544]
+position = Vector2(24, -16)
+shape = SubResource("CircleShape2D_hvycc")
+debug_color = Color(0.9732043, 0.16584355, 7.70092e-07, 0.41960785)
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
