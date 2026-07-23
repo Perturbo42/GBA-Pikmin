@@ -7,6 +7,7 @@ class_name Olimar extends CharacterBody2D
 @export var state_machine: StateMachine
 @export var speed: float
 var dir: Vector2
+
 var pikmin_types = [
 	RedPikmin,
 	YellowPikmin,
@@ -44,6 +45,12 @@ func _input(event: InputEvent) -> void:
 func _process(_delta: float) -> void:
 	marker_gather.position = Vector2.ZERO - dir * 25
 
+func take_damage(damage: int):
+	GameState.health -= damage
+	if GameState.health > 0:
+		state_machine.change_state("Damaged")
+	pass
+
 func throw():
 	if following_pikmin[curr_type].is_empty():
 		#error noise plays
@@ -61,7 +68,6 @@ func throw():
 	pikmin_to_throw.global_position = marker_throw.global_position
 	pikmin_to_throw.target_throw = whistle.global_position
 	pikmin_to_throw.state_machine.change_state("Thrown")
-
 
 func next_type():
 	curr_type_index = (curr_type_index + 1) % pikmin_types.size()

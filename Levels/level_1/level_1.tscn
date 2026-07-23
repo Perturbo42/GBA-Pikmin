@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c5kfv85glrjqg" path="res://Entities/Onion/onion.tscn" id="3_714wa"]
 [ext_resource type="PackedScene" uid="uid://kbjiailqfskx" path="res://Entities/Pikmin/Red Pikmin/red_pikmin.tscn" id="4_gp5v8"]
 [ext_resource type="Resource" uid="uid://bmvrb761g2nm2" path="res://Entities/Enemies/Enemy Spawner/Enemy Definition/Bulborb.tres" id="4_vxhsm"]
+[ext_resource type="PackedScene" uid="uid://c250jyb5pv22s" path="res://Entities/Olimar/Olimar_Scenes/olimar.tscn" id="7_sa5ll"]
 
 [node name="Level_1" type="Node2D" unique_id=685333651]
 y_sort_enabled = true
@@ -42,3 +43,6 @@ y_sort_enabled = true
 position = Vector2(113, 75)
 onion_color = 1
 pikmin_to_handle = ExtResource("4_gp5v8")
+
+[node name="Olimar" parent="Level Objects" unique_id=956143428 instance=ExtResource("7_sa5ll")]
+position = Vector2(-100, 151)

@@ -1,4 +1,4 @@
-class_name OlimarLocked extends OlimarState
+class_name OlimarDamaged extends OlimarState
 
 func enter():
 	pass

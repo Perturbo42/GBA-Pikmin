@@ -38,7 +38,7 @@ func attack():
 			if body is Pikmin:
 				body.take_damage()
 			elif body is Olimar:
-				body.take_damage()
+				body.take_damage(bulborb.damage)
 	
 	if detection_area.get_overlapping_bodies():
 		var new_body = detection_area.get_overlapping_bodies()[0]

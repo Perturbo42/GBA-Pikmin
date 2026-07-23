@@ -24,6 +24,7 @@ collision_layer = 4
 collision_mask = 8
 script = ExtResource("1_nao5k")
 speed = 100.0
+damage = 2
 state_machine = NodePath("Bulborb State Machine")
 
 [node name="Bulborb State Machine" type="Node2D" parent="." unique_id=1217231951]

@@ -8,3 +8,10 @@ var target_onion: Vector2
 var target_throw: Vector2
 
 const sprite_default_position: Vector2 = Vector2(0, -14)
+
+func take_damage():
+	die()
+
+func die():
+	## play death animation
+	queue_free()

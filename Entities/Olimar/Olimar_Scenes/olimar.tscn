@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://43k5ob8223kc" path="res://Entities/Olimar/Olimar_Scripts/Olimar_States/olimar_idle.gd" id="3_fs3ir"]
 [ext_resource type="Texture2D" uid="uid://dmlkh1b788882" path="res://Entities/Olimar/Olimar_Sprites/Olimar.png" id="3_k5hd0"]
 [ext_resource type="Script" uid="uid://dd2orhidufu8s" path="res://Entities/Olimar/Olimar_Scripts/Olimar_States/olimar_moving.gd" id="4_tuth2"]
+[ext_resource type="Script" uid="uid://jp5qfue5i8gk" path="res://Entities/Olimar/Olimar_Scripts/Olimar_States/olimar_damaged.gd" id="5_mkr65"]
 [ext_resource type="PackedScene" uid="uid://drdcqgomm7jk4" path="res://Entities/Olimar/Whistle/whistle.tscn" id="7_mkr65"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t5bln"]
@@ -27,6 +28,9 @@ script = ExtResource("3_fs3ir")
 
 [node name="Moving" type="Node2D" parent="OlimarStateMachine" unique_id=578103734]
 script = ExtResource("4_tuth2")
+
+[node name="Damaged" type="Node2D" parent="OlimarStateMachine" unique_id=850428313]
+script = ExtResource("5_mkr65")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1753083047]
 texture_filter = 1
