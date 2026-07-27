@@ -46,7 +46,7 @@ wait_time = 0.2
 one_shot = true
 
 [node name="Cooldown" type="Timer" parent="Bulborb State Machine/Bite" unique_id=1660420288]
-wait_time = 3.0
+wait_time = 2.0
 one_shot = true
 
 [node name="Shake" type="Node2D" parent="Bulborb State Machine" unique_id=1106116221]

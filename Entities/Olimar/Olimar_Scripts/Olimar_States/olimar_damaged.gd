@@ -9,7 +9,6 @@ func _ready() -> void:
 	inactivity_timer.timeout.connect(on_inactive_timeout)
 
 func enter():
-	print("Damaged " + str(olimar.global_position))
 	olimar.invincible = true
 	inactive = true
 	invin_timer.start(3.0)
@@ -31,13 +30,10 @@ func physics_update(_delta: float):
 	pass
 
 func exit():
-	print("no longer damaged " + str(olimar.global_position))
 	pass
 
 func on_timer_timeout():
 	olimar.invincible = false
-	print("not invincible")
 
 func on_inactive_timeout():
 	inactive = false
-	print("not inactive")

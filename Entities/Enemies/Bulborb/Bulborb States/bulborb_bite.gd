@@ -9,7 +9,7 @@ func _ready() -> void:
 	super._ready()
 	windup.timeout.connect(attack)
 	cooldown.timeout.connect(choose_state)
-	knockback_strength = 200
+	knockback_strength = 400
 
 func enter():
 	windup.start()
@@ -40,6 +40,7 @@ func attack():
 				var direction = bulborb.global_position.direction_to(body.global_position)
 				var explosion_force = direction * knockback_strength
 				body.knockback = explosion_force
+				print("Olimar take damage")
 				body.take_damage(bulborb.damage)
 	
 	if !bulborb.enemies_in_range.is_empty():
