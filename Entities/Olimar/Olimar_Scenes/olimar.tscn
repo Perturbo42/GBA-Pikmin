@@ -16,6 +16,7 @@ size = Vector2(20, 15)
 
 [node name="Olimar" type="CharacterBody2D" unique_id=956143428 node_paths=PackedStringArray("state_machine")]
 collision_mask = 8
+motion_mode = 1
 script = ExtResource("1_22lxx")
 state_machine = NodePath("OlimarStateMachine")
 speed = 200.0
@@ -31,6 +32,13 @@ script = ExtResource("4_tuth2")
 
 [node name="Damaged" type="Node2D" parent="OlimarStateMachine" unique_id=850428313]
 script = ExtResource("5_mkr65")
+
+[node name="Invincibility Timer" type="Timer" parent="OlimarStateMachine/Damaged" unique_id=66452471]
+wait_time = 3.0
+one_shot = true
+
+[node name="Inactivity Timer" type="Timer" parent="OlimarStateMachine/Damaged" unique_id=725181226]
+one_shot = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1753083047]
 texture_filter = 1

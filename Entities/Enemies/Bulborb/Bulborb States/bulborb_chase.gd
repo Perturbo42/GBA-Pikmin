@@ -1,4 +1,5 @@
 class_name BulborbChase extends BulborbState
+@onready var sprite: Sprite2D = $"../../Sprite2D"
 
 func enter():
 	
@@ -15,6 +16,11 @@ func physics_update(_delta: float):
 	
 	var dir: Vector2 = bulb_pos.direction_to(targ_pos)
 	bulborb.velocity = bulborb.speed * dir
+	
+	if dir.x >= 0:
+		sprite.flip_h = false
+	else: ##dir.x < 0:
+		sprite.flip_h = true
 	
 	if bulb_pos.distance_to(targ_pos) <= 20:
 		finished.emit(BITE)

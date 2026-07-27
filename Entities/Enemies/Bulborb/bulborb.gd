@@ -3,12 +3,14 @@ class_name Bulborb extends Enemy
 @onready var chase: BulborbChase = $"Bulborb State Machine/Chase"
 
 @export var chase_target = CharacterBody2D
+var enemies_in_range: Array[CharacterBody2D]
 
 func _on_detection_area_body_entered(body: Node2D) -> void:
 	if state_machine.curr_state == idle:
 		if body is Pikmin or body is Olimar:
 			state_machine.change_state("Chase")
 			chase_target = body
+	enemies_in_range.append(body)
 	pass # Replace with function body.
 
 
@@ -21,4 +23,5 @@ func _on_detection_area_body_exited(body: Node2D) -> void:
 				chase_target = new_body
 			if new_body == null:
 				state_machine.change_state("Return")
+	enemies_in_range.erase(body)
 	pass # Replace with function body.

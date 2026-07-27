@@ -10,18 +10,20 @@
 [ext_resource type="Script" uid="uid://bkmn5k246koln" path="res://Entities/Enemies/Bulborb/Bulborb States/bulborb_return.gd" id="7_nxqmj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qgddc"]
-size = Vector2(25, 15)
+size = Vector2(32, 15)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qgddc"]
 radius = 80.0
 height = 240.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_hvycc"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nxqmj"]
 radius = 16.0
+height = 63.999996
 
 [node name="Bulborb" type="CharacterBody2D" unique_id=403101695 node_paths=PackedStringArray("state_machine") groups=["Enemy"]]
 collision_layer = 4
 collision_mask = 8
+motion_mode = 1
 script = ExtResource("1_nao5k")
 speed = 100.0
 damage = 2
@@ -39,7 +41,12 @@ script = ExtResource("4_nxqmj")
 [node name="Bite" type="Node2D" parent="Bulborb State Machine" unique_id=754692007]
 script = ExtResource("5_s047f")
 
-[node name="Timer" type="Timer" parent="Bulborb State Machine/Bite" unique_id=2092248836]
+[node name="Windup" type="Timer" parent="Bulborb State Machine/Bite" unique_id=2092248836]
+wait_time = 0.2
+one_shot = true
+
+[node name="Cooldown" type="Timer" parent="Bulborb State Machine/Bite" unique_id=1660420288]
+wait_time = 3.0
 one_shot = true
 
 [node name="Shake" type="Node2D" parent="Bulborb State Machine" unique_id=1106116221]
@@ -51,11 +58,10 @@ script = ExtResource("7_nxqmj")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=90615088]
 texture_filter = 1
 texture_repeat = 1
-position = Vector2(11, -25)
+position = Vector2(0, -25)
 texture = ExtResource("1_j5bbe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2090667962]
-position = Vector2(0.5, -1.5)
 shape = SubResource("RectangleShape2D_qgddc")
 
 [node name="DetectionArea" type="Area2D" parent="." unique_id=992036750]
@@ -71,8 +77,9 @@ collision_layer = 128
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BiteArea" unique_id=223293544]
-position = Vector2(24, -16)
-shape = SubResource("CircleShape2D_hvycc")
+position = Vector2(0, -24)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_nxqmj")
 debug_color = Color(0.9732043, 0.16584355, 7.70092e-07, 0.41960785)
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
