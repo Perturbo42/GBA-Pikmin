@@ -3,6 +3,7 @@ const IDLE = "Idle"
 const FOLLOW = "Follow"
 const CARRY = "Carry"
 const THROWN = "Thrown"
+const ATTACHED = "Attached"
 
 var pikmin = Pikmin
 

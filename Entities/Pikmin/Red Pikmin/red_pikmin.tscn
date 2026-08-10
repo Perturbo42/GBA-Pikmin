@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://cus7j7s7ia3ps" path="res://Entities/Pikmin/Pikmin states/pikmin_follow.gd" id="4_wcivg"]
 [ext_resource type="Script" uid="uid://gb8q4ttrf88o" path="res://Entities/Pikmin/Pikmin states/pikmin_carry.gd" id="5_yhj16"]
 [ext_resource type="Script" uid="uid://cdycofqi0623g" path="res://Entities/Pikmin/Pikmin states/pikmin_thrown.gd" id="6_wcivg"]
+[ext_resource type="Script" uid="uid://du3adl43hqcjx" path="res://Entities/Pikmin/Pikmin states/pikmin_attached.gd" id="7_yhj16"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vnup6"]
 size = Vector2(8, 10)
@@ -38,6 +39,11 @@ script = ExtResource("5_yhj16")
 [node name="Thrown" type="Node2D" parent="Pikmin State Machine" unique_id=24837924]
 script = ExtResource("6_wcivg")
 
+[node name="Attached" type="Node2D" parent="Pikmin State Machine" unique_id=461515903]
+script = ExtResource("7_yhj16")
+
+[node name="Attack Timer" type="Timer" parent="Pikmin State Machine/Attached" unique_id=1053856592]
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=461560849]
 texture_filter = 1
 texture_repeat = 1
@@ -58,4 +64,4 @@ position = Vector2(0, -5)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_qgddc")
 
-[connection signal="body_entered" from="Thrown-Hitbox" to="." method="enemy_detected_while_thrown"]
+[connection signal="body_entered" from="Thrown-Hitbox" to="Pikmin State Machine/Thrown" method="_on_thrown_hitbox_body_entered"]

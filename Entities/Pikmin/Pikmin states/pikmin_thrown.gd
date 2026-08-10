@@ -37,3 +37,12 @@ func physics_update(_delta: float):
 
 func exit():
 	pikmin.sprite.position.y = pikmin.sprite_default_position.y
+
+
+
+func _on_thrown_hitbox_body_entered(body: Node2D) -> void:
+	if body is Enemy:
+		pikmin.attached_body = body
+		body.attached_pikmin_arr.append(pikmin)
+		finished.emit(ATTACHED)
+	pass # Replace with function body.
