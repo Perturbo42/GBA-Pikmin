@@ -42,3 +42,4 @@ y_sort_enabled = true
 position = Vector2(113, 75)
 onion_color = 1
 pikmin_to_handle = ExtResource("4_gp5v8")
+pikmin_count = 1

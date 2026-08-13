@@ -33,6 +33,8 @@ window/stretch/scale_mode="integer"
 [global_group]
 
 Enemy=""
+Pikmin=""
+Olimar=""
 
 [input]
 
@@ -91,7 +93,8 @@ Space={
 2d_physics/layer_5="Whistle"
 2d_physics/layer_6="Interactable"
 2d_physics/layer_7="Enemy's Player Detection"
-2d_physics/layer_8="Damage"
+2d_physics/layer_8="Hitbox"
+2d_physics/layer_9="Hurtbox"
 
 [physics]
 

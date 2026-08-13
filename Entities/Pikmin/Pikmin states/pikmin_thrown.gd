@@ -1,4 +1,6 @@
 class_name PikminThrown extends PikminState
+@onready var hitbox: Area2D = $"../../Hitbox"
+
 
 var throw_duration := 0.6
 var arc_height := 48.0
@@ -16,6 +18,8 @@ func enter():
 
 	var distance = start_pos.distance_to(end_pos)
 	arc_height = clamp(distance * 0.3, 24.0, 96.0)
+	
+	hitbox.monitoring = true
 
 func update(delta: float):
 	elapsed += delta
@@ -36,11 +40,11 @@ func physics_update(_delta: float):
 	pass
 
 func exit():
+	hitbox.set_deferred("monitoring", false)
 	pikmin.sprite.position.y = pikmin.sprite_default_position.y
 
-
-
-func _on_thrown_hitbox_body_entered(body: Node2D) -> void:
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	var body = area.owner
 	if body is Enemy:
 		pikmin.attached_body = body
 		body.attached_pikmin_arr.append(pikmin)

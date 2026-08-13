@@ -15,12 +15,16 @@ size = Vector2(8, 10)
 [sub_resource type="CircleShape2D" id="CircleShape2D_qgddc"]
 radius = 8.0
 
-[node name="Red Pikmin" type="CharacterBody2D" unique_id=1562282753 node_paths=PackedStringArray("state_machine")]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qgddc"]
+radius = 8.0
+
+[node name="Red Pikmin" type="CharacterBody2D" unique_id=1562282753 node_paths=PackedStringArray("state_machine") groups=["Pikmin"]]
 collision_layer = 2
 collision_mask = 8
 motion_mode = 1
 script = ExtResource("1_egeb0")
 state_machine = NodePath("Pikmin State Machine")
+damage = 15
 speed = 200.0
 throw_angle = 60.0
 
@@ -51,17 +55,30 @@ position = Vector2(0, -14)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("2_x0lm3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1638084405]
+[node name="Collider Box" type="CollisionShape2D" parent="." unique_id=1638084405]
 position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_vnup6")
+debug_color = Color(0, 1, 0, 0.41960785)
 
-[node name="Thrown-Hitbox" type="Area2D" parent="." unique_id=631044851]
+[node name="Hitbox" type="Area2D" parent="." unique_id=631044851 groups=["Pikmin"]]
 collision_layer = 128
-collision_mask = 4
+collision_mask = 256
+monitoring = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Thrown-Hitbox" unique_id=844914952]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=844914952]
 position = Vector2(0, -5)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_qgddc")
+debug_color = Color(1, 0, 0, 0.41960785)
 
-[connection signal="body_entered" from="Thrown-Hitbox" to="Pikmin State Machine/Thrown" method="_on_thrown_hitbox_body_entered"]
+[node name="Hurtbox" type="Area2D" parent="." unique_id=2130621571 groups=["Pikmin"]]
+collision_layer = 256
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=100923438]
+position = Vector2(0, -8)
+scale = Vector2(0.5, 0.5)
+shape = SubResource("CapsuleShape2D_qgddc")
+debug_color = Color(0, 0, 1, 0.41960785)
+
+[connection signal="area_entered" from="Hitbox" to="Pikmin State Machine/Thrown" method="_on_hitbox_area_entered"]

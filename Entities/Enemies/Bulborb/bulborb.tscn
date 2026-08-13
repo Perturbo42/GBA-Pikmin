@@ -16,15 +16,19 @@ size = Vector2(32, 15)
 radius = 80.0
 height = 240.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nxqmj"]
-radius = 16.0
-height = 63.999996
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_07mqa"]
+size = Vector2(40, 64)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4gbpf"]
+radius = 20.0
+height = 64.0
 
 [node name="Bulborb" type="CharacterBody2D" unique_id=403101695 node_paths=PackedStringArray("state_machine") groups=["Enemy"]]
 collision_layer = 4
 collision_mask = 8
 motion_mode = 1
 script = ExtResource("1_nao5k")
+health = 1000
 speed = 100.0
 damage = 2
 state_machine = NodePath("Bulborb State Machine")
@@ -61,26 +65,39 @@ texture_repeat = 1
 position = Vector2(0, -25)
 texture = ExtResource("1_j5bbe")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2090667962]
+[node name="Collision Box" type="CollisionShape2D" parent="." unique_id=2090667962]
 shape = SubResource("RectangleShape2D_qgddc")
+debug_color = Color(0, 1, 0, 0.41960785)
 
 [node name="DetectionArea" type="Area2D" parent="." unique_id=992036750]
 collision_layer = 64
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=343140335]
+position = Vector2(0, -8)
 rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_qgddc")
+debug_color = Color(0.19793725, 0.19793722, 0.19793722, 0.41960785)
 
-[node name="BiteArea" type="Area2D" parent="." unique_id=1200062366]
+[node name="Hitbox" type="Area2D" parent="." unique_id=1200062366 groups=["Enemy"]]
 collision_layer = 128
-collision_mask = 3
+collision_mask = 256
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BiteArea" unique_id=223293544]
-position = Vector2(0, -24)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=223293544]
+position = Vector2(-7.7882873e-07, -20)
 rotation = -1.5707964
-shape = SubResource("CapsuleShape2D_nxqmj")
-debug_color = Color(0.9732043, 0.16584355, 7.70092e-07, 0.41960785)
+shape = SubResource("RectangleShape2D_07mqa")
+debug_color = Color(0.972549, 0, 0, 0.41960785)
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=405859615 groups=["Enemy"]]
+rotation = -1.5707964
+collision_layer = 256
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=784684469]
+position = Vector2(28, 0)
+shape = SubResource("CapsuleShape2D_4gbpf")
+debug_color = Color(0, 0, 1, 0.41960785)
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

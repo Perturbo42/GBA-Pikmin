@@ -10,7 +10,13 @@ func update(_delta: float):
 
 func physics_update(_delta: float):
 	if !bulborb.chase_target:
+		finished.emit(RETURN)
 		return
+	if bulborb.chase_target is Pikmin:
+		if bulborb.chase_target in bulborb.attached_pikmin_arr:
+			finished.emit(BITE)
+			return
+	
 	var bulb_pos: Vector2 = bulborb.global_position
 	var targ_pos: Vector2 = bulborb.chase_target.global_position
 	

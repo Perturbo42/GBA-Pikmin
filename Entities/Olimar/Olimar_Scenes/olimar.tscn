@@ -14,6 +14,8 @@ size = Vector2(20, 15)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mkr65"]
 size = Vector2(20, 15)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qgddc"]
+
 [node name="Olimar" type="CharacterBody2D" unique_id=956143428 node_paths=PackedStringArray("state_machine")]
 collision_mask = 8
 motion_mode = 1
@@ -46,9 +48,10 @@ texture_repeat = 1
 position = Vector2(0, -25.5)
 texture = ExtResource("3_k5hd0")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1624343033]
+[node name="Collider Box" type="CollisionShape2D" parent="." unique_id=1624343033]
 position = Vector2(-0.5, -7.5)
 shape = SubResource("RectangleShape2D_t5bln")
+debug_color = Color(0, 1, 0, 0.41960785)
 
 [node name="Pikmin Gather" type="Marker2D" parent="." unique_id=994117771]
 position = Vector2(0, -25)
@@ -66,3 +69,12 @@ collision_mask = 32
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction Area" unique_id=435554904]
 position = Vector2(-0.5, -7.5)
 shape = SubResource("RectangleShape2D_mkr65")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=169183578]
+collision_layer = 256
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1942263747]
+position = Vector2(0, -15)
+shape = SubResource("CapsuleShape2D_qgddc")
+debug_color = Color(0, 0, 1, 0.41960785)

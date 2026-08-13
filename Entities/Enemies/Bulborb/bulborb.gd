@@ -1,12 +1,13 @@
 class_name Bulborb extends Enemy
 @onready var idle: BulborbIdle = $"Bulborb State Machine/Idle"
 @onready var chase: BulborbChase = $"Bulborb State Machine/Chase"
+@onready var return_state: BulborbReturn = $"Bulborb State Machine/Return"
 
-@export var chase_target = CharacterBody2D
+var chase_target: CharacterBody2D = null
 var enemies_in_range: Array[CharacterBody2D]
 
 func _on_detection_area_body_entered(body: Node2D) -> void:
-	if state_machine.curr_state == idle:
+	if state_machine.curr_state == idle or state_machine.curr_state == return_state:
 		if body is Pikmin or body is Olimar:
 			state_machine.change_state("Chase")
 			chase_target = body

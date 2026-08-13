@@ -5,7 +5,7 @@ class_name Onion extends Node2D
 @export var pikmin_to_handle: PackedScene
 ## 1: Red 2: Yellow 3: Blue
 var onion_panel_open: bool
-var pikmin_count: int
+@export var pikmin_count: int
 
 
 @onready var spawn_1: Marker2D = $"Pikmin Spawn Points/Spawn1"
