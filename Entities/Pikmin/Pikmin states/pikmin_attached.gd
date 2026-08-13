@@ -1,5 +1,7 @@
 class_name PikminAttached extends PikminState
 @onready var attack_timer: Timer = $"Attack Timer"
+@onready var collider_box: CollisionShape2D = %"Collider Box"
+
 var attach_offset: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
@@ -7,6 +9,7 @@ func _ready() -> void:
 	attack_timer.timeout.connect(damage)
 
 func enter():
+	collider_box.set_deferred("disabled", true)
 	pikmin.velocity = Vector2.ZERO
 	pikmin.z_index = 1
 	attach_offset = pikmin.global_position - pikmin.attached_body.global_position
@@ -22,10 +25,12 @@ func physics_update(_delta: float):
 	pass
 
 func exit():
+	collider_box.set_deferred("disabled", false)
 	pikmin.z_index = 0
 	pikmin.attached_body.attached_pikmin_arr.erase(pikmin)
 	pikmin.attached_body = null
 	attach_offset = Vector2.ZERO
+	pikmin.sprite.position.y = pikmin.sprite_default_position.y
 	pass
 
 func damage():

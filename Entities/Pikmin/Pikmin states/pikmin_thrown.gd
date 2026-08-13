@@ -1,5 +1,8 @@
 class_name PikminThrown extends PikminState
-@onready var hitbox: Area2D = $"../../Hitbox"
+@onready var hitbox: Area2D = %Hitbox
+@onready var collider_box: CollisionShape2D = %"Collider Box"
+@onready var hurtbox: Area2D = %Hurtbox
+@onready var whistle_detection: Area2D = %WhistleDetection
 
 
 var throw_duration := 0.6
@@ -19,7 +22,10 @@ func enter():
 	var distance = start_pos.distance_to(end_pos)
 	arc_height = clamp(distance * 0.3, 24.0, 96.0)
 	
+	collider_box.set_deferred("disabled", true)
 	hitbox.monitoring = true
+	hurtbox.monitoring = false
+	whistle_detection.monitoring = false
 
 func update(delta: float):
 	elapsed += delta
@@ -40,8 +46,10 @@ func physics_update(_delta: float):
 	pass
 
 func exit():
+	collider_box.set_deferred("disabled", false)
 	hitbox.set_deferred("monitoring", false)
-	pikmin.sprite.position.y = pikmin.sprite_default_position.y
+	hurtbox.set_deferred("monitoring", true)
+	whistle_detection.set_deferred("monitoring", true)
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	var body = area.owner

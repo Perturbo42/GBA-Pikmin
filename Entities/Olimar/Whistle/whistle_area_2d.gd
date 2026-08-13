@@ -3,7 +3,8 @@ var is_active: bool = false
 
 func _process(_delta: float) -> void:
 	if is_active:
-		for body in get_overlapping_bodies():
+		for area in get_overlapping_areas():
+			var body = area.owner
 			if body is Pikmin and body.state_machine.curr_state is not PikminFollow:
 				if body is RedPikmin:
 					if body not in Global.olimar.following_pikmin[RedPikmin]:

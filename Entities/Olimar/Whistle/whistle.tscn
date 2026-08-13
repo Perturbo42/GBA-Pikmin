@@ -23,7 +23,6 @@ script = ExtResource("2_a8buc")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Whistle Area/Whistle Area2D" unique_id=702269391]
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_miwke")
-debug_color = Color(0.16924527, 0.1692453, 0.16924527, 0.41960785)
 
 [node name="Whistle Area Sprite" type="Sprite2D" parent="Whistle Area" unique_id=966189707]
 visible = false
