@@ -1,5 +1,6 @@
 class_name BulborbChase extends BulborbState
 @onready var sprite: Sprite2D = $"../../Sprite2D"
+@onready var chase_component: ChaseComponent = $"Chase Component"
 
 func enter():
 	
@@ -9,28 +10,7 @@ func update(_delta: float):
 	pass
 
 func physics_update(_delta: float):
-	if !bulborb.chase_target:
-		finished.emit(RETURN)
-		return
-	if bulborb.chase_target is Pikmin:
-		if bulborb.chase_target in bulborb.attached_pikmin_arr:
-			finished.emit(BITE)
-			return
-	
-	var bulb_pos: Vector2 = bulborb.global_position
-	var targ_pos: Vector2 = bulborb.chase_target.global_position
-	
-	var dir: Vector2 = bulb_pos.direction_to(targ_pos)
-	bulborb.velocity = bulborb.speed * dir
-	
-	if dir.x >= 0:
-		sprite.flip_h = false
-	else: ##dir.x < 0:
-		sprite.flip_h = true
-	
-	if bulb_pos.distance_to(targ_pos) <= 20:
-		finished.emit(BITE)
-	bulborb.move_and_slide()
+	chase_component.chasing()
 	pass
 
 func exit():

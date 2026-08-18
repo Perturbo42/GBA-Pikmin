@@ -6,12 +6,11 @@
 [ext_resource type="Script" uid="uid://cnhqygvptb3ek" path="res://Entities/Enemies/Bulborb/Bulborb States/bulborb_idle.gd" id="3_stw2y"]
 [ext_resource type="Script" uid="uid://eh3u688enty8" path="res://Entities/Enemies/Bulborb/Bulborb States/bulborb_chase.gd" id="4_nxqmj"]
 [ext_resource type="Script" uid="uid://bj2r1uewdndye" path="res://Entities/Enemies/Bulborb/Bulborb States/bulborb_bite.gd" id="5_s047f"]
-[ext_resource type="PackedScene" uid="uid://d2e5t10ymn2yt" path="res://Entities/Enemies/Enemy Component/Chase Component/chase_component.tscn" id="5_wnwle"]
 [ext_resource type="Script" uid="uid://crjkre2quyoin" path="res://Entities/Enemies/Bulborb/Bulborb States/bulborb_shake.gd" id="6_u3n4v"]
 [ext_resource type="Script" uid="uid://bkmn5k246koln" path="res://Entities/Enemies/Bulborb/Bulborb States/bulborb_return.gd" id="7_nxqmj"]
 [ext_resource type="Script" uid="uid://c4x023pb6juq0" path="res://Entities/Enemies/Bulborb/Bulborb States/bulborb_dead.gd" id="8_s047f"]
 [ext_resource type="PackedScene" uid="uid://cvtjx2a8sjjk1" path="res://Misc/Detection Boxes/hitbox.tscn" id="10_bc040"]
-[ext_resource type="PackedScene" uid="uid://cmie4gyd3k5b5" path="res://Entities/Enemies/Enemy Component/Enemy Detection Area/enemy_detection_area.tscn" id="10_ynoc2"]
+[ext_resource type="PackedScene" uid="uid://cmie4gyd3k5b5" path="res://Entities/Enemies/Enemy Detection Area/enemy_detection_area.tscn" id="10_ynoc2"]
 [ext_resource type="PackedScene" uid="uid://csu3ywxq5ha6d" path="res://Misc/Detection Boxes/hurtbox.tscn" id="11_ynoc2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qgddc"]
@@ -49,13 +48,6 @@ can_detect = true
 script = ExtResource("4_nxqmj")
 can_stop_detecting = true
 
-[node name="Chase Component" parent="Bulborb State Machine/Chase" unique_id=1041148036 node_paths=PackedStringArray("attached_state", "enemy", "stop_detecting_state", "attacking_state") instance=ExtResource("5_wnwle")]
-attached_state = NodePath("..")
-enemy = NodePath("../../..")
-attacking_range = 20.0
-stop_detecting_state = NodePath("../../Return")
-attacking_state = NodePath("../../Bite")
-
 [node name="Bite" type="Node2D" parent="Bulborb State Machine" unique_id=754692007]
 script = ExtResource("5_s047f")
 
@@ -88,7 +80,6 @@ shape = SubResource("RectangleShape2D_qgddc")
 debug_color = Color(0, 1, 0, 0.41960785)
 
 [node name="EnemyDetectionArea" parent="." unique_id=564610255 node_paths=PackedStringArray("enemy", "state_machine", "detect_state", "stop_detecting_state") instance=ExtResource("10_ynoc2")]
-unique_name_in_owner = true
 enemy = NodePath("..")
 state_machine = NodePath("../Bulborb State Machine")
 detect_state = NodePath("../Bulborb State Machine/Chase")

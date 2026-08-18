@@ -36,10 +36,12 @@ func update(delta: float):
 
 	var z = 4.0 * arc_height * t * (1.0 - t)
 	pikmin.sprite.position.y = pikmin.sprite_default_position.y - z
+	hitbox.position.y = pikmin.sprite.position.y
 
 	if t >= 1.0:
 		pikmin.global_position = end_pos
 		pikmin.sprite.position.y = pikmin.sprite_default_position.y
+		hitbox.position.y = pikmin.sprite.position.y
 		finished.emit(IDLE)
 
 func physics_update(_delta: float):

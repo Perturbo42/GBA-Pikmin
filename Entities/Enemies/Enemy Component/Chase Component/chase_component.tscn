@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://d2e5t10ymn2yt"]
+
+[ext_resource type="Script" uid="uid://c0q68ymt77oi0" path="res://Entities/Enemies/Enemy Component/Chase Component/chase_component.gd" id="1_4nqo1"]
+
+[node name="Chase Component" type="Node" unique_id=1041148036]
+script = ExtResource("1_4nqo1")

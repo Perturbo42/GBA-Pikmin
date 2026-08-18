@@ -1,8 +1,7 @@
-class_name BulborbIdle extends BulborbState
+class_name BulborbDead extends BulborbState
 
 func enter():
 	bulborb.velocity = Vector2.ZERO
-	bulborb.target = null
 	pass
 
 func update(_delta: float):

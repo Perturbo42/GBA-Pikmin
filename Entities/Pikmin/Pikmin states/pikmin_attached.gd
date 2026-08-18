@@ -1,6 +1,7 @@
 class_name PikminAttached extends PikminState
 @onready var attack_timer: Timer = $"Attack Timer"
 @onready var collider_box: CollisionShape2D = %"Collider Box"
+@onready var hitbox: Area2D = %Hitbox
 
 var attach_offset: Vector2 = Vector2.ZERO
 
@@ -31,6 +32,7 @@ func exit():
 	pikmin.attached_body = null
 	attach_offset = Vector2.ZERO
 	pikmin.sprite.position.y = pikmin.sprite_default_position.y
+	hitbox.position.y = pikmin.sprite.position.y
 	pass
 
 func damage():

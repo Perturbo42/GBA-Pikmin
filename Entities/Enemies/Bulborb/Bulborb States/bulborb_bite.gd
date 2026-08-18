@@ -28,14 +28,14 @@ func exit():
 	pass
 
 func attack():
-	if !is_instance_valid(bulborb.chase_target):
+	if !is_instance_valid(bulborb.target):
 		finished.emit(RETURN)
 		return
 	cleanup_targets()
 	
 	for area in hitbox.get_overlapping_areas():
 		var body = area.owner
-		if body == bulborb.chase_target:
+		if body == bulborb.target:
 			if body is Pikmin:
 				body.take_damage()
 				print("Pikmin eaten")
@@ -66,7 +66,7 @@ func choose_state():
 	if bulborb.enemies_in_range.is_empty():
 		finished.emit(RETURN)
 	else:
-		bulborb.chase_target = get_closest_target()
+		bulborb.target = get_closest_target()
 		finished.emit(CHASE)
 
 func cleanup_targets():

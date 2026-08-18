@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cmie4gyd3k5b5"]
+
+[ext_resource type="Script" uid="uid://cyi8uk3e5bllb" path="res://Entities/Enemies/Enemy Component/Enemy Detection Area/enemy_detection_area.gd" id="1_2a4gl"]
+
+[node name="EnemyDetectionArea" type="Area2D" unique_id=564610255]
+collision_layer = 64
+collision_mask = 3
+script = ExtResource("1_2a4gl")
