@@ -1,12 +1,14 @@
 class_name AttackComponent extends Node
+@export_group("External Properties")
 @export var attached_state: State
 @export var enemy: Enemy
 @export var stop_detecting_state: State
 @export var hitbox: Hitbox
+
+@export_group("Internal Properties")
 @export var knockback_strength: float
 @export var single_hit: bool
 @export var max_enemies_hit: int
-
 var num_of_enemies_hit: int
 
 func attack():

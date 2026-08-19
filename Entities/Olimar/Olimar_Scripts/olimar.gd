@@ -1,10 +1,15 @@
 class_name Olimar extends CharacterBody2D
+
+
 @onready var marker_gather: Marker2D = $"Pikmin Gather"
 @onready var marker_throw: Marker2D = $"Pikmin Throw"
 
 @onready var whistle: Whistle = $Whistle
 
+@export_category("External Properties")
 @export var state_machine: StateMachine
+
+@export_category("Stats")
 @export var speed: float
 
 var dir: Vector2

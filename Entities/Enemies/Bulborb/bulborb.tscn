@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://crjkre2quyoin" path="res://Entities/Enemies/Bulborb/Bulborb States/bulborb_shake.gd" id="6_u3n4v"]
 [ext_resource type="PackedScene" uid="uid://n8jis7j65wx0" path="res://Entities/Enemies/Enemy Component/Attack Component/attack_component.tscn" id="7_6jwhh"]
 [ext_resource type="Script" uid="uid://bkmn5k246koln" path="res://Entities/Enemies/Bulborb/Bulborb States/bulborb_return.gd" id="7_nxqmj"]
+[ext_resource type="PackedScene" uid="uid://6tggvxju6j8" path="res://Entities/Enemies/Enemy Component/Enemy Closest Target Component/enemy_closest_target_component.tscn" id="8_s6wv0"]
 [ext_resource type="Script" uid="uid://c4x023pb6juq0" path="res://Entities/Enemies/Bulborb/Bulborb States/bulborb_dead.gd" id="8_s047f"]
 [ext_resource type="PackedScene" uid="uid://cvtjx2a8sjjk1" path="res://Misc/Detection Boxes/hitbox.tscn" id="10_bc040"]
 [ext_resource type="PackedScene" uid="uid://cmie4gyd3k5b5" path="res://Entities/Enemies/Enemy Component/Enemy Detection Area/enemy_detection_area.tscn" id="10_ynoc2"]
@@ -29,15 +30,16 @@ size = Vector2(40, 64)
 radius = 18.0
 height = 56.0
 
-[node name="Bulborb" type="CharacterBody2D" unique_id=403101695 node_paths=PackedStringArray("state_machine") groups=["Enemy"]]
+[node name="Bulborb" type="CharacterBody2D" unique_id=403101695 node_paths=PackedStringArray("state_machine", "detection_area") groups=["Enemy"]]
 collision_layer = 4
 collision_mask = 8
 motion_mode = 1
 script = ExtResource("1_nao5k")
+state_machine = NodePath("Bulborb State Machine")
+detection_area = NodePath("EnemyDetectionArea")
 health = 1000
 speed = 100.0
 damage = 2
-state_machine = NodePath("Bulborb State Machine")
 
 [node name="Bulborb State Machine" type="Node2D" parent="." unique_id=1217231951]
 script = ExtResource("1_afahy")
@@ -46,9 +48,10 @@ script = ExtResource("1_afahy")
 script = ExtResource("3_stw2y")
 can_detect = true
 
-[node name="Chase" type="Node2D" parent="Bulborb State Machine" unique_id=2056272617 node_paths=PackedStringArray("chase_component")]
+[node name="Chase" type="Node2D" parent="Bulborb State Machine" unique_id=2056272617 node_paths=PackedStringArray("chase_component", "closest_target")]
 script = ExtResource("4_nxqmj")
 chase_component = NodePath("Chase Component")
+closest_target = NodePath("../../Components/Enemy Closest Target Component")
 can_stop_detecting = true
 
 [node name="Chase Component" parent="Bulborb State Machine/Chase" unique_id=1041148036 node_paths=PackedStringArray("attached_state", "enemy", "stop_detecting_state", "attacking_state") instance=ExtResource("5_wnwle")]
@@ -58,9 +61,13 @@ attacking_range = 20.0
 stop_detecting_state = NodePath("../../Return")
 attacking_state = NodePath("../../Bite")
 
-[node name="Bite" type="Node2D" parent="Bulborb State Machine" unique_id=754692007 node_paths=PackedStringArray("attack_component")]
+[node name="Find New Chase Target" type="Timer" parent="Bulborb State Machine/Chase" unique_id=53128075]
+wait_time = 3.0
+
+[node name="Bite" type="Node2D" parent="Bulborb State Machine" unique_id=754692007 node_paths=PackedStringArray("attack_component", "closest_target")]
 script = ExtResource("5_s047f")
 attack_component = NodePath("Attack Component")
+closest_target = NodePath("../../Components/Enemy Closest Target Component")
 
 [node name="Windup" type="Timer" parent="Bulborb State Machine/Bite" unique_id=2092248836]
 wait_time = 0.2
@@ -99,7 +106,6 @@ shape = SubResource("RectangleShape2D_qgddc")
 debug_color = Color(0, 1, 0, 0.41960785)
 
 [node name="EnemyDetectionArea" parent="." unique_id=564610255 node_paths=PackedStringArray("enemy", "state_machine", "detect_state", "stop_detecting_state") instance=ExtResource("10_ynoc2")]
-unique_name_in_owner = true
 enemy = NodePath("..")
 state_machine = NodePath("../Bulborb State Machine")
 detect_state = NodePath("../Bulborb State Machine/Chase")
@@ -129,6 +135,11 @@ position = Vector2(0, -26)
 rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_4gbpf")
 debug_color = Color(0, 0, 1, 0.41960785)
+
+[node name="Components" type="Node" parent="." unique_id=1258760364]
+
+[node name="Enemy Closest Target Component" parent="Components" unique_id=240972453 node_paths=PackedStringArray("enemy") instance=ExtResource("8_s6wv0")]
+enemy = NodePath("../..")
 
 [connection signal="body_entered" from="EnemyDetectionArea" to="EnemyDetectionArea" method="_on_body_entered"]
 [connection signal="body_exited" from="EnemyDetectionArea" to="EnemyDetectionArea" method="_on_body_exited"]

@@ -1,6 +1,9 @@
 class_name Pikmin extends CharacterBody2D
 signal pikmin_dead
+@export_category("External Properties")
 @export var state_machine: StateMachine
+
+@export_category("Stats")
 @export var damage: int
 @export var speed: float
 @export var throw_angle: float

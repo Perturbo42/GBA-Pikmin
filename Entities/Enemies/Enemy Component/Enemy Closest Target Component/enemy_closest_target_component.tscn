@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://6tggvxju6j8"]
+
+[ext_resource type="Script" uid="uid://cxpa5fe5brjyj" path="res://Entities/Enemies/Enemy Component/Enemy Closest Target Component/enemy_closest_target_component.gd" id="1_qfjh0"]
+
+[node name="Enemy Closest Target Component" type="Node" unique_id=240972453]
+script = ExtResource("1_qfjh0")
