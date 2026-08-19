@@ -1,6 +1,6 @@
 class_name BulborbChase extends BulborbState
 @onready var sprite: Sprite2D = $"../../Sprite2D"
-@onready var chase_component: ChaseComponent = $"Chase Component"
+@export var chase_component: Node
 
 func enter():
 	

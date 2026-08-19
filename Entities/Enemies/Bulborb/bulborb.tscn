@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bj2r1uewdndye" path="res://Entities/Enemies/Bulborb/Bulborb States/bulborb_bite.gd" id="5_s047f"]
 [ext_resource type="PackedScene" uid="uid://d2e5t10ymn2yt" path="res://Entities/Enemies/Enemy Component/Chase Component/chase_component.tscn" id="5_wnwle"]
 [ext_resource type="Script" uid="uid://crjkre2quyoin" path="res://Entities/Enemies/Bulborb/Bulborb States/bulborb_shake.gd" id="6_u3n4v"]
+[ext_resource type="PackedScene" uid="uid://n8jis7j65wx0" path="res://Entities/Enemies/Enemy Component/Attack Component/attack_component.tscn" id="7_6jwhh"]
 [ext_resource type="Script" uid="uid://bkmn5k246koln" path="res://Entities/Enemies/Bulborb/Bulborb States/bulborb_return.gd" id="7_nxqmj"]
 [ext_resource type="Script" uid="uid://c4x023pb6juq0" path="res://Entities/Enemies/Bulborb/Bulborb States/bulborb_dead.gd" id="8_s047f"]
 [ext_resource type="PackedScene" uid="uid://cvtjx2a8sjjk1" path="res://Misc/Detection Boxes/hitbox.tscn" id="10_bc040"]
@@ -45,8 +46,9 @@ script = ExtResource("1_afahy")
 script = ExtResource("3_stw2y")
 can_detect = true
 
-[node name="Chase" type="Node2D" parent="Bulborb State Machine" unique_id=2056272617]
+[node name="Chase" type="Node2D" parent="Bulborb State Machine" unique_id=2056272617 node_paths=PackedStringArray("chase_component")]
 script = ExtResource("4_nxqmj")
+chase_component = NodePath("Chase Component")
 can_stop_detecting = true
 
 [node name="Chase Component" parent="Bulborb State Machine/Chase" unique_id=1041148036 node_paths=PackedStringArray("attached_state", "enemy", "stop_detecting_state", "attacking_state") instance=ExtResource("5_wnwle")]
@@ -56,8 +58,9 @@ attacking_range = 20.0
 stop_detecting_state = NodePath("../../Return")
 attacking_state = NodePath("../../Bite")
 
-[node name="Bite" type="Node2D" parent="Bulborb State Machine" unique_id=754692007]
+[node name="Bite" type="Node2D" parent="Bulborb State Machine" unique_id=754692007 node_paths=PackedStringArray("attack_component")]
 script = ExtResource("5_s047f")
+attack_component = NodePath("Attack Component")
 
 [node name="Windup" type="Timer" parent="Bulborb State Machine/Bite" unique_id=2092248836]
 wait_time = 0.2
@@ -66,6 +69,14 @@ one_shot = true
 [node name="Cooldown" type="Timer" parent="Bulborb State Machine/Bite" unique_id=1660420288]
 wait_time = 2.0
 one_shot = true
+
+[node name="Attack Component" parent="Bulborb State Machine/Bite" unique_id=186932429 node_paths=PackedStringArray("attached_state", "enemy", "stop_detecting_state", "hitbox") instance=ExtResource("7_6jwhh")]
+attached_state = NodePath("..")
+enemy = NodePath("../../..")
+stop_detecting_state = NodePath("../../Return")
+hitbox = NodePath("../../../Hitbox")
+knockback_strength = 400.0
+max_enemies_hit = 3
 
 [node name="Shake" type="Node2D" parent="Bulborb State Machine" unique_id=1106116221]
 script = ExtResource("6_u3n4v")

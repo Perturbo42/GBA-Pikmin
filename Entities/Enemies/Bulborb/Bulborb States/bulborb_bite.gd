@@ -1,15 +1,13 @@
 class_name BulborbBite extends BulborbState
 @onready var windup: Timer = $Windup
 @onready var cooldown: Timer = $Cooldown
-
 @onready var hitbox: Area2D = $"../../Hitbox"
-var knockback_strength: float
+@export var attack_component: Node
 
 func _ready() -> void:
 	super._ready()
-	windup.timeout.connect(attack)
+	windup.timeout.connect(bite)
 	cooldown.timeout.connect(choose_state)
-	knockback_strength = 400
 
 func enter():
 	windup.start()
@@ -27,27 +25,10 @@ func exit():
 	cooldown.stop()
 	pass
 
-func attack():
-	if !is_instance_valid(bulborb.target):
-		finished.emit(RETURN)
-		return
+func bite():
 	cleanup_targets()
-	
-	for area in hitbox.get_overlapping_areas():
-		var body = area.owner
-		if body == bulborb.target:
-			if body is Pikmin:
-				body.take_damage()
-				print("Pikmin eaten")
-			elif body is Olimar:
-				var direction = bulborb.global_position.direction_to(body.global_position)
-				var explosion_force = direction * knockback_strength
-				body.knockback = explosion_force
-				print("Olimar take damage")
-				body.take_damage(bulborb.damage)
-			cleanup_targets()
+	attack_component.attack()
 	cooldown.start()
-	pass
 
 func get_closest_target() -> Node2D:
 	var closest: Node2D = null

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://n8jis7j65wx0"]
+
+[ext_resource type="Script" uid="uid://dowb7av37jsde" path="res://Entities/Enemies/Enemy Component/Attack Component/attack_component.gd" id="1_b3wji"]
+
+[node name="Attack Component" type="Node" unique_id=186932429]
+script = ExtResource("1_b3wji")
