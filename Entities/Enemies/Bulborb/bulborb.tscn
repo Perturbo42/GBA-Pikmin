@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://bkmn5k246koln" path="res://Entities/Enemies/Bulborb/Bulborb States/bulborb_return.gd" id="7_nxqmj"]
 [ext_resource type="PackedScene" uid="uid://6tggvxju6j8" path="res://Entities/Enemies/Enemy Component/Enemy Closest Target Component/enemy_closest_target_component.tscn" id="8_s6wv0"]
 [ext_resource type="Script" uid="uid://c4x023pb6juq0" path="res://Entities/Enemies/Bulborb/Bulborb States/bulborb_dead.gd" id="8_s047f"]
+[ext_resource type="PackedScene" uid="uid://cr7pymodxtqj3" path="res://Entities/Enemies/Enemy Component/Return Home Component/return_home_component.tscn" id="10_1ak32"]
 [ext_resource type="PackedScene" uid="uid://cvtjx2a8sjjk1" path="res://Misc/Detection Boxes/hitbox.tscn" id="10_bc040"]
 [ext_resource type="PackedScene" uid="uid://cmie4gyd3k5b5" path="res://Entities/Enemies/Enemy Component/Enemy Detection Area/enemy_detection_area.tscn" id="10_ynoc2"]
 [ext_resource type="PackedScene" uid="uid://csu3ywxq5ha6d" path="res://Misc/Detection Boxes/hurtbox.tscn" id="11_ynoc2"]
@@ -88,9 +89,15 @@ max_enemies_hit = 3
 [node name="Shake" type="Node2D" parent="Bulborb State Machine" unique_id=1106116221]
 script = ExtResource("6_u3n4v")
 
-[node name="Return" type="Node2D" parent="Bulborb State Machine" unique_id=634291977]
+[node name="Return" type="Node2D" parent="Bulborb State Machine" unique_id=634291977 node_paths=PackedStringArray("return_home_component")]
 script = ExtResource("7_nxqmj")
+return_home_component = NodePath("Return Home Component")
 can_detect = true
+
+[node name="Return Home Component" parent="Bulborb State Machine/Return" unique_id=1283960860 node_paths=PackedStringArray("enemy", "idle_state") instance=ExtResource("10_1ak32")]
+enemy = NodePath("../../..")
+idle_state = NodePath("../../Idle")
+close_to_home = 40.0
 
 [node name="Dead" type="Node2D" parent="Bulborb State Machine" unique_id=1456021805]
 script = ExtResource("8_s047f")

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cr7pymodxtqj3"]
+
+[ext_resource type="Script" uid="uid://dwo8428agyl6d" path="res://Entities/Enemies/Enemy Component/Return Home Component/return_home_component.gd" id="1_04lfo"]
+
+[node name="Return Home Component" type="Node" unique_id=1283960860]
+script = ExtResource("1_04lfo")

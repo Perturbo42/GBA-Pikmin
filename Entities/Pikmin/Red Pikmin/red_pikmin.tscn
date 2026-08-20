@@ -96,4 +96,6 @@ position = Vector2(0, -8)
 scale = Vector2(0.5, 1)
 shape = SubResource("RectangleShape2D_qgddc")
 
+[node name="Components" type="Node" parent="." unique_id=1205728338]
+
 [connection signal="area_entered" from="Hitbox" to="Pikmin State Machine/Thrown" method="_on_hitbox_area_entered"]
