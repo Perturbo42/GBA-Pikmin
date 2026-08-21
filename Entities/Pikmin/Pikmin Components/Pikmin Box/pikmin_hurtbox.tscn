@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://ja0awin4vamq"]
+
+[ext_resource type="Script" uid="uid://ca0dc4oe3jsjv" path="res://Entities/Pikmin/Pikmin Components/Pikmin Box/pikmin_hurtbox.gd" id="1_kaon4"]
+
+[node name="PikminHurtbox" type="Area2D" unique_id=467770375]
+collision_layer = 256
+collision_mask = 128
+script = ExtResource("1_kaon4")

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://chv4k4ar48tc4"]
+
+[ext_resource type="Script" uid="uid://dvcfwhh1fqjv3" path="res://Entities/Pikmin/Pikmin Components/Pikmin Box/pikmin_hitbox.gd" id="1_d2yip"]
+
+[node name="Pikmin Hitbox" type="Area2D" unique_id=1288079254]
+collision_layer = 128
+collision_mask = 256
+script = ExtResource("1_d2yip")

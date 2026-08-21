@@ -1,7 +1,7 @@
 class_name PikminThrown extends PikminState
-@onready var hitbox: Area2D = %Hitbox
+@onready var hitbox: Area2D = %"Pikmin Hitbox"
 @onready var collider_box: CollisionShape2D = %"Collider Box"
-@onready var hurtbox: Area2D = %Hurtbox
+@onready var hurtbox: Area2D = %PikminHurtbox
 @onready var whistle_detection: Area2D = %WhistleDetection
 
 
@@ -52,11 +52,3 @@ func exit():
 	hitbox.set_deferred("monitoring", false)
 	hurtbox.set_deferred("monitoring", true)
 	whistle_detection.set_deferred("monitoring", true)
-
-func _on_hitbox_area_entered(area: Area2D) -> void:
-	var body = area.owner
-	if body is Enemy:
-		pikmin.attached_body = body
-		body.attached_pikmin_arr.append(pikmin)
-		finished.emit(ATTACHED)
-	pass # Replace with function body.

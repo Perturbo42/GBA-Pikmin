@@ -13,7 +13,6 @@ class_name Olimar extends CharacterBody2D
 @export var speed: float
 
 var dir: Vector2
-var invincible: bool
 var knockback: Vector2
 var pikmin_types = [
 	RedPikmin,
@@ -31,7 +30,6 @@ var following_pikmin := {
 func _ready() -> void:
 	Global.olimar = self
 	dir = Vector2.DOWN
-	invincible = false
 
 func _input(event: InputEvent) -> void:
 	if not following_pikmin[curr_type].is_empty():
@@ -53,13 +51,6 @@ func _input(event: InputEvent) -> void:
 func _process(_delta: float) -> void:
 	marker_gather.position = Vector2.ZERO - dir * 25
 
-func take_damage(damage: int):
-	if invincible:
-		return
-	GameState.health -= damage
-	if GameState.health > 0:
-		state_machine.change_state("Damaged")
-	pass
 
 func throw():
 	if following_pikmin[curr_type].is_empty():

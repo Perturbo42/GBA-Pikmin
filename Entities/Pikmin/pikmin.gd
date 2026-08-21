@@ -1,5 +1,4 @@
 class_name Pikmin extends CharacterBody2D
-signal pikmin_dead
 @export_category("External Properties")
 @export var state_machine: StateMachine
 
@@ -8,19 +7,9 @@ signal pikmin_dead
 @export var speed: float
 @export var throw_angle: float
 
-var attached_body: Node2D
+var attached_hurtbox: Area2D
 var target_ship: Vector2
 var target_onion: Vector2
 var target_throw: Vector2
 
 const sprite_default_position: Vector2 = Vector2(0, -14)
-
-func take_damage():
-	## check if pikmin type is immune to said damage
-	die()
-
-func die():
-	pikmin_dead.emit()
-	## play death animation
-	## remove self from lists
-	queue_free()

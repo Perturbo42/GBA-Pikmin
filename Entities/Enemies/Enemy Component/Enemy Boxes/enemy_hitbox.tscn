@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://c07y70hdmkhcc"]
+
+[ext_resource type="Script" uid="uid://df71il3j88kc5" path="res://Entities/Enemies/Enemy Component/Enemy Boxes/enemy_hitbox.gd" id="1_ydt5o"]
+
+[node name="Enemy Hitbox" type="Area2D" unique_id=198862744]
+collision_layer = 128
+collision_mask = 256
+script = ExtResource("1_ydt5o")

@@ -8,8 +8,8 @@
 [ext_resource type="Script" uid="uid://gb8q4ttrf88o" path="res://Entities/Pikmin/Pikmin states/pikmin_carry.gd" id="5_yhj16"]
 [ext_resource type="Script" uid="uid://cdycofqi0623g" path="res://Entities/Pikmin/Pikmin states/pikmin_thrown.gd" id="6_wcivg"]
 [ext_resource type="Script" uid="uid://du3adl43hqcjx" path="res://Entities/Pikmin/Pikmin states/pikmin_attached.gd" id="7_yhj16"]
-[ext_resource type="PackedScene" uid="uid://cvtjx2a8sjjk1" path="res://Misc/Detection Boxes/hitbox.tscn" id="9_w0b2p"]
-[ext_resource type="PackedScene" uid="uid://csu3ywxq5ha6d" path="res://Misc/Detection Boxes/hurtbox.tscn" id="10_86s81"]
+[ext_resource type="PackedScene" uid="uid://chv4k4ar48tc4" path="res://Entities/Pikmin/Pikmin Components/Pikmin Box/pikmin_hitbox.tscn" id="9_w0b2p"]
+[ext_resource type="PackedScene" uid="uid://ja0awin4vamq" path="res://Entities/Pikmin/Pikmin Components/Pikmin Box/pikmin_hurtbox.tscn" id="10_86s81"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vnup6"]
 size = Vector2(8, 10)
@@ -19,6 +19,7 @@ radius = 8.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qgddc"]
 radius = 8.0
+height = 32.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qgddc"]
 size = Vector2(16, 16)
@@ -66,21 +67,25 @@ position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_vnup6")
 debug_color = Color(0, 1, 0, 0.41960785)
 
-[node name="Hitbox" parent="." unique_id=1428554798 instance=ExtResource("9_w0b2p")]
+[node name="Pikmin Hitbox" parent="." unique_id=1288079254 node_paths=PackedStringArray("pikmin", "state_machine", "thrown_state", "attached_state") instance=ExtResource("9_w0b2p")]
 unique_name_in_owner = true
-is_pikmin = true
+position = Vector2(0, -14)
+pikmin = NodePath("..")
+state_machine = NodePath("../Pikmin State Machine")
+thrown_state = NodePath("../Pikmin State Machine/Thrown")
+attached_state = NodePath("../Pikmin State Machine/Attached")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=844914952]
-position = Vector2(0, -4)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pikmin Hitbox" unique_id=844914952]
+position = Vector2(0, 10)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_qgddc")
 debug_color = Color(1, 0, 0, 0.41960785)
 
-[node name="Hurtbox" parent="." unique_id=394694772 instance=ExtResource("10_86s81")]
+[node name="PikminHurtbox" parent="." unique_id=467770375 node_paths=PackedStringArray("pikmin") instance=ExtResource("10_86s81")]
 unique_name_in_owner = true
-is_pikmin = true
+pikmin = NodePath("..")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=100923438]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PikminHurtbox" unique_id=100923438]
 position = Vector2(0, -8)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("CapsuleShape2D_qgddc")
@@ -98,4 +103,4 @@ shape = SubResource("RectangleShape2D_qgddc")
 
 [node name="Components" type="Node" parent="." unique_id=1205728338]
 
-[connection signal="area_entered" from="Hitbox" to="Pikmin State Machine/Thrown" method="_on_hitbox_area_entered"]
+[connection signal="area_entered" from="Pikmin Hitbox" to="Pikmin Hitbox" method="_on_area_entered"]

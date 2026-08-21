@@ -1,4 +1,6 @@
 class_name OlimarDamaged extends OlimarState
+@onready var hurtbox: OlimarHurtbox = %Hurtbox
+
 @onready var invin_timer: Timer = $"Invincibility Timer"
 @onready var inactivity_timer: Timer = $"Inactivity Timer"
 var inactive: bool
@@ -9,7 +11,7 @@ func _ready() -> void:
 	inactivity_timer.timeout.connect(on_inactive_timeout)
 
 func enter():
-	olimar.invincible = true
+	hurtbox.invincible = true
 	inactive = true
 	invin_timer.start(3.0)
 	inactivity_timer.start(1.0)
@@ -33,7 +35,7 @@ func exit():
 	pass
 
 func on_timer_timeout():
-	olimar.invincible = false
+	hurtbox.invincible = false
 
 func on_inactive_timeout():
 	inactive = false

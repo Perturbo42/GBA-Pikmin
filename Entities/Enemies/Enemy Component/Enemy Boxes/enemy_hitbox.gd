@@ -1,9 +1,9 @@
-class_name AttackComponent extends Node
+class_name EnemyHitbox extends Area2D
 @export_group("External Properties")
 @export var attached_state: State
 @export var enemy: Enemy
 @export var stop_detecting_state: State
-@export var hitbox: EnemyHitbox
+
 
 @export_group("Internal Properties")
 @export var knockback_strength: float
@@ -17,7 +17,7 @@ func attack():
 		return
 	num_of_enemies_hit = 0
 	
-	for area in hitbox.get_overlapping_areas():
+	for area in get_overlapping_areas():
 		var body = area.owner
 		
 		if body == enemy.target:

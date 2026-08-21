@@ -1,10 +1,9 @@
 class_name BulborbBite extends BulborbState
-@export var attack_component: Node
 @export var closest_target: Node
 
 @onready var windup: Timer = $Windup
 @onready var cooldown: Timer = $Cooldown
-@onready var hitbox: Area2D = $"../../Hitbox"
+@onready var hitbox: Area2D = %"Enemy Hitbox"
 
 
 func _ready() -> void:
@@ -30,7 +29,7 @@ func exit():
 
 func bite():
 	cleanup_targets()
-	attack_component.attack()
+	hitbox.attack()
 	cooldown.start()
 
 
