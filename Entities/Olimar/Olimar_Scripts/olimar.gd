@@ -95,5 +95,4 @@ func remove_pikmin_from_following(num: int, color: int):
 	for i in remove_count:
 		var pikmin = pikmin_group.pikmin_arr.front()
 		if is_instance_valid(pikmin):
-			PikminRegistry.remove_pikmin_from_group(pikmin, pikmin_group)
 			pikmin.pikmin_dead.emit(pikmin)
