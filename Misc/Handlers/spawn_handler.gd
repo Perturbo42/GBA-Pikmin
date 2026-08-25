@@ -22,6 +22,7 @@ func _spawn_pikmin(scene: PackedScene, spawn_position: Vector2) -> Node:
 	var entity = scene.instantiate()
 	entity_root.add_child(entity)
 	entity.global_position = spawn_position
+	PikminRegistry.register_pikmin(entity)
 	return entity
 
 static func spawn_enemy(scene: PackedScene, spawn_position: Vector2) -> Node:

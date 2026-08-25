@@ -28,7 +28,7 @@ func physics_update(_delta: float):
 func exit():
 	collider_box.set_deferred("disabled", false)
 	pikmin.z_index = 0
-	pikmin.attached_hurtbox.attached_pikmin_arr.erase(pikmin)
+	PikminRegistry.remove_pikmin_from_group(pikmin, pikmin.attached_hurtbox.group)
 	pikmin.attached_hurtbox = null
 	attach_offset = Vector2.ZERO
 	pikmin.sprite.position.y = pikmin.sprite_default_position.y

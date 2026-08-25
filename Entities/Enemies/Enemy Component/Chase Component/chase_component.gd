@@ -12,7 +12,7 @@ func chasing():
 		attached_state.finished.emit(stop_detecting_state.name)
 		return
 	if enemy.target is Pikmin:
-		if enemy.target in hurtbox.attached_pikmin_arr:
+		if enemy.target in hurtbox.group.pikmin_arr:
 			attached_state.finished.emit(attacking_state.name)
 			return
 	

@@ -23,7 +23,7 @@ var olimar_num: int:
 func _ready() -> void:
 	onion_num = onion.pikmin_count
 	moved_num = 0
-	olimar_num = Global.olimar.following_pikmin[RedPikmin].size()
+	olimar_num = Global.olimar.following_pikmin[RedPikmin].pikmin_arr.size()
 	pass # Replace with function body.
 
 func _unhandled_input(_event: InputEvent) -> void:

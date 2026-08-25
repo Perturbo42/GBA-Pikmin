@@ -24,26 +24,26 @@ var pikmin_types = [
 ]
 var curr_type_index: int = 0
 var curr_type = pikmin_types[curr_type_index]
-var pikmin_groups: Array[PikminGroup]
-var following_pikmin := {
-	RedPikmin: [],
-	YellowPikmin: [],
-	BluePikmin: []
-}
+var following_pikmin : Dictionary
 
 func _ready() -> void:
 	Global.olimar = self
 	dir = Vector2.DOWN
+	following_pikmin = {
+		RedPikmin: red,
+		YellowPikmin: yellow,
+		BluePikmin: blue
+	}
 
 func _input(event: InputEvent) -> void:
-	if not following_pikmin[curr_type].is_empty():
+	if not following_pikmin[curr_type].pikmin_arr.is_empty():
 		if event.is_action_pressed("MouseUp"):
 			next_type()
-			while following_pikmin[curr_type].is_empty():
+			while following_pikmin[curr_type].pikmin_arr.is_empty():
 				next_type()
 		elif event.is_action_pressed("MouseDown"):
 			prev_type()
-			while following_pikmin[curr_type].is_empty():
+			while following_pikmin[curr_type].pikmin_arr.is_empty():
 				prev_type()
 	if event.is_action_pressed("MouseR"):
 		whistle.activate()
@@ -57,15 +57,15 @@ func _process(_delta: float) -> void:
 
 
 func throw():
-	if following_pikmin[curr_type].is_empty():
+	if following_pikmin[curr_type].pikmin_arr.is_empty():
 		#error noise plays
 		return
 	
 	var pikmin_to_throw = null
-	for pikmin in following_pikmin[curr_type]:
+	for pikmin in following_pikmin[curr_type].pikmin_arr:
 		if global_position.distance_to(pikmin.global_position) < 75:
-			pikmin_to_throw = pikmin 
-			following_pikmin[curr_type].erase(pikmin)
+			pikmin_to_throw = pikmin
+			PikminRegistry.remove_pikmin_from_group(pikmin_to_throw, following_pikmin[curr_type])
 			break
 	if pikmin_to_throw == null:
 		return
@@ -88,12 +88,12 @@ func remove_pikmin_from_following(num: int, color: int):
 		return 0
 
 	var type = pikmin_types[color - 1]
-	var pikmin_list: Array = following_pikmin[type]
+	var pikmin_group: PikminGroup = following_pikmin[type]
 
-	var remove_count: int = min(num, pikmin_list.size())
+	var remove_count: int = min(num, pikmin_group.pikmin_arr.size())
 
 	for i in remove_count:
-		var pikmin = pikmin_list.pop_front()
+		var pikmin = pikmin_group.pikmin_arr.front()
 		if is_instance_valid(pikmin):
-			pikmin.pikmin_dead.emit()
-			pikmin.queue_free()
+			PikminRegistry.remove_pikmin_from_group(pikmin, pikmin_group)
+			pikmin.pikmin_dead.emit(pikmin)

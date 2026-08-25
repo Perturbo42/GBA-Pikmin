@@ -14,6 +14,6 @@ func _on_area_entered(area: Area2D) -> void:
 	
 	if area is EnemyHurtbox:
 		pikmin.attached_hurtbox = area
-		area.group.add_pikmin(pikmin)
+		PikminRegistry.add_pikmin_to_group(pikmin, area.group)
 		state_machine.change_state(attached_state.name)
 	pass # Replace with function body.
