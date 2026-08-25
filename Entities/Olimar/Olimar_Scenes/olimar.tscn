@@ -8,6 +8,8 @@
 [ext_resource type="Script" uid="uid://jp5qfue5i8gk" path="res://Entities/Olimar/Olimar_Scripts/Olimar_States/olimar_damaged.gd" id="5_mkr65"]
 [ext_resource type="PackedScene" uid="uid://drdcqgomm7jk4" path="res://Entities/Olimar/Whistle/whistle.tscn" id="7_mkr65"]
 [ext_resource type="Script" uid="uid://kj36sn0wpi86" path="res://Entities/Olimar/Olimar_Scripts/olimar_hurtbox.gd" id="8_qe3i7"]
+[ext_resource type="PackedScene" uid="uid://di8l7mf6x8otk" path="res://Entities/Entity Component/Direction Component/direction_component.tscn" id="9_q5ub1"]
+[ext_resource type="PackedScene" uid="uid://bsrnflrw56qfg" path="res://Entities/Entity Component/Group/group.tscn" id="10_8pvnf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t5bln"]
 size = Vector2(20, 15)
@@ -17,11 +19,14 @@ size = Vector2(20, 15)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qgddc"]
 
-[node name="Olimar" type="CharacterBody2D" unique_id=956143428 node_paths=PackedStringArray("state_machine")]
+[node name="Olimar" type="CharacterBody2D" unique_id=956143428 node_paths=PackedStringArray("state_machine", "red", "yellow", "blue")]
 collision_mask = 8
 motion_mode = 1
 script = ExtResource("1_22lxx")
 state_machine = NodePath("OlimarStateMachine")
+red = NodePath("Following Pikmin/Red")
+yellow = NodePath("Following Pikmin/Yellow")
+blue = NodePath("Following Pikmin/Blue")
 speed = 200.0
 
 [node name="OlimarStateMachine" type="Node2D" parent="." unique_id=932388051]
@@ -30,8 +35,9 @@ script = ExtResource("2_vv2yc")
 [node name="Idle" type="Node2D" parent="OlimarStateMachine" unique_id=509496930]
 script = ExtResource("3_fs3ir")
 
-[node name="Moving" type="Node2D" parent="OlimarStateMachine" unique_id=578103734]
+[node name="Moving" type="Node2D" parent="OlimarStateMachine" unique_id=578103734 node_paths=PackedStringArray("dir_comp")]
 script = ExtResource("4_tuth2")
+dir_comp = NodePath("../../Components/Direction Component")
 
 [node name="Damaged" type="Node2D" parent="OlimarStateMachine" unique_id=850428313]
 script = ExtResource("5_mkr65")
@@ -85,3 +91,15 @@ shape = SubResource("CapsuleShape2D_qgddc")
 debug_color = Color(0, 0, 1, 0.41960785)
 
 [node name="Components" type="Node" parent="." unique_id=469186544]
+
+[node name="Direction Component" parent="Components" unique_id=2083099918 node_paths=PackedStringArray("body", "sprite") instance=ExtResource("9_q5ub1")]
+body = NodePath("../..")
+sprite = NodePath("../../Sprite2D")
+
+[node name="Following Pikmin" type="Node" parent="." unique_id=584516493]
+
+[node name="Red" parent="Following Pikmin" unique_id=1101238150 instance=ExtResource("10_8pvnf")]
+
+[node name="Yellow" parent="Following Pikmin" unique_id=1962709864 instance=ExtResource("10_8pvnf")]
+
+[node name="Blue" parent="Following Pikmin" unique_id=1786778513 instance=ExtResource("10_8pvnf")]

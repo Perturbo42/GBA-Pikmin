@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bsrnflrw56qfg"]
+
+[ext_resource type="Script" uid="uid://b0jj6ov4db5dm" path="res://Entities/Entity Component/Group/group.gd" id="1_1smyc"]
+
+[node name="Group" type="Node" unique_id=1101238150]
+script = ExtResource("1_1smyc")

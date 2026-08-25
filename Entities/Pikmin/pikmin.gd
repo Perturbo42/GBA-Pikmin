@@ -7,6 +7,9 @@ class_name Pikmin extends CharacterBody2D
 @export var speed: float
 @export var throw_angle: float
 
+@warning_ignore("unused_signal")
+signal pikmin_dead(Pikmin)
+
 var attached_hurtbox: Area2D
 var target_ship: Vector2
 var target_onion: Vector2

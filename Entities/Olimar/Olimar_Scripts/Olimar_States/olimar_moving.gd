@@ -1,4 +1,5 @@
 class_name OlimarMoving extends OlimarState
+@export var dir_comp: DirectionComponent
 
 func enter():
 	pass
@@ -15,6 +16,7 @@ func physics_update(_delta: float):
 	var direction := Vector2(input_direction_x, input_direction_y).normalized()
 	olimar.velocity = direction * olimar.speed
 	olimar.move_and_slide()
+	dir_comp.check_dir()
 	
 	if olimar.velocity.is_zero_approx() and direction == Vector2.ZERO:
 		finished.emit(IDLE)

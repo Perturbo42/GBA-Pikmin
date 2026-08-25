@@ -15,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://cmie4gyd3k5b5" path="res://Entities/Enemies/Enemy Component/Enemy Detection Area/enemy_detection_area.tscn" id="10_ynoc2"]
 [ext_resource type="PackedScene" uid="uid://c07y70hdmkhcc" path="res://Entities/Enemies/Enemy Component/Enemy Boxes/enemy_hitbox.tscn" id="14_1ak32"]
 [ext_resource type="PackedScene" uid="uid://bysu2hry8aflv" path="res://Entities/Enemies/Enemy Component/Enemy Boxes/enemy_hurtbox.tscn" id="15_t12d7"]
+[ext_resource type="PackedScene" uid="uid://di8l7mf6x8otk" path="res://Entities/Entity Component/Direction Component/direction_component.tscn" id="16_1ak32"]
+[ext_resource type="PackedScene" uid="uid://bsrnflrw56qfg" path="res://Entities/Entity Component/Group/group.tscn" id="17_t12d7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qgddc"]
 size = Vector2(32, 15)
@@ -48,10 +50,11 @@ script = ExtResource("1_afahy")
 script = ExtResource("3_stw2y")
 can_detect = true
 
-[node name="Chase" type="Node2D" parent="Bulborb State Machine" unique_id=2056272617 node_paths=PackedStringArray("chase_component", "closest_target")]
+[node name="Chase" type="Node2D" parent="Bulborb State Machine" unique_id=2056272617 node_paths=PackedStringArray("chase_component", "closest_target", "dir_comp")]
 script = ExtResource("4_nxqmj")
 chase_component = NodePath("Chase Component")
 closest_target = NodePath("../../Components/Enemy Closest Target Component")
+dir_comp = NodePath("../../Components/DirectionComponent")
 can_stop_detecting = true
 
 [node name="Chase Component" parent="Bulborb State Machine/Chase" unique_id=1041148036 node_paths=PackedStringArray("attached_state", "enemy", "hurtbox", "stop_detecting_state", "attacking_state") instance=ExtResource("5_wnwle")]
@@ -80,9 +83,10 @@ one_shot = true
 [node name="Shake" type="Node2D" parent="Bulborb State Machine" unique_id=1106116221]
 script = ExtResource("6_u3n4v")
 
-[node name="Return" type="Node2D" parent="Bulborb State Machine" unique_id=634291977 node_paths=PackedStringArray("return_home_component")]
+[node name="Return" type="Node2D" parent="Bulborb State Machine" unique_id=634291977 node_paths=PackedStringArray("return_home_component", "dir_comp")]
 script = ExtResource("7_nxqmj")
 return_home_component = NodePath("Return Home Component")
+dir_comp = NodePath("../../Components/DirectionComponent")
 can_detect = true
 
 [node name="Return Home Component" parent="Bulborb State Machine/Return" unique_id=1283960860 node_paths=PackedStringArray("enemy", "state_machine", "idle_state") instance=ExtResource("10_1ak32")]
@@ -129,11 +133,12 @@ rotation = -1.5707964
 shape = SubResource("RectangleShape2D_07mqa")
 debug_color = Color(0.972549, 0, 0, 0.41960785)
 
-[node name="Enemy Hurtbox" parent="." unique_id=472455593 node_paths=PackedStringArray("enemy", "state_machine", "dead_state") instance=ExtResource("15_t12d7")]
+[node name="Enemy Hurtbox" parent="." unique_id=472455593 node_paths=PackedStringArray("enemy", "state_machine", "dead_state", "group") instance=ExtResource("15_t12d7")]
 unique_name_in_owner = true
 enemy = NodePath("..")
 state_machine = NodePath("../Bulborb State Machine")
 dead_state = NodePath("../Bulborb State Machine/Dead")
+group = NodePath("../Components/Group")
 health = 1000
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy Hurtbox" unique_id=784684469]
@@ -146,6 +151,12 @@ debug_color = Color(0, 0, 1, 0.41960785)
 
 [node name="Enemy Closest Target Component" parent="Components" unique_id=240972453 node_paths=PackedStringArray("enemy") instance=ExtResource("8_s6wv0")]
 enemy = NodePath("../..")
+
+[node name="DirectionComponent" parent="Components" unique_id=2083099918 node_paths=PackedStringArray("body", "sprite") instance=ExtResource("16_1ak32")]
+body = NodePath("../..")
+sprite = NodePath("../../Sprite2D")
+
+[node name="Group" parent="Components" unique_id=1101238150 instance=ExtResource("17_t12d7")]
 
 [connection signal="body_entered" from="EnemyDetectionArea" to="EnemyDetectionArea" method="_on_body_entered"]
 [connection signal="body_exited" from="EnemyDetectionArea" to="EnemyDetectionArea" method="_on_body_exited"]

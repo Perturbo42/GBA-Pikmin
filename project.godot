@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Global="*uid://dq2cj30ol0a7t"
 GameState="*uid://ck01f6pg4r4pq"
+PikminRegistry="*uid://ci4e6hoojbkbp"
 
 [display]
 

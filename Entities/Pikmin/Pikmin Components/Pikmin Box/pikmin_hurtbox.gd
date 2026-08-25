@@ -9,4 +9,5 @@ func take_damage():
 func die():
 	## play death animation
 	## remove self from lists
+	pikmin.pikmin_dead.emit(self)
 	pikmin.queue_free()

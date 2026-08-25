@@ -2,8 +2,10 @@ class_name BulborbChase extends BulborbState
 @onready var sprite: Sprite2D = $"../../Sprite2D"
 @onready var timer: Timer = $"Find New Chase Target"
 
+@export_category("External Properties")
 @export var chase_component: Node
 @export var closest_target: Node
+@export var dir_comp: DirectionComponent
 
 func _ready() -> void:
 	super._ready()
@@ -14,10 +16,12 @@ func enter():
 	pass
 
 func update(_delta: float):
+	
 	pass
 
 func physics_update(_delta: float):
 	chase_component.chasing()
+	dir_comp.check_dir()
 	pass
 
 func exit():

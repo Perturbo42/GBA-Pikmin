@@ -1,4 +1,5 @@
 class_name PikminFollow extends PikminState
+@export var dir_comp: DirectionComponent
 
 func enter():
 	pass
@@ -16,6 +17,7 @@ func physics_update(_delta: float):
 		pikmin.velocity = Vector2.ZERO
 	
 	pikmin.move_and_slide()
+	dir_comp.check_dir()
 	pass
 
 func exit():

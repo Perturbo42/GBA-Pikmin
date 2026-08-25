@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://di8l7mf6x8otk"]
+
+[ext_resource type="Script" uid="uid://cclhlrip8x15t" path="res://Entities/Entity Component/Direction Component/direction_component.gd" id="1_geu5b"]
+
+[node name="Direction Component" type="Node" unique_id=2083099918]
+script = ExtResource("1_geu5b")

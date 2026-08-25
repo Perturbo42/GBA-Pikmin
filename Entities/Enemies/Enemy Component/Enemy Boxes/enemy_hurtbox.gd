@@ -4,10 +4,10 @@ class_name EnemyHurtbox extends Area2D
 @export var enemy: Enemy
 @export var state_machine: StateMachine
 @export var dead_state: State
+@export var group: Node
 
 @export_category("Internal Categories")
 @export var health: int
-var attached_pikmin_arr: Array[Pikmin] = []
 
 func _ready() -> void:
 	health = enemy.health

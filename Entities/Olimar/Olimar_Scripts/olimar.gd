@@ -1,6 +1,5 @@
 class_name Olimar extends CharacterBody2D
 
-
 @onready var marker_gather: Marker2D = $"Pikmin Gather"
 @onready var marker_throw: Marker2D = $"Pikmin Throw"
 
@@ -8,6 +7,10 @@ class_name Olimar extends CharacterBody2D
 
 @export_category("External Properties")
 @export var state_machine: StateMachine
+@export_group("Following Pikmin")
+@export var red: PikminGroup
+@export var yellow: PikminGroup
+@export var blue: PikminGroup
 
 @export_category("Stats")
 @export var speed: float
@@ -21,6 +24,7 @@ var pikmin_types = [
 ]
 var curr_type_index: int = 0
 var curr_type = pikmin_types[curr_type_index]
+var pikmin_groups: Array[PikminGroup]
 var following_pikmin := {
 	RedPikmin: [],
 	YellowPikmin: [],
@@ -91,4 +95,5 @@ func remove_pikmin_from_following(num: int, color: int):
 	for i in remove_count:
 		var pikmin = pikmin_list.pop_front()
 		if is_instance_valid(pikmin):
+			pikmin.pikmin_dead.emit()
 			pikmin.queue_free()
