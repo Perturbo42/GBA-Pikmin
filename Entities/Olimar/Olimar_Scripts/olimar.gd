@@ -77,7 +77,7 @@ func throw():
 func next_type():
 	curr_type_index = (curr_type_index + 1) % pikmin_types.size()
 	curr_type = pikmin_types[curr_type_index]
-	print(curr_type)
+
 
 func prev_type():
 	curr_type_index = (curr_type_index - 1 + pikmin_types.size()) % pikmin_types.size()
