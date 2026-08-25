@@ -25,7 +25,7 @@ func enter():
 	collider_box.set_deferred("disabled", true)
 	hitbox.monitoring = true
 	hurtbox.monitoring = false
-	whistle_detection.monitoring = false
+	whistle_detection.monitorable = false
 
 func update(delta: float):
 	elapsed += delta
@@ -51,4 +51,4 @@ func exit():
 	collider_box.set_deferred("disabled", false)
 	hitbox.set_deferred("monitoring", false)
 	hurtbox.set_deferred("monitoring", true)
-	whistle_detection.set_deferred("monitoring", true)
+	whistle_detection.set_deferred("monitorable", true)

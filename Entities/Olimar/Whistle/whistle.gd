@@ -14,7 +14,9 @@ func _process(_delta: float) -> void:
 func activate():
 	whistle_area_sprite.visible = true
 	whistle_area_2d.is_active = true
+	whistle_area_2d.set_deferred("monitoring", true)
 
 func deactivate():
 	whistle_area_sprite.visible = false
 	whistle_area_2d.is_active = false
+	whistle_area_2d.set_deferred("monitoring", false)
