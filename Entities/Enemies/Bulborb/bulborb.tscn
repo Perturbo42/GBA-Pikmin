@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://bysu2hry8aflv" path="res://Entities/Enemies/Enemy Component/Enemy Boxes/enemy_hurtbox.tscn" id="15_t12d7"]
 [ext_resource type="PackedScene" uid="uid://di8l7mf6x8otk" path="res://Entities/Entity Component/Direction Component/direction_component.tscn" id="16_1ak32"]
 [ext_resource type="PackedScene" uid="uid://bsrnflrw56qfg" path="res://Entities/Entity Component/Group/group.tscn" id="17_t12d7"]
+[ext_resource type="PackedScene" uid="uid://duxcu3fec1sc6" path="res://Entities/Enemies/Enemy Component/Enemy Boxes/corpse_area.tscn" id="18_lrnd2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qgddc"]
 size = Vector2(32, 15)
@@ -32,6 +33,10 @@ size = Vector2(40, 64)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4gbpf"]
 radius = 18.0
+height = 56.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hvycc"]
+radius = 7.0
 height = 56.0
 
 [node name="Bulborb" type="CharacterBody2D" unique_id=403101695 node_paths=PackedStringArray("state_machine", "detection_area") groups=["Enemy"]]
@@ -100,27 +105,26 @@ close_to_home = 40.0
 [node name="Dead" type="Node2D" parent="Bulborb State Machine" unique_id=1456021805 node_paths=PackedStringArray("corpse_comp", "carrying_group")]
 script = ExtResource("8_s047f")
 corpse_comp = NodePath("CorpseComponent")
-carrying_group = NodePath("CarryingPikminGroup")
+carrying_group = NodePath("../../Corpse Area/CarryingPikminGroup")
 
-[node name="CorpseComponent" parent="Bulborb State Machine/Dead" unique_id=355602527 node_paths=PackedStringArray("enemy", "collision_box", "hurtbox", "alive_sprite", "dead_sprite", "attached_group") instance=ExtResource("11_f2ohq")]
+[node name="CorpseComponent" parent="Bulborb State Machine/Dead" unique_id=355602527 node_paths=PackedStringArray("enemy", "collision_box", "hurtbox", "corpse_area", "alive_sprite", "dead_sprite", "attached_group") instance=ExtResource("11_f2ohq")]
 enemy = NodePath("../../..")
 collision_box = NodePath("../../../Collision Box")
 hurtbox = NodePath("../../../Enemy Hurtbox")
+corpse_area = NodePath("../../../Corpse Area")
 alive_sprite = NodePath("../../../AliveSprite")
 dead_sprite = NodePath("../../../DeadSprite")
 attached_group = NodePath("../../../Components/PikminAttachedGroup")
 weight = 10
 
-[node name="CarryingPikminGroup" parent="Bulborb State Machine/Dead" unique_id=1101238150 instance=ExtResource("17_t12d7")]
-
 [node name="AliveSprite" type="Sprite2D" parent="." unique_id=90615088]
+visible = false
 texture_filter = 1
 texture_repeat = 1
 position = Vector2(0, -25)
 texture = ExtResource("1_j5bbe")
 
 [node name="DeadSprite" type="Sprite2D" parent="." unique_id=1115767002]
-visible = false
 texture_filter = 1
 texture_repeat = 1
 position = Vector2(0, -17)
@@ -168,6 +172,17 @@ position = Vector2(0, -26)
 rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_4gbpf")
 debug_color = Color(0, 0, 1, 0.41960785)
+
+[node name="Corpse Area" parent="." unique_id=928789606 instance=ExtResource("18_lrnd2")]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Corpse Area" unique_id=2108195232]
+position = Vector2(0, -7)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_hvycc")
+debug_color = Color(0, 0, 1, 0.41960785)
+
+[node name="CarryingPikminGroup" parent="Corpse Area" unique_id=1101238150 instance=ExtResource("17_t12d7")]
 
 [node name="Components" type="Node" parent="." unique_id=1258760364]
 

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://duxcu3fec1sc6"]
+
+[ext_resource type="Script" uid="uid://sdr80g3t82pd" path="res://Entities/Enemies/Enemy Component/Enemy Boxes/corpse_area.gd" id="1_mkxbd"]
+
+[node name="Corpse Area" type="Area2D" unique_id=928789606]
+collision_layer = 512
+collision_mask = 2
+script = ExtResource("1_mkxbd")

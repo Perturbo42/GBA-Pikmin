@@ -96,6 +96,7 @@ Space={
 2d_physics/layer_7="Enemy's Player Detection"
 2d_physics/layer_8="Hitbox"
 2d_physics/layer_9="Hurtbox"
+2d_physics/layer_10="Corpse"
 
 [physics]
 
