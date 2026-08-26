@@ -5,6 +5,8 @@ class_name PikminHitbox extends Area2D
 @export var thrown_state: State
 @export var attached_state: State
 
+var attached_hurtbox: Area2D
+
 func _ready() -> void:
 	set_deferred("monitoring", false)
 
@@ -13,7 +15,7 @@ func _on_area_entered(area: Area2D) -> void:
 		return
 	
 	if area is EnemyHurtbox:
-		pikmin.attached_hurtbox = area
+		attached_hurtbox = area
 		PikminRegistry.add_pikmin_to_group(pikmin, area.group)
 		state_machine.change_state(attached_state.name)
 	pass # Replace with function body.

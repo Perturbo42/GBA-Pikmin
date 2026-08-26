@@ -1,5 +1,4 @@
 class_name PikminGroup extends Node
-
 var pikmin_arr: Array[Pikmin] = []
 
 func add_pikmin(p: Pikmin):

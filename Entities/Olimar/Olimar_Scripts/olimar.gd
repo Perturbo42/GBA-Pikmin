@@ -84,6 +84,7 @@ func prev_type():
 	curr_type = pikmin_types[curr_type_index]
 
 func remove_pikmin_from_following(num: int, color: int):
+	##unintuitive function name, this is only really handled by the onion handler
 	if num <= 0:
 		return 0
 

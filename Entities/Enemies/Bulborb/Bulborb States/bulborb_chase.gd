@@ -1,5 +1,4 @@
 class_name BulborbChase extends BulborbState
-@onready var sprite: Sprite2D = $"../../Sprite2D"
 @onready var timer: Timer = $"Find New Chase Target"
 
 @export_category("External Properties")

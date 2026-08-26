@@ -13,7 +13,9 @@
 [ext_resource type="Script" uid="uid://c4x023pb6juq0" path="res://Entities/Enemies/Bulborb/Bulborb States/bulborb_dead.gd" id="8_s047f"]
 [ext_resource type="PackedScene" uid="uid://cr7pymodxtqj3" path="res://Entities/Enemies/Enemy Component/Return Home Component/return_home_component.tscn" id="10_1ak32"]
 [ext_resource type="PackedScene" uid="uid://cmie4gyd3k5b5" path="res://Entities/Enemies/Enemy Component/Enemy Detection Area/enemy_detection_area.tscn" id="10_ynoc2"]
+[ext_resource type="PackedScene" uid="uid://d3q81ursf1w4a" path="res://Entities/Enemies/Enemy Component/Corpse Component/corpse_component.tscn" id="11_f2ohq"]
 [ext_resource type="PackedScene" uid="uid://c07y70hdmkhcc" path="res://Entities/Enemies/Enemy Component/Enemy Boxes/enemy_hitbox.tscn" id="14_1ak32"]
+[ext_resource type="Texture2D" uid="uid://ccto58o61vwhs" path="res://Entities/Enemies/Bulborb/Bulborb_Dead.png" id="14_lrnd2"]
 [ext_resource type="PackedScene" uid="uid://bysu2hry8aflv" path="res://Entities/Enemies/Enemy Component/Enemy Boxes/enemy_hurtbox.tscn" id="15_t12d7"]
 [ext_resource type="PackedScene" uid="uid://di8l7mf6x8otk" path="res://Entities/Entity Component/Direction Component/direction_component.tscn" id="16_1ak32"]
 [ext_resource type="PackedScene" uid="uid://bsrnflrw56qfg" path="res://Entities/Entity Component/Group/group.tscn" id="17_t12d7"]
@@ -95,14 +97,34 @@ state_machine = NodePath("../..")
 idle_state = NodePath("../../Idle")
 close_to_home = 40.0
 
-[node name="Dead" type="Node2D" parent="Bulborb State Machine" unique_id=1456021805]
+[node name="Dead" type="Node2D" parent="Bulborb State Machine" unique_id=1456021805 node_paths=PackedStringArray("corpse_comp", "carrying_group")]
 script = ExtResource("8_s047f")
+corpse_comp = NodePath("CorpseComponent")
+carrying_group = NodePath("CarryingPikminGroup")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=90615088]
+[node name="CorpseComponent" parent="Bulborb State Machine/Dead" unique_id=355602527 node_paths=PackedStringArray("enemy", "collision_box", "hurtbox", "alive_sprite", "dead_sprite", "attached_group") instance=ExtResource("11_f2ohq")]
+enemy = NodePath("../../..")
+collision_box = NodePath("../../../Collision Box")
+hurtbox = NodePath("../../../Enemy Hurtbox")
+alive_sprite = NodePath("../../../AliveSprite")
+dead_sprite = NodePath("../../../DeadSprite")
+attached_group = NodePath("../../../Components/PikminAttachedGroup")
+weight = 10
+
+[node name="CarryingPikminGroup" parent="Bulborb State Machine/Dead" unique_id=1101238150 instance=ExtResource("17_t12d7")]
+
+[node name="AliveSprite" type="Sprite2D" parent="." unique_id=90615088]
 texture_filter = 1
 texture_repeat = 1
 position = Vector2(0, -25)
 texture = ExtResource("1_j5bbe")
+
+[node name="DeadSprite" type="Sprite2D" parent="." unique_id=1115767002]
+visible = false
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(0, -17)
+texture = ExtResource("14_lrnd2")
 
 [node name="Collision Box" type="CollisionShape2D" parent="." unique_id=2090667962]
 shape = SubResource("RectangleShape2D_qgddc")
@@ -138,7 +160,7 @@ unique_name_in_owner = true
 enemy = NodePath("..")
 state_machine = NodePath("../Bulborb State Machine")
 dead_state = NodePath("../Bulborb State Machine/Dead")
-group = NodePath("../Components/Group")
+group = NodePath("../Components/PikminAttachedGroup")
 health = 1000
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy Hurtbox" unique_id=784684469]
@@ -154,9 +176,9 @@ enemy = NodePath("../..")
 
 [node name="DirectionComponent" parent="Components" unique_id=2083099918 node_paths=PackedStringArray("body", "sprite") instance=ExtResource("16_1ak32")]
 body = NodePath("../..")
-sprite = NodePath("../../Sprite2D")
+sprite = NodePath("../../AliveSprite")
 
-[node name="Group" parent="Components" unique_id=1101238150 instance=ExtResource("17_t12d7")]
+[node name="PikminAttachedGroup" parent="Components" unique_id=353078869 instance=ExtResource("17_t12d7")]
 
 [connection signal="body_entered" from="EnemyDetectionArea" to="EnemyDetectionArea" method="_on_body_entered"]
 [connection signal="body_exited" from="EnemyDetectionArea" to="EnemyDetectionArea" method="_on_body_exited"]

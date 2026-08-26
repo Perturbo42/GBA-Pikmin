@@ -40,4 +40,18 @@ func pikmin_dies(pikmin: Pikmin):
 	memberships.erase(pikmin)
 	all_pikmin.erase(pikmin)
 	pikmin.queue_free()
+
+func remove_all_from_group(group: PikminGroup):
+	if not is_instance_valid(group):
+		return
 	
+	for pikmin in group.pikmin_arr.duplicate():
+		remove_pikmin_from_group(pikmin, group)
+
+func does_group_contain_pikmin(pikmin: Pikmin, group: PikminGroup) -> bool:
+	if not is_instance_valid(pikmin):
+		return false
+	if not is_instance_valid(group):
+		return false
+	
+	return group.pikmin_arr.has(pikmin)
