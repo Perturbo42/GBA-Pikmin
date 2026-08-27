@@ -1,5 +1,5 @@
 class_name PikminFollow extends PikminState
-@export var dir_comp: DirectionComponent
+@export var velocity_comp: PikminVelocityComponent
 
 func enter():
 	pass
@@ -7,17 +7,10 @@ func enter():
 func update(_delta: float):
 	pass
 
-func physics_update(_delta: float):
+func physics_update(delta: float):
 	var target = Global.olimar.marker_gather.global_position
 	
-	if pikmin.global_position.distance_to(target) > 5:
-		var dir = pikmin.global_position.direction_to(target)
-		pikmin.velocity = dir * pikmin.speed
-	else:
-		pikmin.velocity = Vector2.ZERO
-	
-	pikmin.move_and_slide()
-	dir_comp.check_dir()
+	velocity_comp.move_to_target(delta, target, 5)
 	pass
 
 func exit():

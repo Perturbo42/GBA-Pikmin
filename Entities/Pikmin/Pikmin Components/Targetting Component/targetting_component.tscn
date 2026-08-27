@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dtjwcuhsng6cc"]
+
+[ext_resource type="Script" uid="uid://c1n7y0p4hydw0" path="res://Entities/Pikmin/Pikmin Components/Targetting Component/targetting_component.gd" id="1_waefr"]
+
+[node name="Targetting Component" type="Node" unique_id=721423552]
+script = ExtResource("1_waefr")

@@ -97,6 +97,8 @@ Space={
 2d_physics/layer_8="Hitbox"
 2d_physics/layer_9="Hurtbox"
 2d_physics/layer_10="Corpse"
+2d_physics/layer_11="Corpse Detection"
+2d_physics/layer_12="Whistle Detection"
 
 [physics]
 

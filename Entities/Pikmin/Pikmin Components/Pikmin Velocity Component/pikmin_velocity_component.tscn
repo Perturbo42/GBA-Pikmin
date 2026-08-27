@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bsokqmkdjsir"]
+
+[ext_resource type="Script" uid="uid://cijqnbs1h4diu" path="res://Entities/Pikmin/Pikmin Components/Pikmin Velocity Component/pikmin_velocity_component.gd" id="1_71f2l"]
+
+[node name="Velocity Component" type="Node" unique_id=1232098163]
+script = ExtResource("1_71f2l")

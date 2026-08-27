@@ -101,30 +101,21 @@ enemy = NodePath("../../..")
 state_machine = NodePath("../..")
 idle_state = NodePath("../../Idle")
 close_to_home = 40.0
+decel_speed = 1000.0
 
 [node name="Dead" type="Node2D" parent="Bulborb State Machine" unique_id=1456021805 node_paths=PackedStringArray("corpse_comp", "carrying_group")]
 script = ExtResource("8_s047f")
-corpse_comp = NodePath("CorpseComponent")
+corpse_comp = NodePath("../../Components/CorpseComponent")
 carrying_group = NodePath("../../Corpse Area/CarryingPikminGroup")
 
-[node name="CorpseComponent" parent="Bulborb State Machine/Dead" unique_id=355602527 node_paths=PackedStringArray("enemy", "collision_box", "hurtbox", "corpse_area", "alive_sprite", "dead_sprite", "attached_group") instance=ExtResource("11_f2ohq")]
-enemy = NodePath("../../..")
-collision_box = NodePath("../../../Collision Box")
-hurtbox = NodePath("../../../Enemy Hurtbox")
-corpse_area = NodePath("../../../Corpse Area")
-alive_sprite = NodePath("../../../AliveSprite")
-dead_sprite = NodePath("../../../DeadSprite")
-attached_group = NodePath("../../../Components/PikminAttachedGroup")
-weight = 10
-
 [node name="AliveSprite" type="Sprite2D" parent="." unique_id=90615088]
-visible = false
 texture_filter = 1
 texture_repeat = 1
 position = Vector2(0, -25)
 texture = ExtResource("1_j5bbe")
 
 [node name="DeadSprite" type="Sprite2D" parent="." unique_id=1115767002]
+visible = false
 texture_filter = 1
 texture_repeat = 1
 position = Vector2(0, -17)
@@ -173,8 +164,9 @@ rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_4gbpf")
 debug_color = Color(0, 0, 1, 0.41960785)
 
-[node name="Corpse Area" parent="." unique_id=928789606 instance=ExtResource("18_lrnd2")]
-monitorable = false
+[node name="Corpse Area" parent="." unique_id=928789606 node_paths=PackedStringArray("enemy", "corpse_component") instance=ExtResource("18_lrnd2")]
+enemy = NodePath("..")
+corpse_component = NodePath("../Components/CorpseComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Corpse Area" unique_id=2108195232]
 position = Vector2(0, -7)
@@ -194,6 +186,16 @@ body = NodePath("../..")
 sprite = NodePath("../../AliveSprite")
 
 [node name="PikminAttachedGroup" parent="Components" unique_id=353078869 instance=ExtResource("17_t12d7")]
+
+[node name="CorpseComponent" parent="Components" unique_id=355602527 node_paths=PackedStringArray("enemy", "collision_box", "hurtbox", "corpse_area", "alive_sprite", "dead_sprite", "attached_group") instance=ExtResource("11_f2ohq")]
+enemy = NodePath("../..")
+collision_box = NodePath("../../Collision Box")
+hurtbox = NodePath("../../Enemy Hurtbox")
+corpse_area = NodePath("../../Corpse Area")
+alive_sprite = NodePath("../../AliveSprite")
+dead_sprite = NodePath("../../DeadSprite")
+attached_group = NodePath("../PikminAttachedGroup")
+weight = 10
 
 [connection signal="body_entered" from="EnemyDetectionArea" to="EnemyDetectionArea" method="_on_body_entered"]
 [connection signal="body_exited" from="EnemyDetectionArea" to="EnemyDetectionArea" method="_on_body_exited"]

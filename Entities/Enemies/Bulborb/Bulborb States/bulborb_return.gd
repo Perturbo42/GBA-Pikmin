@@ -7,8 +7,8 @@ func enter():
 func update(_delta: float):
 	pass
 
-func physics_update(_delta: float):
-	return_home_component.return_home()
+func physics_update(delta: float):
+	return_home_component.return_home(delta)
 	dir_comp.check_dir()
 	pass
 

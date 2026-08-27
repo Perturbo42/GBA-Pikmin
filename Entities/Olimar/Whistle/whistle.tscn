@@ -17,7 +17,7 @@ script = ExtResource("1_326yv")
 
 [node name="Whistle Area2D" type="Area2D" parent="Whistle Area" unique_id=690116694]
 collision_layer = 16
-collision_mask = 2
+collision_mask = 2048
 script = ExtResource("2_a8buc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Whistle Area/Whistle Area2D" unique_id=702269391]

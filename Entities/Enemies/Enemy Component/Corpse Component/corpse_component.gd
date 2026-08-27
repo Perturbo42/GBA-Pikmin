@@ -23,7 +23,7 @@ func activate():
 	if hurtbox:
 		hurtbox.set_deferred("monitorable", false)
 	if corpse_area:
-		corpse_area.set_deferred("monitorable", true)
+		corpse_area.can_be_detected = true
 	if alive_sprite:
 		alive_sprite.visible = false
 	if dead_sprite:

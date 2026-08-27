@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dkaqqdhdddprl"]
+
+[ext_resource type="Script" uid="uid://cgdsssjqonfwi" path="res://Entities/Pikmin/Pikmin Components/Pikmin Box/whistle_detection.gd" id="1_66ywn"]
+
+[node name="WhistleDetection" type="Area2D" unique_id=164895297]
+collision_layer = 2
+collision_mask = 16
+script = ExtResource("1_66ywn")

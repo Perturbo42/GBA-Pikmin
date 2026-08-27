@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cu5t3vdi56pkc"]
+
+[ext_resource type="Script" uid="uid://cbatygk8p1wku" path="res://Entities/Pikmin/Pikmin Components/Pikmin Box/corpse_detection.gd" id="1_mofwb"]
+
+[node name="CorpseDetection" type="Area2D" unique_id=1121993671]
+collision_layer = 1024
+collision_mask = 512
+script = ExtResource("1_mofwb")
