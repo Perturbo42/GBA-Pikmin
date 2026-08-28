@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cu5t3vdi56pkc" path="res://Entities/Pikmin/Pikmin Components/Pikmin Box/corpse_detection.tscn" id="12_7grc6"]
 [ext_resource type="PackedScene" uid="uid://dtjwcuhsng6cc" path="res://Entities/Pikmin/Pikmin Components/Targetting Component/targetting_component.tscn" id="15_brmkq"]
 [ext_resource type="PackedScene" uid="uid://bsokqmkdjsir" path="res://Entities/Pikmin/Pikmin Components/Pikmin Velocity Component/pikmin_velocity_component.tscn" id="16_gkn3n"]
+[ext_resource type="PackedScene" uid="uid://jfs3e7iqmtyh" path="res://Entities/Pikmin/Pikmin Components/Carrying Component/carrying_component.tscn" id="17_q6kae"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vnup6"]
 size = Vector2(8, 10)
@@ -59,8 +60,9 @@ script = ExtResource("5_7grc6")
 targetting_component = NodePath("../../Components/Targetting Component")
 velocity_component = NodePath("../../Components/Velocity Component")
 
-[node name="Carry" type="Node2D" parent="Pikmin State Machine" unique_id=1494080329]
+[node name="Carry" type="Node2D" parent="Pikmin State Machine" unique_id=1494080329 node_paths=PackedStringArray("carrying_component")]
 script = ExtResource("5_yhj16")
+carrying_component = NodePath("../../Components/Carrying Component")
 
 [node name="Thrown" type="Node2D" parent="Pikmin State Machine" unique_id=24837924]
 script = ExtResource("6_wcivg")
@@ -117,11 +119,12 @@ position = Vector2(0, -8)
 scale = Vector2(0.5, 1)
 shape = SubResource("RectangleShape2D_qgddc")
 
-[node name="CorpseDetection" parent="." unique_id=1121993671 node_paths=PackedStringArray("pikmin", "state_machine", "moving_state", "targetting_component") instance=ExtResource("12_7grc6")]
+[node name="CorpseDetection" parent="." unique_id=1121993671 node_paths=PackedStringArray("pikmin", "state_machine", "moving_state", "targetting_component", "carrying_component") instance=ExtResource("12_7grc6")]
 pikmin = NodePath("..")
 state_machine = NodePath("../Pikmin State Machine")
 moving_state = NodePath("../Pikmin State Machine/Moving")
 targetting_component = NodePath("../Components/Targetting Component")
+carrying_component = NodePath("../Components/Carrying Component")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CorpseDetection" unique_id=1349657824]
 shape = SubResource("CircleShape2D_4gbpf")
@@ -142,5 +145,8 @@ pikmin = NodePath("../..")
 dir_comp = NodePath("../Direction Component")
 accel_speed = 1500.0
 decel_speed = 2000.0
+
+[node name="Carrying Component" parent="Components" unique_id=1670449051 node_paths=PackedStringArray("pikmin") instance=ExtResource("17_q6kae")]
+pikmin = NodePath("../..")
 
 [connection signal="area_entered" from="Pikmin Hitbox" to="Pikmin Hitbox" method="_on_area_entered"]

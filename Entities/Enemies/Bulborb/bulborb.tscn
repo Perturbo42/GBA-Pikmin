@@ -164,9 +164,91 @@ rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_4gbpf")
 debug_color = Color(0, 0, 1, 0.41960785)
 
-[node name="Corpse Area" parent="." unique_id=928789606 node_paths=PackedStringArray("enemy", "corpse_component") instance=ExtResource("18_lrnd2")]
+[node name="Corpse Area" parent="." unique_id=928789606 node_paths=PackedStringArray("enemy", "corpse_component", "group", "slots1", "slots2") instance=ExtResource("18_lrnd2")]
 enemy = NodePath("..")
 corpse_component = NodePath("../Components/CorpseComponent")
+group = NodePath("CarryingPikminGroup")
+slots1 = NodePath("PikminSlots1")
+slots2 = NodePath("PikminSlots2")
+
+[node name="Marker2D" type="Marker2D" parent="Corpse Area/PikminSlots1" parent_id_path=PackedInt32Array(928789606, 358732772) index="0" unique_id=1689737632]
+position = Vector2(0, -14)
+gizmo_extents = 0.0
+
+[node name="Marker2D2" type="Marker2D" parent="Corpse Area/PikminSlots1" parent_id_path=PackedInt32Array(928789606, 358732772) index="1" unique_id=300730065]
+position = Vector2(10, -14)
+gizmo_extents = 0.0
+
+[node name="Marker2D3" type="Marker2D" parent="Corpse Area/PikminSlots1" parent_id_path=PackedInt32Array(928789606, 358732772) index="2" unique_id=120725886]
+position = Vector2(26, -11)
+gizmo_extents = 0.0
+
+[node name="Marker2D4" type="Marker2D" parent="Corpse Area/PikminSlots1" parent_id_path=PackedInt32Array(928789606, 358732772) index="3" unique_id=625072626]
+position = Vector2(26, -3)
+gizmo_extents = 0.0
+
+[node name="Marker2D5" type="Marker2D" parent="Corpse Area/PikminSlots1" parent_id_path=PackedInt32Array(928789606, 358732772) index="4" unique_id=913078917]
+position = Vector2(10, 0)
+gizmo_extents = 0.0
+
+[node name="Marker2D6" type="Marker2D" parent="Corpse Area/PikminSlots1" parent_id_path=PackedInt32Array(928789606, 358732772) index="5" unique_id=121270759]
+gizmo_extents = 0.0
+
+[node name="Marker2D7" type="Marker2D" parent="Corpse Area/PikminSlots1" parent_id_path=PackedInt32Array(928789606, 358732772) index="6" unique_id=1122991738]
+position = Vector2(-10, 0)
+gizmo_extents = 0.0
+
+[node name="Marker2D8" type="Marker2D" parent="Corpse Area/PikminSlots1" parent_id_path=PackedInt32Array(928789606, 358732772) index="7" unique_id=1756319623]
+position = Vector2(-26, -3)
+gizmo_extents = 0.0
+
+[node name="Marker2D9" type="Marker2D" parent="Corpse Area/PikminSlots1" parent_id_path=PackedInt32Array(928789606, 358732772) index="8" unique_id=1716493562]
+position = Vector2(-26, -11)
+gizmo_extents = 0.0
+
+[node name="Marker2D10" type="Marker2D" parent="Corpse Area/PikminSlots1" parent_id_path=PackedInt32Array(928789606, 358732772) index="9" unique_id=184778487]
+position = Vector2(-10, -14)
+gizmo_extents = 0.0
+
+[node name="Marker2D" type="Marker2D" parent="Corpse Area/PikminSlots2" parent_id_path=PackedInt32Array(928789606, 1186606230) index="0" unique_id=176727022]
+position = Vector2(5, -14)
+gizmo_extents = 0.0
+
+[node name="Marker2D2" type="Marker2D" parent="Corpse Area/PikminSlots2" parent_id_path=PackedInt32Array(928789606, 1186606230) index="1" unique_id=1620619211]
+position = Vector2(16, -14)
+gizmo_extents = 0.0
+
+[node name="Marker2D3" type="Marker2D" parent="Corpse Area/PikminSlots2" parent_id_path=PackedInt32Array(928789606, 1186606230) index="2" unique_id=140555083]
+position = Vector2(28, -7)
+gizmo_extents = 0.0
+
+[node name="Marker2D4" type="Marker2D" parent="Corpse Area/PikminSlots2" parent_id_path=PackedInt32Array(928789606, 1186606230) index="3" unique_id=1800456493]
+position = Vector2(16, 0)
+gizmo_extents = 0.0
+
+[node name="Marker2D5" type="Marker2D" parent="Corpse Area/PikminSlots2" parent_id_path=PackedInt32Array(928789606, 1186606230) index="4" unique_id=430430748]
+position = Vector2(5, 0)
+gizmo_extents = 0.0
+
+[node name="Marker2D6" type="Marker2D" parent="Corpse Area/PikminSlots2" parent_id_path=PackedInt32Array(928789606, 1186606230) index="5" unique_id=101649300]
+position = Vector2(-5, 0)
+gizmo_extents = 0.0
+
+[node name="Marker2D7" type="Marker2D" parent="Corpse Area/PikminSlots2" parent_id_path=PackedInt32Array(928789606, 1186606230) index="6" unique_id=528295121]
+position = Vector2(-16, 0)
+gizmo_extents = 0.0
+
+[node name="Marker2D8" type="Marker2D" parent="Corpse Area/PikminSlots2" parent_id_path=PackedInt32Array(928789606, 1186606230) index="7" unique_id=1415347861]
+position = Vector2(-28, -7)
+gizmo_extents = 0.0
+
+[node name="Marker2D9" type="Marker2D" parent="Corpse Area/PikminSlots2" parent_id_path=PackedInt32Array(928789606, 1186606230) index="8" unique_id=1475954997]
+position = Vector2(-16, -14)
+gizmo_extents = 0.0
+
+[node name="Marker2D10" type="Marker2D" parent="Corpse Area/PikminSlots2" parent_id_path=PackedInt32Array(928789606, 1186606230) index="9" unique_id=2104742446]
+position = Vector2(-5, -14)
+gizmo_extents = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Corpse Area" unique_id=2108195232]
 position = Vector2(0, -7)
@@ -199,3 +281,5 @@ weight = 10
 
 [connection signal="body_entered" from="EnemyDetectionArea" to="EnemyDetectionArea" method="_on_body_entered"]
 [connection signal="body_exited" from="EnemyDetectionArea" to="EnemyDetectionArea" method="_on_body_exited"]
+
+[editable path="Corpse Area"]

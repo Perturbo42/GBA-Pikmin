@@ -6,3 +6,7 @@
 collision_layer = 512
 collision_mask = 1024
 script = ExtResource("1_mkxbd")
+
+[node name="PikminSlots1" type="Node2D" parent="." unique_id=358732772]
+
+[node name="PikminSlots2" type="Node2D" parent="." unique_id=1186606230]

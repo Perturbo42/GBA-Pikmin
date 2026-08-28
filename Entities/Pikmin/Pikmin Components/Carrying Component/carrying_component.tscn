@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://jfs3e7iqmtyh"]
+
+[ext_resource type="Script" uid="uid://dhcabdbjh4edr" path="res://Entities/Pikmin/Pikmin Components/Carrying Component/carrying_component.gd" id="1_gxisk"]
+
+[node name="Carrying Component" type="Node" unique_id=1670449051]
+script = ExtResource("1_gxisk")
