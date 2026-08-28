@@ -31,10 +31,11 @@ func sort_pikmin():
 	num_of_slots_filled = num
 
 func has_empty_slots() -> bool:
-	if num_of_slots_filled < corpse_component.max_weight:
-		return true
-	else:
-		return false
+	return group.pikmin_arr.size() < corpse_component.max_weight
+
+func has_pikmin(pikmin: Pikmin) -> bool:
+	return pikmin_dict.has(pikmin)
+
 
 func return_position(pikmin: Pikmin) -> Vector2:
 	return pikmin_dict[pikmin].global_position

@@ -3,6 +3,8 @@ class_name PikminCarry extends PikminState
 
 func enter():
 	carrying_component.attach_to_current_thing()
+	if !carrying_component.is_attached_to_thing():
+		finished.emit(IDLE)
 	pass
 
 func update(_delta: float):
