@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c5kfv85glrjqg" path="res://Entities/Onion/onion.tscn" id="3_714wa"]
 [ext_resource type="PackedScene" uid="uid://kbjiailqfskx" path="res://Entities/Pikmin/Red Pikmin/red_pikmin.tscn" id="4_gp5v8"]
 [ext_resource type="Resource" uid="uid://bmvrb761g2nm2" path="res://Entities/Enemies/Enemy Spawner/Enemy Definition/Bulborb.tres" id="4_vxhsm"]
+[ext_resource type="PackedScene" uid="uid://d2d0jpfs1sohe" path="res://Misc/Pathfinding/Waypoints/waypoint.tscn" id="7_sa5ll"]
 
 [node name="Level_1" type="Node2D" unique_id=685333651]
 y_sort_enabled = true
@@ -43,3 +44,24 @@ position = Vector2(113, 75)
 onion_color = 1
 pikmin_to_handle = ExtResource("4_gp5v8")
 pikmin_count = 21
+
+[node name="Waypoints" type="Node2D" parent="." unique_id=1013979081]
+
+[node name="Waypoint" parent="Waypoints" unique_id=1132570465 instance=ExtResource("7_sa5ll")]
+position = Vector2(113, 63)
+
+[node name="Waypoint2" parent="Waypoints" unique_id=1476793950 node_paths=PackedStringArray("connections") instance=ExtResource("7_sa5ll")]
+position = Vector2(116, 146)
+connections = [NodePath("../Waypoint")]
+
+[node name="Waypoint3" parent="Waypoints" unique_id=1610560473 node_paths=PackedStringArray("connections") instance=ExtResource("7_sa5ll")]
+position = Vector2(114, -37)
+connections = [NodePath("../Waypoint")]
+
+[node name="Waypoint4" parent="Waypoints" unique_id=2099796091 node_paths=PackedStringArray("connections") instance=ExtResource("7_sa5ll")]
+position = Vector2(-5, 63)
+connections = [NodePath("../Waypoint")]
+
+[node name="Waypoint5" parent="Waypoints" unique_id=1493335599 node_paths=PackedStringArray("connections") instance=ExtResource("7_sa5ll")]
+position = Vector2(-164, 66)
+connections = [NodePath("../Waypoint4")]

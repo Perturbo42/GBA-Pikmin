@@ -35,6 +35,7 @@ func _ready() -> void:
 		BluePikmin: blue
 	}
 
+
 func _input(event: InputEvent) -> void:
 	if not following_pikmin[curr_type].pikmin_arr.is_empty():
 		if event.is_action_pressed("MouseUp"):

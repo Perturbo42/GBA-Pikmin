@@ -31,6 +31,4 @@ func activate():
 	if attached_group:
 		PikminRegistry.remove_all_from_group(attached_group)
 	
-	
 	max_weight = min(weight * 2, 100)
-	

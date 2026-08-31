@@ -66,4 +66,4 @@ func deferred_load_level(level: PackedScene):
 
 func handler_register(level: BaseLevel):
 	onion_handler.register_level(level)
-	
+	WaypointHandler.register_level(level)
