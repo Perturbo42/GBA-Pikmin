@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://brifvsi0md8se"]
+
+[ext_resource type="Script" uid="uid://bhmklu7npx8r4" path="res://Entities/Enemies/Enemy Component/Corpse Moving Component/corpse_moving_component.gd" id="1_pmko2"]
+
+[node name="CorpseMovingComponent" type="Node" unique_id=765586366]
+script = ExtResource("1_pmko2")

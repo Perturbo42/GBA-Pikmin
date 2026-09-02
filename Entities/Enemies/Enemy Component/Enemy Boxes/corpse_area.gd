@@ -1,6 +1,7 @@
 class_name CorpseArea extends Area2D
 @export var enemy: Enemy
 @export var corpse_component: CorpseComponent
+@export var corpse_moving_comp: CorpseMovingComponent
 @export var group: PikminGroup
 @export var slots1: Node2D
 @export var slots2: Node2D
@@ -21,14 +22,33 @@ func sort_pikmin():
 	var num = 0
 	for pikmin in group.pikmin_arr:
 		if num >= corpse_component.max_weight:
-			start_moving()
+			corpse_moving_comp.start_moving()
 			return
 		pikmin_dict[pikmin] = slots[num]
 		num += 1
 
-func start_moving():
-	## figure out how to make the corpse move
-	pass
+func find_destination() -> Waypoint:
+	var red_count: int = 0
+	var yellow_count: int = 0
+	var blue_count: int = 0
+	for pikmin in pikmin_dict:
+		if pikmin is RedPikmin:
+			red_count += 1
+		elif pikmin is YellowPikmin:
+			yellow_count += 1
+		elif pikmin is BluePikmin:
+			blue_count += 1
+	
+	var max_count = max(red_count, yellow_count, blue_count)
+	
+	if red_count == max_count:
+		return WaypointHandler.red_onion
+	elif yellow_count == max_count:
+		return WaypointHandler.yellow_onion
+	elif blue_count == max_count:
+		return WaypointHandler.blue_onion
+	else:
+		return WaypointHandler.ship
 
 func has_empty_slots() -> bool:
 	return group.pikmin_arr.size() < corpse_component.max_weight

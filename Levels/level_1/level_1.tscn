@@ -47,21 +47,33 @@ pikmin_count = 21
 
 [node name="Waypoints" type="Node2D" parent="." unique_id=1013979081]
 
-[node name="Waypoint" parent="Waypoints" unique_id=1132570465 instance=ExtResource("7_sa5ll")]
+[node name="Waypoint" parent="Waypoints" unique_id=1132570465 node_paths=PackedStringArray("connections") instance=ExtResource("7_sa5ll")]
+position = Vector2(-120, -29)
+connections = [NodePath("../Ship"), NodePath("../YellowOnion")]
+
+[node name="RedOnion" parent="Waypoints" unique_id=941394230 instance=ExtResource("7_sa5ll")]
 position = Vector2(113, 63)
 
 [node name="Waypoint2" parent="Waypoints" unique_id=1476793950 node_paths=PackedStringArray("connections") instance=ExtResource("7_sa5ll")]
 position = Vector2(116, 146)
-connections = [NodePath("../Waypoint")]
+connections = [NodePath("../RedOnion"), NodePath("../BlueOnion")]
 
 [node name="Waypoint3" parent="Waypoints" unique_id=1610560473 node_paths=PackedStringArray("connections") instance=ExtResource("7_sa5ll")]
 position = Vector2(114, -37)
-connections = [NodePath("../Waypoint")]
+connections = [NodePath("../RedOnion"), NodePath("../Ship")]
 
 [node name="Waypoint4" parent="Waypoints" unique_id=2099796091 node_paths=PackedStringArray("connections") instance=ExtResource("7_sa5ll")]
-position = Vector2(-5, 63)
-connections = [NodePath("../Waypoint")]
+position = Vector2(0, 63)
+connections = [NodePath("../RedOnion"), NodePath("../Ship"), NodePath("../YellowOnion"), NodePath("../BlueOnion")]
 
-[node name="Waypoint5" parent="Waypoints" unique_id=1493335599 node_paths=PackedStringArray("connections") instance=ExtResource("7_sa5ll")]
-position = Vector2(-164, 66)
-connections = [NodePath("../Waypoint4")]
+[node name="Ship" parent="Waypoints" unique_id=1327018533 instance=ExtResource("7_sa5ll")]
+
+[node name="YellowOnion" parent="Waypoints" unique_id=1696156209 instance=ExtResource("7_sa5ll")]
+position = Vector2(-97, 66)
+
+[node name="BlueOnion" parent="Waypoints" unique_id=1836674878 instance=ExtResource("7_sa5ll")]
+position = Vector2(0, 145)
+
+[node name="Waypoint6" parent="Waypoints" unique_id=633480591 node_paths=PackedStringArray("connections") instance=ExtResource("7_sa5ll")]
+position = Vector2(-122, 157)
+connections = [NodePath("../YellowOnion"), NodePath("../BlueOnion")]

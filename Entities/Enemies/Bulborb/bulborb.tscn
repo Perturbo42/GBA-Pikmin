@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://di8l7mf6x8otk" path="res://Entities/Entity Component/Direction Component/direction_component.tscn" id="16_1ak32"]
 [ext_resource type="PackedScene" uid="uid://bsrnflrw56qfg" path="res://Entities/Entity Component/Group/group.tscn" id="17_t12d7"]
 [ext_resource type="PackedScene" uid="uid://duxcu3fec1sc6" path="res://Entities/Enemies/Enemy Component/Enemy Boxes/corpse_area.tscn" id="18_lrnd2"]
+[ext_resource type="PackedScene" uid="uid://brifvsi0md8se" path="res://Entities/Enemies/Enemy Component/Corpse Moving Component/corpse_moving_component.tscn" id="21_4vnoy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qgddc"]
 size = Vector2(32, 15)
@@ -103,9 +104,10 @@ idle_state = NodePath("../../Idle")
 close_to_home = 40.0
 decel_speed = 1000.0
 
-[node name="Dead" type="Node2D" parent="Bulborb State Machine" unique_id=1456021805 node_paths=PackedStringArray("corpse_comp", "carrying_group")]
+[node name="Dead" type="Node2D" parent="Bulborb State Machine" unique_id=1456021805 node_paths=PackedStringArray("corpse_comp", "corpse_moving_comp", "carrying_group")]
 script = ExtResource("8_s047f")
 corpse_comp = NodePath("../../Components/CorpseComponent")
+corpse_moving_comp = NodePath("../../Components/CorpseMovingComponent")
 carrying_group = NodePath("../../Corpse Area/CarryingPikminGroup")
 
 [node name="AliveSprite" type="Sprite2D" parent="." unique_id=90615088]
@@ -164,9 +166,10 @@ rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_4gbpf")
 debug_color = Color(0, 0, 1, 0.41960785)
 
-[node name="Corpse Area" parent="." unique_id=928789606 node_paths=PackedStringArray("enemy", "corpse_component", "group", "slots1", "slots2") instance=ExtResource("18_lrnd2")]
+[node name="Corpse Area" parent="." unique_id=928789606 node_paths=PackedStringArray("enemy", "corpse_component", "corpse_moving_comp", "group", "slots1", "slots2") instance=ExtResource("18_lrnd2")]
 enemy = NodePath("..")
 corpse_component = NodePath("../Components/CorpseComponent")
+corpse_moving_comp = NodePath("../Components/CorpseMovingComponent")
 group = NodePath("CarryingPikminGroup")
 slots1 = NodePath("PikminSlots1")
 slots2 = NodePath("PikminSlots2")
@@ -238,6 +241,10 @@ alive_sprite = NodePath("../../AliveSprite")
 dead_sprite = NodePath("../../DeadSprite")
 attached_group = NodePath("../PikminAttachedGroup")
 weight = 5
+
+[node name="CorpseMovingComponent" parent="Components" unique_id=765586366 node_paths=PackedStringArray("enemy", "corpse_area") instance=ExtResource("21_4vnoy")]
+enemy = NodePath("../..")
+corpse_area = NodePath("../../Corpse Area")
 
 [connection signal="body_entered" from="EnemyDetectionArea" to="EnemyDetectionArea" method="_on_body_entered"]
 [connection signal="body_exited" from="EnemyDetectionArea" to="EnemyDetectionArea" method="_on_body_exited"]

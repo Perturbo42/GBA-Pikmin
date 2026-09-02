@@ -4,6 +4,12 @@ var waypoint_list: Array[Waypoint] = []
 var astar := AStar2D.new()
 var current_level: BaseLevel = null
 
+## Key Waypoints
+var red_onion: Waypoint
+var yellow_onion: Waypoint
+var blue_onion: Waypoint
+var ship: Waypoint
+
 func register_level(level: BaseLevel):
 	disconnect_current_level()
 	current_level = level
@@ -16,6 +22,10 @@ func register_waypoints(level: Node) -> void:
 	for point in waypoints.get_children():
 		if point is Waypoint:
 			waypoint_list.append(point)
+	red_onion = waypoints.find_child("RedOnion", false, true)
+	yellow_onion = waypoints.find_child("YellowOnion", false, true)
+	blue_onion = waypoints.find_child("BlueOnion", false, true)
+	ship = waypoints.find_child("Ship", false, true)
 
 func disconnect_current_level() -> void:
 	waypoint_list.clear()
