@@ -26,6 +26,11 @@ func sort_pikmin():
 			return
 		pikmin_dict[pikmin] = slots[num]
 		num += 1
+	
+	if num < corpse_component.max_weight:
+		corpse_moving_comp.stop_moving()
+	else:
+		corpse_moving_comp.start_moving()
 
 func find_destination() -> Waypoint:
 	var red_count: int = 0
@@ -49,6 +54,13 @@ func find_destination() -> Waypoint:
 		return WaypointHandler.blue_onion
 	else:
 		return WaypointHandler.ship
+
+func calculate_speed() -> float:
+	var sum: float = 0.0
+	for pikmin in pikmin_dict:
+		sum += pikmin.pikmin_carry_speed()
+	var velocity = (sum - corpse_component.weight + 1) / corpse_component.max_weight + 1
+	return velocity
 
 func has_empty_slots() -> bool:
 	return group.pikmin_arr.size() < corpse_component.max_weight

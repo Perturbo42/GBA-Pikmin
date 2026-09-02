@@ -14,9 +14,7 @@ func check_for_corpses():
 	
 	for area in get_overlapping_areas():
 		if area.can_be_detected:
-			print("corpse detected")
 			if area.has_empty_slots():
-				print("corpse has empty slots")
 				var dist = pikmin.global_position.distance_to(area.global_position)
 				if nearest_distance > dist:
 					nearest_distance = dist

@@ -2,11 +2,9 @@ class_name BulborbDead extends BulborbState
 @export var corpse_comp: CorpseComponent
 @export var corpse_moving_comp: CorpseMovingComponent
 @export var carrying_group: PikminGroup
-var is_being_carried: bool = false
 
 func enter():
 	bulborb.velocity = Vector2.ZERO
-	is_being_carried = false
 	corpse_comp.activate()
 	pass
 
