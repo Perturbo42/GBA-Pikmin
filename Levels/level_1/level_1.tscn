@@ -51,8 +51,9 @@ pikmin_count = 21
 position = Vector2(-120, -29)
 connections = [NodePath("../Ship"), NodePath("../YellowOnion")]
 
-[node name="RedOnion" parent="Waypoints" unique_id=941394230 instance=ExtResource("7_sa5ll")]
+[node name="RedOnion" parent="Waypoints" unique_id=941394230 node_paths=PackedStringArray("connections") instance=ExtResource("7_sa5ll")]
 position = Vector2(113, 63)
+connections = [NodePath("../Waypoint3"), NodePath("../Waypoint4"), NodePath("../Waypoint2")]
 
 [node name="Waypoint2" parent="Waypoints" unique_id=1476793950 node_paths=PackedStringArray("connections") instance=ExtResource("7_sa5ll")]
 position = Vector2(116, 146)
@@ -66,13 +67,16 @@ connections = [NodePath("../RedOnion"), NodePath("../Ship")]
 position = Vector2(0, 63)
 connections = [NodePath("../RedOnion"), NodePath("../Ship"), NodePath("../YellowOnion"), NodePath("../BlueOnion")]
 
-[node name="Ship" parent="Waypoints" unique_id=1327018533 instance=ExtResource("7_sa5ll")]
+[node name="Ship" parent="Waypoints" unique_id=1327018533 node_paths=PackedStringArray("connections") instance=ExtResource("7_sa5ll")]
+connections = [NodePath("../Waypoint"), NodePath("../Waypoint3"), NodePath("../Waypoint4")]
 
-[node name="YellowOnion" parent="Waypoints" unique_id=1696156209 instance=ExtResource("7_sa5ll")]
+[node name="YellowOnion" parent="Waypoints" unique_id=1696156209 node_paths=PackedStringArray("connections") instance=ExtResource("7_sa5ll")]
 position = Vector2(-97, 66)
+connections = [NodePath("../Waypoint"), NodePath("../Waypoint4"), NodePath("../Waypoint6")]
 
-[node name="BlueOnion" parent="Waypoints" unique_id=1836674878 instance=ExtResource("7_sa5ll")]
+[node name="BlueOnion" parent="Waypoints" unique_id=1836674878 node_paths=PackedStringArray("connections") instance=ExtResource("7_sa5ll")]
 position = Vector2(0, 145)
+connections = [NodePath("../Waypoint2"), NodePath("../Waypoint4"), NodePath("../Waypoint6")]
 
 [node name="Waypoint6" parent="Waypoints" unique_id=633480591 node_paths=PackedStringArray("connections") instance=ExtResource("7_sa5ll")]
 position = Vector2(-122, 157)

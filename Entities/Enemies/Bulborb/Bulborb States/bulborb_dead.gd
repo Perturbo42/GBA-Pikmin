@@ -1,7 +1,7 @@
 class_name BulborbDead extends BulborbState
 @export var corpse_comp: CorpseComponent
-@export var corpse_moving_comp: CorpseMovingComponent
-@export var carrying_group: PikminGroup
+@export var corpse_moving_comp: CarryableMoving
+
 
 func enter():
 	bulborb.velocity = Vector2.ZERO

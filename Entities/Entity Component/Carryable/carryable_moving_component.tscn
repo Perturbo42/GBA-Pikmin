@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dlgantnc8igwb"]
+
+[ext_resource type="Script" uid="uid://lg8d4xy4mibi" path="res://Entities/Entity Component/Carryable/carryable_moving.gd" id="1_y6j3p"]
+
+[node name="CarryableMovingComponent" type="Node2D" unique_id=1715806148]
+script = ExtResource("1_y6j3p")

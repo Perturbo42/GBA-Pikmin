@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" uid="uid://b4hk1kakshppq" path="res://Entities/Enemies/Enemy Component/Corpse Component/corpse_component.gd" id="1_88l31"]
 
-[node name="CorpseComponent" type="Node" unique_id=355602527]
+[node name="CorpseComponent" type="Node2D" unique_id=962855638]
 script = ExtResource("1_88l31")
