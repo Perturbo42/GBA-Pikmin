@@ -26,7 +26,7 @@ func sort_pikmin():
 		pikmin_dict[pikmin] = slots[num]
 		num += 1
 	
-	if num < carry.max_weight:
+	if num < carry.weight:
 		moving_comp.stop_moving()
 	else:
 		moving_comp.start_moving()

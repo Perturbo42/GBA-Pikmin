@@ -27,6 +27,8 @@ func remove_pikmin_from_group(pikmin: Pikmin, group: PikminGroup):
 		return
 	if not is_instance_valid(group):
 		return
+	if not pikmin in memberships:
+		return
 	
 	if group in memberships[pikmin]:
 		memberships[pikmin].erase(group)

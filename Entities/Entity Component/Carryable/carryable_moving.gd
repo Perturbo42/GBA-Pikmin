@@ -1,4 +1,5 @@
 class_name CarryableMoving extends Node2D
+const SPD_MULT := 50
 @export var obj: Node2D
 @export var carry_area: Area2D
 var destination: Vector2
@@ -8,11 +9,14 @@ var path: PackedVector2Array
 var path_num: int = 0
 
 func start_moving():
+	if is_moving:
+		speed = carry_area.calculate_speed() * SPD_MULT
+		return
 	var dest_waypoint = WaypointHandler.get_nearest_waypoint(obj.global_position)
 	destination = dest_waypoint.global_position
 	path = WaypointHandler.get_waypoint_path(dest_waypoint, carry_area.find_destination())
 	path_num = 0
-	speed = carry_area.calculate_speed() * 100
+	speed = carry_area.calculate_speed() * SPD_MULT
 	is_moving = true
 
 func move_to_destination():
