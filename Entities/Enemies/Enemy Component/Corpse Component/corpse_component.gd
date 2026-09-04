@@ -6,6 +6,9 @@ class_name CorpseComponent extends Carryable
 @export var alive_sprite: Sprite2D
 @export var dead_sprite: Sprite2D
 
+@export_category("Internal Properties")
+@export var seeds: int
+
 
 func activate():
 	super.activate()

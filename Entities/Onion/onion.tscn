@@ -3,10 +3,14 @@
 [ext_resource type="Script" uid="uid://b4so6kphbsr4y" path="res://Entities/Onion/onion.gd" id="1_nf1eb"]
 [ext_resource type="Texture2D" uid="uid://2s3kgj51raa3" path="res://Entities/Onion/Onion.png" id="2_lrb5s"]
 [ext_resource type="Script" uid="uid://b3ghna5gueco6" path="res://Entities/interactive_area.gd" id="3_lrb5s"]
+[ext_resource type="Script" uid="uid://7j3wtgkw640l" path="res://Entities/Onion/corpse_eating_area.gd" id="4_wfiyx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wfiyx"]
 radius = 9.0
 height = 38.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qgddc"]
+radius = 5.0
 
 [node name="Onion" type="Node2D" unique_id=869433092]
 script = ExtResource("1_nf1eb")
@@ -18,13 +22,13 @@ position = Vector2(0, -38)
 texture = ExtResource("2_lrb5s")
 hframes = 3
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1508021146]
+[node name="InteractiveArea" type="Area2D" parent="." unique_id=1508021146]
 position = Vector2(0, -11)
 collision_layer = 32
 collision_mask = 32
 script = ExtResource("3_lrb5s")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1484210934]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveArea" unique_id=1484210934]
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_wfiyx")
 
@@ -38,5 +42,15 @@ position = Vector2(-43, -11)
 [node name="Spawn3" type="Marker2D" parent="Pikmin Spawn Points" unique_id=1324116182]
 position = Vector2(43, -11)
 
-[connection signal="area_entered" from="Area2D" to="Area2D" method="_on_area_entered"]
-[connection signal="area_exited" from="Area2D" to="Area2D" method="_on_area_exited"]
+[node name="CorpseEatingArea" type="Area2D" parent="." unique_id=294752486]
+collision_layer = 1024
+collision_mask = 512
+script = ExtResource("4_wfiyx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CorpseEatingArea" unique_id=1467187197]
+position = Vector2(0, -11)
+shape = SubResource("CircleShape2D_qgddc")
+
+[connection signal="area_entered" from="InteractiveArea" to="InteractiveArea" method="_on_area_entered"]
+[connection signal="area_exited" from="InteractiveArea" to="InteractiveArea" method="_on_area_exited"]
+[connection signal="area_entered" from="CorpseEatingArea" to="CorpseEatingArea" method="_on_area_entered"]

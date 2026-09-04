@@ -165,7 +165,8 @@ rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_4gbpf")
 debug_color = Color(0, 0, 1, 0.41960785)
 
-[node name="Corpse Area" parent="." unique_id=928789606 node_paths=PackedStringArray("carry", "moving_comp", "group", "slots1", "slots2") instance=ExtResource("18_lrnd2")]
+[node name="Corpse Area" parent="." unique_id=928789606 node_paths=PackedStringArray("obj", "carry", "moving_comp", "group", "slots1", "slots2") instance=ExtResource("18_lrnd2")]
+obj = NodePath("..")
 carry = NodePath("CorpseComponent")
 moving_comp = NodePath("CarryableMovingComponent")
 group = NodePath("CarryingPikminGroup")
@@ -224,6 +225,7 @@ collision_box = NodePath("../../Collision Box")
 hurtbox = NodePath("../../Enemy Hurtbox")
 alive_sprite = NodePath("../../AliveSprite")
 dead_sprite = NodePath("../../DeadSprite")
+seeds = 10
 obj = NodePath("../..")
 carry_area = NodePath("..")
 attached_group = NodePath("../../Components/PikminAttachedGroup")

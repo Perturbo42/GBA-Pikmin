@@ -11,7 +11,10 @@ func update(_delta: float):
 	pass
 
 func physics_update(_delta: float):
-	pikmin.global_position = carrying_component.pikmin_position()
+	if carrying_component.is_attached_to_thing():
+		pikmin.global_position = carrying_component.pikmin_position()
+	else:
+		finished.emit(IDLE)
 	pass
 
 func exit():

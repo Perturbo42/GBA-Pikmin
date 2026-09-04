@@ -5,12 +5,13 @@ const SPD_MULT := 50
 var destination: Vector2
 var speed: float = 0.0
 var is_moving = false
-var path: PackedVector2Array
+var path: PackedVector2Array = []
 var path_num: int = 0
 
 func start_moving():
-	if is_moving:
+	if is_moving or !path.is_empty():
 		speed = carry_area.calculate_speed() * SPD_MULT
+		is_moving = true
 		return
 	var dest_waypoint = WaypointHandler.get_nearest_waypoint(obj.global_position)
 	destination = dest_waypoint.global_position

@@ -1,4 +1,5 @@
 class_name CarryArea extends Area2D
+@export var obj: Node2D
 @export var carry: Carryable
 @export var moving_comp: CarryableMoving
 @export var group: PikminGroup

@@ -15,8 +15,8 @@ func _spawn(scene: PackedScene, spawn_position: Vector2) -> Node:
 	entity.global_position = spawn_position
 	return entity
 
-static func spawn_pikmin(scene: PackedScene, spawn_position: Vector2) -> Node:
-	return instance._spawn_pikmin(scene, spawn_position)
+static func spawn_pikmin(scene: PackedScene, spawn_position: Vector2):
+	instance.call_deferred("_spawn_pikmin", scene, spawn_position)
 
 func _spawn_pikmin(scene: PackedScene, spawn_position: Vector2) -> Node:
 	var entity = scene.instantiate()

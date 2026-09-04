@@ -11,3 +11,6 @@ class_name Enemy extends CharacterBody2D
 var home_location: Vector2
 var target: CharacterBody2D
 var enemies_in_range: Array[CharacterBody2D]
+
+func free_self():
+	queue_free()

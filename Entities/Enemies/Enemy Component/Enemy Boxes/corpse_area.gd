@@ -22,3 +22,10 @@ func find_destination() -> Waypoint:
 		return WaypointHandler.blue_onion
 	else:
 		return WaypointHandler.ship
+
+func return_seeds():
+	return carry.seeds
+
+func destroy_self():
+	PikminRegistry.remove_all_from_group(group)
+	obj.free_self()
