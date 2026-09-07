@@ -58,11 +58,12 @@ script = ExtResource("1_afahy")
 script = ExtResource("3_stw2y")
 can_detect = true
 
-[node name="Chase" type="Node2D" parent="Bulborb State Machine" unique_id=2056272617 node_paths=PackedStringArray("chase_component", "closest_target", "dir_comp")]
+[node name="Chase" type="Node2D" parent="Bulborb State Machine" unique_id=2056272617 node_paths=PackedStringArray("chase_component", "closest_target", "dir_comp", "group")]
 script = ExtResource("4_nxqmj")
 chase_component = NodePath("Chase Component")
 closest_target = NodePath("../../Components/Enemy Closest Target Component")
 dir_comp = NodePath("../../Components/DirectionComponent")
+group = NodePath("../../Components/PikminAttachedGroup")
 can_stop_detecting = true
 
 [node name="Chase Component" parent="Bulborb State Machine/Chase" unique_id=1041148036 node_paths=PackedStringArray("attached_state", "enemy", "hurtbox", "stop_detecting_state", "attacking_state") instance=ExtResource("5_wnwle")]

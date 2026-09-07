@@ -6,3 +6,6 @@ func add_pikmin(p: Pikmin):
 
 func remove_pikmin(p: Pikmin):
 	pikmin_arr.erase(p)
+
+func num_of_pikmin():
+	return pikmin_arr.size()
