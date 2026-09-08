@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b4vej74gprkgw"]
+
+[ext_resource type="Script" uid="uid://f0jso5tn4x3y" path="res://Entities/Enemies/Enemy Component/Shake Component/shake_component.gd" id="1_a2ax1"]
+
+[node name="Shake Component" type="Node" unique_id=537376115]
+script = ExtResource("1_a2ax1")

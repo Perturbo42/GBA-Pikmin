@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://d2e5t10ymn2yt" path="res://Entities/Enemies/Enemy Component/Chase Component/chase_component.tscn" id="5_wnwle"]
 [ext_resource type="Script" uid="uid://crjkre2quyoin" path="res://Entities/Enemies/Bulborb/Bulborb States/bulborb_shake.gd" id="6_u3n4v"]
 [ext_resource type="Script" uid="uid://bkmn5k246koln" path="res://Entities/Enemies/Bulborb/Bulborb States/bulborb_return.gd" id="7_nxqmj"]
+[ext_resource type="PackedScene" uid="uid://b4vej74gprkgw" path="res://Entities/Enemies/Enemy Component/Shake Component/shake_component.tscn" id="8_mxfru"]
 [ext_resource type="PackedScene" uid="uid://6tggvxju6j8" path="res://Entities/Enemies/Enemy Component/Enemy Closest Target Component/enemy_closest_target_component.tscn" id="8_s6wv0"]
 [ext_resource type="Script" uid="uid://c4x023pb6juq0" path="res://Entities/Enemies/Bulborb/Bulborb States/bulborb_dead.gd" id="8_s047f"]
 [ext_resource type="PackedScene" uid="uid://cr7pymodxtqj3" path="res://Entities/Enemies/Enemy Component/Return Home Component/return_home_component.tscn" id="10_1ak32"]
@@ -91,6 +92,18 @@ one_shot = true
 
 [node name="Shake" type="Node2D" parent="Bulborb State Machine" unique_id=1106116221]
 script = ExtResource("6_u3n4v")
+
+[node name="ShakeTimer" type="Timer" parent="Bulborb State Machine/Shake" unique_id=737385308]
+one_shot = true
+
+[node name="StateTimer" type="Timer" parent="Bulborb State Machine/Shake" unique_id=1641305046]
+wait_time = 2.0
+one_shot = true
+
+[node name="Shake Component" parent="Bulborb State Machine/Shake" unique_id=537376115 node_paths=PackedStringArray("attached_state", "enemy", "group") instance=ExtResource("8_mxfru")]
+attached_state = NodePath("..")
+enemy = NodePath("../../..")
+group = NodePath("../../../Components/PikminAttachedGroup")
 
 [node name="Return" type="Node2D" parent="Bulborb State Machine" unique_id=634291977 node_paths=PackedStringArray("return_home_component", "dir_comp")]
 script = ExtResource("7_nxqmj")

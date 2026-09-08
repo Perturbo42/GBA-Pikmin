@@ -9,7 +9,7 @@ class_name BulborbChase extends BulborbState
 
 var shake_timer: float = 0.0
 const NUM_OF_PIKMIN_TO_SHAKE: int = 5
-const SHAKE_TIMER_END: float = 3.0
+const SHAKE_TIMER_END: float = 2.0
 
 func _ready() -> void:
 	super._ready()
