@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://gb8q4ttrf88o" path="res://Entities/Pikmin/Pikmin states/pikmin_carry.gd" id="5_yhj16"]
 [ext_resource type="Script" uid="uid://cdycofqi0623g" path="res://Entities/Pikmin/Pikmin states/pikmin_thrown.gd" id="6_wcivg"]
 [ext_resource type="Script" uid="uid://du3adl43hqcjx" path="res://Entities/Pikmin/Pikmin states/pikmin_attached.gd" id="7_yhj16"]
+[ext_resource type="Script" uid="uid://dmtsfy57unc26" path="res://Entities/Pikmin/Pikmin states/pikmin_knockback.gd" id="9_msa56"]
 [ext_resource type="PackedScene" uid="uid://chv4k4ar48tc4" path="res://Entities/Pikmin/Pikmin Components/Pikmin Box/pikmin_hitbox.tscn" id="9_w0b2p"]
 [ext_resource type="PackedScene" uid="uid://ja0awin4vamq" path="res://Entities/Pikmin/Pikmin Components/Pikmin Box/pikmin_hurtbox.tscn" id="10_86s81"]
 [ext_resource type="PackedScene" uid="uid://dkaqqdhdddprl" path="res://Entities/Pikmin/Pikmin Components/Pikmin Box/whistle_detection.tscn" id="11_0assf"]
@@ -34,12 +35,13 @@ size = Vector2(16, 16)
 [sub_resource type="CircleShape2D" id="CircleShape2D_4gbpf"]
 radius = 29.0
 
-[node name="Red Pikmin" type="CharacterBody2D" unique_id=1562282753 node_paths=PackedStringArray("state_machine") groups=["Pikmin"]]
+[node name="Red Pikmin" type="CharacterBody2D" unique_id=1562282753 node_paths=PackedStringArray("state_machine", "velocity_comp") groups=["Pikmin"]]
 collision_layer = 2
 collision_mask = 8
 motion_mode = 1
 script = ExtResource("1_egeb0")
 state_machine = NodePath("Pikmin State Machine")
+velocity_comp = NodePath("Components/Velocity Component")
 damage = 15
 speed = 200.0
 throw_angle = 60.0
@@ -71,6 +73,10 @@ script = ExtResource("6_wcivg")
 script = ExtResource("7_yhj16")
 
 [node name="Attack Timer" type="Timer" parent="Pikmin State Machine/Attached" unique_id=1053856592]
+
+[node name="Knockback" type="Node2D" parent="Pikmin State Machine" unique_id=1873678727 node_paths=PackedStringArray("velocity_comp")]
+script = ExtResource("9_msa56")
+velocity_comp = NodePath("../../Components/Velocity Component")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=461560849]
 texture_filter = 1

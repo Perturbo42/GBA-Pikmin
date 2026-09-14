@@ -104,6 +104,7 @@ one_shot = true
 attached_state = NodePath("..")
 enemy = NodePath("../../..")
 group = NodePath("../../../Components/PikminAttachedGroup")
+force = 1000.0
 
 [node name="Return" type="Node2D" parent="Bulborb State Machine" unique_id=634291977 node_paths=PackedStringArray("return_home_component", "dir_comp")]
 script = ExtResource("7_nxqmj")

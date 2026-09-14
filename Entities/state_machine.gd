@@ -1,4 +1,5 @@
 class_name StateMachine extends Node2D
+var prev_state: State
 var curr_state: State
 
 # Called when the node enters the scene tree for the first time.
@@ -22,6 +23,7 @@ func _physics_process(delta: float) -> void:
 	curr_state.physics_update(delta)
 
 func change_state(next_state: String):
+	prev_state = curr_state
 	curr_state.exit()
 	curr_state = get_node(next_state)
 	curr_state.enter()

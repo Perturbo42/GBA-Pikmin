@@ -6,6 +6,7 @@ class_name PikminVelocityComponent extends Node
 @export_group("Internal Categories")
 @export var accel_speed: float
 @export var decel_speed: float
+var knockback_velocity: Vector2
 
 func move_to_target(delta: float, target: Vector2, min_dist_to_target: float):
 	if check_dist_to_target(target, min_dist_to_target):
@@ -22,4 +23,6 @@ func check_dist_to_target(target: Vector2, min_dist_to_target: float) -> bool:
 		return true
 	else:
 		return false
-	
+
+func apply_knockback(dir: Vector2, force: float):
+	knockback_velocity = dir.normalized() * force

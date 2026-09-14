@@ -5,6 +5,7 @@ const MOVING = "Moving"
 const CARRY = "Carry"
 const THROWN = "Thrown"
 const ATTACHED = "Attached"
+const KNOCKBACK = "Knockback"
 
 var pikmin = Pikmin
 
