@@ -20,3 +20,5 @@ func activate():
 		alive_sprite.visible = false
 	if dead_sprite:
 		dead_sprite.visible = true
+	if carry_area:
+		carry_area.is_dead = true

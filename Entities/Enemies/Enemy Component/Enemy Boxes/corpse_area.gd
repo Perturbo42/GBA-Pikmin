@@ -1,4 +1,5 @@
 class_name CorpseArea extends CarryArea
+var is_dead: bool = false
 
 func find_destination() -> Waypoint:
 	var red_count: int = 0

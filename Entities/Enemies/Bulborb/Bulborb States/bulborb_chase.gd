@@ -16,6 +16,7 @@ func _ready() -> void:
 	timer.timeout.connect(find_new_target)
 
 func enter():
+	find_new_target()
 	timer.start()
 	pass
 

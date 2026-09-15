@@ -12,6 +12,7 @@ func _ready() -> void:
 func enter():
 	bulborb.velocity = Vector2.ZERO
 	shake_timer.start()
+	state_timer.start()
 	pass
 
 func update(_delta: float):
@@ -28,5 +29,5 @@ func shake():
 	pass
 
 func finished_shaking():
-	finished.emit(IDLE)
+	finished.emit(CHASE)
 	pass
