@@ -1,0 +1,1 @@
+class_name AttackingDetection extends Area2D

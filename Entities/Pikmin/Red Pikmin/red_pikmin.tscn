@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://ja0awin4vamq" path="res://Entities/Pikmin/Pikmin Components/Pikmin Box/pikmin_hurtbox.tscn" id="10_86s81"]
 [ext_resource type="PackedScene" uid="uid://dkaqqdhdddprl" path="res://Entities/Pikmin/Pikmin Components/Pikmin Box/whistle_detection.tscn" id="11_0assf"]
 [ext_resource type="PackedScene" uid="uid://di8l7mf6x8otk" path="res://Entities/Entity Component/Direction Component/direction_component.tscn" id="11_86s81"]
-[ext_resource type="PackedScene" uid="uid://cu5t3vdi56pkc" path="res://Entities/Pikmin/Pikmin Components/Pikmin Box/corpse_detection.tscn" id="12_7grc6"]
+[ext_resource type="PackedScene" uid="uid://cu5t3vdi56pkc" path="res://Entities/Pikmin/Pikmin Components/Pikmin Box/carrying_detection.tscn" id="12_7grc6"]
 [ext_resource type="PackedScene" uid="uid://dtjwcuhsng6cc" path="res://Entities/Pikmin/Pikmin Components/Targetting Component/targetting_component.tscn" id="15_brmkq"]
 [ext_resource type="PackedScene" uid="uid://bsokqmkdjsir" path="res://Entities/Pikmin/Pikmin Components/Pikmin Velocity Component/pikmin_velocity_component.tscn" id="16_gkn3n"]
 [ext_resource type="PackedScene" uid="uid://jfs3e7iqmtyh" path="res://Entities/Pikmin/Pikmin Components/Carrying Component/carrying_component.tscn" id="17_q6kae"]
@@ -49,9 +49,9 @@ throw_angle = 60.0
 [node name="Pikmin State Machine" type="Node2D" parent="." unique_id=1496414826]
 script = ExtResource("2_vnup6")
 
-[node name="Idle" type="Node2D" parent="Pikmin State Machine" unique_id=1296539547 node_paths=PackedStringArray("corpse_detection")]
+[node name="Idle" type="Node2D" parent="Pikmin State Machine" unique_id=1296539547 node_paths=PackedStringArray("carry_detection")]
 script = ExtResource("3_npk05")
-corpse_detection = NodePath("../../CorpseDetection")
+carry_detection = NodePath("../../CarryingDetection")
 
 [node name="Follow" type="Node2D" parent="Pikmin State Machine" unique_id=477784633 node_paths=PackedStringArray("velocity_comp")]
 script = ExtResource("4_wcivg")
@@ -125,14 +125,14 @@ position = Vector2(0, -8)
 scale = Vector2(0.5, 1)
 shape = SubResource("RectangleShape2D_qgddc")
 
-[node name="CorpseDetection" parent="." unique_id=1121993671 node_paths=PackedStringArray("pikmin", "state_machine", "moving_state", "targetting_component", "carrying_component") instance=ExtResource("12_7grc6")]
+[node name="CarryingDetection" parent="." unique_id=1121993671 node_paths=PackedStringArray("pikmin", "state_machine", "moving_state", "targetting_component", "carrying_component") instance=ExtResource("12_7grc6")]
 pikmin = NodePath("..")
 state_machine = NodePath("../Pikmin State Machine")
 moving_state = NodePath("../Pikmin State Machine/Moving")
 targetting_component = NodePath("../Components/Targetting Component")
 carrying_component = NodePath("../Components/Carrying Component")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CorpseDetection" unique_id=1349657824]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CarryingDetection" unique_id=1349657824]
 shape = SubResource("CircleShape2D_4gbpf")
 
 [node name="Components" type="Node" parent="." unique_id=1205728338]

@@ -1,4 +1,4 @@
-class_name CorpseDetection extends Area2D
+class_name CarryingDetection extends Area2D
 @export_category("External Properties")
 @export var pikmin: Pikmin
 @export var state_machine: StateMachine
@@ -6,7 +6,7 @@ class_name CorpseDetection extends Area2D
 @export var targetting_component: TargettingComponent
 @export var carrying_component: CarryingComponent
 
-func check_for_corpses():
+func check_for_carry():
 	if !pikmin:
 		return
 	var nearest_corpse: Area2D = null
@@ -22,6 +22,7 @@ func check_for_corpses():
 	
 	if not is_instance_valid(nearest_corpse):
 		return
+	
 	
 	carrying_component.current_thing = carrying_component.Thing.CORPSE
 	carrying_component.current_area = nearest_corpse
