@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://cdycofqi0623g" path="res://Entities/Pikmin/Pikmin states/pikmin_thrown.gd" id="6_wcivg"]
 [ext_resource type="Script" uid="uid://du3adl43hqcjx" path="res://Entities/Pikmin/Pikmin states/pikmin_attached.gd" id="7_yhj16"]
 [ext_resource type="Script" uid="uid://dmtsfy57unc26" path="res://Entities/Pikmin/Pikmin states/pikmin_knockback.gd" id="9_msa56"]
+[ext_resource type="Script" uid="uid://dfntp81dmoa2y" path="res://Entities/Pikmin/Pikmin states/pikmin_attacking.gd" id="9_oi8r5"]
 [ext_resource type="PackedScene" uid="uid://chv4k4ar48tc4" path="res://Entities/Pikmin/Pikmin Components/Pikmin Box/pikmin_hitbox.tscn" id="9_w0b2p"]
 [ext_resource type="PackedScene" uid="uid://ja0awin4vamq" path="res://Entities/Pikmin/Pikmin Components/Pikmin Box/pikmin_hurtbox.tscn" id="10_86s81"]
 [ext_resource type="PackedScene" uid="uid://dkaqqdhdddprl" path="res://Entities/Pikmin/Pikmin Components/Pikmin Box/whistle_detection.tscn" id="11_0assf"]
@@ -64,7 +65,7 @@ velocity_comp = NodePath("../../Components/Velocity Component")
 
 [node name="Moving" type="Node2D" parent="Pikmin State Machine" unique_id=463553528 node_paths=PackedStringArray("targetting_component", "velocity_component")]
 script = ExtResource("5_7grc6")
-targetting_component = NodePath("")
+targetting_component = NodePath("../../Components/Targetting Component")
 velocity_component = NodePath("../../Components/Velocity Component")
 
 [node name="Carry" type="Node2D" parent="Pikmin State Machine" unique_id=1494080329 node_paths=PackedStringArray("carrying_component")]
@@ -78,6 +79,12 @@ script = ExtResource("6_wcivg")
 script = ExtResource("7_yhj16")
 
 [node name="Attack Timer" type="Timer" parent="Pikmin State Machine/Attached" unique_id=1053856592]
+
+[node name="Attacking" type="Node2D" parent="Pikmin State Machine" unique_id=1902602792 node_paths=PackedStringArray("target_comp")]
+script = ExtResource("9_oi8r5")
+target_comp = NodePath("../../Components/Targetting Component")
+
+[node name="Attack Timer" type="Timer" parent="Pikmin State Machine/Attacking" unique_id=247560355]
 
 [node name="Knockback" type="Node2D" parent="Pikmin State Machine" unique_id=1873678727 node_paths=PackedStringArray("velocity_comp")]
 script = ExtResource("9_msa56")
@@ -130,10 +137,11 @@ position = Vector2(0, -8)
 scale = Vector2(0.5, 1)
 shape = SubResource("RectangleShape2D_qgddc")
 
-[node name="CarryingDetection" parent="." unique_id=1121993671 node_paths=PackedStringArray("pikmin", "state_machine", "moving_state", "carrying_component") instance=ExtResource("12_7grc6")]
+[node name="CarryingDetection" parent="." unique_id=1121993671 node_paths=PackedStringArray("pikmin", "state_machine", "moving_state", "targetting_component", "carrying_component") instance=ExtResource("12_7grc6")]
 pikmin = NodePath("..")
 state_machine = NodePath("../Pikmin State Machine")
 moving_state = NodePath("../Pikmin State Machine/Moving")
+targetting_component = NodePath("../Components/Targetting Component")
 carrying_component = NodePath("../Components/Carrying Component")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CarryingDetection" unique_id=1349657824]
@@ -166,9 +174,9 @@ decel_speed = 2000.0
 [node name="Carrying Component" parent="Components" unique_id=1670449051 node_paths=PackedStringArray("pikmin") instance=ExtResource("17_q6kae")]
 pikmin = NodePath("../..")
 
-[node name="Targetting Component" parent="Components" unique_id=721423552 node_paths=PackedStringArray("moving_state", "carry_state", "attach_state") instance=ExtResource("15_brmkq")]
+[node name="Targetting Component" parent="Components" unique_id=721423552 node_paths=PackedStringArray("moving_state", "carry_state", "attack_state") instance=ExtResource("15_brmkq")]
 moving_state = NodePath("../../Pikmin State Machine/Moving")
 carry_state = NodePath("../../Pikmin State Machine/Carry")
-attach_state = NodePath("../../Pikmin State Machine/Attached")
+attack_state = NodePath("../../Pikmin State Machine/Attacking")
 
 [connection signal="area_entered" from="Pikmin Hitbox" to="Pikmin Hitbox" method="_on_area_entered"]

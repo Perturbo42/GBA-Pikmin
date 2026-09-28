@@ -37,6 +37,7 @@ func exit():
 	attach_offset = Vector2.ZERO
 	pikmin.sprite.position.y = pikmin.sprite_default_position.y
 	hitbox.position.y = pikmin.sprite.position.y
+	attack_timer.stop()
 	pass
 
 func damage():

@@ -13,6 +13,7 @@ func check_for_enemy():
 	
 	for area in get_overlapping_areas():
 		if area.is_in_group("Enemy"):
+			print(area.name)
 			var dist = pikmin.global_position.distance_to(area.global_position)
 			if nearest_distance > dist:
 				nearest_distance = dist
@@ -21,6 +22,7 @@ func check_for_enemy():
 		return
 	print(nearest_enemy)
 	
-	targetting_component.target = targetting_component.Targets.CORPSE
+	targetting_component.target = targetting_component.Targets.ENEMY
+	targetting_component.target_node = nearest_enemy.owner
 	targetting_component.target_location = nearest_enemy.global_position
 	state_machine.change_state(moving_state.name)

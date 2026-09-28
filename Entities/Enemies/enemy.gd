@@ -2,6 +2,7 @@ class_name Enemy extends CharacterBody2D
 @export_category("External Properties")
 @export var state_machine: StateMachine
 @export var detection_area: Area2D
+@export var hurtbox: Area2D
 
 @export_category("Stats")
 @export var health: int 

@@ -41,13 +41,14 @@ height = 56.0
 radius = 7.0
 height = 56.0
 
-[node name="Bulborb" type="CharacterBody2D" unique_id=403101695 node_paths=PackedStringArray("state_machine", "detection_area") groups=["Enemy"]]
+[node name="Bulborb" type="CharacterBody2D" unique_id=403101695 node_paths=PackedStringArray("state_machine", "detection_area", "hurtbox") groups=["Enemy"]]
 collision_layer = 4
 collision_mask = 8
 motion_mode = 1
 script = ExtResource("1_nao5k")
 state_machine = NodePath("Bulborb State Machine")
 detection_area = NodePath("EnemyDetectionArea")
+hurtbox = NodePath("Enemy Hurtbox")
 health = 1000
 speed = 100.0
 damage = 2
@@ -166,7 +167,7 @@ rotation = -1.5707964
 shape = SubResource("RectangleShape2D_07mqa")
 debug_color = Color(0.972549, 0, 0, 0.41960785)
 
-[node name="Enemy Hurtbox" parent="." unique_id=472455593 node_paths=PackedStringArray("enemy", "state_machine", "dead_state", "group") instance=ExtResource("15_t12d7")]
+[node name="Enemy Hurtbox" parent="." unique_id=472455593 node_paths=PackedStringArray("enemy", "state_machine", "dead_state", "group") groups=["Enemy"] instance=ExtResource("15_t12d7")]
 unique_name_in_owner = true
 enemy = NodePath("..")
 state_machine = NodePath("../Bulborb State Machine")
