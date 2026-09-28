@@ -26,10 +26,9 @@ func exit():
 	pass
 
 func damage():
-	if target.health <= 0:
-		finished.emit(IDLE)
-		return
 	if target.hurtbox:
-		print("Pikmin dealt damage")
+		if target.hurtbox.health <= 0:
+			finished.emit(IDLE)
+			return
 		target.hurtbox.take_damage(pikmin.damage)
 	pass

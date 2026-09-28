@@ -8,7 +8,7 @@ class_name CarryingDetection extends Area2D
 
 func check_for_carry():
 	if !pikmin:
-		return
+		return false
 	var nearest_corpse: Area2D = null
 	var nearest_distance: float = INF
 	
@@ -21,7 +21,7 @@ func check_for_carry():
 					nearest_corpse = area
 	
 	if not is_instance_valid(nearest_corpse):
-		return
+		return true
 	
 	
 	carrying_component.current_thing = carrying_component.Thing.CORPSE
@@ -29,3 +29,4 @@ func check_for_carry():
 	targetting_component.target = targetting_component.Targets.CORPSE
 	targetting_component.target_location = nearest_corpse.global_position
 	state_machine.change_state(moving_state.name)
+	return false
