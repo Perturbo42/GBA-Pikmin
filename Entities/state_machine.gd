@@ -27,3 +27,4 @@ func change_state(next_state: String):
 	curr_state.exit()
 	curr_state = get_node(next_state)
 	curr_state.enter()
+	print(self.owner.name + ": " + curr_state.name)

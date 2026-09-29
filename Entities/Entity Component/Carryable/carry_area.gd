@@ -21,6 +21,7 @@ func _ready() -> void:
 func sort_pikmin():
 	var num = 0
 	for pikmin in group.pikmin_arr:
+		print("SORT:", pikmin)
 		if num >= carry.max_weight:
 			moving_comp.start_moving()
 			return
