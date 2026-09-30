@@ -35,9 +35,11 @@ func bite():
 
 func choose_state():
 	if bulborb.enemies_in_range.is_empty():
+		print("No enemies in range")
 		finished.emit(RETURN)
 	else:
 		bulborb.target = closest_target.get_closest_target()
+		print("Enemy in range" + bulborb.target.name)
 		finished.emit(CHASE)
 
 func cleanup_targets():

@@ -22,12 +22,17 @@ func physics_update(_delta: float):
 	pass
 
 func exit():
+	shake_timer.stop()
+	state_timer.stop()
 	pass
 
 func shake():
-	shake_component.shake()
+	if bulborb.state_machine.curr_state == self:
+		print("Bulborb: start shaking")
+		shake_component.shake()
 	pass
 
 func finished_shaking():
+	print("Bulborb: finished shaking")
 	finished.emit(CHASE)
 	pass

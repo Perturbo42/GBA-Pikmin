@@ -38,5 +38,9 @@ func exit():
 	pass
 
 func find_new_target():
-	bulborb.target = closest_target.get_closest_target()
+	var targ = closest_target.get_closest_target()
+	if !targ:
+		finished.emit(IDLE)
+		return
+	bulborb.target = targ
 	pass

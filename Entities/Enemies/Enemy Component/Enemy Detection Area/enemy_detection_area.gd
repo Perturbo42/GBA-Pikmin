@@ -8,9 +8,11 @@ class_name EnemyDetectionArea extends Area2D
 func _on_body_entered(body: Node2D) -> void:
 	if state_machine.curr_state.can_detect:
 		if body is Pikmin or body is Olimar:
-			state_machine.change_state(detect_state.name)
 			enemy.target = body
+			print("Change state to Chase")
+			state_machine.change_state(detect_state.name)
 	enemy.enemies_in_range.append(body)
+
 
 
 func _on_body_exited(body: Node2D) -> void:
@@ -21,5 +23,6 @@ func _on_body_exited(body: Node2D) -> void:
 				new_body = get_overlapping_bodies()[0]
 				enemy.target = new_body
 			if new_body == null:
+				print("Change state to return")
 				state_machine.change_state(stop_detecting_state.name)
 	enemy.enemies_in_range.erase(body)
