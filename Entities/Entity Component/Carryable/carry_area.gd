@@ -19,6 +19,7 @@ func _ready() -> void:
 			slots.append(child)
 
 func sort_pikmin():
+	clean_dict()
 	var num = 0
 	for pikmin in group.pikmin_arr:
 		## print("SORT:", pikmin)
@@ -28,6 +29,7 @@ func sort_pikmin():
 		pikmin_dict[pikmin] = slots[num]
 		num += 1
 	
+	clean_dict()
 	if num < carry.weight:
 		moving_comp.stop_moving()
 	else:
@@ -37,11 +39,17 @@ func find_destination() -> Waypoint:
 	return WaypointHandler.ship
 
 func calculate_speed() -> float:
+	clean_dict()
 	var sum: float = 0.0
 	for pikmin in pikmin_dict:
 		sum += pikmin.pikmin_carry_speed()
 	var velocity = (sum - carry.weight + 1) / carry.max_weight + 1
 	return velocity
+
+func clean_dict():
+	for pikmin in pikmin_dict.duplicate():
+		if !is_instance_valid(pikmin):
+			pikmin_dict.erase(pikmin)
 
 func has_empty_slots() -> bool:
 	return group.pikmin_arr.size() < carry.max_weight

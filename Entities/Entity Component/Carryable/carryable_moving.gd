@@ -21,8 +21,8 @@ func start_moving():
 	is_moving = true
 
 func move_to_destination():
-	if !is_moving:
-		obj.velocity = Vector2.ZERO
+	if !is_moving or speed == 0.0:
+		stop_moving()
 		return
 	
 	var obj_pos: Vector2 = obj.global_position
