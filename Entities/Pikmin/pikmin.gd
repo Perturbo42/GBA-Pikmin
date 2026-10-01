@@ -4,6 +4,7 @@ enum stage{LEAF, BUD, FLOWER}
 @export_category("External Properties")
 @export var state_machine: StateMachine
 @export var velocity_comp: PikminVelocityComponent
+@export var targetting_comp: TargettingComponent
 
 @export_category("Stats")
 @export var damage: int
@@ -26,6 +27,8 @@ func pikmin_carry_speed() -> float:
 	else:
 		return 2.0
 
-func apply_knockback(dir: Vector2, force: float):
+func apply_knockback(dir: Vector2, force: float, source: CharacterBody2D):
 	velocity_comp.apply_knockback(dir, force)
 	state_machine.change_state(PikminState.KNOCKBACK)
+	targetting_comp.target = targetting_comp.Targets.ENEMY
+	targetting_comp.target_node = source

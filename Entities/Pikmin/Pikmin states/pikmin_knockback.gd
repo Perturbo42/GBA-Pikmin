@@ -17,7 +17,7 @@ func physics_update(delta: float):
 	pikmin.move_and_slide()
 	
 	if pikmin.velocity.length_squared() < 1.0:
-		finished.emit(IDLE)
+		finished.emit(MOVING)
 	pass
 
 func exit():

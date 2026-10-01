@@ -27,6 +27,6 @@ func check_for_carry():
 	carrying_component.current_thing = carrying_component.Thing.CORPSE
 	carrying_component.current_area = nearest_corpse
 	targetting_component.target = targetting_component.Targets.CORPSE
-	targetting_component.target_location = nearest_corpse.global_position
+	targetting_component.target_node = nearest_corpse
 	state_machine.change_state(moving_state.name)
 	return false

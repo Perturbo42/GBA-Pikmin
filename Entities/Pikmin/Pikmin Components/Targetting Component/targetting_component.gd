@@ -6,7 +6,6 @@ enum Targets {CORPSE, TREASURE, ENEMY}
 
 var target: Targets
 var target_node: Node2D = null
-var target_location: Vector2
 var next_state: Dictionary
 
 func _ready() -> void:

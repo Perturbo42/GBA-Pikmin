@@ -12,4 +12,4 @@ func shake():
 	for pikmin in group.pikmin_arr.duplicate():
 		##code for knockback
 		var dir = enemy.global_position.direction_to(pikmin.global_position)
-		pikmin.apply_knockback(dir, force)
+		pikmin.apply_knockback(dir, force, enemy)

@@ -4,10 +4,11 @@ class_name PikminMoving extends PikminState
 var target: Vector2 
 
 func enter():
-	target = targetting_component.target_location
+	target = targetting_component.target_node.global_position
 	pass
 
 func update(_delta: float):
+	target = targetting_component.target_node.global_position
 	pass
 
 func physics_update(delta: float):

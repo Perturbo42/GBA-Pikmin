@@ -22,6 +22,5 @@ func check_for_enemy():
 	
 	targetting_component.target = targetting_component.Targets.ENEMY
 	targetting_component.target_node = nearest_enemy.owner
-	targetting_component.target_location = nearest_enemy.global_position
 	state_machine.change_state(moving_state.name)
 	return false
