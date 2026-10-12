@@ -8,8 +8,10 @@ class_name BulborbChase extends BulborbState
 @export var group: PikminGroup
 
 var shake_timer: float = 0.0
-const NUM_OF_PIKMIN_TO_SHAKE: int = 5
+var chase_timer: float = 0.0
+const NUM_OF_PIKMIN_TO_SHAKE: int = 3
 const SHAKE_TIMER_END: float = 2.0
+const CHASE_TIMER_END: float = 3.0
 
 func _ready() -> void:
 	super._ready()
@@ -21,7 +23,9 @@ func enter():
 	pass
 
 func update(delta: float):
-	if group.num_of_pikmin() >= NUM_OF_PIKMIN_TO_SHAKE:
+	chase_timer += delta
+	
+	if group.num_of_pikmin() >= NUM_OF_PIKMIN_TO_SHAKE or (group.num_of_pikmin() > 0 and chase_timer >= CHASE_TIMER_END):
 		shake_timer += delta
 		if shake_timer >= SHAKE_TIMER_END:
 			shake_timer = 0.0

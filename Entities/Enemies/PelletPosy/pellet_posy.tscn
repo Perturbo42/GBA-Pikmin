@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://tgcdu6of87kc"]
+
+[ext_resource type="Script" uid="uid://db67p43bymo0j" path="res://Entities/Enemies/PelletPosy/pellet_posy.gd" id="1_oy5vq"]
+[ext_resource type="Texture2D" uid="uid://bvb18mejrl5v6" path="res://Entities/Enemies/PelletPosy/PelletPosy.png" id="2_7v7ty"]
+[ext_resource type="PackedScene" uid="uid://bysu2hry8aflv" path="res://Entities/Enemies/Enemy Component/Enemy Boxes/enemy_hurtbox.tscn" id="3_byyny"]
+[ext_resource type="PackedScene" uid="uid://duxcu3fec1sc6" path="res://Entities/Enemies/Enemy Component/Enemy Boxes/corpse_area.tscn" id="4_hi7gx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qgddc"]
+size = Vector2(32, 15)
+
+[node name="PelletPosy" type="CharacterBody2D" unique_id=1200121560]
+motion_mode = 1
+script = ExtResource("1_oy5vq")
+
+[node name="Collision Box" type="CollisionShape2D" parent="." unique_id=1143279804]
+shape = SubResource("RectangleShape2D_qgddc")
+debug_color = Color(0, 1, 0, 0.41960785)
+
+[node name="AliveSprite" type="Sprite2D" parent="." unique_id=700349362]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(0, -52.5)
+texture = ExtResource("2_7v7ty")
+hframes = 3
+
+[node name="DeadSprite" type="Sprite2D" parent="." unique_id=632696165]
+
+[node name="Enemy Hurtbox" parent="." unique_id=472455593 instance=ExtResource("3_byyny")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy Hurtbox" unique_id=1037242747]
+
+[node name="Corpse Area" parent="." unique_id=928789606 instance=ExtResource("4_hi7gx")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Corpse Area" unique_id=2129982957]
