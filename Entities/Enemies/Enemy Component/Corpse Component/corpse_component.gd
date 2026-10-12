@@ -11,14 +11,18 @@ class_name CorpseComponent extends Carryable
 
 
 func activate():
-	super.activate()
+	call_deferred("_activate")
+
+
+func _activate():
 	if collision_box:
-		collision_box.set_deferred("disabled", true)
+		collision_box.disabled = true
 	if hurtbox:
-		hurtbox.set_deferred("monitorable", false)
+		hurtbox.monitorable = false
 	if alive_sprite:
 		alive_sprite.visible = false
 	if dead_sprite:
 		dead_sprite.visible = true
 	if carry_area:
 		carry_area.is_dead = true
+	super.activate()

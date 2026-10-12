@@ -13,7 +13,6 @@ var max_weight: int
 func activate():
 	if !obj:
 		return
-	
 	if carry_area:
 		carry_area.can_be_detected = true
 	if attached_group:
