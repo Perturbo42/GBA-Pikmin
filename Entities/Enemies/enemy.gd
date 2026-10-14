@@ -13,5 +13,8 @@ var home_location: Vector2
 var target: CharacterBody2D
 var enemies_in_range: Array[CharacterBody2D]
 
+func ready_self():
+	pass
+
 func free_self():
 	queue_free()

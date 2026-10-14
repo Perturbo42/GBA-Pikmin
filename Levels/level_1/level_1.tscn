@@ -13,6 +13,7 @@
 
 [sub_resource type="Resource" id="Resource_07mqa"]
 script = ExtResource("6_xrjfu")
+color = 1
 scene = ExtResource("5_su15s")
 preview_texture = ExtResource("5_xrjfu")
 preview_offset = Vector2(0, -52.5)
@@ -47,7 +48,7 @@ position = Vector2(-120, 120)
 enemy_definition = ExtResource("4_vxhsm")
 
 [node name="Enemy Spawner2" parent="Spawns" unique_id=879130828 instance=ExtResource("3_4rsnp")]
-position = Vector2(195, 1)
+position = Vector2(186, 188)
 enemy_definition = SubResource("Resource_07mqa")
 
 [node name="Level Objects" type="Node2D" parent="." unique_id=1122958423]

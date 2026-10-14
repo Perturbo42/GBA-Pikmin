@@ -31,4 +31,5 @@ func apply_spawn_definition(definition: EnemyDefinition):
 	_spawn_mode = definition.spawn_mode
 
 func _deferred_spawn():
-	SpawnHandler.spawn_enemy(enemy_scene, global_position)
+	var entity = SpawnHandler.spawn_enemy(enemy_scene, global_position)
+	enemy_definition.handle_enemy(entity)
