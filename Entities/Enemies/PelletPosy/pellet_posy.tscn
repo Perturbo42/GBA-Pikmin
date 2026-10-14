@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bslyfplgv7pmd" path="res://Entities/Enemies/PelletPosy/pellet_state_no.gd" id="4_n3toh"]
 [ext_resource type="Texture2D" uid="uid://dueyyd1vcnu1" path="res://Entities/Enemies/PelletPosy/PelletPosy - Dead.png" id="5_o5rsv"]
 [ext_resource type="PackedScene" uid="uid://bsrnflrw56qfg" path="res://Entities/Entity Component/Group/group.tscn" id="8_3a2w7"]
+[ext_resource type="PackedScene" uid="uid://d3q81ursf1w4a" path="res://Entities/Enemies/Enemy Component/Corpse Component/corpse_component.tscn" id="9_o5rsv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qgddc"]
 size = Vector2(22, 15)
@@ -30,8 +31,9 @@ script = ExtResource("2_n3toh")
 [node name="YesPellet" type="Node2D" parent="PelletPosyStateMachine" unique_id=750199062]
 script = ExtResource("3_3a2w7")
 
-[node name="NoPellet" type="Node2D" parent="PelletPosyStateMachine" unique_id=1027751741]
+[node name="NoPellet" type="Node2D" parent="PelletPosyStateMachine" unique_id=1027751741 node_paths=PackedStringArray("corpse_comp")]
 script = ExtResource("4_n3toh")
+corpse_comp = NodePath("../../Components/CorpseComponent")
 
 [node name="Collision Box" type="CollisionShape2D" parent="." unique_id=1143279804]
 shape = SubResource("RectangleShape2D_qgddc")
@@ -65,3 +67,11 @@ debug_color = Color(0, 0, 1, 0.41960785)
 [node name="Components" type="Node" parent="." unique_id=1375937983]
 
 [node name="PikminAttachedGroup" parent="Components" unique_id=1101238150 instance=ExtResource("8_3a2w7")]
+
+[node name="CorpseComponent" parent="Components" unique_id=962855638 node_paths=PackedStringArray("collision_box", "hurtbox", "alive_sprite", "dead_sprite", "obj", "attached_group") instance=ExtResource("9_o5rsv")]
+collision_box = NodePath("../../Collision Box")
+hurtbox = NodePath("../../Enemy Hurtbox")
+alive_sprite = NodePath("../../AliveSprite")
+dead_sprite = NodePath("../../DeadSprite")
+obj = NodePath("../..")
+attached_group = NodePath("../PikminAttachedGroup")

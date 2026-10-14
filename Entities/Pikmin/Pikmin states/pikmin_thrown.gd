@@ -6,7 +6,8 @@ class_name PikminThrown extends PikminState
 
 
 var throw_duration := 0.6
-var arc_height := 48.0
+var arc_height := 60.0
+var throw_speed := 300.0
 
 var elapsed := 0.0
 
@@ -19,13 +20,15 @@ func enter():
 	start_pos = pikmin.global_position
 	end_pos = pikmin.target_throw
 
-	var distance = start_pos.distance_to(end_pos)
-	arc_height = clamp(distance * 0.3, 24.0, 96.0)
+	throw_duration = max(
+		start_pos.distance_to(end_pos) / throw_speed,
+		0.4)
 	
 	collider_box.set_deferred("disabled", true)
 	hitbox.monitoring = true
 	hurtbox.monitoring = false
 	whistle_detection.can_be_detected = false
+	print(throw_duration)
 
 func update(delta: float):
 	elapsed += delta
