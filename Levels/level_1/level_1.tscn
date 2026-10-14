@@ -6,8 +6,17 @@
 [ext_resource type="PackedScene" uid="uid://c5kfv85glrjqg" path="res://Entities/Onion/onion.tscn" id="3_714wa"]
 [ext_resource type="PackedScene" uid="uid://kbjiailqfskx" path="res://Entities/Pikmin/Red Pikmin/red_pikmin.tscn" id="4_gp5v8"]
 [ext_resource type="Resource" uid="uid://bmvrb761g2nm2" path="res://Entities/Enemies/Enemy Spawner/Enemy Definition/Bulborb.tres" id="4_vxhsm"]
-[ext_resource type="Resource" uid="uid://c1iomxd5kbjva" path="res://Entities/Enemies/Enemy Spawner/Enemy Definition/PelletPosy.tres" id="5_4rsnp"]
+[ext_resource type="PackedScene" uid="uid://tgcdu6of87kc" path="res://Entities/Enemies/PelletPosy/pellet_posy.tscn" id="5_su15s"]
+[ext_resource type="Texture2D" uid="uid://dueyyd1vcnu1" path="res://Entities/Enemies/PelletPosy/PelletPosy - Dead.png" id="5_xrjfu"]
+[ext_resource type="Script" uid="uid://de5qgraerddek" path="res://Entities/Enemies/PelletPosy/pellet_posy_definition.gd" id="6_xrjfu"]
 [ext_resource type="PackedScene" uid="uid://d2d0jpfs1sohe" path="res://Misc/Pathfinding/Waypoints/waypoint.tscn" id="7_sa5ll"]
+
+[sub_resource type="Resource" id="Resource_07mqa"]
+script = ExtResource("6_xrjfu")
+scene = ExtResource("5_su15s")
+preview_texture = ExtResource("5_xrjfu")
+preview_offset = Vector2(0, -52.5)
+metadata/_custom_type_script = "uid://de5qgraerddek"
 
 [node name="Level_1" type="Node2D" unique_id=685333651]
 y_sort_enabled = true
@@ -39,7 +48,7 @@ enemy_definition = ExtResource("4_vxhsm")
 
 [node name="Enemy Spawner2" parent="Spawns" unique_id=879130828 instance=ExtResource("3_4rsnp")]
 position = Vector2(195, 1)
-enemy_definition = ExtResource("5_4rsnp")
+enemy_definition = SubResource("Resource_07mqa")
 
 [node name="Level Objects" type="Node2D" parent="." unique_id=1122958423]
 y_sort_enabled = true

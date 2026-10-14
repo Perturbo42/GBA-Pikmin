@@ -8,4 +8,5 @@
 script = ExtResource("3_i5pr3")
 scene = ExtResource("2_gvwjg")
 preview_texture = ExtResource("1_nlsi5")
+preview_offset = Vector2(0, -25)
 metadata/_custom_type_script = "uid://c72eikkc47qvy"
