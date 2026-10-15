@@ -41,7 +41,7 @@ drop_comp = NodePath("DropComponent")
 script = ExtResource("5_n60nn")
 group = NodePath("../../../Components/PikminAttachedGroup")
 drop_target = NodePath("../DropTarget")
-drop_range = 5.0
+drop_range = 20.0
 
 [node name="DropTarget" type="Marker2D" parent="PelletPosyStateMachine/NoPellet" unique_id=1754248074]
 

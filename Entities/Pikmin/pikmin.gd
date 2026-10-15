@@ -32,3 +32,7 @@ func apply_knockback(dir: Vector2, force: float, source: CharacterBody2D):
 	state_machine.change_state(PikminState.KNOCKBACK)
 	targetting_comp.target = targetting_comp.Targets.ENEMY
 	targetting_comp.target_node = source
+
+func drop(pos: Vector2):
+	state_machine.change_state(PikminState.IDLE)
+	global_position = pos
