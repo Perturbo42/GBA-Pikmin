@@ -1,7 +1,7 @@
 class_name BulborbChase extends BulborbState
 @onready var timer: Timer = $"Find New Chase Target"
 
-@export_category("External Properties")
+@export_group("External Properties")
 @export var chase_component: Node
 @export var closest_target: Node
 @export var dir_comp: DirectionComponent

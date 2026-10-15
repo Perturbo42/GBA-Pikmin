@@ -28,7 +28,6 @@ func enter():
 	hitbox.monitoring = true
 	hurtbox.monitoring = false
 	whistle_detection.can_be_detected = false
-	print(throw_duration)
 
 func update(delta: float):
 	elapsed += delta

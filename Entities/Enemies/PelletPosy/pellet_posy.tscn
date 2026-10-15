@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://c7icvcoxag35c" path="res://Entities/Enemies/PelletPosy/pellet_state_yes.gd" id="3_3a2w7"]
 [ext_resource type="PackedScene" uid="uid://bysu2hry8aflv" path="res://Entities/Enemies/Enemy Component/Enemy Boxes/enemy_hurtbox.tscn" id="3_byyny"]
 [ext_resource type="Script" uid="uid://bslyfplgv7pmd" path="res://Entities/Enemies/PelletPosy/pellet_state_no.gd" id="4_n3toh"]
+[ext_resource type="Script" uid="uid://dn4kqj1oagogn" path="res://Entities/Enemies/Enemy Component/Drop Component/drop_component.gd" id="5_n60nn"]
 [ext_resource type="Texture2D" uid="uid://dueyyd1vcnu1" path="res://Entities/Enemies/PelletPosy/PelletPosy - Dead.png" id="5_o5rsv"]
 [ext_resource type="PackedScene" uid="uid://bsrnflrw56qfg" path="res://Entities/Entity Component/Group/group.tscn" id="8_3a2w7"]
 [ext_resource type="PackedScene" uid="uid://d3q81ursf1w4a" path="res://Entities/Enemies/Enemy Component/Corpse Component/corpse_component.tscn" id="9_o5rsv"]
@@ -31,9 +32,18 @@ script = ExtResource("2_n3toh")
 [node name="YesPellet" type="Node2D" parent="PelletPosyStateMachine" unique_id=750199062]
 script = ExtResource("3_3a2w7")
 
-[node name="NoPellet" type="Node2D" parent="PelletPosyStateMachine" unique_id=1027751741 node_paths=PackedStringArray("corpse_comp")]
+[node name="NoPellet" type="Node2D" parent="PelletPosyStateMachine" unique_id=1027751741 node_paths=PackedStringArray("corpse_comp", "drop_comp")]
 script = ExtResource("4_n3toh")
 corpse_comp = NodePath("../../Components/CorpseComponent")
+drop_comp = NodePath("DropComponent")
+
+[node name="DropComponent" type="Node" parent="PelletPosyStateMachine/NoPellet" unique_id=1723438527 node_paths=PackedStringArray("group", "drop_target")]
+script = ExtResource("5_n60nn")
+group = NodePath("../../../Components/PikminAttachedGroup")
+drop_target = NodePath("../DropTarget")
+drop_range = 5.0
+
+[node name="DropTarget" type="Marker2D" parent="PelletPosyStateMachine/NoPellet" unique_id=1754248074]
 
 [node name="Collision Box" type="CollisionShape2D" parent="." unique_id=1143279804]
 shape = SubResource("RectangleShape2D_qgddc")

@@ -1,5 +1,5 @@
 class_name DirectionComponent extends Node
-@export_category("External Property")
+@export_group("External Property")
 @export var body: CharacterBody2D
 @export var sprite: Sprite2D
 

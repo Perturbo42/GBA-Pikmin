@@ -1,11 +1,10 @@
 class_name ShakeComponent extends Node
 
-@export_category("External Properties")
-@export var attached_state: State
+@export_group("External Properties")
 @export var enemy: Enemy
 @export var group: PikminGroup
 
-@export_category("Internal Categories")
+@export_group("Internal Categories")
 @export var force: float
 
 func shake():

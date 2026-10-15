@@ -1,12 +1,12 @@
 class_name CorpseComponent extends Carryable
 
-@export_category("External Properties")
+@export_group("External Properties")
 @export var collision_box: CollisionShape2D
 @export var hurtbox: EnemyHurtbox
 @export var alive_sprite: Sprite2D
 @export var dead_sprite: Sprite2D
 
-@export_category("Internal Properties")
+@export_group("Internal Properties")
 @export var seeds: int
 
 
