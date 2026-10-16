@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://c7icvcoxag35c" path="res://Entities/Enemies/PelletPosy/pellet_state_yes.gd" id="3_3a2w7"]
 [ext_resource type="PackedScene" uid="uid://bysu2hry8aflv" path="res://Entities/Enemies/Enemy Component/Enemy Boxes/enemy_hurtbox.tscn" id="3_byyny"]
 [ext_resource type="Script" uid="uid://bslyfplgv7pmd" path="res://Entities/Enemies/PelletPosy/pellet_state_no.gd" id="4_n3toh"]
+[ext_resource type="PackedScene" uid="uid://dlv3ntjbc1tyh" path="res://Entities/Enemies/PelletPosy/pellet.tscn" id="5_dbjmw"]
 [ext_resource type="Script" uid="uid://dn4kqj1oagogn" path="res://Entities/Enemies/Enemy Component/Drop Component/drop_component.gd" id="5_n60nn"]
 [ext_resource type="Texture2D" uid="uid://dueyyd1vcnu1" path="res://Entities/Enemies/PelletPosy/PelletPosy - Dead.png" id="5_o5rsv"]
 [ext_resource type="PackedScene" uid="uid://bsrnflrw56qfg" path="res://Entities/Entity Component/Group/group.tscn" id="8_3a2w7"]
@@ -36,6 +37,7 @@ script = ExtResource("3_3a2w7")
 script = ExtResource("4_n3toh")
 corpse_comp = NodePath("../../Components/CorpseComponent")
 drop_comp = NodePath("DropComponent")
+pellet = ExtResource("5_dbjmw")
 
 [node name="DropComponent" type="Node" parent="PelletPosyStateMachine/NoPellet" unique_id=1723438527 node_paths=PackedStringArray("group", "drop_target")]
 script = ExtResource("5_n60nn")

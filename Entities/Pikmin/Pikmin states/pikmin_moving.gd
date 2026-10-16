@@ -8,7 +8,10 @@ func enter():
 	pass
 
 func update(_delta: float):
-	target = targetting_component.target_node.global_position
+	if is_instance_valid(targetting_component.target_node):
+		target = targetting_component.target_node.global_position
+	else:
+		finished.emit(IDLE)
 	pass
 
 func physics_update(delta: float):
