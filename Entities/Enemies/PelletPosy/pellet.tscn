@@ -11,11 +11,12 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qgddc"]
 
-[node name="Pellet" type="CharacterBody2D" unique_id=1649351729 node_paths=PackedStringArray("corpse_comp", "corpse_moving_comp", "sprite")]
+[node name="Pellet" type="CharacterBody2D" unique_id=1649351729 node_paths=PackedStringArray("corpse_area", "corpse_comp", "corpse_moving_comp", "sprite")]
 collision_layer = 4
 collision_mask = 8
 motion_mode = 1
 script = ExtResource("1_6wygi")
+corpse_area = NodePath("Corpse Area")
 corpse_comp = NodePath("Corpse Area/CorpseComponent")
 corpse_moving_comp = NodePath("Corpse Area/CarryableMovingComponent")
 sprite = NodePath("Sprite2D")

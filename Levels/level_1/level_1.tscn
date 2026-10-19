@@ -13,7 +13,6 @@
 
 [sub_resource type="Resource" id="Resource_07mqa"]
 script = ExtResource("6_xrjfu")
-color = 1
 scene = ExtResource("5_su15s")
 preview_texture = ExtResource("5_xrjfu")
 preview_offset = Vector2(0, -52.5)

@@ -42,4 +42,3 @@ func move_to_destination():
 func stop_moving():
 	is_moving = false
 	speed = 0.0
-	

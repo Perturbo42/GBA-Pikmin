@@ -1,5 +1,7 @@
 class_name CorpseArea extends CarryArea
+enum Onion_Color{Red, Yellow, Blue, None}
 var is_dead: bool = false
+var destination: Onion_Color
 
 func find_destination() -> Waypoint:
 	var red_count: int = 0
@@ -16,12 +18,16 @@ func find_destination() -> Waypoint:
 	var max_count = max(red_count, yellow_count, blue_count)
 	
 	if red_count == max_count:
+		destination = Onion_Color.Red
 		return WaypointHandler.red_onion
 	elif yellow_count == max_count:
+		destination = Onion_Color.Yellow
 		return WaypointHandler.yellow_onion
 	elif blue_count == max_count:
+		destination = Onion_Color.Blue
 		return WaypointHandler.blue_onion
 	else:
+		destination = Onion_Color.None
 		return WaypointHandler.ship
 
 func return_seeds():
