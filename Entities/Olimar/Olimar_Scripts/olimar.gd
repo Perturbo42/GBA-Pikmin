@@ -4,6 +4,7 @@ class_name Olimar extends CharacterBody2D
 @onready var marker_throw: Marker2D = $"Pikmin Throw"
 
 @onready var whistle: Whistle = $Whistle
+@onready var ray_cast_2d: RayCast2D = $RayCast2D
 
 @export_category("External Properties")
 @export var state_machine: StateMachine
@@ -55,10 +56,16 @@ func _input(event: InputEvent) -> void:
 
 func _process(_delta: float) -> void:
 	marker_gather.position = Vector2.ZERO - dir * 25
+	
+	ray_cast_2d.target_position = whistle.position
+	if ray_cast_2d.is_colliding():
+		whistle.active = false
+	else:
+		whistle.active = true
 
 
 func throw():
-	if following_pikmin[curr_type].pikmin_arr.is_empty():
+	if following_pikmin[curr_type].pikmin_arr.is_empty() or !whistle.active:
 		#error noise plays
 		return
 	

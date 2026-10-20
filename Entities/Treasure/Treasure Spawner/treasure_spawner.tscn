@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://c2ojs6q85dur1"]
+
+[ext_resource type="Script" uid="uid://ck1oypv27uje4" path="res://Entities/Treasure/Treasure Spawner/treasure_spawner.gd" id="1_x4hol"]
+[ext_resource type="Script" uid="uid://chv1pnbuv1muh" path="res://Entities/Treasure/Treasure Spawner/treasure_display.gd" id="2_vion6"]
+
+[node name="Treasure Spawner" type="Marker2D" unique_id=1242864228]
+script = ExtResource("1_x4hol")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=129459808]
+script = ExtResource("2_vion6")
+
+[node name="Timer" type="Timer" parent="Sprite2D" unique_id=794359975]
+wait_time = 0.25
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1765244931]

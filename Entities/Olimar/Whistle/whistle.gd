@@ -3,6 +3,7 @@ class_name Whistle extends Node2D
 @onready var whistle_area_2d: WhistleArea2D = $"Whistle Area/Whistle Area2D"
 @onready var whistle_area_sprite: Sprite2D = $"Whistle Area/Whistle Area Sprite"
 
+var active: bool = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -10,6 +11,11 @@ func _process(_delta: float) -> void:
 	
 	var dir = Global.olimar.global_position.direction_to(self.global_position)
 	cursor.rotation = dir.angle() - Vector2.DOWN.angle()
+	
+	if active:
+		cursor.modulate = Color.WHITE
+	else:
+		cursor.modulate = Color.DIM_GRAY
 
 func activate():
 	whistle_area_sprite.visible = true
