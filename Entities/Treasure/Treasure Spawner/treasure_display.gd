@@ -4,6 +4,7 @@ var previous_texture: Texture2D = null
 var previous_offset: Vector2 = Vector2.ZERO
 @onready var timer: Timer = $Timer
 
+
 func _ready() -> void:
 	if not Engine.is_editor_hint():
 		queue_free()
@@ -13,11 +14,11 @@ func _ready() -> void:
 	on_refresh_timeout()
 
 func on_refresh_timeout():
-	var spawner: EnemySpawner = get_parent() as EnemySpawner
+	var spawner: TreasureSpawner = get_parent() as TreasureSpawner
 	if spawner == null:
 		return
 	
-	var definition: EnemyDefinition = spawner.enemy_definition
+	var definition: TreasureDefinition = spawner.treasure_definition
 	
 	var new_texture: Texture2D =\
 	definition.preview_texture if (definition and definition.preview_texture) else null

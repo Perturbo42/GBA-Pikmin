@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dkmhidj5ngksk"]
+
+[ext_resource type="Script" uid="uid://cavjlasq7618c" path="res://Entities/Entity Component/Carryable/carry_area.gd" id="1_dn4b8"]
+
+[node name="Carry Area" type="Area2D" unique_id=690825548]
+collision_layer = 8192
+collision_mask = 1024
+script = ExtResource("1_dn4b8")
+
+[node name="PikminSlots1" type="Node2D" parent="." unique_id=1059145863]
+
+[node name="PikminSlots2" type="Node2D" parent="." unique_id=1739034196]

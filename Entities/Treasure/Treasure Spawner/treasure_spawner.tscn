@@ -7,6 +7,8 @@
 script = ExtResource("1_x4hol")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=129459808]
+texture_filter = 1
+texture_repeat = 1
 script = ExtResource("2_vion6")
 
 [node name="Timer" type="Timer" parent="Sprite2D" unique_id=794359975]

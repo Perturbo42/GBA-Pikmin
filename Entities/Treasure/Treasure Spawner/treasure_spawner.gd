@@ -19,5 +19,4 @@ func _ready() -> void:
 
 
 func _deferred_spawn():
-	var entity = SpawnHandler.spawn_treasure(treasure_scene, global_position)
-	treasure_definition.handle_enemy(entity)
+	SpawnHandler.spawn_treasure(treasure_scene, global_position)

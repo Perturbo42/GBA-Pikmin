@@ -10,6 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://dueyyd1vcnu1" path="res://Entities/Enemies/PelletPosy/PelletPosy - Dead.png" id="5_xrjfu"]
 [ext_resource type="Script" uid="uid://de5qgraerddek" path="res://Entities/Enemies/PelletPosy/pellet_posy_definition.gd" id="6_xrjfu"]
 [ext_resource type="PackedScene" uid="uid://d2d0jpfs1sohe" path="res://Misc/Pathfinding/Waypoints/waypoint.tscn" id="7_sa5ll"]
+[ext_resource type="PackedScene" uid="uid://c2ojs6q85dur1" path="res://Entities/Treasure/Treasure Spawner/treasure_spawner.tscn" id="8_g75eo"]
+[ext_resource type="Texture2D" uid="uid://cdpy0ujlauacu" path="res://Entities/Treasure/Rubber Duck/rubber_duck.png" id="9_lx7p2"]
+[ext_resource type="PackedScene" uid="uid://b7v0xgu1fhj2h" path="res://Entities/Treasure/Rubber Duck/rubber_duck.tscn" id="10_8jvj1"]
+[ext_resource type="Script" uid="uid://bw2brhq3ynhnt" path="res://Entities/Treasure/Treasure Spawner/treasure_definition.gd" id="11_mwwos"]
 
 [sub_resource type="Resource" id="Resource_07mqa"]
 script = ExtResource("6_xrjfu")
@@ -17,6 +21,13 @@ scene = ExtResource("5_su15s")
 preview_texture = ExtResource("5_xrjfu")
 preview_offset = Vector2(0, -52.5)
 metadata/_custom_type_script = "uid://de5qgraerddek"
+
+[sub_resource type="Resource" id="Resource_oeaam"]
+script = ExtResource("11_mwwos")
+scene = ExtResource("10_8jvj1")
+preview_texture = ExtResource("9_lx7p2")
+preview_offset = Vector2(0, 4)
+metadata/_custom_type_script = "uid://bw2brhq3ynhnt"
 
 [node name="Level_1" type="Node2D" unique_id=685333651]
 y_sort_enabled = true
@@ -50,6 +61,10 @@ enemy_definition = ExtResource("4_vxhsm")
 [node name="PelletPosy Spawner2" parent="Spawns" unique_id=879130828 instance=ExtResource("3_4rsnp")]
 position = Vector2(-160, -128)
 enemy_definition = SubResource("Resource_07mqa")
+
+[node name="Treasure Spawner" parent="Spawns" unique_id=1242864228 instance=ExtResource("8_g75eo")]
+position = Vector2(256, 192)
+treasure_definition = SubResource("Resource_oeaam")
 
 [node name="Level Objects" type="Node2D" parent="." unique_id=1122958423]
 y_sort_enabled = true
@@ -88,8 +103,16 @@ connections = [NodePath("../Waypoint2")]
 
 [node name="Waypoint4" parent="Waypoints" unique_id=421508554 node_paths=PackedStringArray("connections") instance=ExtResource("7_sa5ll")]
 position = Vector2(0, -40)
-connections = [NodePath("../RedOnion"), NodePath("../YellowOnion")]
+connections = [NodePath("../RedOnion"), NodePath("../YellowOnion"), NodePath("../Waypoint2")]
 
 [node name="Waypoint5" parent="Waypoints" unique_id=1665651246 node_paths=PackedStringArray("connections") instance=ExtResource("7_sa5ll")]
 position = Vector2(0, 64)
 connections = [NodePath("../RedOnion"), NodePath("../YellowOnion"), NodePath("../Waypoint4"), NodePath("../BlueOnion")]
+
+[node name="Waypoint6" parent="Waypoints" unique_id=357618273 node_paths=PackedStringArray("connections") instance=ExtResource("7_sa5ll")]
+position = Vector2(112, 160)
+connections = [NodePath("../Waypoint5"), NodePath("../RedOnion"), NodePath("../BlueOnion")]
+
+[node name="Waypoint7" parent="Waypoints" unique_id=150527334 node_paths=PackedStringArray("connections") instance=ExtResource("7_sa5ll")]
+position = Vector2(-112, 160)
+connections = [NodePath("../Waypoint5"), NodePath("../YellowOnion"), NodePath("../BlueOnion")]

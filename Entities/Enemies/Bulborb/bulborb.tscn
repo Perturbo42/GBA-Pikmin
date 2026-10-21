@@ -101,8 +101,7 @@ one_shot = true
 wait_time = 2.0
 one_shot = true
 
-[node name="Shake Component" parent="Bulborb State Machine/Shake" unique_id=537376115 node_paths=PackedStringArray("attached_state", "enemy", "group") instance=ExtResource("8_mxfru")]
-attached_state = NodePath("..")
+[node name="Shake Component" parent="Bulborb State Machine/Shake" unique_id=537376115 node_paths=PackedStringArray("enemy", "group") instance=ExtResource("8_mxfru")]
 enemy = NodePath("../../..")
 group = NodePath("../../../Components/PikminAttachedGroup")
 force = 250.0

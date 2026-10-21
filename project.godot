@@ -98,9 +98,10 @@ Space={
 2d_physics/layer_8="Hitbox"
 2d_physics/layer_9="Hurtbox"
 2d_physics/layer_10="Corpse"
-2d_physics/layer_11="Corpse Detection"
+2d_physics/layer_11="Carry Detection"
 2d_physics/layer_12="Whistle Detection"
 2d_physics/layer_13="Pikmin's Enemy Detection"
+2d_physics/layer_14="Treasure"
 
 [physics]
 

@@ -3,7 +3,7 @@ class_name Carryable extends Node2D
 @export var obj: Node2D
 @export var carry_area: Area2D 
 ##Area that pikmin detect when trying to attach
-@export var attached_group: PikminGroup
+
 
 @export_group("Internal Properties")
 @export var weight: int
@@ -15,7 +15,5 @@ func activate():
 		return
 	if carry_area:
 		carry_area.can_be_detected = true
-	if attached_group:
-		PikminRegistry.remove_all_from_group(attached_group)
 	
 	max_weight = min(weight * 2, 100)

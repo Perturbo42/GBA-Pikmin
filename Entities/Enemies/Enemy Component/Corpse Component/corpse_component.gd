@@ -1,6 +1,7 @@
 class_name CorpseComponent extends Carryable
 
 @export_group("External Properties")
+@export var attached_group: PikminGroup
 @export var collision_box: CollisionShape2D
 @export var hurtbox: EnemyHurtbox
 @export var alive_sprite: Sprite2D
@@ -25,4 +26,6 @@ func _activate():
 		dead_sprite.visible = true
 	if carry_area:
 		carry_area.is_dead = true
+	if attached_group:
+		PikminRegistry.remove_all_from_group(attached_group)
 	super.activate()

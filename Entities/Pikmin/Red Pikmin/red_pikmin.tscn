@@ -139,6 +139,7 @@ scale = Vector2(0.5, 1)
 shape = SubResource("RectangleShape2D_qgddc")
 
 [node name="CarryingDetection" parent="." unique_id=1121993671 node_paths=PackedStringArray("pikmin", "state_machine", "moving_state", "targetting_component", "carrying_component") instance=ExtResource("12_7grc6")]
+collision_mask = 8704
 pikmin = NodePath("..")
 state_machine = NodePath("../Pikmin State Machine")
 moving_state = NodePath("../Pikmin State Machine/Moving")
