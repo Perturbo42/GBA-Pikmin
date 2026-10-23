@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://chvia1boc6188"]
+
+[ext_resource type="Texture2D" uid="uid://cpb4t28u2w7fa" path="res://Entities/Louie/Louie.png" id="1_w4p5p"]
+
+[node name="Louie" type="Node2D" unique_id=1084414037]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1587239376]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(0, -27.5)
+texture = ExtResource("1_w4p5p")

@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://c2ojs6q85dur1" path="res://Entities/Treasure/Treasure Spawner/treasure_spawner.tscn" id="8_g75eo"]
 [ext_resource type="Resource" uid="uid://bmrpihrjpkyqx" path="res://Entities/Treasure/Rubber Duck/rubber_duck_definition.tres" id="9_fsnod"]
 [ext_resource type="PackedScene" uid="uid://crvddl10ytev6" path="res://Entities/Ship/ship.tscn" id="12_pihrv"]
+[ext_resource type="PackedScene" uid="uid://chvia1boc6188" path="res://Entities/Louie/louie.tscn" id="13_g75eo"]
 
 [sub_resource type="Resource" id="Resource_07mqa"]
 script = ExtResource("6_xrjfu")
@@ -69,6 +70,9 @@ pikmin_count = 21
 
 [node name="Ship" parent="Level Objects" unique_id=264983541 instance=ExtResource("12_pihrv")]
 position = Vector2(0, -200)
+
+[node name="Louie" parent="Level Objects" unique_id=1084414037 instance=ExtResource("13_g75eo")]
+position = Vector2(-40, -168)
 
 [node name="Waypoints" type="Node2D" parent="." unique_id=1013979081]
 
