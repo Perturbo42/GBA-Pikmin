@@ -38,7 +38,6 @@ func get_nearest_waypoint(position: Vector2) -> Waypoint:
 	
 	for waypoint in waypoint_list:
 		var distance := position.distance_squared_to(waypoint.global_position)
-		
 		if distance < closest_distance:
 			closest_distance = distance
 			closest = waypoint
@@ -65,5 +64,5 @@ func get_waypoint_path(start: Waypoint, destination: Waypoint) -> PackedVector2A
 	
 	if start_id == -1 or destination_id == -1:
 		return PackedVector2Array()
-		
+	
 	return astar.get_point_path(start_id, destination_id)

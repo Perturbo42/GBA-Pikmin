@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://bsrnflrw56qfg" path="res://Entities/Entity Component/Group/group.tscn" id="17_t12d7"]
 [ext_resource type="PackedScene" uid="uid://duxcu3fec1sc6" path="res://Entities/Enemies/Enemy Component/Enemy Boxes/corpse_area.tscn" id="18_lrnd2"]
 [ext_resource type="PackedScene" uid="uid://dlgantnc8igwb" path="res://Entities/Entity Component/Carryable/carryable_moving_component.tscn" id="19_4vnoy"]
+[ext_resource type="PackedScene" uid="uid://dll010kctr2g7" path="res://Entities/Entity Component/Weight Display Component/weight_display_component.tscn" id="23_sgs4o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qgddc"]
 size = Vector2(32, 15)
@@ -180,13 +181,13 @@ rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_4gbpf")
 debug_color = Color(0, 0, 1, 0.41960785)
 
-[node name="Corpse Area" parent="." unique_id=928789606 node_paths=PackedStringArray("obj", "carry", "moving_comp", "group", "slots1", "slots2") instance=ExtResource("18_lrnd2")]
+[node name="Corpse Area" parent="." unique_id=928789606 node_paths=PackedStringArray("obj", "carry", "moving_comp", "weight_display", "group") instance=ExtResource("18_lrnd2")]
+position = Vector2(0, 1)
 obj = NodePath("..")
 carry = NodePath("CorpseComponent")
 moving_comp = NodePath("CarryableMovingComponent")
+weight_display = NodePath("../Components/Weight Display Component")
 group = NodePath("CarryingPikminGroup")
-slots1 = NodePath("PikminSlots1")
-slots2 = NodePath("PikminSlots2")
 
 [node name="Marker2D" type="Marker2D" parent="Corpse Area/PikminSlots1" parent_id_path=PackedInt32Array(928789606, 358732772) index="0" unique_id=1689737632]
 position = Vector2(0, -33)
@@ -236,15 +237,15 @@ debug_color = Color(0, 0, 1, 0.41960785)
 [node name="CarryingPikminGroup" parent="Corpse Area" unique_id=1101238150 instance=ExtResource("17_t12d7")]
 
 [node name="CorpseComponent" parent="Corpse Area" unique_id=355602527 node_paths=PackedStringArray("collision_box", "hurtbox", "alive_sprite", "dead_sprite", "obj", "carry_area", "attached_group") instance=ExtResource("11_f2ohq")]
+seeds = 10
+weight = 5
 collision_box = NodePath("../../Collision Box")
 hurtbox = NodePath("../../Enemy Hurtbox")
 alive_sprite = NodePath("../../AliveSprite")
 dead_sprite = NodePath("../../DeadSprite")
-seeds = 10
 obj = NodePath("../..")
 carry_area = NodePath("..")
 attached_group = NodePath("../../Components/PikminAttachedGroup")
-weight = 5
 
 [node name="CarryableMovingComponent" parent="Corpse Area" unique_id=1715806148 node_paths=PackedStringArray("obj", "carry_area") instance=ExtResource("19_4vnoy")]
 obj = NodePath("../..")
@@ -260,6 +261,11 @@ body = NodePath("../..")
 sprite = NodePath("../../AliveSprite")
 
 [node name="PikminAttachedGroup" parent="Components" unique_id=353078869 instance=ExtResource("17_t12d7")]
+
+[node name="Weight Display Component" parent="Components" unique_id=2132990704 node_paths=PackedStringArray("carry_area", "carryable") instance=ExtResource("23_sgs4o")]
+position = Vector2(0, -32)
+carry_area = NodePath("../../Corpse Area")
+carryable = NodePath("../../Corpse Area/CorpseComponent")
 
 [connection signal="body_entered" from="EnemyDetectionArea" to="EnemyDetectionArea" method="_on_body_entered"]
 [connection signal="body_exited" from="EnemyDetectionArea" to="EnemyDetectionArea" method="_on_body_exited"]

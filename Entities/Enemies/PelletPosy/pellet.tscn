@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bl700vrq7kncy" path="res://Entities/Enemies/PelletPosy/Pellets.png" id="1_ekb2o"]
 [ext_resource type="PackedScene" uid="uid://duxcu3fec1sc6" path="res://Entities/Enemies/Enemy Component/Enemy Boxes/corpse_area.tscn" id="2_cbs41"]
 [ext_resource type="PackedScene" uid="uid://bsrnflrw56qfg" path="res://Entities/Entity Component/Group/group.tscn" id="3_oigjw"]
+[ext_resource type="PackedScene" uid="uid://dll010kctr2g7" path="res://Entities/Entity Component/Weight Display Component/weight_display_component.tscn" id="3_x1a60"]
 [ext_resource type="PackedScene" uid="uid://d3q81ursf1w4a" path="res://Entities/Enemies/Enemy Component/Corpse Component/corpse_component.tscn" id="4_6wygi"]
 [ext_resource type="PackedScene" uid="uid://dlgantnc8igwb" path="res://Entities/Entity Component/Carryable/carryable_moving_component.tscn" id="5_x1a60"]
 
@@ -32,13 +33,17 @@ rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_qgddc")
 debug_color = Color(0, 1, 0, 0.41960785)
 
-[node name="Corpse Area" parent="." unique_id=928789606 node_paths=PackedStringArray("obj", "carry", "moving_comp", "group", "slots1", "slots2") instance=ExtResource("2_cbs41")]
+[node name="Weight Display Component" parent="." unique_id=2132990704 node_paths=PackedStringArray("carry_area", "carryable") instance=ExtResource("3_x1a60")]
+position = Vector2(0, -6)
+carry_area = NodePath("../Corpse Area")
+carryable = NodePath("../Corpse Area/CorpseComponent")
+
+[node name="Corpse Area" parent="." unique_id=928789606 node_paths=PackedStringArray("obj", "carry", "moving_comp", "weight_display", "group") instance=ExtResource("2_cbs41")]
 obj = NodePath("..")
 carry = NodePath("CorpseComponent")
 moving_comp = NodePath("CarryableMovingComponent")
+weight_display = NodePath("../Weight Display Component")
 group = NodePath("CarryingPikminGroup")
-slots1 = NodePath("PikminSlots1")
-slots2 = NodePath("PikminSlots2")
 
 [node name="Marker2D" type="Marker2D" parent="Corpse Area/PikminSlots1" parent_id_path=PackedInt32Array(928789606, 358732772) index="0" unique_id=719963211]
 position = Vector2(-15, 4)
@@ -55,9 +60,9 @@ debug_color = Color(0, 0, 1, 0.41960785)
 
 [node name="CorpseComponent" parent="Corpse Area" unique_id=962855638 node_paths=PackedStringArray("obj", "carry_area") instance=ExtResource("4_6wygi")]
 seeds = 1
+weight = 1
 obj = NodePath("../..")
 carry_area = NodePath("..")
-weight = 1
 
 [node name="CarryableMovingComponent" parent="Corpse Area" unique_id=1715806148 node_paths=PackedStringArray("obj", "carry_area") instance=ExtResource("5_x1a60")]
 obj = NodePath("../..")

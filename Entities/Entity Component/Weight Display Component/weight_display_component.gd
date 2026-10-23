@@ -1,8 +1,7 @@
 class_name WeightDisplay extends Node2D
 @export_group("External Properties")
-@export var carry_area: CarryArea
-@export var carrying_group: PikminGroup
-@export var carryable: Carryable
+@export var carry_area: Area2D
+@export var carryable: Node2D
 
 @onready var box: VBoxContainer = $VBoxContainer
 @onready var top_number: Label = $VBoxContainer/TopNumber/Label
