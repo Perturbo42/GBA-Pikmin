@@ -10,3 +10,6 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	if carry_moving_comp.is_moving:
 		carry_moving_comp.move_to_destination()
+
+func free_self():
+	queue_free()

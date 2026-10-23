@@ -32,7 +32,3 @@ func find_destination() -> Waypoint:
 
 func return_seeds():
 	return carry.seeds
-
-func destroy_self():
-	PikminRegistry.remove_all_from_group(group)
-	obj.free_self()

@@ -59,3 +59,7 @@ func has_pikmin(pikmin: Pikmin) -> bool:
 
 func return_position(pikmin: Pikmin) -> Vector2:
 	return pikmin_dict[pikmin].global_position
+
+func destroy_self():
+	PikminRegistry.remove_all_from_group(group)
+	obj.free_self()
