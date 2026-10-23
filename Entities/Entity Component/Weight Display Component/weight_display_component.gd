@@ -7,13 +7,7 @@ class_name WeightDisplay extends Node2D
 @onready var top_number: Label = $VBoxContainer/TopNumber/Label
 @onready var bot_number: Label = $VBoxContainer/BottomNumber/Label
 
-var display: bool = false:
-	set(new):
-		if new:
-			box.visible = true
-		else:
-			box.visible = false
-		
+var display: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -23,9 +17,11 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func update(num: int):
-	if !display and num > 0:
+	if num > 0:
 		display = true
+		box.visible = true
 	else:
 		display = false
-	
+		box.visible = false
+
 	bot_number.text = str(num)
