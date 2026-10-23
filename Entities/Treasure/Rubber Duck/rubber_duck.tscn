@@ -6,13 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://bsrnflrw56qfg" path="res://Entities/Entity Component/Group/group.tscn" id="4_08kma"]
 [ext_resource type="PackedScene" uid="uid://bb71v4ti56i3a" path="res://Entities/Entity Component/Carryable/carry_component.tscn" id="5_34wv1"]
 [ext_resource type="PackedScene" uid="uid://dlgantnc8igwb" path="res://Entities/Entity Component/Carryable/carryable_moving_component.tscn" id="6_vox5g"]
+[ext_resource type="PackedScene" uid="uid://dll010kctr2g7" path="res://Entities/Entity Component/Weight Display Component/weight_display_component.tscn" id="7_08kma"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qgddc"]
 radius = 8.0
 height = 26.0
 
 [node name="Rubber Duck" type="CharacterBody2D" unique_id=1839089568 node_paths=PackedStringArray("carry_area", "carry_comp", "carry_moving_comp")]
-scale = Vector2(2, 2)
 collision_layer = 8192
 collision_mask = 8
 motion_mode = 1
@@ -24,21 +24,29 @@ carry_moving_comp = NodePath("Carry Area/CarryableMovingComponent")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1277849311]
 texture_filter = 1
 texture_repeat = 1
-position = Vector2(0, -4)
+position = Vector2(0, -8)
+scale = Vector2(2, 2)
 texture = ExtResource("1_qdygt")
 
 [node name="Collision Box" type="CollisionShape2D" parent="." unique_id=1315553678]
 rotation = -1.5707964
+scale = Vector2(2, 2)
 shape = SubResource("CapsuleShape2D_qgddc")
 debug_color = Color(0, 1, 0, 0.41960785)
 
-[node name="Carry Area" parent="." unique_id=690825548 node_paths=PackedStringArray("obj", "carry", "moving_comp", "group", "slots1", "slots2") instance=ExtResource("3_2a0iq")]
+[node name="Weight Display Component" parent="." unique_id=1282601397 node_paths=PackedStringArray("carry_area", "carrying_group", "carryable") instance=ExtResource("7_08kma")]
+position = Vector2(0, -32)
+carry_area = NodePath("../Carry Area")
+carrying_group = NodePath("../Carry Area/Carrying Group")
+carryable = NodePath("../Carry Area/CarryComponent")
+
+[node name="Carry Area" parent="." unique_id=690825548 node_paths=PackedStringArray("obj", "carry", "moving_comp", "weight_display", "group") instance=ExtResource("3_2a0iq")]
+scale = Vector2(2, 2)
 obj = NodePath("..")
 carry = NodePath("CarryComponent")
 moving_comp = NodePath("CarryableMovingComponent")
+weight_display = NodePath("../Weight Display Component")
 group = NodePath("Carrying Group")
-slots1 = NodePath("PikminSlots1")
-slots2 = NodePath("PikminSlots2")
 
 [node name="Marker2D" type="Marker2D" parent="Carry Area/PikminSlots1" parent_id_path=PackedInt32Array(690825548, 1059145863) index="0" unique_id=670464499]
 position = Vector2(12, 5)

@@ -1,10 +1,13 @@
 class_name CarryArea extends Area2D
+@onready var slots1: Node2D = $PikminSlots1
+@onready var slots2: Node2D = $PikminSlots2
+
 @export var obj: Node2D
 @export var carry: Carryable
 @export var moving_comp: CarryableMoving
+@export var weight_display: WeightDisplay
 @export var group: PikminGroup
-@export var slots1: Node2D
-@export var slots2: Node2D
+
 var can_be_detected: bool = false
 var slots: Array[Marker2D] = []
 var pikmin_dict: Dictionary
@@ -34,6 +37,8 @@ func sort_pikmin():
 		moving_comp.stop_moving()
 	else:
 		moving_comp.start_moving()
+	
+	weight_display.update(num)
 
 func find_destination() -> Waypoint:
 	return WaypointHandler.ship
