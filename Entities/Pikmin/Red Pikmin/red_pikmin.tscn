@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dkaqqdhdddprl" path="res://Entities/Pikmin/Pikmin Components/Pikmin Box/whistle_detection.tscn" id="11_0assf"]
 [ext_resource type="PackedScene" uid="uid://di8l7mf6x8otk" path="res://Entities/Entity Component/Direction Component/direction_component.tscn" id="11_86s81"]
 [ext_resource type="PackedScene" uid="uid://cu5t3vdi56pkc" path="res://Entities/Pikmin/Pikmin Components/Pikmin Box/carrying_detection.tscn" id="12_7grc6"]
+[ext_resource type="Texture2D" uid="uid://cjgfg4jq12xyq" path="res://Entities/Pikmin/pikmin_ghost.png" id="12_cukn2"]
 [ext_resource type="PackedScene" uid="uid://d2xruwjpb13ug" path="res://Entities/Pikmin/Pikmin Components/Pikmin Box/attacking_detection.tscn" id="15_4vq6a"]
 [ext_resource type="PackedScene" uid="uid://dtjwcuhsng6cc" path="res://Entities/Pikmin/Pikmin Components/Targetting Component/targetting_component.tscn" id="15_brmkq"]
 [ext_resource type="PackedScene" uid="uid://bsokqmkdjsir" path="res://Entities/Pikmin/Pikmin Components/Pikmin Velocity Component/pikmin_velocity_component.tscn" id="16_gkn3n"]
@@ -98,6 +99,16 @@ position = Vector2(0, -14)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("2_x0lm3")
 
+[node name="DeadSprite" type="Sprite2D" parent="." unique_id=1229243935]
+visible = false
+z_index = 1
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(0, -14)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("12_cukn2")
+hframes = 5
+
 [node name="Collider Box" type="CollisionShape2D" parent="." unique_id=1638084405]
 unique_name_in_owner = true
 visible = false
@@ -119,9 +130,12 @@ scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_qgddc")
 debug_color = Color(1, 0, 0, 0.41960785)
 
-[node name="PikminHurtbox" parent="." unique_id=467770375 node_paths=PackedStringArray("pikmin") instance=ExtResource("10_86s81")]
+[node name="PikminHurtbox" parent="." unique_id=467770375 node_paths=PackedStringArray("pikmin", "alive_sprite", "dead_sprite", "whistle_detect") instance=ExtResource("10_86s81")]
 unique_name_in_owner = true
 pikmin = NodePath("..")
+alive_sprite = NodePath("../Sprite2D")
+dead_sprite = NodePath("../DeadSprite")
+whistle_detect = NodePath("../WhistleDetection")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PikminHurtbox" unique_id=100923438]
 position = Vector2(0, -8)

@@ -11,6 +11,8 @@ func _ready() -> void:
 	set_deferred("monitoring", false)
 
 func _on_area_entered(area: Area2D) -> void:
+	if !pikmin.alive:
+		return
 	if state_machine.curr_state != thrown_state:
 		return
 	

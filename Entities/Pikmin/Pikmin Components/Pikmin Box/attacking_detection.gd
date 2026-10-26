@@ -6,7 +6,7 @@ class_name AttackingDetection extends Area2D
 @export var targetting_component: TargettingComponent
 
 func check_for_enemy():
-	if !pikmin:
+	if !pikmin or !pikmin.alive:
 		return false
 	var nearest_enemy: Area2D = null
 	var nearest_distance: float = INF

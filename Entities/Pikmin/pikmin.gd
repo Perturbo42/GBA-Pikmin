@@ -14,6 +14,7 @@ enum stage{LEAF, BUD, FLOWER}
 @warning_ignore("unused_signal")
 signal pikmin_dead(Pikmin)
 
+var alive: bool = true
 var target_throw: Vector2
 var curr_stage: stage
 

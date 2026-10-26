@@ -7,7 +7,7 @@ class_name CarryingDetection extends Area2D
 @export var carrying_component: CarryingComponent
 
 func check_for_carry():
-	if !pikmin:
+	if !pikmin or !pikmin.alive:
 		return false
 	var nearest_corpse: Area2D = null
 	var nearest_distance: float = INF

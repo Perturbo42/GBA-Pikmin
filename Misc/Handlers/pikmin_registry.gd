@@ -41,6 +41,7 @@ func pikmin_dies(pikmin: Pikmin):
 		remove_pikmin_from_group(pikmin, group)
 	memberships.erase(pikmin)
 	all_pikmin.erase(pikmin)
+	await get_tree().create_timer(1.5).timeout
 	pikmin.queue_free()
 
 func remove_all_from_group(group: PikminGroup):
