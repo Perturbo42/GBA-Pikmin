@@ -1,7 +1,7 @@
 class_name CorpseArea extends CarryArea
-enum Onion_Color{Red, Yellow, Blue, None}
+
 var is_dead: bool = false
-var destination: Onion_Color
+
 
 func find_destination() -> Waypoint:
 	var red_count: int = 0

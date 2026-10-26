@@ -1,4 +1,5 @@
 class_name CarryArea extends Area2D
+enum Onion_Color{Red, Yellow, Blue, None}
 @onready var slots1: Node2D = $PikminSlots1
 @onready var slots2: Node2D = $PikminSlots2
 
@@ -11,6 +12,7 @@ class_name CarryArea extends Area2D
 var can_be_detected: bool = false
 var slots: Array[Marker2D] = []
 var pikmin_dict: Dictionary
+var destination: Onion_Color
 
 func _ready() -> void:
 	for child in slots1.get_children():
@@ -41,6 +43,7 @@ func sort_pikmin():
 	weight_display.update(num)
 
 func find_destination() -> Waypoint:
+	destination = Onion_Color.None
 	return WaypointHandler.ship
 
 func calculate_speed() -> float:
