@@ -12,7 +12,13 @@ height = 48.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_qgddc"]
 radius = 4.1231055
 
-[node name="Ship" type="Node2D" unique_id=264983541]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4gbpf"]
+radius = 25.0
+height = 98.0
+
+[node name="Ship" type="CharacterBody2D" unique_id=1500484233]
+collision_layer = 16384
+motion_mode = 1
 script = ExtResource("1_mdnxm")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=497835020]
@@ -40,6 +46,11 @@ script = ExtResource("3_pkgfc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TreasureEatingArea" unique_id=682656114]
 shape = SubResource("CircleShape2D_qgddc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=420656683]
+position = Vector2(0, -62)
+shape = SubResource("CapsuleShape2D_4gbpf")
+debug_color = Color(0, 1, 0, 0.41960785)
 
 [connection signal="area_entered" from="InteractiveArea" to="InteractiveArea" method="_on_area_entered"]
 [connection signal="area_exited" from="InteractiveArea" to="InteractiveArea" method="_on_area_exited"]

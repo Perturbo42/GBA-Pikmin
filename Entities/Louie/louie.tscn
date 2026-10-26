@@ -2,10 +2,20 @@
 
 [ext_resource type="Texture2D" uid="uid://cpb4t28u2w7fa" path="res://Entities/Louie/Louie.png" id="1_w4p5p"]
 
-[node name="Louie" type="Node2D" unique_id=1084414037]
+[sub_resource type="CircleShape2D" id="CircleShape2D_qgddc"]
+radius = 8.0
+
+[node name="Louie" type="CharacterBody2D" unique_id=1401319672]
+collision_layer = 16384
+motion_mode = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1587239376]
 texture_filter = 1
 texture_repeat = 1
 position = Vector2(0, -27.5)
 texture = ExtResource("1_w4p5p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1721390426]
+position = Vector2(0, -9)
+shape = SubResource("CircleShape2D_qgddc")
+debug_color = Color(0, 1, 0, 0.41960785)

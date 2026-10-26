@@ -103,6 +103,7 @@ Space={
 2d_physics/layer_12="Whistle Detection"
 2d_physics/layer_13="Pikmin's Enemy Detection"
 2d_physics/layer_14="Treasure"
+2d_physics/layer_15="NPC"
 
 [physics]
 

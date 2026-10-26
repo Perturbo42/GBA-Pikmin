@@ -20,7 +20,7 @@ size = Vector2(20, 15)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qgddc"]
 
 [node name="Olimar" type="CharacterBody2D" unique_id=956143428 node_paths=PackedStringArray("state_machine", "red", "yellow", "blue")]
-collision_mask = 8
+collision_mask = 16392
 motion_mode = 1
 script = ExtResource("1_22lxx")
 state_machine = NodePath("OlimarStateMachine")
