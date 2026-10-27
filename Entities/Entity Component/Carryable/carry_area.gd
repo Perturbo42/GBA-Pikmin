@@ -12,7 +12,7 @@ enum Onion_Color{Red, Yellow, Blue, None}
 var can_be_detected: bool = false
 var slots: Array[Marker2D] = []
 var pikmin_dict: Dictionary
-var destination: Onion_Color
+var destination: Onion_Color = Onion_Color.None
 
 func _ready() -> void:
 	for child in slots1.get_children():

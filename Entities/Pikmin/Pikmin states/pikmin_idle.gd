@@ -1,6 +1,7 @@
 class_name PikminIdle extends PikminState
 @export var carry_detection: CarryingDetection
 @export var attack_detection: AttackingDetection
+@export var velocity_comp: PikminVelocityComponent
 var checking: bool = true
 
 func enter():
@@ -16,7 +17,8 @@ func update(_delta: float):
 		checking = attack_detection.check_for_enemy()
 	pass
 
-func physics_update(_delta: float):
+func physics_update(delta: float):
+	velocity_comp.move_with_separation(delta)
 	pass
 
 func exit():

@@ -56,10 +56,11 @@ throw_angle = 60.0
 [node name="Pikmin State Machine" type="Node2D" parent="." unique_id=1496414826]
 script = ExtResource("2_vnup6")
 
-[node name="Idle" type="Node2D" parent="Pikmin State Machine" unique_id=1296539547 node_paths=PackedStringArray("carry_detection", "attack_detection")]
+[node name="Idle" type="Node2D" parent="Pikmin State Machine" unique_id=1296539547 node_paths=PackedStringArray("carry_detection", "attack_detection", "velocity_comp")]
 script = ExtResource("3_npk05")
 carry_detection = NodePath("../../CarryingDetection")
 attack_detection = NodePath("../../AttackingDetection")
+velocity_comp = NodePath("../../Components/Velocity Component")
 
 [node name="Follow" type="Node2D" parent="Pikmin State Machine" unique_id=477784633 node_paths=PackedStringArray("velocity_comp")]
 script = ExtResource("4_wcivg")
@@ -186,6 +187,8 @@ pikmin = NodePath("../..")
 dir_comp = NodePath("../Direction Component")
 accel_speed = 1500.0
 decel_speed = 2000.0
+separation_radius = 5.0
+separation_weight = 700.0
 
 [node name="Carrying Component" parent="Components" unique_id=1670449051 node_paths=PackedStringArray("pikmin") instance=ExtResource("17_q6kae")]
 pikmin = NodePath("../..")

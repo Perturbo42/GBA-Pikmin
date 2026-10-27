@@ -26,7 +26,6 @@ WaypointHandler="*uid://btewb6sd07qhi"
 
 window/size/viewport_width=480
 window/size/viewport_height=320
-window/size/mode=2
 window/size/resizable=false
 window/size/window_width_override=960
 window/size/window_height_override=640

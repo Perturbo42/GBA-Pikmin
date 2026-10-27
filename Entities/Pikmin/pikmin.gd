@@ -17,6 +17,7 @@ signal pikmin_dead(Pikmin)
 var alive: bool = true
 var target_throw: Vector2
 var curr_stage: stage
+var gather_offset: Vector2
 
 const sprite_default_position: Vector2 = Vector2(0, -14)
 
@@ -37,3 +38,8 @@ func apply_knockback(dir: Vector2, force: float, source: CharacterBody2D):
 func drop(pos: Vector2):
 	state_machine.change_state(PikminState.IDLE)
 	global_position = pos
+
+func assign_gather_offset(radius: float = 30.0) -> void:
+	var angle = randf() * TAU
+	var distance = sqrt(randf()) * radius
+	gather_offset = Vector2.RIGHT.rotated(angle) * distance
