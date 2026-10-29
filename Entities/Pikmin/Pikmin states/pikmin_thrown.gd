@@ -1,8 +1,8 @@
 class_name PikminThrown extends PikminState
-@onready var hitbox: Area2D = %PikminHitbox
-@onready var collider_box: CollisionShape2D = %"Collider Box"
-@onready var hurtbox: Area2D = %PikminHurtbox
-@onready var whistle_detection: Area2D = %WhistleDetection
+@export var hitbox: Area2D 
+@export var collider_box: CollisionShape2D 
+@export var hurtbox: Area2D 
+@export var whistle_detection: Area2D 
 
 
 var throw_duration := 0.6

@@ -76,16 +76,24 @@ velocity_component = NodePath("../../Components/Velocity Component")
 script = ExtResource("5_yhj16")
 carrying_component = NodePath("../../Components/Carrying Component")
 
-[node name="Thrown" type="Node2D" parent="Pikmin State Machine" unique_id=24837924]
+[node name="Thrown" type="Node2D" parent="Pikmin State Machine" unique_id=24837924 node_paths=PackedStringArray("hitbox", "collider_box", "hurtbox", "whistle_detection")]
 script = ExtResource("6_wcivg")
+hitbox = NodePath("../../PikminHitbox")
+collider_box = NodePath("../../Collider Box")
+hurtbox = NodePath("../../PikminHurtbox")
+whistle_detection = NodePath("../../WhistleDetection")
 
-[node name="Attached" type="Node2D" parent="Pikmin State Machine" unique_id=461515903]
+[node name="Attached" type="Node2D" parent="Pikmin State Machine" unique_id=461515903 node_paths=PackedStringArray("attack_timer", "collider_box", "hitbox")]
 script = ExtResource("7_yhj16")
+attack_timer = NodePath("Attack Timer")
+collider_box = NodePath("../../Collider Box")
+hitbox = NodePath("../../PikminHitbox")
 
 [node name="Attack Timer" type="Timer" parent="Pikmin State Machine/Attached" unique_id=1053856592]
 
-[node name="Attacking" type="Node2D" parent="Pikmin State Machine" unique_id=1902602792 node_paths=PackedStringArray("target_comp")]
+[node name="Attacking" type="Node2D" parent="Pikmin State Machine" unique_id=1902602792 node_paths=PackedStringArray("attack_timer", "target_comp")]
 script = ExtResource("9_oi8r5")
+attack_timer = NodePath("Attack Timer")
 target_comp = NodePath("../../Components/Targetting Component")
 
 [node name="Attack Timer" type="Timer" parent="Pikmin State Machine/Attacking" unique_id=247560355]

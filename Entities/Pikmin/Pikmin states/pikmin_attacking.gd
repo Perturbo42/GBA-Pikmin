@@ -1,6 +1,6 @@
 class_name PikminAttacking extends PikminState
 const ATK_RANGE = 20
-@onready var attack_timer: Timer = $"Attack Timer"
+@export var attack_timer: Timer 
 @export var target_comp: TargettingComponent
 var target
 

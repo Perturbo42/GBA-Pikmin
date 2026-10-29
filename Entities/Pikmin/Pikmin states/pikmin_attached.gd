@@ -1,7 +1,7 @@
 class_name PikminAttached extends PikminState
-@onready var attack_timer: Timer = $"Attack Timer"
-@onready var collider_box: CollisionShape2D = %"Collider Box"
-@onready var hitbox: Area2D = %PikminHitbox
+@export var attack_timer: Timer 
+@export var collider_box: CollisionShape2D 
+@export var hitbox: Area2D 
 
 var attach_offset: Vector2 = Vector2.ZERO
 var attached_group: PikminGroup
