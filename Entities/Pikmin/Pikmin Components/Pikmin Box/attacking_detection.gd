@@ -12,11 +12,12 @@ func check_for_enemy():
 	var nearest_distance: float = INF
 	
 	for area in get_overlapping_areas():
-		if area.is_in_group("Enemy") and area.health > 0:
-			var dist = pikmin.global_position.distance_to(area.global_position)
-			if nearest_distance > dist:
-				nearest_distance = dist
-				nearest_enemy = area
+		if area is EnemyHurtbox:
+			if area.detectable and area.enemy.health > 0:
+				var dist = pikmin.global_position.distance_to(area.global_position)
+				if nearest_distance > dist:
+					nearest_distance = dist
+					nearest_enemy = area
 	if not is_instance_valid(nearest_enemy):
 		return true
 	

@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://ja0awin4vamq" path="res://Entities/Pikmin/Pikmin Components/Pikmin Box/pikmin_hurtbox.tscn" id="10_86s81"]
 [ext_resource type="PackedScene" uid="uid://dkaqqdhdddprl" path="res://Entities/Pikmin/Pikmin Components/Pikmin Box/whistle_detection.tscn" id="11_0assf"]
 [ext_resource type="PackedScene" uid="uid://di8l7mf6x8otk" path="res://Entities/Entity Component/Direction Component/direction_component.tscn" id="11_86s81"]
+[ext_resource type="Script" uid="uid://cwj70su7ma58r" path="res://Entities/Pikmin/Pikmin states/pikmin_dead.gd" id="11_r7d1x"]
 [ext_resource type="PackedScene" uid="uid://cu5t3vdi56pkc" path="res://Entities/Pikmin/Pikmin Components/Pikmin Box/carrying_detection.tscn" id="12_7grc6"]
 [ext_resource type="Texture2D" uid="uid://cjgfg4jq12xyq" path="res://Entities/Pikmin/pikmin_ghost.png" id="12_cukn2"]
 [ext_resource type="PackedScene" uid="uid://d2xruwjpb13ug" path="res://Entities/Pikmin/Pikmin Components/Pikmin Box/attacking_detection.tscn" id="15_4vq6a"]
@@ -93,6 +94,12 @@ target_comp = NodePath("../../Components/Targetting Component")
 script = ExtResource("9_msa56")
 velocity_comp = NodePath("../../Components/Velocity Component")
 
+[node name="Dead" type="Node2D" parent="Pikmin State Machine" unique_id=60003308 node_paths=PackedStringArray("alive_sprite", "dead_sprite", "whistle_detect")]
+script = ExtResource("11_r7d1x")
+alive_sprite = NodePath("../../Sprite2D")
+dead_sprite = NodePath("../../DeadSprite")
+whistle_detect = NodePath("../../WhistleDetection")
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=461560849]
 texture_filter = 1
 texture_repeat = 1
@@ -117,7 +124,7 @@ position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_vnup6")
 debug_color = Color(0, 1, 0, 0.41960785)
 
-[node name="Pikmin Hitbox" parent="." unique_id=1288079254 node_paths=PackedStringArray("pikmin", "state_machine", "thrown_state", "attached_state") instance=ExtResource("9_w0b2p")]
+[node name="PikminHitbox" parent="." unique_id=1288079254 node_paths=PackedStringArray("pikmin", "state_machine", "thrown_state", "attached_state") instance=ExtResource("9_w0b2p")]
 unique_name_in_owner = true
 position = Vector2(0, -14)
 pikmin = NodePath("..")
@@ -125,18 +132,15 @@ state_machine = NodePath("../Pikmin State Machine")
 thrown_state = NodePath("../Pikmin State Machine/Thrown")
 attached_state = NodePath("../Pikmin State Machine/Attached")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pikmin Hitbox" unique_id=844914952]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PikminHitbox" unique_id=844914952]
 position = Vector2(0, 10)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_qgddc")
 debug_color = Color(1, 0, 0, 0.41960785)
 
-[node name="PikminHurtbox" parent="." unique_id=467770375 node_paths=PackedStringArray("pikmin", "alive_sprite", "dead_sprite", "whistle_detect") instance=ExtResource("10_86s81")]
+[node name="PikminHurtbox" parent="." unique_id=467770375 node_paths=PackedStringArray("pikmin") instance=ExtResource("10_86s81")]
 unique_name_in_owner = true
 pikmin = NodePath("..")
-alive_sprite = NodePath("../Sprite2D")
-dead_sprite = NodePath("../DeadSprite")
-whistle_detect = NodePath("../WhistleDetection")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PikminHurtbox" unique_id=100923438]
 position = Vector2(0, -8)
@@ -198,4 +202,4 @@ moving_state = NodePath("../../Pikmin State Machine/Moving")
 carry_state = NodePath("../../Pikmin State Machine/Carry")
 attack_state = NodePath("../../Pikmin State Machine/Attacking")
 
-[connection signal="area_entered" from="Pikmin Hitbox" to="Pikmin Hitbox" method="_on_area_entered"]
+[connection signal="area_entered" from="PikminHitbox" to="PikminHitbox" method="_on_area_entered"]

@@ -27,7 +27,7 @@ func exit():
 
 func damage():
 	if target.hurtbox:
-		if target.hurtbox.health <= 0:
+		if target.hurtbox.enemy.health <= 0:
 			finished.emit(IDLE)
 			return
 		target.hurtbox.take_damage(pikmin.damage)

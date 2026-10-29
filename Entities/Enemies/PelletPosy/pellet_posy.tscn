@@ -18,13 +18,16 @@ size = Vector2(22, 15)
 [sub_resource type="CircleShape2D" id="CircleShape2D_bl5ow"]
 radius = 13.038404
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_qgddc"]
+radius = 13.0
+
 [node name="PelletPosy" type="CharacterBody2D" unique_id=1200121560 node_paths=PackedStringArray("state_machine", "hurtbox")]
 collision_layer = 4
 collision_mask = 8
 motion_mode = 1
 script = ExtResource("1_oy5vq")
 state_machine = NodePath("PelletPosyStateMachine")
-hurtbox = NodePath("Enemy Hurtbox")
+hurtbox = NodePath("Pellet Hurtbox")
 health = 50
 
 [node name="PelletPosyStateMachine" type="Node2D" parent="." unique_id=1004727175]
@@ -65,25 +68,37 @@ texture_repeat = 1
 position = Vector2(0, -52.5)
 texture = ExtResource("5_o5rsv")
 
-[node name="Enemy Hurtbox" parent="." unique_id=472455593 node_paths=PackedStringArray("enemy", "state_machine", "dead_state", "group") instance=ExtResource("3_byyny")]
-position = Vector2(0, -79)
+[node name="Pellet Hurtbox" parent="." unique_id=472455593 node_paths=PackedStringArray("enemy", "state_machine", "dead_state", "group") instance=ExtResource("3_byyny")]
 enemy = NodePath("..")
 state_machine = NodePath("../PelletPosyStateMachine")
 dead_state = NodePath("../PelletPosyStateMachine/NoPellet")
 group = NodePath("../Components/PikminAttachedGroup")
+attachable = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy Hurtbox" unique_id=1037242747]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pellet Hurtbox" unique_id=1037242747]
+position = Vector2(0, -79)
 shape = SubResource("CircleShape2D_bl5ow")
+debug_color = Color(0, 0, 1, 0.41960785)
+
+[node name="Stem Hurtbox" parent="." unique_id=1476545430 node_paths=PackedStringArray("enemy", "state_machine", "dead_state", "group") instance=ExtResource("3_byyny")]
+enemy = NodePath("..")
+state_machine = NodePath("../PelletPosyStateMachine")
+dead_state = NodePath("../PelletPosyStateMachine/NoPellet")
+group = NodePath("../Components/PikminAttachedGroup")
+detectable = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Stem Hurtbox" unique_id=520188344]
+shape = SubResource("CircleShape2D_qgddc")
 debug_color = Color(0, 0, 1, 0.41960785)
 
 [node name="Components" type="Node" parent="." unique_id=1375937983]
 
 [node name="PikminAttachedGroup" parent="Components" unique_id=1101238150 instance=ExtResource("8_3a2w7")]
 
-[node name="CorpseComponent" parent="Components" unique_id=962855638 node_paths=PackedStringArray("collision_box", "hurtbox", "alive_sprite", "dead_sprite", "obj", "attached_group") instance=ExtResource("9_o5rsv")]
+[node name="CorpseComponent" parent="Components" unique_id=962855638 node_paths=PackedStringArray("attached_group", "collision_box", "hurtbox", "alive_sprite", "dead_sprite", "obj") instance=ExtResource("9_o5rsv")]
+attached_group = NodePath("../PikminAttachedGroup")
 collision_box = NodePath("../../Collision Box")
-hurtbox = NodePath("../../Enemy Hurtbox")
+hurtbox = NodePath("../../Pellet Hurtbox")
 alive_sprite = NodePath("../../AliveSprite")
 dead_sprite = NodePath("../../DeadSprite")
 obj = NodePath("../..")
-attached_group = NodePath("../PikminAttachedGroup")

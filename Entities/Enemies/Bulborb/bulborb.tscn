@@ -167,13 +167,14 @@ rotation = -1.5707964
 shape = SubResource("RectangleShape2D_07mqa")
 debug_color = Color(0.972549, 0, 0, 0.41960785)
 
-[node name="Enemy Hurtbox" parent="." unique_id=472455593 node_paths=PackedStringArray("enemy", "state_machine", "dead_state", "group") groups=["Enemy"] instance=ExtResource("15_t12d7")]
+[node name="Enemy Hurtbox" parent="." unique_id=472455593 node_paths=PackedStringArray("enemy", "state_machine", "dead_state", "group") instance=ExtResource("15_t12d7")]
 unique_name_in_owner = true
 enemy = NodePath("..")
 state_machine = NodePath("../Bulborb State Machine")
 dead_state = NodePath("../Bulborb State Machine/Dead")
 group = NodePath("../Components/PikminAttachedGroup")
-health = 1000
+attachable = true
+detectable = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy Hurtbox" unique_id=784684469]
 position = Vector2(0, -26)

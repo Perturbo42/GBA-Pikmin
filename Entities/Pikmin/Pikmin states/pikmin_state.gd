@@ -7,6 +7,7 @@ const THROWN = "Thrown"
 const ATTACHED = "Attached"
 const ATTACKING = "Attacking"
 const KNOCKBACK = "Knockback"
+const DEAD = "Dead"
 
 var pikmin = Pikmin
 
