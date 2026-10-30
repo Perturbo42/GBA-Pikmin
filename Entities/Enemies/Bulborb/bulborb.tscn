@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://bsrnflrw56qfg" path="res://Entities/Entity Component/Group/group.tscn" id="17_t12d7"]
 [ext_resource type="PackedScene" uid="uid://duxcu3fec1sc6" path="res://Entities/Enemies/Enemy Component/Enemy Boxes/corpse_area.tscn" id="18_lrnd2"]
 [ext_resource type="PackedScene" uid="uid://dlgantnc8igwb" path="res://Entities/Entity Component/Carryable/carryable_moving_component.tscn" id="19_4vnoy"]
+[ext_resource type="PackedScene" uid="uid://cgk1b8k183cb8" path="res://Entities/Entity Component/Health Bar/health_bar.tscn" id="22_qhnl7"]
 [ext_resource type="PackedScene" uid="uid://dll010kctr2g7" path="res://Entities/Entity Component/Weight Display Component/weight_display_component.tscn" id="23_sgs4o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qgddc"]
@@ -50,7 +51,7 @@ script = ExtResource("1_nao5k")
 state_machine = NodePath("Bulborb State Machine")
 detection_area = NodePath("EnemyDetectionArea")
 hurtbox = NodePath("Enemy Hurtbox")
-health = 1000
+health = 1
 speed = 100.0
 damage = 2
 
@@ -237,12 +238,13 @@ debug_color = Color(0, 0, 1, 0.41960785)
 
 [node name="CarryingPikminGroup" parent="Corpse Area" unique_id=1101238150 instance=ExtResource("17_t12d7")]
 
-[node name="CorpseComponent" parent="Corpse Area" unique_id=355602527 node_paths=PackedStringArray("attached_group", "collision_box", "hurtbox", "alive_sprite", "dead_sprite", "obj", "carry_area") instance=ExtResource("11_f2ohq")]
+[node name="CorpseComponent" parent="Corpse Area" unique_id=355602527 node_paths=PackedStringArray("attached_group", "collision_box", "hurtbox", "alive_sprite", "dead_sprite", "health_bar", "obj", "carry_area") instance=ExtResource("11_f2ohq")]
 attached_group = NodePath("../../Components/PikminAttachedGroup")
 collision_box = NodePath("../../Collision Box")
 hurtbox = NodePath("../../Enemy Hurtbox")
 alive_sprite = NodePath("../../AliveSprite")
 dead_sprite = NodePath("../../DeadSprite")
+health_bar = NodePath("../../HealthBar")
 seeds = 10
 obj = NodePath("../..")
 carry_area = NodePath("..")
@@ -256,6 +258,10 @@ carry_area = NodePath("..")
 position = Vector2(0, -32)
 carry_area = NodePath("../Corpse Area")
 carryable = NodePath("../Corpse Area/CorpseComponent")
+
+[node name="HealthBar" parent="." unique_id=247740549 node_paths=PackedStringArray("entity") instance=ExtResource("22_qhnl7")]
+position = Vector2(0, -51)
+entity = NodePath("..")
 
 [node name="Components" type="Node" parent="." unique_id=1258760364]
 

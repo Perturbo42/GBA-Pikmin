@@ -6,6 +6,7 @@ class_name CorpseComponent extends Carryable
 @export var hurtbox: EnemyHurtbox
 @export var alive_sprite: Sprite2D
 @export var dead_sprite: Sprite2D
+@export var health_bar: HealthBar
 
 @export_group("Internal Properties")
 @export var seeds: int
@@ -24,6 +25,8 @@ func _activate():
 		alive_sprite.visible = false
 	if dead_sprite:
 		dead_sprite.visible = true
+	if health_bar:
+		health_bar.visible = false
 	if carry_area:
 		carry_area.is_dead = true
 	if attached_group:

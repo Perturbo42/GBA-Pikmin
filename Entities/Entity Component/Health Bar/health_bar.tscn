@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cgk1b8k183cb8"]
+
+[ext_resource type="Texture2D" uid="uid://sqfijpthwghk" path="res://Entities/Entity Component/Health Bar/Custom _ Edited - Pikmin Customs - Main Characters & Pikmin - Olimar & Pikmin - 복사본2.png" id="1_5extt"]
+[ext_resource type="Script" uid="uid://cxbum0ojvcswf" path="res://Entities/Entity Component/Health Bar/health_bar.gd" id="1_bhi5m"]
+
+[node name="HealthBar" type="Node2D" unique_id=247740549]
+script = ExtResource("1_bhi5m")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=758860982]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(0, -10)
+texture = ExtResource("1_5extt")
+hframes = 11
