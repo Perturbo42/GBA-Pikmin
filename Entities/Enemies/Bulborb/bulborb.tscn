@@ -51,7 +51,7 @@ script = ExtResource("1_nao5k")
 state_machine = NodePath("Bulborb State Machine")
 detection_area = NodePath("EnemyDetectionArea")
 hurtbox = NodePath("Enemy Hurtbox")
-health = 1
+health = 1000
 speed = 100.0
 damage = 2
 
@@ -259,9 +259,10 @@ position = Vector2(0, -32)
 carry_area = NodePath("../Corpse Area")
 carryable = NodePath("../Corpse Area/CorpseComponent")
 
-[node name="HealthBar" parent="." unique_id=247740549 node_paths=PackedStringArray("entity") instance=ExtResource("22_qhnl7")]
-position = Vector2(0, -51)
+[node name="HealthBar" parent="." unique_id=247740549 node_paths=PackedStringArray("entity", "group") instance=ExtResource("22_qhnl7")]
+position = Vector2(0, -53)
 entity = NodePath("..")
+group = NodePath("../Components/PikminAttachedGroup")
 
 [node name="Components" type="Node" parent="." unique_id=1258760364]
 
