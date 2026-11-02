@@ -188,7 +188,7 @@ position = Vector2(0, 1)
 obj = NodePath("..")
 carry = NodePath("CorpseComponent")
 moving_comp = NodePath("CarryableMovingComponent")
-weight_display = NodePath("../Weight Display Component")
+weight_display = NodePath("../Components/Weight Display Component")
 group = NodePath("CarryingPikminGroup")
 
 [node name="Marker2D" type="Marker2D" parent="Corpse Area/PikminSlots1" parent_id_path=PackedInt32Array(928789606, 358732772) index="0" unique_id=1689737632]
@@ -244,7 +244,7 @@ collision_box = NodePath("../../Collision Box")
 hurtbox = NodePath("../../Enemy Hurtbox")
 alive_sprite = NodePath("../../AliveSprite")
 dead_sprite = NodePath("../../DeadSprite")
-health_bar = NodePath("../../HealthBar")
+health_bar = NodePath("../../Components/HealthBar")
 seeds = 10
 obj = NodePath("../..")
 carry_area = NodePath("..")
@@ -254,17 +254,7 @@ weight = 5
 obj = NodePath("../..")
 carry_area = NodePath("..")
 
-[node name="Weight Display Component" parent="." unique_id=2132990704 node_paths=PackedStringArray("carry_area", "carryable") instance=ExtResource("23_sgs4o")]
-position = Vector2(0, -32)
-carry_area = NodePath("../Corpse Area")
-carryable = NodePath("../Corpse Area/CorpseComponent")
-
-[node name="HealthBar" parent="." unique_id=247740549 node_paths=PackedStringArray("entity", "group") instance=ExtResource("22_qhnl7")]
-position = Vector2(0, -53)
-entity = NodePath("..")
-group = NodePath("../Components/PikminAttachedGroup")
-
-[node name="Components" type="Node" parent="." unique_id=1258760364]
+[node name="Components" type="Node2D" parent="." unique_id=1203700524]
 
 [node name="Enemy Closest Target Component" parent="Components" unique_id=240972453 node_paths=PackedStringArray("enemy") instance=ExtResource("8_s6wv0")]
 enemy = NodePath("../..")
@@ -274,6 +264,16 @@ body = NodePath("../..")
 sprite = NodePath("../../AliveSprite")
 
 [node name="PikminAttachedGroup" parent="Components" unique_id=353078869 instance=ExtResource("17_t12d7")]
+
+[node name="HealthBar" parent="Components" unique_id=247740549 node_paths=PackedStringArray("entity", "group") instance=ExtResource("22_qhnl7")]
+position = Vector2(0, -53)
+entity = NodePath("../..")
+group = NodePath("../PikminAttachedGroup")
+
+[node name="Weight Display Component" parent="Components" unique_id=2132990704 node_paths=PackedStringArray("carry_area", "carryable") instance=ExtResource("23_sgs4o")]
+position = Vector2(0, -32)
+carry_area = NodePath("../../Corpse Area")
+carryable = NodePath("../../Corpse Area/CorpseComponent")
 
 [connection signal="body_entered" from="EnemyDetectionArea" to="EnemyDetectionArea" method="_on_body_entered"]
 [connection signal="body_exited" from="EnemyDetectionArea" to="EnemyDetectionArea" method="_on_body_exited"]

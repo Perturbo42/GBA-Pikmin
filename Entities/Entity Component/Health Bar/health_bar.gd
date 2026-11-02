@@ -19,10 +19,13 @@ func _process(_delta: float) -> void:
 	if group.num_of_pikmin() != 0:
 		self.visible = true
 		update_health_bar()
+	
+	if entity.health <= 0:
+		self.visible = false
 
 func update_health_bar():
 	var health_percent : float = float(entity.health) / float(max_health) * 10
-	if health_percent <= 0:
+	if health_percent < 0:
 		health_percent = 0
 	var frame: int = ceili(health_percent)
 	sprite.frame = 10 - frame

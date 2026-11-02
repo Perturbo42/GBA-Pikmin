@@ -92,7 +92,7 @@ detectable = true
 shape = SubResource("CircleShape2D_qgddc")
 debug_color = Color(0, 0, 1, 0.41960785)
 
-[node name="Components" type="Node" parent="." unique_id=1375937983]
+[node name="Components" type="Node2D" parent="." unique_id=2008224302]
 
 [node name="PikminAttachedGroup" parent="Components" unique_id=1101238150 instance=ExtResource("8_3a2w7")]
 
