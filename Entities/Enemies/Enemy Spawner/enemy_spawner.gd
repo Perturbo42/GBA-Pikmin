@@ -15,11 +15,13 @@ func _ready() -> void:
 	if enemy_definition == null:
 		print("Enemy definition not found")
 		return
+	enemy_definition = enemy_definition.duplicate(true)
 	
 	enemy_scene = enemy_definition.scene
 	
 	if enemy_scene == null:
 		print("Enemy definition does not have a scene attached")
+		return
 	
 	apply_spawn_definition(enemy_definition)
 	

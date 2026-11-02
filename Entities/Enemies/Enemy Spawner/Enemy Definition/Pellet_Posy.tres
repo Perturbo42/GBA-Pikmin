@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PelletPosyDefinition" format=3 uid="uid://b63k8oxhtqx31"]
+
+[ext_resource type="Texture2D" uid="uid://dueyyd1vcnu1" path="res://Entities/Enemies/PelletPosy/PelletPosy - Dead.png" id="1_phifa"]
+[ext_resource type="PackedScene" uid="uid://tgcdu6of87kc" path="res://Entities/Enemies/PelletPosy/pellet_posy.tscn" id="2_f3v7s"]
+[ext_resource type="Script" uid="uid://de5qgraerddek" path="res://Entities/Enemies/PelletPosy/pellet_posy_definition.gd" id="3_7h3r6"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("3_7h3r6")
+scene = ExtResource("2_f3v7s")
+preview_texture = ExtResource("1_phifa")
+preview_offset = Vector2(0, -52.5)
+metadata/_custom_type_script = "uid://de5qgraerddek"
