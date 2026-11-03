@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://clwtylqmvl1vy"]
+
+[ext_resource type="Script" uid="uid://dqnnorvkhf720" path="res://Entities/Pikmin/Pikmin Components/Pushing Component/pushing_component.gd" id="1_xxuh3"]
+
+[node name="Pushing Component" type="Node" unique_id=1541873109]
+script = ExtResource("1_xxuh3")
