@@ -18,10 +18,12 @@
 [ext_resource type="Script" uid="uid://cwj70su7ma58r" path="res://Entities/Pikmin/Pikmin states/pikmin_dead.gd" id="11_r7d1x"]
 [ext_resource type="PackedScene" uid="uid://cu5t3vdi56pkc" path="res://Entities/Pikmin/Pikmin Components/Pikmin Box/carrying_detection.tscn" id="12_7grc6"]
 [ext_resource type="Texture2D" uid="uid://cjgfg4jq12xyq" path="res://Entities/Pikmin/pikmin_ghost.png" id="12_cukn2"]
+[ext_resource type="Script" uid="uid://8jx7n3joinwc" path="res://Entities/Pikmin/Pikmin states/pikmin_push.gd" id="12_jw3sk"]
 [ext_resource type="PackedScene" uid="uid://d2xruwjpb13ug" path="res://Entities/Pikmin/Pikmin Components/Pikmin Box/attacking_detection.tscn" id="15_4vq6a"]
 [ext_resource type="PackedScene" uid="uid://dtjwcuhsng6cc" path="res://Entities/Pikmin/Pikmin Components/Targetting Component/targetting_component.tscn" id="15_brmkq"]
 [ext_resource type="PackedScene" uid="uid://bsokqmkdjsir" path="res://Entities/Pikmin/Pikmin Components/Pikmin Velocity Component/pikmin_velocity_component.tscn" id="16_gkn3n"]
 [ext_resource type="PackedScene" uid="uid://jfs3e7iqmtyh" path="res://Entities/Pikmin/Pikmin Components/Carrying Component/carrying_component.tscn" id="17_q6kae"]
+[ext_resource type="PackedScene" uid="uid://cpy84msj2ga7b" path="res://Entities/Pikmin/Pikmin Components/Pikmin Box/pushable_detection.tscn" id="19_6pinh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vnup6"]
 size = Vector2(8, 10)
@@ -42,6 +44,9 @@ radius = 29.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_4vq6a"]
 radius = 29.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_jw3sk"]
+radius = 29.0
+
 [node name="Red Pikmin" type="CharacterBody2D" unique_id=1562282753 node_paths=PackedStringArray("state_machine", "velocity_comp", "targetting_comp") groups=["Pikmin"]]
 collision_layer = 2
 collision_mask = 8
@@ -57,10 +62,11 @@ throw_angle = 60.0
 [node name="Pikmin State Machine" type="Node2D" parent="." unique_id=1496414826]
 script = ExtResource("2_vnup6")
 
-[node name="Idle" type="Node2D" parent="Pikmin State Machine" unique_id=1296539547 node_paths=PackedStringArray("carry_detection", "attack_detection", "velocity_comp")]
+[node name="Idle" type="Node2D" parent="Pikmin State Machine" unique_id=1296539547 node_paths=PackedStringArray("carry_detection", "attack_detection", "push_detection", "velocity_comp")]
 script = ExtResource("3_npk05")
 carry_detection = NodePath("../../CarryingDetection")
 attack_detection = NodePath("../../AttackingDetection")
+push_detection = NodePath("../../PushableDetection")
 velocity_comp = NodePath("../../Components/Velocity Component")
 
 [node name="Follow" type="Node2D" parent="Pikmin State Machine" unique_id=477784633 node_paths=PackedStringArray("velocity_comp")]
@@ -107,6 +113,9 @@ script = ExtResource("11_r7d1x")
 alive_sprite = NodePath("../../Sprite2D")
 dead_sprite = NodePath("../../DeadSprite")
 whistle_detect = NodePath("../../WhistleDetection")
+
+[node name="Push" type="Node2D" parent="Pikmin State Machine" unique_id=528042135]
+script = ExtResource("12_jw3sk")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=461560849]
 texture_filter = 1
@@ -188,6 +197,16 @@ targetting_component = NodePath("../Components/Targetting Component")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackingDetection" unique_id=1169358139]
 shape = SubResource("CircleShape2D_4vq6a")
 
+[node name="PushableDetection" parent="." unique_id=727349950 node_paths=PackedStringArray("pikmin", "state_machine", "idle_state", "push_state", "targetting_component") instance=ExtResource("19_6pinh")]
+pikmin = NodePath("..")
+state_machine = NodePath("../Pikmin State Machine")
+idle_state = NodePath("../Pikmin State Machine/Idle")
+push_state = NodePath("../Pikmin State Machine/Push")
+targetting_component = NodePath("../Components/Targetting Component")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PushableDetection" unique_id=1343465276]
+shape = SubResource("CircleShape2D_jw3sk")
+
 [node name="Components" type="Node" parent="." unique_id=1205728338]
 
 [node name="Direction Component" parent="Components" unique_id=2083099918 node_paths=PackedStringArray("body", "sprite") instance=ExtResource("11_86s81")]
@@ -205,9 +224,10 @@ separation_weight = 700.0
 [node name="Carrying Component" parent="Components" unique_id=1670449051 node_paths=PackedStringArray("pikmin") instance=ExtResource("17_q6kae")]
 pikmin = NodePath("../..")
 
-[node name="Targetting Component" parent="Components" unique_id=721423552 node_paths=PackedStringArray("moving_state", "carry_state", "attack_state") instance=ExtResource("15_brmkq")]
+[node name="Targetting Component" parent="Components" unique_id=721423552 node_paths=PackedStringArray("moving_state", "carry_state", "attack_state", "push_state") instance=ExtResource("15_brmkq")]
 moving_state = NodePath("../../Pikmin State Machine/Moving")
 carry_state = NodePath("../../Pikmin State Machine/Carry")
 attack_state = NodePath("../../Pikmin State Machine/Attacking")
+push_state = NodePath("../../Pikmin State Machine/Push")
 
 [connection signal="area_entered" from="PikminHitbox" to="PikminHitbox" method="_on_area_entered"]

@@ -1,11 +1,24 @@
 [gd_scene format=3 uid="uid://byuj25tue4exn"]
 
 [ext_resource type="Texture2D" uid="uid://b43c715rq5xxq" path="res://Entities/Obstacles/Box_10.png" id="1_ca3yd"]
+[ext_resource type="Script" uid="uid://c6duri3e4tkkp" path="res://Entities/Obstacles/pushable.gd" id="1_wr63p"]
+[ext_resource type="PackedScene" uid="uid://bsrnflrw56qfg" path="res://Entities/Entity Component/Group/group.tscn" id="3_ys4x1"]
+[ext_resource type="Script" uid="uid://b1ak235mftbpt" path="res://Entities/Obstacles/pushable_area.gd" id="4_frdec"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wr63p"]
 size = Vector2(112, 80)
 
-[node name="Box 10" type="CharacterBody2D" unique_id=1562037766]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qgddc"]
+size = Vector2(20, 80)
+
+[node name="Box 10" type="CharacterBody2D" unique_id=1562037766 node_paths=PackedStringArray("slots", "target_marker", "group")]
+collision_layer = 8
+collision_mask = 7
+script = ExtResource("1_wr63p")
+slots = NodePath("Slots")
+target_marker = NodePath("Target Position")
+group = NodePath("Group")
+weight = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1440635196]
 texture_filter = 1
@@ -15,3 +28,50 @@ texture = ExtResource("1_ca3yd")
 [node name="Collision Box" type="CollisionShape2D" parent="." unique_id=1748611015]
 shape = SubResource("RectangleShape2D_wr63p")
 debug_color = Color(0, 1, 0, 0.41960785)
+
+[node name="Slots" type="Node2D" parent="." unique_id=538308139]
+
+[node name="Marker2D" type="Marker2D" parent="Slots" unique_id=1573801288]
+position = Vector2(-56, -36)
+
+[node name="Marker2D2" type="Marker2D" parent="Slots" unique_id=576372470]
+position = Vector2(-56, -28)
+
+[node name="Marker2D3" type="Marker2D" parent="Slots" unique_id=668977733]
+position = Vector2(-56, -20)
+
+[node name="Marker2D4" type="Marker2D" parent="Slots" unique_id=1765697858]
+position = Vector2(-56, -12)
+
+[node name="Marker2D5" type="Marker2D" parent="Slots" unique_id=1847764030]
+position = Vector2(-56, -4)
+
+[node name="Marker2D6" type="Marker2D" parent="Slots" unique_id=1141898340]
+position = Vector2(-56, 4)
+
+[node name="Marker2D7" type="Marker2D" parent="Slots" unique_id=810386708]
+position = Vector2(-56, 12)
+
+[node name="Marker2D8" type="Marker2D" parent="Slots" unique_id=1994557024]
+position = Vector2(-56, 20)
+
+[node name="Marker2D9" type="Marker2D" parent="Slots" unique_id=34725009]
+position = Vector2(-56, 28)
+
+[node name="Marker2D10" type="Marker2D" parent="Slots" unique_id=881791075]
+position = Vector2(-56, 36)
+
+[node name="Target Position" type="Marker2D" parent="." unique_id=1958525280]
+
+[node name="Group" parent="." unique_id=1101238150 instance=ExtResource("3_ys4x1")]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=451829886 node_paths=PackedStringArray("entity", "group")]
+collision_layer = 32768
+collision_mask = 65536
+script = ExtResource("4_frdec")
+entity = NodePath("..")
+group = NodePath("../Group")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1355547466]
+position = Vector2(-56, 0)
+shape = SubResource("RectangleShape2D_qgddc")

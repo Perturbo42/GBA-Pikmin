@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cpy84msj2ga7b"]
+
+[ext_resource type="Script" uid="uid://o1xu0i8nqusr" path="res://Entities/Pikmin/Pikmin Components/Pikmin Box/pushable_detection.gd" id="1_hoh0r"]
+
+[node name="PushableDetection" type="Area2D" unique_id=727349950]
+visible = false
+collision_layer = 65536
+collision_mask = 32768
+script = ExtResource("1_hoh0r")

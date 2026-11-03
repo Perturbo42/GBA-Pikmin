@@ -14,6 +14,7 @@
 [ext_resource type="Resource" uid="uid://bmrpihrjpkyqx" path="res://Entities/Treasure/Rubber Duck/rubber_duck_definition.tres" id="9_fsnod"]
 [ext_resource type="PackedScene" uid="uid://crvddl10ytev6" path="res://Entities/Ship/ship.tscn" id="12_pihrv"]
 [ext_resource type="PackedScene" uid="uid://chvia1boc6188" path="res://Entities/Louie/louie.tscn" id="13_g75eo"]
+[ext_resource type="PackedScene" uid="uid://byuj25tue4exn" path="res://Entities/Obstacles/box_10.tscn" id="14_lx7p2"]
 
 [sub_resource type="Resource" id="Resource_g75eo"]
 resource_local_to_scene = true
@@ -66,7 +67,7 @@ tile_set = ExtResource("2_714wa")
 position = Vector2(0, -128)
 
 [node name="Bulborb Spawner" parent="Spawns" unique_id=1175820141 instance=ExtResource("3_4rsnp")]
-position = Vector2(320, 224)
+position = Vector2(320, 368)
 enemy_definition = ExtResource("4_vxhsm")
 
 [node name="PelletPosy Spawner2" parent="Spawns" unique_id=879130828 instance=ExtResource("3_4rsnp")]
@@ -99,6 +100,13 @@ position = Vector2(0, -200)
 
 [node name="Louie" parent="Level Objects" unique_id=1084414037 instance=ExtResource("13_g75eo")]
 position = Vector2(-40, -168)
+
+[node name="Box 10" parent="Level Objects" unique_id=1562037766 instance=ExtResource("14_lx7p2")]
+z_index = -2
+position = Vector2(440, 88)
+
+[node name="Target Position" parent="Level Objects/Box 10" index="3" unique_id=1958525280]
+position = Vector2(192, 0)
 
 [node name="Waypoints" type="Node2D" parent="." unique_id=1013979081]
 
@@ -171,3 +179,5 @@ position = Vector2(536, 88)
 [node name="Waypoint15" parent="Waypoints" unique_id=1772660270 node_paths=PackedStringArray("connections") instance=ExtResource("7_sa5ll")]
 position = Vector2(352, 88)
 connections = [NodePath("../Waypoint9"), NodePath("../Waypoint6")]
+
+[editable path="Level Objects/Box 10"]

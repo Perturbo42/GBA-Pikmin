@@ -1,8 +1,9 @@
 class_name TargettingComponent extends Node
-enum Targets {CORPSE, TREASURE, ENEMY}
+enum Targets {CORPSE, TREASURE, ENEMY, PUSH}
 @export var moving_state: State
 @export var carry_state: State
 @export var attack_state: State
+@export var push_state: State
 
 var target: Targets
 var target_node: Node2D = null
@@ -12,7 +13,8 @@ func _ready() -> void:
 	next_state = {
 	Targets.CORPSE : carry_state,
 	Targets.TREASURE : carry_state,
-	Targets.ENEMY : attack_state
+	Targets.ENEMY : attack_state,
+	Targets.PUSH : push_state
 }
 
 func get_next_state() -> String:
