@@ -4,6 +4,7 @@ class_name PushableDetection extends Area2D
 @export var state_machine: StateMachine
 @export var idle_state: PikminState
 @export var push_state: PikminState
+@export var pushing_component: PushingComponent
 @export var targetting_component: TargettingComponent
 
 func check_for_push():
@@ -27,6 +28,7 @@ func check_for_push():
 		return true
 	
 	## Subject to change due to the nature of needing to go to a specific slot.
+	pushing_component.current_area = nearest_push
 	targetting_component.target = targetting_component.Targets.PUSH
 	targetting_component.target_node = nearest_push.owner
 	state_machine.change_state(push_state.name)

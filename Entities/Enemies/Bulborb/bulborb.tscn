@@ -270,9 +270,9 @@ position = Vector2(0, -53)
 entity = NodePath("../..")
 group = NodePath("../PikminAttachedGroup")
 
-[node name="Weight Display Component" parent="Components" unique_id=2132990704 node_paths=PackedStringArray("carry_area", "carryable") instance=ExtResource("23_sgs4o")]
+[node name="Weight Display Component" parent="Components" unique_id=2132990704 node_paths=PackedStringArray("area", "carryable") instance=ExtResource("23_sgs4o")]
 position = Vector2(0, -32)
-carry_area = NodePath("../../Corpse Area")
+area = NodePath("../../Corpse Area")
 carryable = NodePath("../../Corpse Area/CorpseComponent")
 
 [connection signal="body_entered" from="EnemyDetectionArea" to="EnemyDetectionArea" method="_on_body_entered"]

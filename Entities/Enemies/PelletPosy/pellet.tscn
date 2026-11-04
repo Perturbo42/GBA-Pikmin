@@ -33,9 +33,9 @@ rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_qgddc")
 debug_color = Color(0, 1, 0, 0.41960785)
 
-[node name="Weight Display Component" parent="." unique_id=2132990704 node_paths=PackedStringArray("carry_area", "carryable") instance=ExtResource("3_x1a60")]
+[node name="Weight Display Component" parent="." unique_id=2132990704 node_paths=PackedStringArray("area", "carryable") instance=ExtResource("3_x1a60")]
 position = Vector2(0, -6)
-carry_area = NodePath("../Corpse Area")
+area = NodePath("../Corpse Area")
 carryable = NodePath("../Corpse Area/CorpseComponent")
 
 [node name="Corpse Area" parent="." unique_id=928789606 node_paths=PackedStringArray("obj", "carry", "moving_comp", "weight_display", "group") instance=ExtResource("2_cbs41")]
@@ -60,9 +60,9 @@ debug_color = Color(0, 0, 1, 0.41960785)
 
 [node name="CorpseComponent" parent="Corpse Area" unique_id=962855638 node_paths=PackedStringArray("obj", "carry_area") instance=ExtResource("4_6wygi")]
 seeds = 1
-weight = 1
 obj = NodePath("../..")
 carry_area = NodePath("..")
+weight = 1
 
 [node name="CarryableMovingComponent" parent="Corpse Area" unique_id=1715806148 node_paths=PackedStringArray("obj", "carry_area") instance=ExtResource("5_x1a60")]
 obj = NodePath("../..")

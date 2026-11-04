@@ -34,10 +34,9 @@ scale = Vector2(2, 2)
 shape = SubResource("CapsuleShape2D_qgddc")
 debug_color = Color(0, 1, 0, 0.41960785)
 
-[node name="Weight Display Component" parent="." unique_id=1282601397 node_paths=PackedStringArray("carry_area", "carrying_group", "carryable") instance=ExtResource("7_08kma")]
+[node name="Weight Display Component" parent="." unique_id=1282601397 node_paths=PackedStringArray("area", "carryable") instance=ExtResource("7_08kma")]
 position = Vector2(0, -32)
-carry_area = NodePath("../Carry Area")
-carrying_group = NodePath("../Carry Area/Carrying Group")
+area = NodePath("../Carry Area")
 carryable = NodePath("../Carry Area/CarryComponent")
 
 [node name="Carry Area" parent="." unique_id=690825548 node_paths=PackedStringArray("obj", "carry", "moving_comp", "weight_display", "group") instance=ExtResource("3_2a0iq")]

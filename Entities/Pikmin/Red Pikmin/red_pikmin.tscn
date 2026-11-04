@@ -198,11 +198,12 @@ targetting_component = NodePath("../Components/Targetting Component")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackingDetection" unique_id=1169358139]
 shape = SubResource("CircleShape2D_4vq6a")
 
-[node name="PushableDetection" parent="." unique_id=727349950 node_paths=PackedStringArray("pikmin", "state_machine", "idle_state", "push_state", "targetting_component") instance=ExtResource("19_6pinh")]
+[node name="PushableDetection" parent="." unique_id=727349950 node_paths=PackedStringArray("pikmin", "state_machine", "idle_state", "push_state", "pushing_component", "targetting_component") instance=ExtResource("19_6pinh")]
 pikmin = NodePath("..")
 state_machine = NodePath("../Pikmin State Machine")
 idle_state = NodePath("../Pikmin State Machine/Idle")
 push_state = NodePath("../Pikmin State Machine/Push")
+pushing_component = NodePath("../Components/Pushing Component")
 targetting_component = NodePath("../Components/Targetting Component")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PushableDetection" unique_id=1343465276]
@@ -231,6 +232,7 @@ carry_state = NodePath("../../Pikmin State Machine/Carry")
 attack_state = NodePath("../../Pikmin State Machine/Attacking")
 push_state = NodePath("../../Pikmin State Machine/Push")
 
-[node name="Pushing Component" parent="Components" unique_id=1541873109 instance=ExtResource("25_dn74w")]
+[node name="Pushing Component" parent="Components" unique_id=1541873109 node_paths=PackedStringArray("pikmin") instance=ExtResource("25_dn74w")]
+pikmin = NodePath("../..")
 
 [connection signal="area_entered" from="PikminHitbox" to="PikminHitbox" method="_on_area_entered"]
