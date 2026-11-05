@@ -24,10 +24,8 @@ func enter():
 		start_pos.distance_to(end_pos) / throw_speed,
 		0.4)
 	
-	collider_box.set_deferred("disabled", true)
 	hitbox.monitoring = true
-	hurtbox.monitoring = false
-	whistle_detection.can_be_detected = false
+	pikmin.uninterruptable()
 
 func update(delta: float):
 	elapsed += delta
@@ -50,7 +48,5 @@ func physics_update(_delta: float):
 	pass
 
 func exit():
-	collider_box.set_deferred("disabled", false)
 	hitbox.set_deferred("monitoring", false)
-	hurtbox.set_deferred("monitoring", true)
-	whistle_detection.can_be_detected = true
+	pikmin.interruptable()

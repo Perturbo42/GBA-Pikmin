@@ -10,5 +10,8 @@ func remove_pikmin(p: Pikmin):
 	if num_of_pikmin() == 0:
 		arr_is_empty.emit()
 
+func has_pikmin(pikmin: Pikmin):
+	return pikmin_arr.has(pikmin)
+
 func num_of_pikmin():
 	return pikmin_arr.size()

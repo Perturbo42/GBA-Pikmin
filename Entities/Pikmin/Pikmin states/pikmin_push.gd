@@ -20,4 +20,5 @@ func physics_update(_delta: float):
 
 func exit():
 	pushing_component.detach_from_current_thing()
+	pikmin.interruptable()
 	pass

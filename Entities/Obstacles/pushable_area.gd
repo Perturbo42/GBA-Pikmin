@@ -5,6 +5,7 @@ class_name PushableArea extends Area2D
 @export var group: PikminGroup
 @export var weight_display: WeightDisplay
 
+var detectable: bool = true
 var slots: Array[Marker2D] = []
 var pikmin_dict: Dictionary
 
@@ -17,8 +18,8 @@ func sort_pikmin():
 	clean_dict()
 	var num = 0
 	for pikmin in group.pikmin_arr:
-		## print("SORT:", pikmin)
-		if num >= entity.max_weight:
+		if num >= entity.weight:
+			entity.start_moving()
 			return
 		pikmin_dict[pikmin] = slots[num]
 		num += 1
@@ -27,13 +28,14 @@ func sort_pikmin():
 	if num < entity.weight:
 		pass
 	else:
+		entity.start_moving()
 		pass
 	
 	weight_display.update(num)
 
 func clean_dict():
 	for pikmin in pikmin_dict.duplicate():
-		if !is_instance_valid(pikmin):
+		if !is_instance_valid(pikmin) or !group.has_pikmin(pikmin):
 			pikmin_dict.erase(pikmin)
 
 func has_empty_slots():

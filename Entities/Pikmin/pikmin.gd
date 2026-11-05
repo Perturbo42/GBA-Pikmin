@@ -5,6 +5,9 @@ enum stage{LEAF, BUD, FLOWER}
 @export var state_machine: StateMachine
 @export var velocity_comp: PikminVelocityComponent
 @export var targetting_comp: TargettingComponent
+@export var collider_box: CollisionShape2D
+@export var hurtbox: PikminHurtbox
+@export var whistle_detection: Area2D
 
 @export_category("Stats")
 @export var damage: int
@@ -43,3 +46,13 @@ func assign_gather_offset(radius: float = 30.0) -> void:
 	var angle = randf() * TAU
 	var distance = sqrt(randf()) * radius
 	gather_offset = Vector2.RIGHT.rotated(angle) * distance
+
+func uninterruptable():
+	collider_box.set_deferred("disabled", true)
+	hurtbox.set_deferred("monitoring", false)
+	whistle_detection.can_be_detected = false
+
+func interruptable():
+	collider_box.set_deferred("disabled", false)
+	hurtbox.set_deferred("monitoring", true)
+	whistle_detection.can_be_detected = true

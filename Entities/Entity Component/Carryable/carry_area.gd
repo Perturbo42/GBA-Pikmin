@@ -56,7 +56,7 @@ func calculate_speed() -> float:
 
 func clean_dict():
 	for pikmin in pikmin_dict.duplicate():
-		if !is_instance_valid(pikmin):
+		if !is_instance_valid(pikmin) or !group.has_pikmin(pikmin):
 			pikmin_dict.erase(pikmin)
 
 func has_empty_slots() -> bool:

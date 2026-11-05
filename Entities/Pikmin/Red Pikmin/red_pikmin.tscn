@@ -48,7 +48,7 @@ radius = 29.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_jw3sk"]
 radius = 29.0
 
-[node name="Red Pikmin" type="CharacterBody2D" unique_id=1562282753 node_paths=PackedStringArray("state_machine", "velocity_comp", "targetting_comp") groups=["Pikmin"]]
+[node name="Red Pikmin" type="CharacterBody2D" unique_id=1562282753 node_paths=PackedStringArray("state_machine", "velocity_comp", "targetting_comp", "collider_box", "hurtbox", "whistle_detection") groups=["Pikmin"]]
 collision_layer = 2
 collision_mask = 8
 motion_mode = 1
@@ -56,6 +56,9 @@ script = ExtResource("1_egeb0")
 state_machine = NodePath("Pikmin State Machine")
 velocity_comp = NodePath("Components/Velocity Component")
 targetting_comp = NodePath("Components/Targetting Component")
+collider_box = NodePath("Collider Box")
+hurtbox = NodePath("PikminHurtbox")
+whistle_detection = NodePath("WhistleDetection")
 damage = 15
 speed = 200.0
 throw_angle = 60.0
@@ -115,8 +118,9 @@ alive_sprite = NodePath("../../Sprite2D")
 dead_sprite = NodePath("../../DeadSprite")
 whistle_detect = NodePath("../../WhistleDetection")
 
-[node name="Push" type="Node2D" parent="Pikmin State Machine" unique_id=528042135]
+[node name="Push" type="Node2D" parent="Pikmin State Machine" unique_id=528042135 node_paths=PackedStringArray("pushing_component")]
 script = ExtResource("12_jw3sk")
+pushing_component = NodePath("../../Components/Pushing Component")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=461560849]
 texture_filter = 1

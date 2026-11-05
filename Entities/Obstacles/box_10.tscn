@@ -12,7 +12,7 @@ size = Vector2(112, 80)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qgddc"]
 size = Vector2(20, 80)
 
-[node name="Box 10" type="CharacterBody2D" unique_id=1562037766 node_paths=PackedStringArray("slots", "target_marker", "group")]
+[node name="Box 10" type="CharacterBody2D" unique_id=1562037766 node_paths=PackedStringArray("slots", "target_marker", "group", "area")]
 collision_layer = 8
 collision_mask = 7
 motion_mode = 1
@@ -20,7 +20,9 @@ script = ExtResource("1_wr63p")
 slots = NodePath("Slots")
 target_marker = NodePath("Target Position")
 group = NodePath("Group")
+area = NodePath("Area2D")
 weight = 10
+speed = 150.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1440635196]
 texture_filter = 1
@@ -34,34 +36,34 @@ debug_color = Color(0, 1, 0, 0.41960785)
 [node name="Slots" type="Node2D" parent="." unique_id=538308139]
 
 [node name="Marker2D" type="Marker2D" parent="Slots" unique_id=1573801288]
-position = Vector2(-56, -36)
+position = Vector2(-60, -36)
 
 [node name="Marker2D2" type="Marker2D" parent="Slots" unique_id=576372470]
-position = Vector2(-56, -28)
+position = Vector2(-60, -28)
 
 [node name="Marker2D3" type="Marker2D" parent="Slots" unique_id=668977733]
-position = Vector2(-56, -20)
+position = Vector2(-60, -20)
 
 [node name="Marker2D4" type="Marker2D" parent="Slots" unique_id=1765697858]
-position = Vector2(-56, -12)
+position = Vector2(-60, -12)
 
 [node name="Marker2D5" type="Marker2D" parent="Slots" unique_id=1847764030]
-position = Vector2(-56, -4)
+position = Vector2(-60, -4)
 
 [node name="Marker2D6" type="Marker2D" parent="Slots" unique_id=1141898340]
-position = Vector2(-56, 4)
+position = Vector2(-60, 4)
 
 [node name="Marker2D7" type="Marker2D" parent="Slots" unique_id=810386708]
-position = Vector2(-56, 12)
+position = Vector2(-60, 12)
 
 [node name="Marker2D8" type="Marker2D" parent="Slots" unique_id=1994557024]
-position = Vector2(-56, 20)
+position = Vector2(-60, 20)
 
 [node name="Marker2D9" type="Marker2D" parent="Slots" unique_id=34725009]
-position = Vector2(-56, 28)
+position = Vector2(-60, 28)
 
 [node name="Marker2D10" type="Marker2D" parent="Slots" unique_id=881791075]
-position = Vector2(-56, 36)
+position = Vector2(-60, 36)
 
 [node name="Target Position" type="Marker2D" parent="." unique_id=1958525280]
 
@@ -81,5 +83,6 @@ position = Vector2(-56, 0)
 shape = SubResource("RectangleShape2D_qgddc")
 
 [node name="Weight Display Component" parent="." unique_id=2132990704 node_paths=PackedStringArray("area", "carryable") instance=ExtResource("5_frdec")]
+position = Vector2(-38, 0)
 area = NodePath("../Area2D")
 carryable = NodePath("..")

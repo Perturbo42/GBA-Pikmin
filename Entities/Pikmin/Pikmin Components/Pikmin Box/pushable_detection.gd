@@ -17,7 +17,7 @@ func check_for_push():
 	var nearest_distance: float = INF
 	
 	for area in get_overlapping_areas():
-		if area is PushableArea:
+		if area is PushableArea and area.detectable:
 			if area.has_empty_slots():
 				var dist = pikmin.global_position.distance_to(area.global_position)
 				if nearest_distance > dist:
