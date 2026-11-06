@@ -67,7 +67,7 @@ tile_set = ExtResource("2_714wa")
 position = Vector2(0, -128)
 
 [node name="Bulborb Spawner" parent="Spawns" unique_id=1175820141 instance=ExtResource("3_4rsnp")]
-position = Vector2(320, 368)
+position = Vector2(320, 160)
 enemy_definition = ExtResource("4_vxhsm")
 
 [node name="PelletPosy Spawner2" parent="Spawns" unique_id=879130828 instance=ExtResource("3_4rsnp")]

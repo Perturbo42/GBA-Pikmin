@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://uq3rte6fug5v" path="res://Misc/Camera/Camera.tscn" id="4_qa0c3"]
 [ext_resource type="Script" uid="uid://cih3b4huh2if4" path="res://UI/PauseLayer/Pause Handlers/onion_pause_handler.gd" id="5_gdp1h"]
 [ext_resource type="PackedScene" uid="uid://dqqgwu88i7d8d" path="res://UI/Onion UI/onion_panel_red.tscn" id="6_gdp1h"]
+[ext_resource type="PackedScene" uid="uid://b4v6p8h1khrpg" path="res://UI/HudLayer/Olimar UI/olimar_health.tscn" id="6_omg40"]
 
 [node name="Main Game" type="Node2D" unique_id=767795759]
 process_mode = 3
@@ -52,6 +53,12 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="OlimarHealth" parent="HudLayer/HudRoot" unique_id=632486674 instance=ExtResource("6_omg40")]
+layout_mode = 1
+offset_top = 272.0
+offset_bottom = 272.0
+scale = Vector2(1.5, 1.5)
 
 [node name="PauseLayer" type="CanvasLayer" parent="." unique_id=1018038217]
 process_mode = 3

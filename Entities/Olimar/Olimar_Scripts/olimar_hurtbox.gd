@@ -13,7 +13,9 @@ func _ready() -> void:
 func take_damage(damage: int):
 	if invincible:
 		return
-	GameState.health -= damage
+	else:
+		GameState.take_damage(damage)
+	
 	if GameState.health > 0:
 		state_machine.change_state(damaged_state.name)
 	else:
