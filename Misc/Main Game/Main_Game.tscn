@@ -56,7 +56,9 @@ offset_bottom = 40.0
 
 [node name="OlimarHealth" parent="HudLayer/HudRoot" unique_id=632486674 instance=ExtResource("6_omg40")]
 layout_mode = 1
+offset_left = 8.0
 offset_top = 272.0
+offset_right = 8.0
 offset_bottom = 272.0
 scale = Vector2(1.5, 1.5)
 
