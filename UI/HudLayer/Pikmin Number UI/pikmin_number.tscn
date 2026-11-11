@@ -1,5 +1,16 @@
 [gd_scene format=3 uid="uid://bpo35qlmnr50s"]
 
+[ext_resource type="Texture2D" uid="uid://cctvf0icrw2r" path="res://UI/HudLayer/Pikmin Number UI/Pikmin Profile.png" id="1_4au4b"]
+[ext_resource type="Texture2D" uid="uid://gfcexcd8qdwr" path="res://UI/HudLayer/Pikmin Number UI/X.png" id="2_lx40t"]
+[ext_resource type="Texture2D" uid="uid://3f0jcivr1bje" path="res://UI/HudLayer/Pikmin Number UI/UIBox.png" id="3_jhcne"]
+[ext_resource type="Texture2D" uid="uid://bybia0opj0v1v" path="res://UI/HudLayer/Pikmin Number UI/Cross.png" id="4_6tta3"]
+[ext_resource type="Script" uid="uid://dcccf5s3n78nd" path="res://UI/HudLayer/Pikmin Number UI/pikmin_with_you.gd" id="4_jhcne"]
+[ext_resource type="Script" uid="uid://c0feun3m6m4cn" path="res://UI/HudLayer/Pikmin Number UI/pikmin_overworld.gd" id="6_6tta3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_poxya"]
+atlas = ExtResource("1_4au4b")
+region = Rect2(0, 0, 30, 30)
+
 [node name="PikminNumber" type="Control" unique_id=1733199661]
 layout_mode = 3
 anchors_preset = 15
@@ -10,48 +21,63 @@ grow_vertical = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1546109893]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 45.0
+offset_bottom = 30.0
+theme_override_constants/separation = 0
 alignment = 1
 
 [node name="PikminProfile" type="TextureRect" parent="HBoxContainer" unique_id=1246262353]
 texture_filter = 1
+texture_repeat = 1
 layout_mode = 2
+texture = SubResource("AtlasTexture_poxya")
+stretch_mode = 2
 
-[node name="X" type="Label" parent="HBoxContainer" unique_id=795088965]
+[node name="X" type="TextureRect" parent="HBoxContainer" unique_id=478930528]
+texture_filter = 1
+texture_repeat = 1
 layout_mode = 2
-text = "x"
+texture = ExtResource("2_lx40t")
+stretch_mode = 3
 
-[node name="Box1" type="TextureRect" parent="HBoxContainer" unique_id=1673459414]
+[node name="Squad" type="TextureRect" parent="HBoxContainer" unique_id=1673459414]
+texture_filter = 1
 layout_mode = 2
+texture = ExtResource("3_jhcne")
+stretch_mode = 3
 
-[node name="PikminWithYou" type="Label" parent="HBoxContainer/Box1" unique_id=1552486834]
+[node name="PikminWithYou" type="Label" parent="HBoxContainer/Squad" unique_id=1552486834]
 layout_mode = 0
-offset_left = 4.0
-offset_top = 8.0
-offset_right = 5.0
+offset_left = 10.0
+offset_top = -3.0
+offset_right = 51.0
 offset_bottom = 31.0
+theme_override_font_sizes/font_size = 24
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("4_jhcne")
 
-[node name="Slash1" type="Label" parent="HBoxContainer" unique_id=643678443]
+[node name="Cross" type="TextureRect" parent="HBoxContainer" unique_id=1643833769]
+texture_filter = 1
+texture_repeat = 1
 layout_mode = 2
-text = "/"
+texture = ExtResource("4_6tta3")
+stretch_mode = 2
 
-[node name="Box2" type="TextureRect" parent="HBoxContainer" unique_id=1648247327]
+[node name="Field" type="TextureRect" parent="HBoxContainer" unique_id=1648247327]
+texture_filter = 1
 layout_mode = 2
+texture = ExtResource("3_jhcne")
 
-[node name="PikminOverworld" type="Label" parent="HBoxContainer/Box2" unique_id=1862775245]
+[node name="PikminOverworld" type="Label" parent="HBoxContainer/Field" unique_id=1862775245]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-
-[node name="Slash2" type="Label" parent="HBoxContainer" unique_id=1364820236]
-layout_mode = 2
-text = "/"
-
-[node name="Box3" type="TextureRect" parent="HBoxContainer" unique_id=1679949033]
-layout_mode = 2
-
-[node name="PikminTotal" type="Label" parent="HBoxContainer/Box3" unique_id=662929939]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 10.0
+offset_top = -3.0
+offset_right = 51.0
+offset_bottom = 31.0
+theme_override_font_sizes/font_size = 24
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("6_6tta3")

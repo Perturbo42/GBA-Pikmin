@@ -62,6 +62,9 @@ func deferred_load_level(level: PackedScene):
 	# Handlers handle the level being updated
 	handler_register(current_level)
 	
+	# Handle UI 
+	# Uh oh
+	
 	player.global_position = current_level.get_default_player_spawn()
 
 func handler_register(level: BaseLevel):
