@@ -2,8 +2,7 @@ extends Label
 
 var olimar: Olimar
 
-func _ready() -> void:
-	
+func level_ready():
 	olimar = Global.olimar
 
 func _process(_delta: float) -> void:

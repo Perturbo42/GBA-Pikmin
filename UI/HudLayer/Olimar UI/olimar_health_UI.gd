@@ -1,7 +1,7 @@
-extends Control
+class_name OlimarHealthUI extends InLevelUI
 @onready var health_bar: TextureRect = $HBoxContainer/HealthBar
 
-func _ready() -> void:
+func level_loaded():
 	GameState.took_damage.connect(update_health)
 	update_health(GameState.health)
 

@@ -63,7 +63,7 @@ func deferred_load_level(level: PackedScene):
 	handler_register(current_level)
 	
 	# Handle UI 
-	# Uh oh
+	hud_layer.level_loaded()
 	
 	player.global_position = current_level.get_default_player_spawn()
 

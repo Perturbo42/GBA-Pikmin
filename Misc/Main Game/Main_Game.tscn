@@ -7,8 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://uq3rte6fug5v" path="res://Misc/Camera/Camera.tscn" id="4_qa0c3"]
 [ext_resource type="Script" uid="uid://cih3b4huh2if4" path="res://UI/PauseLayer/Pause Handlers/onion_pause_handler.gd" id="5_gdp1h"]
 [ext_resource type="PackedScene" uid="uid://dqqgwu88i7d8d" path="res://UI/Onion UI/onion_panel_red.tscn" id="6_gdp1h"]
-[ext_resource type="PackedScene" uid="uid://b4v6p8h1khrpg" path="res://UI/HudLayer/Olimar UI/olimar_health.tscn" id="6_omg40"]
-[ext_resource type="PackedScene" uid="uid://bpo35qlmnr50s" path="res://UI/HudLayer/Pikmin Number UI/pikmin_number.tscn" id="7_4b8gg"]
+[ext_resource type="Script" uid="uid://cj0j185tv1gx6" path="res://UI/HudLayer/hud_layer.gd" id="6_jn2es"]
 
 [node name="Main Game" type="Node2D" unique_id=767795759]
 process_mode = 3
@@ -47,29 +46,24 @@ scale = Vector2(0.5, 0.5)
 [node name="HudLayer" type="CanvasLayer" parent="." unique_id=1495053792]
 process_mode = 1
 layer = 10
+script = ExtResource("6_jn2es")
 
 [node name="HudRoot" type="Control" parent="HudLayer" unique_id=897177287]
 unique_name_in_owner = true
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="OlimarHealth" parent="HudLayer/HudRoot" unique_id=632486674 instance=ExtResource("6_omg40")]
+[node name="InLevelRoot" type="Control" parent="HudLayer/HudRoot" unique_id=1940422017]
 layout_mode = 1
-offset_left = 8.0
-offset_top = 272.0
-offset_right = 8.0
-offset_bottom = 272.0
-scale = Vector2(1.5, 1.5)
-
-[node name="PikminNumber" parent="HudLayer/HudRoot" unique_id=1733199661 instance=ExtResource("7_4b8gg")]
-layout_mode = 1
-offset_left = 200.0
-offset_top = 272.0
-offset_right = 200.0
-offset_bottom = 272.0
-scale = Vector2(1.5, 1.5)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="PauseLayer" type="CanvasLayer" parent="." unique_id=1018038217]
 process_mode = 3

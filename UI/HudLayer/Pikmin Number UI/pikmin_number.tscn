@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bpo35qlmnr50s"]
 
 [ext_resource type="Texture2D" uid="uid://cctvf0icrw2r" path="res://UI/HudLayer/Pikmin Number UI/Pikmin Profile.png" id="1_4au4b"]
+[ext_resource type="Script" uid="uid://bf3og5ioqy554" path="res://UI/HudLayer/Pikmin Number UI/pikmin_number.gd" id="1_6tta3"]
 [ext_resource type="Texture2D" uid="uid://gfcexcd8qdwr" path="res://UI/HudLayer/Pikmin Number UI/X.png" id="2_lx40t"]
 [ext_resource type="Texture2D" uid="uid://3f0jcivr1bje" path="res://UI/HudLayer/Pikmin Number UI/UIBox.png" id="3_jhcne"]
 [ext_resource type="Texture2D" uid="uid://bybia0opj0v1v" path="res://UI/HudLayer/Pikmin Number UI/Cross.png" id="4_6tta3"]
@@ -16,8 +17,14 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 200.0
+offset_top = 272.0
+offset_right = -240.0
+offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_6tta3")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1546109893]
 layout_mode = 0
