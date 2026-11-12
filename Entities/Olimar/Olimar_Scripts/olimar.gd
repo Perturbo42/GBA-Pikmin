@@ -16,6 +16,8 @@ class_name Olimar extends CharacterBody2D
 @export_category("Stats")
 @export var speed: float
 
+signal curr_pikmin_type
+
 var dir: Vector2
 var knockback: Vector2
 var pikmin_types = [
@@ -41,12 +43,10 @@ func _input(event: InputEvent) -> void:
 	if not following_pikmin[curr_type].pikmin_arr.is_empty():
 		if event.is_action_pressed("MouseUp"):
 			next_type()
-			while following_pikmin[curr_type].pikmin_arr.is_empty():
-				next_type()
+			check_type(true)
 		elif event.is_action_pressed("MouseDown"):
 			prev_type()
-			while following_pikmin[curr_type].pikmin_arr.is_empty():
-				prev_type()
+			check_type(false)
 	if event.is_action_pressed("MouseR"):
 		whistle.activate()
 	elif event.is_action_released("MouseR"):
@@ -78,6 +78,8 @@ func throw():
 	if pikmin_to_throw == null:
 		return
 	
+	check_type(true)
+	
 	pikmin_to_throw.global_position = marker_throw.global_position
 	pikmin_to_throw.target_throw = whistle.global_position
 	pikmin_to_throw.state_machine.change_state("Thrown")
@@ -86,10 +88,18 @@ func next_type():
 	curr_type_index = (curr_type_index + 1) % pikmin_types.size()
 	curr_type = pikmin_types[curr_type_index]
 
-
 func prev_type():
 	curr_type_index = (curr_type_index - 1 + pikmin_types.size()) % pikmin_types.size()
 	curr_type = pikmin_types[curr_type_index]
+
+func check_type(next: bool):
+	while following_pikmin[curr_type].pikmin_arr.is_empty():
+		if next:
+			next_type()
+		else:
+			prev_type()
+	
+	curr_pikmin_type.emit(curr_type)
 
 func remove_pikmin_from_following(num: int, color: int):
 	##unintuitive function name, this is only really handled by the onion handler

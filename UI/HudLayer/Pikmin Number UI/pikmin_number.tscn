@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bf3og5ioqy554" path="res://UI/HudLayer/Pikmin Number UI/pikmin_number.gd" id="1_6tta3"]
 [ext_resource type="Texture2D" uid="uid://gfcexcd8qdwr" path="res://UI/HudLayer/Pikmin Number UI/X.png" id="2_lx40t"]
 [ext_resource type="Texture2D" uid="uid://3f0jcivr1bje" path="res://UI/HudLayer/Pikmin Number UI/UIBox.png" id="3_jhcne"]
+[ext_resource type="Script" uid="uid://c0h6rtt2j3n8h" path="res://UI/HudLayer/Pikmin Number UI/pikmin_profile.gd" id="3_x44ml"]
 [ext_resource type="Texture2D" uid="uid://bybia0opj0v1v" path="res://UI/HudLayer/Pikmin Number UI/Cross.png" id="4_6tta3"]
 [ext_resource type="Script" uid="uid://dcccf5s3n78nd" path="res://UI/HudLayer/Pikmin Number UI/pikmin_with_you.gd" id="4_jhcne"]
 [ext_resource type="Script" uid="uid://c0feun3m6m4cn" path="res://UI/HudLayer/Pikmin Number UI/pikmin_overworld.gd" id="6_6tta3"]
@@ -39,6 +40,7 @@ texture_repeat = 1
 layout_mode = 2
 texture = SubResource("AtlasTexture_poxya")
 stretch_mode = 2
+script = ExtResource("3_x44ml")
 
 [node name="X" type="TextureRect" parent="HBoxContainer" unique_id=478930528]
 texture_filter = 1
