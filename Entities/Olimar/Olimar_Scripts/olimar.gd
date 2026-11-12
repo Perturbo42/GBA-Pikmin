@@ -40,13 +40,14 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if not following_pikmin[curr_type].pikmin_arr.is_empty():
-		if event.is_action_pressed("MouseUp"):
-			next_type()
-			check_type(true)
-		elif event.is_action_pressed("MouseDown"):
-			prev_type()
-			check_type(false)
+	if not Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT) and not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		if not following_pikmin[curr_type].pikmin_arr.is_empty():
+			if event.is_action_pressed("MouseUp"):
+				next_type()
+				check_type(true)
+			elif event.is_action_pressed("MouseDown"):
+				prev_type()
+				check_type(false)
 	if event.is_action_pressed("MouseR"):
 		whistle.activate()
 	elif event.is_action_released("MouseR"):
