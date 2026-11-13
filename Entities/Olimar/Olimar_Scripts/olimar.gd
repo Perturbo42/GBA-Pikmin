@@ -16,8 +16,6 @@ class_name Olimar extends CharacterBody2D
 @export_category("Stats")
 @export var speed: float
 
-signal curr_pikmin_type
-
 var dir: Vector2
 var knockback: Vector2
 var pikmin_types = [
@@ -106,7 +104,6 @@ func check_type(next: bool):
 		if curr_type_index == prev_type_index:
 			return
 	
-	curr_pikmin_type.emit(curr_type)
 	prev_type_index = curr_type_index
 
 func remove_pikmin_from_following(num: int, color: int):

@@ -6,7 +6,9 @@ var region := atlas.region
 
 func level_ready():
 	olimar = Global.olimar
-	olimar.curr_pikmin_type.connect(update)
+	update(olimar.curr_type)
+
+func _process(_delta: float) -> void:
 	update(olimar.curr_type)
 
 func update(pikmin_script: GDScript):
