@@ -25,7 +25,11 @@ var pikmin_types = [
 	YellowPikmin,
 	BluePikmin
 ]
-var curr_type_index: int = 0
+var prev_type_index: int = 0
+var curr_type_index: int = 0:
+	set(value):
+		curr_type_index = value
+		print(curr_type_index)
 var curr_type = pikmin_types[curr_type_index]
 var following_pikmin : Dictionary
 
@@ -99,8 +103,11 @@ func check_type(next: bool):
 			next_type()
 		else:
 			prev_type()
+		if curr_type_index == prev_type_index:
+			return
 	
 	curr_pikmin_type.emit(curr_type)
+	prev_type_index = curr_type_index
 
 func remove_pikmin_from_following(num: int, color: int):
 	##unintuitive function name, this is only really handled by the onion handler
