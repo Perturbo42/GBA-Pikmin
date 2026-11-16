@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://bl7udqury0wx"]
+
+[ext_resource type="Script" uid="uid://but3rb3q1prul" path="res://UI/HudLayer/Sun Meter UI/sun_meter.gd" id="1_2rlxo"]
+[ext_resource type="Texture2D" uid="uid://cvugads6dbj7q" path="res://UI/HudLayer/Sun Meter UI/sunbar.png" id="1_in53d"]
+[ext_resource type="Texture2D" uid="uid://14wlq6771f0j" path="res://UI/HudLayer/Sun Meter UI/sun.png" id="3_177q2"]
+
+[node name="SunMeter" type="Control" unique_id=986802399]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2rlxo")
+
+[node name="SunBar" type="TextureRect" parent="." unique_id=1620408840]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 0
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 339.0
+offset_bottom = 48.0
+texture = ExtResource("1_in53d")
+stretch_mode = 3
+
+[node name="Sun" type="TextureRect" parent="." unique_id=1450001510]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 0
+offset_right = 55.0
+offset_bottom = 55.0
+texture = ExtResource("3_177q2")
+stretch_mode = 3

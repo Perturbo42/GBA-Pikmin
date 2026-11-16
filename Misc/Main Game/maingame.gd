@@ -9,7 +9,7 @@ var current_level : BaseLevel = null
 ## Handlers
 @onready var onion_handler: Node2D = %OnionHandler
 @onready var spawn_handler: Node2D = %SpawnHandler
-
+@onready var day_handler: DayHandler = %DayHandler
 
 ## World Roots
 @onready var level_root: Node2D = $World/LevelRoot
@@ -70,3 +70,4 @@ func deferred_load_level(level: PackedScene):
 func handler_register(level: BaseLevel):
 	onion_handler.register_level(level)
 	WaypointHandler.register_level(level)
+	day_handler.start_level()
