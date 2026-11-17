@@ -21,6 +21,7 @@ func check_for_enemy():
 	if not is_instance_valid(nearest_enemy):
 		return true
 	
+	PikminRegistry.add_pikmin_to_group(pikmin, nearest_enemy.group)
 	targetting_component.target = targetting_component.Targets.ENEMY
 	targetting_component.target_node = nearest_enemy.owner
 	state_machine.change_state(moving_state.name)

@@ -41,6 +41,22 @@ preview_texture = ExtResource("5_xrjfu")
 preview_offset = Vector2(0, -52.5)
 metadata/_custom_type_script = "uid://de5qgraerddek"
 
+[sub_resource type="Resource" id="Resource_tfty1"]
+script = ExtResource("6_xrjfu")
+dir = 1
+scene = ExtResource("5_su15s")
+preview_texture = ExtResource("5_xrjfu")
+preview_offset = Vector2(0, -52.5)
+metadata/_custom_type_script = "uid://de5qgraerddek"
+
+[sub_resource type="Resource" id="Resource_5umqt"]
+script = ExtResource("6_xrjfu")
+dir = 1
+scene = ExtResource("5_su15s")
+preview_texture = ExtResource("5_xrjfu")
+preview_offset = Vector2(0, -52.5)
+metadata/_custom_type_script = "uid://de5qgraerddek"
+
 [node name="Level_1" type="Node2D" unique_id=685333651]
 y_sort_enabled = true
 script = ExtResource("1_c5jsv")
@@ -67,7 +83,7 @@ tile_set = ExtResource("2_714wa")
 position = Vector2(0, -128)
 
 [node name="Bulborb Spawner" parent="Spawns" unique_id=1175820141 instance=ExtResource("3_4rsnp")]
-position = Vector2(320, 160)
+position = Vector2(624, -80)
 enemy_definition = ExtResource("4_vxhsm")
 
 [node name="PelletPosy Spawner2" parent="Spawns" unique_id=879130828 instance=ExtResource("3_4rsnp")]
@@ -85,6 +101,14 @@ enemy_definition = SubResource("Resource_mwwos")
 [node name="Treasure Spawner" parent="Spawns" unique_id=1242864228 instance=ExtResource("8_g75eo")]
 position = Vector2(632, 280)
 treasure_definition = ExtResource("9_fsnod")
+
+[node name="PelletPosy Spawner" parent="Spawns" unique_id=879868799 instance=ExtResource("3_4rsnp")]
+position = Vector2(240, 96)
+enemy_definition = SubResource("Resource_tfty1")
+
+[node name="PelletPosy Spawner5" parent="Spawns" unique_id=1632586287 instance=ExtResource("3_4rsnp")]
+position = Vector2(208, 32)
+enemy_definition = SubResource("Resource_5umqt")
 
 [node name="Level Objects" type="Node2D" parent="." unique_id=1122958423]
 y_sort_enabled = true

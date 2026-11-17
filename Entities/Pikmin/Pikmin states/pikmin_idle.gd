@@ -13,11 +13,11 @@ func enter():
 
 func update(_delta: float):
 	if checking:
-		checking = carry_detection.check_for_carry()
-	if checking:
 		checking = attack_detection.check_for_enemy()
 	if checking:
 		checking = push_detection.check_for_push()
+	if checking:
+		checking = carry_detection.check_for_carry()
 	pass
 
 func physics_update(delta: float):
