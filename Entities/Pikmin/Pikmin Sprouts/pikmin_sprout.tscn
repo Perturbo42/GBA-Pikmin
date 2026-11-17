@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bnn62wegx0xdo"]
+
+[ext_resource type="Texture2D" uid="uid://bbny6y3u6oae0" path="res://Entities/Pikmin/Pikmin Sprouts/Custom _ Edited - Pikmin Customs - Main Characters & Pikmin - Olimar & Pikmin - 복사본 (2).png" id="1_7nmnu"]
+[ext_resource type="Script" uid="uid://bt4xky71i6ptd" path="res://Entities/Pikmin/Pikmin Sprouts/pikmin_sprout.gd" id="1_1028g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qgddc"]
+
+[node name="PikminSprout" type="Node2D" unique_id=515178420]
+script = ExtResource("1_1028g")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1334819461]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=957777575]
+shape = SubResource("CircleShape2D_qgddc")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=438885020]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(3, -9)
+texture = ExtResource("1_7nmnu")
+hframes = 3
+vframes = 3
