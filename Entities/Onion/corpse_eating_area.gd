@@ -5,5 +5,5 @@ func _on_area_entered(area: Area2D) -> void:
 	if area is CorpseArea:
 		if area.is_dead:
 			var seeds = area.return_seeds()
-			onion.spawn_pikmin(seeds)
+			onion.spawn_sprouts(seeds)
 			area.destroy_self()
