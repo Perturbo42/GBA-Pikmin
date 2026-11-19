@@ -2,8 +2,7 @@ class_name Onion extends Node2D
 
 @onready var interactive_area: InteractiveArea = $InteractiveArea
 @export var onion_color: int 
-@export var pikmin_to_handle: PackedScene
-## 1: Red 2: Yellow 3: Blue
+## 0: Red 1: Yellow 2: Blue
 var onion_panel_open: bool
 @export var pikmin_count: int
 
@@ -43,13 +42,13 @@ func spawn_pikmin(num: int):
 	while num > 0:
 		var mark: Marker2D = pikmin_spawn_points[p]
 		var pos = random_position_around(mark.global_position, RAD)
-		SpawnHandler.spawn_pikmin(pikmin_to_handle, pos)
+		SpawnHandler.spawn_pikmin(onion_color, pos)
 		num -= 1
 		p = (p+1) % 3
 
 func spawn_sprouts(num: int):
 	while num > 0:
-		var pos = get_random_point_in_oval(interactive_area.global_position, 35, 11)
+		var pos = get_random_point_in_oval(interactive_area.global_position, 86, 44)
 		SpawnHandler.spawn_sprout(pos, onion_color)
 		num -= 1
 	
@@ -58,16 +57,10 @@ func random_position_around(point: Vector2, radius: float) -> Vector2:
 	return point + Vector2.from_angle(randf() * TAU) * sqrt(randf()) * radius
 
 func get_random_point_in_oval(center: Vector2, radius_x: float, radius_y: float) -> Vector2:
-	# Pick a random angle in radians (0 to 2*PI)
 	var angle = randf() * TAU
-	
-	# Use sqrt() for uniform area distribution (avoids center clustering)
-	var distance = 1.0
-	
-	# Calculate the offset and scale by the oval's X and Y radii
 	var offset = Vector2(
-		cos(angle) * distance * radius_x,
-		sin(angle) * distance * radius_y
+		cos(angle) * radius_x,
+		sin(angle) * radius_y
 	)
 	
 	return center + offset

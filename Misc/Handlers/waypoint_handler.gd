@@ -44,6 +44,34 @@ func get_nearest_waypoint(position: Vector2) -> Waypoint:
 	
 	return closest
 
+func get_best_waypoint_path(position: Vector2, destination: Waypoint) -> PackedVector2Array:
+	var best_path := PackedVector2Array()
+	var lowest_cost := INF
+	
+	var destination_id := waypoint_list.find(destination)
+	if destination_id == -1:
+		return best_path
+	
+	for waypoint in waypoint_list:
+		var start_id := waypoint_list.find(waypoint)
+		var path := astar.get_point_path(start_id, destination_id)
+		
+		if path.is_empty():
+			continue
+		
+		var path_distance := 0.0
+		
+		for i in range(1, path.size()):
+			path_distance += path[i - 1].distance_to(path[i])
+		
+		var total_cost := position.distance_to(waypoint.global_position) + path_distance
+		
+		if total_cost < lowest_cost:
+			lowest_cost = total_cost
+			best_path = path
+	
+	return best_path
+
 func build_astar() -> void:
 	astar.clear()
 	

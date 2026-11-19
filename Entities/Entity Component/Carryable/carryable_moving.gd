@@ -13,10 +13,10 @@ func start_moving():
 		speed = carry_area.calculate_speed() * SPD_MULT
 		is_moving = true
 		return
-	var dest_waypoint = WaypointHandler.get_nearest_waypoint(obj.global_position)
-	destination = dest_waypoint.global_position
-	path = WaypointHandler.get_waypoint_path(dest_waypoint, carry_area.find_destination())
+	var final_destination = carry_area.find_destination()
+	path = WaypointHandler.get_best_waypoint_path(obj.global_position, final_destination)
 	path_num = 0
+	destination = path[path_num]
 	speed = carry_area.calculate_speed() * SPD_MULT
 	is_moving = true
 

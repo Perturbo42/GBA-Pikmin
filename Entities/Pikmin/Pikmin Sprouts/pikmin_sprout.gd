@@ -1,6 +1,5 @@
 class_name PikminSprout extends Node2D
 @onready var sprite: Sprite2D = $Sprite2D
-var pikmin_to_handle: PackedScene
 var color: int = 0
 var state: int = 0
 
@@ -11,6 +10,7 @@ func _ready() -> void:
 
 
 func _on_interactive_area_interacted() -> void:
-	SpawnHandler.spawn_pikmin(pikmin_to_handle, global_position)
+	print("interacted")
+	SpawnHandler.spawn_pikmin(color, global_position)
 	queue_free()
 	pass # Replace with function body.

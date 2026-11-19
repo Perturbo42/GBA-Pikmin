@@ -28,11 +28,11 @@ func close_menu(num: int, onion: Onion):
 
 
 func identify_onion(num: int)-> PackedScene:
-	if num == 1:
+	if num == 0:
 		return red_onion_menu
-	elif num == 2:
+	elif num == 1:
 		return yellow_onion_menu
-	elif num == 3:
+	elif num == 2:
 		return blue_onion_menu
 	else:
 		return null

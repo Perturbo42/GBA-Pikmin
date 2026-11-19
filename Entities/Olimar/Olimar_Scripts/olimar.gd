@@ -111,7 +111,7 @@ func remove_pikmin_from_following(num: int, color: int):
 	if num <= 0:
 		return 0
 
-	var type = pikmin_types[color - 1]
+	var type = pikmin_types[color]
 	var pikmin_group: PikminGroup = following_pikmin[type]
 
 	var remove_count: int = min(num, pikmin_group.pikmin_arr.size())

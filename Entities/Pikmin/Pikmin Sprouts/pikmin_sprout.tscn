@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bt4xky71i6ptd" path="res://Entities/Pikmin/Pikmin Sprouts/pikmin_sprout.gd" id="1_1028g"]
 [ext_resource type="Script" uid="uid://b3ghna5gueco6" path="res://Entities/interactive_area.gd" id="3_n7cva"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4gbpf"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_qgddc"]
 
 [node name="PikminSprout" type="Node2D" unique_id=515178420]
 script = ExtResource("1_1028g")
@@ -17,11 +17,14 @@ texture = ExtResource("1_7nmnu")
 hframes = 3
 vframes = 3
 
-[node name="InteractiveArea" type="Area2D" parent="." unique_id=1759243670]
+[node name="InteractiveArea" type="Area2D" parent="." unique_id=35708603]
+collision_layer = 32
+collision_mask = 32
 script = ExtResource("3_n7cva")
-metadata/_custom_type_script = "uid://b3ghna5gueco6"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveArea" unique_id=1677825825]
-shape = SubResource("CircleShape2D_4gbpf")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractiveArea" unique_id=1735648134]
+shape = SubResource("CircleShape2D_qgddc")
 
+[connection signal="area_entered" from="InteractiveArea" to="InteractiveArea" method="_on_area_entered"]
+[connection signal="area_exited" from="InteractiveArea" to="InteractiveArea" method="_on_area_exited"]
 [connection signal="interacted" from="InteractiveArea" to="." method="_on_interactive_area_interacted"]
