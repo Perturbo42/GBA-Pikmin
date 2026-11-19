@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvb18mejrl5v6"
-path="res://.godot/imported/PelletPosy.png-aa3c883b1c0db66da08ff217a61fa74d.ctex"
+uid="uid://bl700vrq7kncy"
+path="res://.godot/imported/Pellets.png-f8a6bb2e6bf429d7fad7e80dc611f720.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/Enemies/PelletPosy/PelletPosy.png"
-dest_files=["res://.godot/imported/PelletPosy.png-aa3c883b1c0db66da08ff217a61fa74d.ctex"]
+source_file="res://Entities/Enemies/PelletPosy/1 Pellet/Pellets.png"
+dest_files=["res://.godot/imported/Pellets.png-f8a6bb2e6bf429d7fad7e80dc611f720.ctex"]
 
 [params]
 

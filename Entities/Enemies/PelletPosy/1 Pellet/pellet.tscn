@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dlv3ntjbc1tyh"]
 
 [ext_resource type="Script" uid="uid://be0idi164f4ff" path="res://Entities/Enemies/PelletPosy/pellet.gd" id="1_6wygi"]
-[ext_resource type="Texture2D" uid="uid://bl700vrq7kncy" path="res://Entities/Enemies/PelletPosy/Pellets.png" id="1_ekb2o"]
+[ext_resource type="Texture2D" uid="uid://bl700vrq7kncy" path="res://Entities/Enemies/PelletPosy/1 Pellet/Pellets.png" id="1_ekb2o"]
 [ext_resource type="PackedScene" uid="uid://duxcu3fec1sc6" path="res://Entities/Enemies/Enemy Component/Enemy Boxes/corpse_area.tscn" id="2_cbs41"]
 [ext_resource type="PackedScene" uid="uid://bsrnflrw56qfg" path="res://Entities/Entity Component/Group/group.tscn" id="3_oigjw"]
 [ext_resource type="PackedScene" uid="uid://dll010kctr2g7" path="res://Entities/Entity Component/Weight Display Component/weight_display_component.tscn" id="3_x1a60"]
