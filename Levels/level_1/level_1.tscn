@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dueyyd1vcnu1" path="res://Entities/Enemies/PelletPosy/1 Pellet/PelletPosy - Dead.png" id="5_xrjfu"]
 [ext_resource type="Script" uid="uid://de5qgraerddek" path="res://Entities/Enemies/PelletPosy/pellet_posy_definition.gd" id="6_xrjfu"]
 [ext_resource type="PackedScene" uid="uid://d2d0jpfs1sohe" path="res://Misc/Pathfinding/Waypoints/waypoint.tscn" id="7_sa5ll"]
+[ext_resource type="Texture2D" uid="uid://dgwy4asns0dmu" path="res://Entities/Enemies/PelletPosy/5 Pellet/PelletPosy - Dead - 5.png" id="8_8jvj1"]
 [ext_resource type="PackedScene" uid="uid://c2ojs6q85dur1" path="res://Entities/Treasure/Treasure Spawner/treasure_spawner.tscn" id="8_g75eo"]
 [ext_resource type="PackedScene" uid="uid://cjyjqfhawsjqo" path="res://Entities/Enemies/PelletPosy/5 Pellet/pellet_posy_5.tscn" id="8_lx7p2"]
 [ext_resource type="Resource" uid="uid://bmrpihrjpkyqx" path="res://Entities/Treasure/Rubber Duck/rubber_duck_definition.tres" id="9_fsnod"]
@@ -16,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://chvia1boc6188" path="res://Entities/Louie/louie.tscn" id="13_g75eo"]
 [ext_resource type="PackedScene" uid="uid://byuj25tue4exn" path="res://Entities/Obstacles/box_10.tscn" id="14_lx7p2"]
 
-[sub_resource type="Resource" id="Resource_8jvj1"]
+[sub_resource type="Resource" id="Resource_mwwos"]
 resource_local_to_scene = true
 script = ExtResource("6_xrjfu")
 scene = ExtResource("5_su15s")
@@ -24,15 +25,15 @@ preview_texture = ExtResource("5_xrjfu")
 preview_offset = Vector2(0, -52.5)
 metadata/_custom_type_script = "uid://de5qgraerddek"
 
-[sub_resource type="Resource" id="Resource_mwwos"]
+[sub_resource type="Resource" id="Resource_5jl35"]
 resource_local_to_scene = true
 script = ExtResource("6_xrjfu")
 scene = ExtResource("8_lx7p2")
-preview_texture = ExtResource("5_xrjfu")
-preview_offset = Vector2(0, -52.5)
+preview_texture = ExtResource("8_8jvj1")
+preview_offset = Vector2(0, -89)
 metadata/_custom_type_script = "uid://de5qgraerddek"
 
-[sub_resource type="Resource" id="Resource_5jl35"]
+[sub_resource type="Resource" id="Resource_r7xvw"]
 resource_local_to_scene = true
 script = ExtResource("6_xrjfu")
 dir = 1
@@ -88,15 +89,15 @@ enemy_definition = ExtResource("4_vxhsm")
 
 [node name="PelletPosy Spawner2" parent="Spawns" unique_id=879130828 instance=ExtResource("3_4rsnp")]
 position = Vector2(-160, -128)
-enemy_definition = SubResource("Resource_8jvj1")
+enemy_definition = SubResource("Resource_mwwos")
 
 [node name="PelletPosy Spawner3" parent="Spawns" unique_id=429186429 instance=ExtResource("3_4rsnp")]
 position = Vector2(-192, 232)
-enemy_definition = SubResource("Resource_mwwos")
+enemy_definition = SubResource("Resource_5jl35")
 
 [node name="PelletPosy Spawner4" parent="Spawns" unique_id=1041584633 instance=ExtResource("3_4rsnp")]
 position = Vector2(736, 208)
-enemy_definition = SubResource("Resource_5jl35")
+enemy_definition = SubResource("Resource_r7xvw")
 
 [node name="Treasure Spawner" parent="Spawns" unique_id=1242864228 instance=ExtResource("8_g75eo")]
 position = Vector2(632, 280)

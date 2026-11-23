@@ -5,8 +5,8 @@
 [ext_resource type="Script" uid="uid://c7icvcoxag35c" path="res://Entities/Enemies/PelletPosy/pellet_state_yes.gd" id="2_ygfcr"]
 [ext_resource type="Script" uid="uid://bslyfplgv7pmd" path="res://Entities/Enemies/PelletPosy/pellet_state_no.gd" id="3_irpwc"]
 [ext_resource type="Script" uid="uid://dn4kqj1oagogn" path="res://Entities/Enemies/Enemy Component/Drop Component/drop_component.gd" id="4_5goc0"]
-[ext_resource type="Texture2D" uid="uid://bvb18mejrl5v6" path="res://Entities/Enemies/PelletPosy/1 Pellet/PelletPosy.png" id="5_ecc18"]
-[ext_resource type="Texture2D" uid="uid://dueyyd1vcnu1" path="res://Entities/Enemies/PelletPosy/1 Pellet/PelletPosy - Dead.png" id="6_avkbt"]
+[ext_resource type="Texture2D" uid="uid://c863ecgdokg82" path="res://Entities/Enemies/PelletPosy/5 Pellet/PelletPosy - 5.png" id="6_ygfcr"]
+[ext_resource type="Texture2D" uid="uid://dgwy4asns0dmu" path="res://Entities/Enemies/PelletPosy/5 Pellet/PelletPosy - Dead - 5.png" id="7_irpwc"]
 [ext_resource type="PackedScene" uid="uid://bysu2hry8aflv" path="res://Entities/Enemies/Enemy Component/Enemy Boxes/enemy_hurtbox.tscn" id="7_y340c"]
 [ext_resource type="PackedScene" uid="uid://bsrnflrw56qfg" path="res://Entities/Entity Component/Group/group.tscn" id="8_ap8v0"]
 [ext_resource type="PackedScene" uid="uid://d3q81ursf1w4a" path="res://Entities/Enemies/Enemy Component/Corpse Component/corpse_component.tscn" id="9_peyj6"]
@@ -50,8 +50,7 @@ debug_color = Color(0, 1, 0, 0.41960785)
 texture_filter = 1
 texture_repeat = 1
 position = Vector2(0, -89)
-scale = Vector2(1.7, 1.7)
-texture = ExtResource("5_ecc18")
+texture = ExtResource("6_ygfcr")
 hframes = 3
 
 [node name="DeadSprite" type="Sprite2D" parent="." unique_id=363880083]
@@ -59,8 +58,7 @@ visible = false
 texture_filter = 1
 texture_repeat = 1
 position = Vector2(0, -89)
-scale = Vector2(1.7, 1.7)
-texture = ExtResource("6_avkbt")
+texture = ExtResource("7_irpwc")
 
 [node name="Pellet Hurtbox" parent="." unique_id=472455593 node_paths=PackedStringArray("enemy", "state_machine", "dead_state", "group") instance=ExtResource("7_y340c")]
 enemy = NodePath("..")
