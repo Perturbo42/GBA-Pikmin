@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://dky3olf7086qx"]
+
+[ext_resource type="Script" uid="uid://be0idi164f4ff" path="res://Entities/Enemies/PelletPosy/pellet.gd" id="1_p6pj2"]
+[ext_resource type="Texture2D" uid="uid://bbfglxelmxq64" path="res://Entities/Enemies/PelletPosy/5 Pellet/Pellets - 5.png" id="2_uhrii"]
+[ext_resource type="PackedScene" uid="uid://dll010kctr2g7" path="res://Entities/Entity Component/Weight Display Component/weight_display_component.tscn" id="2_xislj"]
+[ext_resource type="PackedScene" uid="uid://duxcu3fec1sc6" path="res://Entities/Enemies/Enemy Component/Enemy Boxes/corpse_area.tscn" id="3_uhrii"]
+[ext_resource type="PackedScene" uid="uid://bsrnflrw56qfg" path="res://Entities/Entity Component/Group/group.tscn" id="4_lij2p"]
+[ext_resource type="PackedScene" uid="uid://d3q81ursf1w4a" path="res://Entities/Enemies/Enemy Component/Corpse Component/corpse_component.tscn" id="5_e6q1e"]
+[ext_resource type="PackedScene" uid="uid://dlgantnc8igwb" path="res://Entities/Entity Component/Carryable/carryable_moving_component.tscn" id="6_scsng"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lij2p"]
+radius = 17.0
+height = 52.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xislj"]
+radius = 17.0
+height = 52.0
+
+[node name="Pellet 5" type="CharacterBody2D" unique_id=306089873 node_paths=PackedStringArray("corpse_area", "corpse_comp", "corpse_moving_comp", "sprite")]
+motion_mode = 1
+script = ExtResource("1_p6pj2")
+corpse_area = NodePath("Corpse Area")
+corpse_comp = NodePath("Corpse Area/CorpseComponent")
+corpse_moving_comp = NodePath("Corpse Area/CarryableMovingComponent")
+sprite = NodePath("Sprite2D")
+small = 3
+big = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1347457946]
+texture_filter = 1
+texture_repeat = 1
+texture = ExtResource("2_uhrii")
+hframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1233741000]
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_lij2p")
+debug_color = Color(0, 1, 0, 0.41960785)
+
+[node name="Weight Display Component" parent="." unique_id=2132990704 node_paths=PackedStringArray("area", "carryable") instance=ExtResource("2_xislj")]
+position = Vector2(0, -15)
+area = NodePath("../Corpse Area")
+carryable = NodePath("../Corpse Area/CorpseComponent")
+
+[node name="Corpse Area" parent="." unique_id=928789606 node_paths=PackedStringArray("obj", "carry", "moving_comp", "weight_display", "group") instance=ExtResource("3_uhrii")]
+obj = NodePath("..")
+carry = NodePath("CorpseComponent")
+moving_comp = NodePath("CarryableMovingComponent")
+weight_display = NodePath("../Weight Display Component")
+group = NodePath("Group")
+
+[node name="Marker2D" type="Marker2D" parent="Corpse Area/PikminSlots1" parent_id_path=PackedInt32Array(928789606, 358732772) index="0" unique_id=1213933110]
+position = Vector2(26, 7)
+
+[node name="Marker2D2" type="Marker2D" parent="Corpse Area/PikminSlots1" parent_id_path=PackedInt32Array(928789606, 358732772) index="1" unique_id=1856546766]
+position = Vector2(9, 20)
+
+[node name="Marker2D3" type="Marker2D" parent="Corpse Area/PikminSlots1" parent_id_path=PackedInt32Array(928789606, 358732772) index="2" unique_id=1319298907]
+position = Vector2(-9, 20)
+
+[node name="Marker2D4" type="Marker2D" parent="Corpse Area/PikminSlots1" parent_id_path=PackedInt32Array(928789606, 358732772) index="3" unique_id=1996356211]
+position = Vector2(-26, 7)
+
+[node name="Marker2D5" type="Marker2D" parent="Corpse Area/PikminSlots1" parent_id_path=PackedInt32Array(928789606, 358732772) index="4" unique_id=383669680]
+position = Vector2(0, -12.5)
+
+[node name="Marker2D" type="Marker2D" parent="Corpse Area/PikminSlots2" parent_id_path=PackedInt32Array(928789606, 1186606230) index="0" unique_id=795682758]
+position = Vector2(0, 22)
+
+[node name="Marker2D2" type="Marker2D" parent="Corpse Area/PikminSlots2" parent_id_path=PackedInt32Array(928789606, 1186606230) index="1" unique_id=1277386459]
+position = Vector2(-20, 13)
+
+[node name="Marker2D3" type="Marker2D" parent="Corpse Area/PikminSlots2" parent_id_path=PackedInt32Array(928789606, 1186606230) index="2" unique_id=1011444355]
+position = Vector2(-20, -3)
+
+[node name="Marker2D4" type="Marker2D" parent="Corpse Area/PikminSlots2" parent_id_path=PackedInt32Array(928789606, 1186606230) index="3" unique_id=410026346]
+position = Vector2(20, -3)
+
+[node name="Marker2D5" type="Marker2D" parent="Corpse Area/PikminSlots2" parent_id_path=PackedInt32Array(928789606, 1186606230) index="4" unique_id=862899697]
+position = Vector2(20, 13)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Corpse Area" unique_id=120846023]
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_xislj")
+debug_color = Color(0, 0, 1, 0.41960785)
+
+[node name="Group" parent="Corpse Area" unique_id=1101238150 instance=ExtResource("4_lij2p")]
+
+[node name="CorpseComponent" parent="Corpse Area" unique_id=962855638 node_paths=PackedStringArray("obj", "carry_area") instance=ExtResource("5_e6q1e")]
+seeds = 3
+obj = NodePath("../..")
+carry_area = NodePath("..")
+weight = 5
+
+[node name="CarryableMovingComponent" parent="Corpse Area" unique_id=1715806148 node_paths=PackedStringArray("obj", "carry_area") instance=ExtResource("6_scsng")]
+obj = NodePath("../..")
+carry_area = NodePath("..")
+
+[editable path="Corpse Area"]

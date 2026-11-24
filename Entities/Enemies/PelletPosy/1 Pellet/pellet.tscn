@@ -21,6 +21,8 @@ corpse_area = NodePath("Corpse Area")
 corpse_comp = NodePath("Corpse Area/CorpseComponent")
 corpse_moving_comp = NodePath("Corpse Area/CarryableMovingComponent")
 sprite = NodePath("Sprite2D")
+small = 1
+big = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=512535726]
 texture_filter = 1

@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://c7icvcoxag35c" path="res://Entities/Enemies/PelletPosy/pellet_state_yes.gd" id="2_ygfcr"]
 [ext_resource type="Script" uid="uid://bslyfplgv7pmd" path="res://Entities/Enemies/PelletPosy/pellet_state_no.gd" id="3_irpwc"]
 [ext_resource type="Script" uid="uid://dn4kqj1oagogn" path="res://Entities/Enemies/Enemy Component/Drop Component/drop_component.gd" id="4_5goc0"]
+[ext_resource type="PackedScene" uid="uid://dky3olf7086qx" path="res://Entities/Enemies/PelletPosy/5 Pellet/pellet_5.tscn" id="5_irpwc"]
 [ext_resource type="Texture2D" uid="uid://c863ecgdokg82" path="res://Entities/Enemies/PelletPosy/5 Pellet/PelletPosy - 5.png" id="6_ygfcr"]
 [ext_resource type="Texture2D" uid="uid://dgwy4asns0dmu" path="res://Entities/Enemies/PelletPosy/5 Pellet/PelletPosy - Dead - 5.png" id="7_irpwc"]
 [ext_resource type="PackedScene" uid="uid://bysu2hry8aflv" path="res://Entities/Enemies/Enemy Component/Enemy Boxes/enemy_hurtbox.tscn" id="7_y340c"]
@@ -21,9 +22,12 @@ radius = 13.038404
 [sub_resource type="CircleShape2D" id="CircleShape2D_k5x0k"]
 radius = 13.0
 
-[node name="PelletPosy5" type="CharacterBody2D" unique_id=517686395]
+[node name="PelletPosy5" type="CharacterBody2D" unique_id=517686395 node_paths=PackedStringArray("state_machine", "hurtbox")]
 motion_mode = 1
 script = ExtResource("1_ygfcr")
+state_machine = NodePath("PelletPosyStateMachine")
+hurtbox = NodePath("Pellet Hurtbox")
+health = 100
 
 [node name="PelletPosyStateMachine" type="Node2D" parent="." unique_id=1376698283]
 script = ExtResource("1_l2d6x")
@@ -31,11 +35,15 @@ script = ExtResource("1_l2d6x")
 [node name="YesPellet" type="Node2D" parent="PelletPosyStateMachine" unique_id=950738906]
 script = ExtResource("2_ygfcr")
 
-[node name="NoPellet" type="Node2D" parent="PelletPosyStateMachine" unique_id=1634720362]
+[node name="NoPellet" type="Node2D" parent="PelletPosyStateMachine" unique_id=1634720362 node_paths=PackedStringArray("corpse_comp", "drop_comp")]
 script = ExtResource("3_irpwc")
+corpse_comp = NodePath("../../Components/CorpseComponent")
+drop_comp = NodePath("DropComponent")
+pellet = ExtResource("5_irpwc")
 
-[node name="DropComponent" type="Node" parent="PelletPosyStateMachine/NoPellet" unique_id=1343499700 node_paths=PackedStringArray("drop_target")]
+[node name="DropComponent" type="Node" parent="PelletPosyStateMachine/NoPellet" unique_id=1343499700 node_paths=PackedStringArray("group", "drop_target")]
 script = ExtResource("4_5goc0")
+group = NodePath("../../../Components/PikminAttachedGroup")
 drop_target = NodePath("../Marker2D")
 drop_range = 20.0
 
