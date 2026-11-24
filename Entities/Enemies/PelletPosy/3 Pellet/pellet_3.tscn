@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://yniu3rl8r0dk"]
+
+[ext_resource type="Script" uid="uid://be0idi164f4ff" path="res://Entities/Enemies/PelletPosy/pellet.gd" id="1_mwxg3"]
+[ext_resource type="Texture2D" uid="uid://dmr6hfpgrhyut" path="res://Entities/Enemies/PelletPosy/3 Pellet/Pellets - 3.png" id="2_rwnik"]
+[ext_resource type="PackedScene" uid="uid://dll010kctr2g7" path="res://Entities/Entity Component/Weight Display Component/weight_display_component.tscn" id="3_jryv6"]
+[ext_resource type="PackedScene" uid="uid://duxcu3fec1sc6" path="res://Entities/Enemies/Enemy Component/Enemy Boxes/corpse_area.tscn" id="4_0o3lk"]
+[ext_resource type="PackedScene" uid="uid://bsrnflrw56qfg" path="res://Entities/Entity Component/Group/group.tscn" id="5_y5lc7"]
+[ext_resource type="PackedScene" uid="uid://d3q81ursf1w4a" path="res://Entities/Enemies/Enemy Component/Corpse Component/corpse_component.tscn" id="6_s3xga"]
+[ext_resource type="PackedScene" uid="uid://dlgantnc8igwb" path="res://Entities/Entity Component/Carryable/carryable_moving_component.tscn" id="7_ctxqq"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kx3qw"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_via1p"]
+
+[node name="Pellet3" type="CharacterBody2D" unique_id=1256368011 node_paths=PackedStringArray("corpse_area", "corpse_comp", "corpse_moving_comp", "sprite")]
+motion_mode = 1
+script = ExtResource("1_mwxg3")
+corpse_area = NodePath("Corpse Area")
+corpse_comp = NodePath("Corpse Area/CorpseComponent")
+corpse_moving_comp = NodePath("Corpse Area/CarryableMovingComponent")
+sprite = NodePath("Sprite2D")
+small = 2
+big = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1321289521]
+texture_filter = 1
+texture_repeat = 1
+texture = ExtResource("2_rwnik")
+hframes = 3
+
+[node name="Collision Box" type="CollisionShape2D" parent="." unique_id=1406745184]
+rotation = -1.5707964
+scale = Vector2(1.3, 1.3)
+shape = SubResource("CapsuleShape2D_kx3qw")
+debug_color = Color(0, 1, 0, 0.41960785)
+
+[node name="Weight Display Component" parent="." unique_id=2132990704 node_paths=PackedStringArray("area", "carryable") instance=ExtResource("3_jryv6")]
+position = Vector2(0, -16)
+area = NodePath("../Corpse Area")
+carryable = NodePath("../Corpse Area/CorpseComponent")
+
+[node name="Corpse Area" parent="." unique_id=928789606 node_paths=PackedStringArray("obj", "carry", "moving_comp", "weight_display", "group") instance=ExtResource("4_0o3lk")]
+obj = NodePath("..")
+carry = NodePath("CorpseComponent")
+moving_comp = NodePath("CarryableMovingComponent")
+weight_display = NodePath("../Weight Display Component")
+group = NodePath("Group")
+
+[node name="Marker2D" type="Marker2D" parent="Corpse Area/PikminSlots1" parent_id_path=PackedInt32Array(928789606, 358732772) index="0" unique_id=1715294244]
+position = Vector2(17, 9)
+
+[node name="Marker2D2" type="Marker2D" parent="Corpse Area/PikminSlots1" parent_id_path=PackedInt32Array(928789606, 358732772) index="1" unique_id=668352984]
+position = Vector2(-17, 9)
+
+[node name="Marker2D3" type="Marker2D" parent="Corpse Area/PikminSlots1" parent_id_path=PackedInt32Array(928789606, 358732772) index="2" unique_id=796548009]
+position = Vector2(0, -10)
+
+[node name="Marker2D" type="Marker2D" parent="Corpse Area/PikminSlots2" parent_id_path=PackedInt32Array(928789606, 1186606230) index="0" unique_id=301507818]
+position = Vector2(14, -5)
+
+[node name="Marker2D2" type="Marker2D" parent="Corpse Area/PikminSlots2" parent_id_path=PackedInt32Array(928789606, 1186606230) index="1" unique_id=928656024]
+position = Vector2(0, 17)
+
+[node name="Marker2D3" type="Marker2D" parent="Corpse Area/PikminSlots2" parent_id_path=PackedInt32Array(928789606, 1186606230) index="2" unique_id=1758151954]
+position = Vector2(-14, -5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Corpse Area" unique_id=85194246]
+rotation = -1.5707964
+scale = Vector2(1.3, 1.3)
+shape = SubResource("CapsuleShape2D_via1p")
+debug_color = Color(0, 0, 1, 0.41960785)
+
+[node name="Group" parent="Corpse Area" unique_id=1101238150 instance=ExtResource("5_y5lc7")]
+
+[node name="CorpseComponent" parent="Corpse Area" unique_id=962855638 node_paths=PackedStringArray("obj", "carry_area") instance=ExtResource("6_s3xga")]
+seeds = 2
+obj = NodePath("../..")
+carry_area = NodePath("..")
+weight = 3
+
+[node name="CarryableMovingComponent" parent="Corpse Area" unique_id=1715806148 node_paths=PackedStringArray("obj", "carry_area") instance=ExtResource("7_ctxqq")]
+obj = NodePath("../..")
+carry_area = NodePath("..")
+
+[editable path="Corpse Area"]
