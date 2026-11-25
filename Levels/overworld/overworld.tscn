@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cca4t6h4dpef7"]
+
+[ext_resource type="Script" uid="uid://bdu24kaua64i2" path="res://Levels/overworld/overworld.gd" id="1_1dltl"]
+[ext_resource type="Texture2D" uid="uid://bqcwlews2rcxc" path="res://Levels/overworld/Pikmin_world_map.png" id="2_84ooi"]
+[ext_resource type="Texture2D" uid="uid://blgqnurq18xa0" path="res://UI/UI Assets/BigNode.png" id="3_f2eyb"]
+[ext_resource type="PackedScene" uid="uid://cgtshodkmwcuf" path="res://Entities/Ship-Overworld/ship_overworld.tscn" id="4_sy4wj"]
+
+[node name="Overworld" type="Node2D" unique_id=612027558]
+texture_filter = 1
+texture_repeat = 1
+script = ExtResource("1_1dltl")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=543503351]
+z_index = -3
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(240, 152)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_84ooi")
+
+[node name="Level Nodes" type="Node2D" parent="." unique_id=1769849414]
+texture_filter = 1
+texture_repeat = 1
+
+[node name="LevelNode1" type="Sprite2D" parent="Level Nodes" unique_id=209011252]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(56, 216)
+texture = ExtResource("3_f2eyb")
+
+[node name="Ship-Overworld" parent="." unique_id=720033129 instance=ExtResource("4_sy4wj")]
+position = Vector2(56, 192)

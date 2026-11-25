@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cgtshodkmwcuf"]
+
+[ext_resource type="Script" uid="uid://dn00g1rmiu8im" path="res://Entities/Ship-Overworld/ship_overworld.gd" id="1_0r7bt"]
+[ext_resource type="Texture2D" uid="uid://brx1fmij88q8t" path="res://Entities/Ship-Overworld/OverworldShip.png" id="2_f18rv"]
+
+[node name="Ship-Overworld" type="Node2D" unique_id=720033129]
+texture_filter = 1
+texture_repeat = 1
+script = ExtResource("1_0r7bt")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=230009530]
+position = Vector2(0, -32)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_f18rv")

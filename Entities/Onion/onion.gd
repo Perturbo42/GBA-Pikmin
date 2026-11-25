@@ -6,12 +6,14 @@ class_name Onion extends Node2D
 var onion_panel_open: bool
 @export var pikmin_count: int
 
-
 @onready var spawn_1: Marker2D = $"Pikmin Spawn Points/Spawn1"
 @onready var spawn_2: Marker2D = $"Pikmin Spawn Points/Spawn2"
 @onready var spawn_3: Marker2D = $"Pikmin Spawn Points/Spawn3"
 var pikmin_spawn_points: Array[Marker2D]
-const RAD = 10
+
+const RAD = 10 ## Radius for circle to spawn around onion's legs
+const RADX = 86
+const RADY = 44 ## Radius for the oval to spawn sprouts around onion
 signal menu_requested(onion)
 
 func _ready() -> void:
@@ -48,7 +50,7 @@ func spawn_pikmin(num: int):
 
 func spawn_sprouts(num: int):
 	while num > 0:
-		var pos = get_random_point_in_oval(interactive_area.global_position, 86, 44)
+		var pos = get_random_point_in_oval(interactive_area.global_position, RADX, RADY)
 		SpawnHandler.spawn_sprout(pos, onion_color)
 		num -= 1
 	
