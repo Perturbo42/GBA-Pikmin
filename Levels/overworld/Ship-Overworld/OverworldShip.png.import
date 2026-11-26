@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://brx1fmij88q8t"
-path="res://.godot/imported/OverworldShip.png-d680a195a8e5ceda60df04e57393cf85.ctex"
+path="res://.godot/imported/OverworldShip.png-93cc4677b45a7e2fd6a9edfda82807b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/Ship-Overworld/OverworldShip.png"
-dest_files=["res://.godot/imported/OverworldShip.png-d680a195a8e5ceda60df04e57393cf85.ctex"]
+source_file="res://Levels/overworld/Ship-Overworld/OverworldShip.png"
+dest_files=["res://.godot/imported/OverworldShip.png-93cc4677b45a7e2fd6a9edfda82807b3.ctex"]
 
 [params]
 

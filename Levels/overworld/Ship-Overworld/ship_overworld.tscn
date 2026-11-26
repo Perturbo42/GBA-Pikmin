@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cgtshodkmwcuf"]
 
-[ext_resource type="Script" uid="uid://dn00g1rmiu8im" path="res://Entities/Ship-Overworld/ship_overworld.gd" id="1_0r7bt"]
-[ext_resource type="Texture2D" uid="uid://brx1fmij88q8t" path="res://Entities/Ship-Overworld/OverworldShip.png" id="2_f18rv"]
+[ext_resource type="Script" uid="uid://dn00g1rmiu8im" path="res://Levels/overworld/Ship-Overworld/ship_overworld.gd" id="1_0r7bt"]
+[ext_resource type="Texture2D" uid="uid://brx1fmij88q8t" path="res://Levels/overworld/Ship-Overworld/OverworldShip.png" id="2_f18rv"]
 
 [node name="Ship-Overworld" type="Node2D" unique_id=720033129]
 texture_filter = 1

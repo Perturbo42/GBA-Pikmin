@@ -3,7 +3,8 @@
 [ext_resource type="Script" uid="uid://bdu24kaua64i2" path="res://Levels/overworld/overworld.gd" id="1_1dltl"]
 [ext_resource type="Texture2D" uid="uid://bqcwlews2rcxc" path="res://Levels/overworld/Pikmin_world_map.png" id="2_84ooi"]
 [ext_resource type="Texture2D" uid="uid://blgqnurq18xa0" path="res://UI/UI Assets/BigNode.png" id="3_f2eyb"]
-[ext_resource type="PackedScene" uid="uid://cgtshodkmwcuf" path="res://Entities/Ship-Overworld/ship_overworld.tscn" id="4_sy4wj"]
+[ext_resource type="Script" uid="uid://hjl3cjpmkov4" path="res://Levels/overworld/overworld_level_node.gd" id="3_sy4wj"]
+[ext_resource type="PackedScene" uid="uid://cgtshodkmwcuf" path="res://Levels/overworld/Ship-Overworld/ship_overworld.tscn" id="4_sy4wj"]
 
 [node name="Overworld" type="Node2D" unique_id=612027558]
 texture_filter = 1
@@ -22,11 +23,63 @@ texture = ExtResource("2_84ooi")
 texture_filter = 1
 texture_repeat = 1
 
-[node name="LevelNode1" type="Sprite2D" parent="Level Nodes" unique_id=209011252]
+[node name="Level1" type="Marker2D" parent="Level Nodes" unique_id=376639303 node_paths=PackedStringArray("up", "down", "left", "right")]
+unique_name_in_owner = true
+position = Vector2(256, 248)
+script = ExtResource("3_sy4wj")
+is_active = true
+up = NodePath("../Level3")
+down = NodePath(".")
+left = NodePath("../Level2")
+right = NodePath(".")
+
+[node name="Level1Sprite" type="Sprite2D" parent="Level Nodes/Level1" unique_id=209011252]
 texture_filter = 1
 texture_repeat = 1
-position = Vector2(56, 216)
+texture = ExtResource("3_f2eyb")
+
+[node name="Level2" type="Marker2D" parent="Level Nodes" unique_id=393653993 node_paths=PackedStringArray("up", "down", "left", "right")]
+unique_name_in_owner = true
+position = Vector2(64, 216)
+script = ExtResource("3_sy4wj")
+up = NodePath("../Level4")
+down = NodePath(".")
+left = NodePath(".")
+right = NodePath("../Level1")
+
+[node name="Level2Sprite" type="Sprite2D" parent="Level Nodes/Level2" unique_id=183124378]
+texture_filter = 1
+texture_repeat = 1
+texture = ExtResource("3_f2eyb")
+
+[node name="Level3" type="Marker2D" parent="Level Nodes" unique_id=1661171385 node_paths=PackedStringArray("up", "down", "left", "right")]
+unique_name_in_owner = true
+position = Vector2(248, 144)
+script = ExtResource("3_sy4wj")
+up = NodePath(".")
+down = NodePath("../Level1")
+left = NodePath("../Level4")
+right = NodePath(".")
+
+[node name="Level3Sprite" type="Sprite2D" parent="Level Nodes/Level3" unique_id=719073673]
+texture_filter = 1
+texture_repeat = 1
+texture = ExtResource("3_f2eyb")
+
+[node name="Level4" type="Marker2D" parent="Level Nodes" unique_id=566046745 node_paths=PackedStringArray("up", "down", "left", "right")]
+unique_name_in_owner = true
+position = Vector2(64, 112)
+script = ExtResource("3_sy4wj")
+up = NodePath(".")
+down = NodePath("../Level2")
+left = NodePath(".")
+right = NodePath("../Level3")
+
+[node name="Level4Sprite" type="Sprite2D" parent="Level Nodes/Level4" unique_id=1262286647]
+texture_filter = 1
+texture_repeat = 1
 texture = ExtResource("3_f2eyb")
 
 [node name="Ship-Overworld" parent="." unique_id=720033129 instance=ExtResource("4_sy4wj")]
-position = Vector2(56, 192)
+unique_name_in_owner = true
+position = Vector2(256, 248)
